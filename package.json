@@ -8,7 +8,9 @@
     "dev:backend": "npm --prefix backend run dev",
     "dev:mobile": "npm --prefix mobile run start",
     "test:backend": "npm --prefix backend test",
-    "build:backend": "npm --prefix backend run build"
+    "build:backend": "npm --prefix backend run build",
+    "build": "npm --prefix backend install && npm --prefix backend run build",
+    "start": "npm --prefix backend start"
   },
   "dependencies": {
     "expo": "^57.0.27"
