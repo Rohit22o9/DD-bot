@@ -7,6 +7,7 @@
     "install:all": "npm --prefix backend install && npm --prefix mobile install",
     "dev:backend": "npm --prefix backend run dev",
     "dev:mobile": "npm --prefix mobile run start",
+    "tunnel:mobile": "npm --prefix mobile run start -- --tunnel",
     "test:backend": "npm --prefix backend test",
     "build:backend": "npm --prefix backend run build",
     "build": "npm --prefix backend install && npm --prefix backend run build",
