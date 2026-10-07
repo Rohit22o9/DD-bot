@@ -1,0 +1,301 @@
+customer_id,name,email,primary_persona,default_pickup_point,delivery_suburb,created_at
+C00001,User C00001,customer.c00001@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2025-12-10T05:50:25.624Z
+C00002,User C00002,customer.c00002@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2025-12-11T05:50:25.625Z
+C00003,User C00003,customer.c00003@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2025-12-12T05:50:25.625Z
+C00004,User C00004,customer.c00004@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2025-12-13T05:50:25.625Z
+C00005,User C00005,customer.c00005@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2025-12-14T05:50:25.625Z
+C00006,User C00006,customer.c00006@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2025-12-15T05:50:25.625Z
+C00007,User C00007,customer.c00007@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2025-12-16T05:50:25.625Z
+C00008,User C00008,customer.c00008@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2025-12-17T05:50:25.625Z
+C00009,User C00009,customer.c00009@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2025-12-18T05:50:25.625Z
+C00010,User C00010,customer.c00010@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2025-12-19T05:50:25.625Z
+C00011,User C00011,customer.c00011@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2025-12-20T05:50:25.625Z
+C00012,User C00012,customer.c00012@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2025-12-21T05:50:25.625Z
+C00013,User C00013,customer.c00013@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2025-12-22T05:50:25.625Z
+C00014,User C00014,customer.c00014@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2025-12-23T05:50:25.625Z
+C00015,User C00015,customer.c00015@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2025-12-24T05:50:25.625Z
+C00016,User C00016,customer.c00016@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2025-12-25T05:50:25.625Z
+C00017,User C00017,customer.c00017@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2025-12-26T05:50:25.625Z
+C00018,User C00018,customer.c00018@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2025-12-27T05:50:25.625Z
+C00019,User C00019,customer.c00019@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2025-12-28T05:50:25.625Z
+C00020,User C00020,customer.c00020@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2025-12-29T05:50:25.625Z
+C00021,User C00021,customer.c00021@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2025-12-30T05:50:25.625Z
+C00022,User C00022,customer.c00022@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2025-12-31T05:50:25.625Z
+C00023,User C00023,customer.c00023@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-01-01T05:50:25.625Z
+C00024,User C00024,customer.c00024@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-01-02T05:50:25.625Z
+C00025,User C00025,customer.c00025@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-01-03T05:50:25.625Z
+C00026,User C00026,customer.c00026@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-01-04T05:50:25.625Z
+C00027,User C00027,customer.c00027@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-01-05T05:50:25.625Z
+C00028,User C00028,customer.c00028@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-01-06T05:50:25.625Z
+C00029,User C00029,customer.c00029@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-01-07T05:50:25.625Z
+C00030,User C00030,customer.c00030@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-01-08T05:50:25.625Z
+C00031,User C00031,customer.c00031@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-01-09T05:50:25.625Z
+C00032,User C00032,customer.c00032@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-01-10T05:50:25.625Z
+C00033,User C00033,customer.c00033@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-01-11T05:50:25.625Z
+C00034,User C00034,customer.c00034@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-01-12T05:50:25.625Z
+C00035,User C00035,customer.c00035@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-01-13T05:50:25.625Z
+C00036,User C00036,customer.c00036@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-01-14T05:50:25.625Z
+C00037,User C00037,customer.c00037@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-01-15T05:50:25.625Z
+C00038,User C00038,customer.c00038@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-01-16T05:50:25.625Z
+C00039,User C00039,customer.c00039@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-01-17T05:50:25.625Z
+C00040,User C00040,customer.c00040@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-01-18T05:50:25.625Z
+C00041,User C00041,customer.c00041@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-01-19T05:50:25.625Z
+C00042,User C00042,customer.c00042@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-01-20T05:50:25.625Z
+C00043,User C00043,customer.c00043@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-01-21T05:50:25.626Z
+C00044,User C00044,customer.c00044@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-01-22T05:50:25.626Z
+C00045,User C00045,customer.c00045@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-01-23T05:50:25.626Z
+C00046,User C00046,customer.c00046@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-01-24T05:50:25.626Z
+C00047,User C00047,customer.c00047@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-01-25T05:50:25.626Z
+C00048,User C00048,customer.c00048@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-01-26T05:50:25.626Z
+C00049,User C00049,customer.c00049@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-01-27T05:50:25.626Z
+C00050,User C00050,customer.c00050@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-01-28T05:50:25.626Z
+C00051,User C00051,customer.c00051@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-01-29T05:50:25.626Z
+C00052,User C00052,customer.c00052@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-01-30T05:50:25.626Z
+C00053,User C00053,customer.c00053@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-01-31T05:50:25.626Z
+C00054,User C00054,customer.c00054@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-02-01T05:50:25.626Z
+C00055,User C00055,customer.c00055@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-02-02T05:50:25.626Z
+C00056,User C00056,customer.c00056@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-02-03T05:50:25.626Z
+C00057,User C00057,customer.c00057@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-02-04T05:50:25.626Z
+C00058,User C00058,customer.c00058@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-02-05T05:50:25.626Z
+C00059,User C00059,customer.c00059@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-02-06T05:50:25.626Z
+C00060,User C00060,customer.c00060@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-02-07T05:50:25.626Z
+C00061,User C00061,customer.c00061@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-02-08T05:50:25.626Z
+C00062,User C00062,customer.c00062@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-02-09T05:50:25.626Z
+C00063,User C00063,customer.c00063@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-02-10T05:50:25.626Z
+C00064,User C00064,customer.c00064@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-02-11T05:50:25.626Z
+C00065,User C00065,customer.c00065@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-02-12T05:50:25.626Z
+C00066,User C00066,customer.c00066@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-02-13T05:50:25.626Z
+C00067,User C00067,customer.c00067@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-02-14T05:50:25.626Z
+C00068,User C00068,customer.c00068@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-02-15T05:50:25.626Z
+C00069,User C00069,customer.c00069@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-02-16T05:50:25.626Z
+C00070,User C00070,customer.c00070@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-02-17T05:50:25.626Z
+C00071,User C00071,customer.c00071@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-02-18T05:50:25.626Z
+C00072,User C00072,customer.c00072@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-02-19T05:50:25.626Z
+C00073,User C00073,customer.c00073@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-02-20T05:50:25.626Z
+C00074,User C00074,customer.c00074@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-02-21T05:50:25.626Z
+C00075,User C00075,customer.c00075@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-02-22T05:50:25.626Z
+C00076,User C00076,customer.c00076@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-02-23T05:50:25.626Z
+C00077,User C00077,customer.c00077@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-02-24T05:50:25.626Z
+C00078,User C00078,customer.c00078@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-02-25T05:50:25.626Z
+C00079,User C00079,customer.c00079@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-02-26T05:50:25.626Z
+C00080,User C00080,customer.c00080@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-02-27T05:50:25.626Z
+C00081,User C00081,customer.c00081@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-02-28T05:50:25.626Z
+C00082,User C00082,customer.c00082@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-03-01T05:50:25.626Z
+C00083,User C00083,customer.c00083@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-03-02T05:50:25.626Z
+C00084,User C00084,customer.c00084@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-03-03T05:50:25.626Z
+C00085,User C00085,customer.c00085@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-03-04T05:50:25.626Z
+C00086,User C00086,customer.c00086@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-03-05T05:50:25.626Z
+C00087,User C00087,customer.c00087@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-03-06T05:50:25.626Z
+C00088,User C00088,customer.c00088@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-03-07T05:50:25.626Z
+C00089,User C00089,customer.c00089@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-03-08T05:50:25.626Z
+C00090,User C00090,customer.c00090@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-03-09T05:50:25.626Z
+C00091,User C00091,customer.c00091@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-03-10T05:50:25.626Z
+C00092,User C00092,customer.c00092@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-03-11T05:50:25.626Z
+C00093,User C00093,customer.c00093@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-03-12T05:50:25.626Z
+C00094,User C00094,customer.c00094@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-03-13T05:50:25.626Z
+C00095,User C00095,customer.c00095@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-03-14T05:50:25.626Z
+C00096,User C00096,customer.c00096@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-03-15T05:50:25.626Z
+C00097,User C00097,customer.c00097@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-03-16T05:50:25.626Z
+C00098,User C00098,customer.c00098@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-03-17T05:50:25.626Z
+C00099,User C00099,customer.c00099@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-03-18T05:50:25.626Z
+C00100,User C00100,customer.c00100@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-03-19T05:50:25.626Z
+C00101,User C00101,customer.c00101@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-03-20T05:50:25.626Z
+C00102,User C00102,customer.c00102@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-03-21T05:50:25.626Z
+C00103,User C00103,customer.c00103@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-03-22T05:50:25.626Z
+C00104,User C00104,customer.c00104@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-03-23T05:50:25.626Z
+C00105,User C00105,customer.c00105@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-03-24T05:50:25.626Z
+C00106,User C00106,customer.c00106@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-03-25T05:50:25.626Z
+C00107,User C00107,customer.c00107@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-03-26T05:50:25.626Z
+C00108,User C00108,customer.c00108@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-03-27T05:50:25.626Z
+C00109,User C00109,customer.c00109@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-03-28T05:50:25.626Z
+C00110,User C00110,customer.c00110@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-03-29T05:50:25.626Z
+C00111,User C00111,customer.c00111@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-03-30T05:50:25.626Z
+C00112,User C00112,customer.c00112@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-03-31T05:50:25.626Z
+C00113,User C00113,customer.c00113@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-04-01T05:50:25.626Z
+C00114,User C00114,customer.c00114@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-04-02T05:50:25.626Z
+C00115,User C00115,customer.c00115@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-04-03T05:50:25.626Z
+C00116,User C00116,customer.c00116@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-04-04T05:50:25.626Z
+C00117,User C00117,customer.c00117@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-04-05T05:50:25.626Z
+C00118,User C00118,customer.c00118@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-04-06T05:50:25.626Z
+C00119,User C00119,customer.c00119@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-04-07T05:50:25.626Z
+C00120,User C00120,customer.c00120@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-04-08T05:50:25.626Z
+C00121,User C00121,customer.c00121@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-04-09T05:50:25.626Z
+C00122,User C00122,customer.c00122@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-04-10T05:50:25.626Z
+C00123,User C00123,customer.c00123@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-04-11T05:50:25.626Z
+C00124,User C00124,customer.c00124@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-04-12T05:50:25.626Z
+C00125,User C00125,customer.c00125@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-04-13T05:50:25.626Z
+C00126,User C00126,customer.c00126@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-04-14T05:50:25.626Z
+C00127,User C00127,customer.c00127@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-04-15T05:50:25.626Z
+C00128,User C00128,customer.c00128@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-04-16T05:50:25.626Z
+C00129,User C00129,customer.c00129@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-04-17T05:50:25.626Z
+C00130,User C00130,customer.c00130@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-04-18T05:50:25.626Z
+C00131,User C00131,customer.c00131@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-04-19T05:50:25.626Z
+C00132,User C00132,customer.c00132@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-04-20T05:50:25.626Z
+C00133,User C00133,customer.c00133@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-04-21T05:50:25.626Z
+C00134,User C00134,customer.c00134@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-04-22T05:50:25.626Z
+C00135,User C00135,customer.c00135@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-04-23T05:50:25.626Z
+C00136,User C00136,customer.c00136@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-04-24T05:50:25.627Z
+C00137,User C00137,customer.c00137@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-04-25T05:50:25.627Z
+C00138,User C00138,customer.c00138@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-04-26T05:50:25.627Z
+C00139,User C00139,customer.c00139@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-04-27T05:50:25.627Z
+C00140,User C00140,customer.c00140@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-04-28T05:50:25.627Z
+C00141,User C00141,customer.c00141@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-04-29T05:50:25.627Z
+C00142,User C00142,customer.c00142@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-04-30T05:50:25.627Z
+C00143,User C00143,customer.c00143@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-05-01T05:50:25.627Z
+C00144,User C00144,customer.c00144@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-05-02T05:50:25.627Z
+C00145,User C00145,customer.c00145@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-05-03T05:50:25.627Z
+C00146,User C00146,customer.c00146@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-05-04T05:50:25.627Z
+C00147,User C00147,customer.c00147@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-05-05T05:50:25.627Z
+C00148,User C00148,customer.c00148@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-05-06T05:50:25.627Z
+C00149,User C00149,customer.c00149@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-05-07T05:50:25.627Z
+C00150,User C00150,customer.c00150@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-05-08T05:50:25.627Z
+C00151,User C00151,customer.c00151@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-05-09T05:50:25.627Z
+C00152,User C00152,customer.c00152@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-05-10T05:50:25.627Z
+C00153,User C00153,customer.c00153@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-05-11T05:50:25.627Z
+C00154,User C00154,customer.c00154@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-05-12T05:50:25.627Z
+C00155,User C00155,customer.c00155@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-05-13T05:50:25.627Z
+C00156,User C00156,customer.c00156@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-05-14T05:50:25.627Z
+C00157,User C00157,customer.c00157@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-05-15T05:50:25.627Z
+C00158,User C00158,customer.c00158@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-05-16T05:50:25.627Z
+C00159,User C00159,customer.c00159@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-05-17T05:50:25.627Z
+C00160,User C00160,customer.c00160@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-05-18T05:50:25.627Z
+C00161,User C00161,customer.c00161@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-05-19T05:50:25.627Z
+C00162,User C00162,customer.c00162@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-05-20T05:50:25.627Z
+C00163,User C00163,customer.c00163@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-05-21T05:50:25.627Z
+C00164,User C00164,customer.c00164@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-05-22T05:50:25.627Z
+C00165,User C00165,customer.c00165@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-05-23T05:50:25.627Z
+C00166,User C00166,customer.c00166@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-05-24T05:50:25.627Z
+C00167,User C00167,customer.c00167@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-05-25T05:50:25.627Z
+C00168,User C00168,customer.c00168@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-05-26T05:50:25.627Z
+C00169,User C00169,customer.c00169@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-05-27T05:50:25.627Z
+C00170,User C00170,customer.c00170@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-05-28T05:50:25.627Z
+C00171,User C00171,customer.c00171@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-05-29T05:50:25.627Z
+C00172,User C00172,customer.c00172@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-05-30T05:50:25.627Z
+C00173,User C00173,customer.c00173@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-05-31T05:50:25.627Z
+C00174,User C00174,customer.c00174@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-06-01T05:50:25.627Z
+C00175,User C00175,customer.c00175@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-06-02T05:50:25.627Z
+C00176,User C00176,customer.c00176@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-06-03T05:50:25.627Z
+C00177,User C00177,customer.c00177@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-06-04T05:50:25.627Z
+C00178,User C00178,customer.c00178@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-06-05T05:50:25.627Z
+C00179,User C00179,customer.c00179@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-06-06T05:50:25.627Z
+C00180,User C00180,customer.c00180@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-06-07T05:50:25.627Z
+C00181,User C00181,customer.c00181@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-06-08T05:50:25.627Z
+C00182,User C00182,customer.c00182@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-06-09T05:50:25.627Z
+C00183,User C00183,customer.c00183@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-06-10T05:50:25.627Z
+C00184,User C00184,customer.c00184@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-06-11T05:50:25.627Z
+C00185,User C00185,customer.c00185@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-06-12T05:50:25.627Z
+C00186,User C00186,customer.c00186@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-06-13T05:50:25.627Z
+C00187,User C00187,customer.c00187@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-06-14T05:50:25.627Z
+C00188,User C00188,customer.c00188@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-06-15T05:50:25.627Z
+C00189,User C00189,customer.c00189@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-06-16T05:50:25.627Z
+C00190,User C00190,customer.c00190@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-06-17T05:50:25.627Z
+C00191,User C00191,customer.c00191@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-06-18T05:50:25.627Z
+C00192,User C00192,customer.c00192@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-06-19T05:50:25.627Z
+C00193,User C00193,customer.c00193@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-06-20T05:50:25.627Z
+C00194,User C00194,customer.c00194@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-06-21T05:50:25.627Z
+C00195,User C00195,customer.c00195@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-06-22T05:50:25.627Z
+C00196,User C00196,customer.c00196@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-06-23T05:50:25.627Z
+C00197,User C00197,customer.c00197@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-06-24T05:50:25.627Z
+C00198,User C00198,customer.c00198@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-06-25T05:50:25.627Z
+C00199,User C00199,customer.c00199@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-06-26T05:50:25.627Z
+C00200,User C00200,customer.c00200@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-06-27T05:50:25.627Z
+C00201,User C00201,customer.c00201@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-06-28T05:50:25.627Z
+C00202,User C00202,customer.c00202@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-06-29T05:50:25.627Z
+C00203,User C00203,customer.c00203@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-06-30T05:50:25.627Z
+C00204,User C00204,customer.c00204@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-07-01T05:50:25.627Z
+C00205,User C00205,customer.c00205@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-07-02T05:50:25.627Z
+C00206,User C00206,customer.c00206@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-07-03T05:50:25.627Z
+C00207,User C00207,customer.c00207@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-07-04T05:50:25.627Z
+C00208,User C00208,customer.c00208@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-07-05T05:50:25.627Z
+C00209,User C00209,customer.c00209@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-07-06T05:50:25.627Z
+C00210,User C00210,customer.c00210@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-07-07T05:50:25.627Z
+C00211,User C00211,customer.c00211@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-07-08T05:50:25.627Z
+C00212,User C00212,customer.c00212@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-07-09T05:50:25.627Z
+C00213,User C00213,customer.c00213@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-07-10T05:50:25.627Z
+C00214,User C00214,customer.c00214@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-07-11T05:50:25.627Z
+C00215,User C00215,customer.c00215@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-07-12T05:50:25.627Z
+C00216,User C00216,customer.c00216@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-07-13T05:50:25.627Z
+C00217,User C00217,customer.c00217@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-07-14T05:50:25.627Z
+C00218,User C00218,customer.c00218@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-07-15T05:50:25.627Z
+C00219,User C00219,customer.c00219@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-07-16T05:50:25.627Z
+C00220,User C00220,customer.c00220@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-07-17T05:50:25.627Z
+C00221,User C00221,customer.c00221@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-07-18T05:50:25.627Z
+C00222,User C00222,customer.c00222@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-07-19T05:50:25.627Z
+C00223,User C00223,customer.c00223@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-07-20T05:50:25.627Z
+C00224,User C00224,customer.c00224@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-07-21T05:50:25.627Z
+C00225,User C00225,customer.c00225@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-07-22T05:50:25.627Z
+C00226,User C00226,customer.c00226@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-07-23T05:50:25.627Z
+C00227,User C00227,customer.c00227@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-07-24T05:50:25.627Z
+C00228,User C00228,customer.c00228@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-07-25T05:50:25.627Z
+C00229,User C00229,customer.c00229@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-07-26T05:50:25.628Z
+C00230,User C00230,customer.c00230@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-07-27T05:50:25.628Z
+C00231,User C00231,customer.c00231@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-07-28T05:50:25.628Z
+C00232,User C00232,customer.c00232@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-07-29T05:50:25.628Z
+C00233,User C00233,customer.c00233@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-07-30T05:50:25.628Z
+C00234,User C00234,customer.c00234@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-07-31T05:50:25.628Z
+C00235,User C00235,customer.c00235@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-08-01T05:50:25.628Z
+C00236,User C00236,customer.c00236@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-08-02T05:50:25.628Z
+C00237,User C00237,customer.c00237@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-08-03T05:50:25.628Z
+C00238,User C00238,customer.c00238@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-08-04T05:50:25.628Z
+C00239,User C00239,customer.c00239@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-08-05T05:50:25.628Z
+C00240,User C00240,customer.c00240@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-08-06T05:50:25.628Z
+C00241,User C00241,customer.c00241@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-08-07T05:50:25.628Z
+C00242,User C00242,customer.c00242@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-08-08T05:50:25.628Z
+C00243,User C00243,customer.c00243@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-08-09T05:50:25.628Z
+C00244,User C00244,customer.c00244@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-08-10T05:50:25.628Z
+C00245,User C00245,customer.c00245@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-08-11T05:50:25.628Z
+C00246,User C00246,customer.c00246@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-08-12T05:50:25.628Z
+C00247,User C00247,customer.c00247@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-08-13T05:50:25.628Z
+C00248,User C00248,customer.c00248@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-08-14T05:50:25.628Z
+C00249,User C00249,customer.c00249@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-08-15T05:50:25.628Z
+C00250,User C00250,customer.c00250@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-08-16T05:50:25.628Z
+C00251,User C00251,customer.c00251@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-08-17T05:50:25.628Z
+C00252,User C00252,customer.c00252@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-08-18T05:50:25.628Z
+C00253,User C00253,customer.c00253@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-08-19T05:50:25.628Z
+C00254,User C00254,customer.c00254@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-08-20T05:50:25.628Z
+C00255,User C00255,customer.c00255@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-08-21T05:50:25.628Z
+C00256,User C00256,customer.c00256@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-08-22T05:50:25.628Z
+C00257,User C00257,customer.c00257@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-08-23T05:50:25.628Z
+C00258,User C00258,customer.c00258@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-08-24T05:50:25.628Z
+C00259,User C00259,customer.c00259@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-08-25T05:50:25.628Z
+C00260,User C00260,customer.c00260@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-08-26T05:50:25.628Z
+C00261,User C00261,customer.c00261@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-08-27T05:50:25.628Z
+C00262,User C00262,customer.c00262@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-08-28T05:50:25.628Z
+C00263,User C00263,customer.c00263@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-08-29T05:50:25.628Z
+C00264,User C00264,customer.c00264@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-08-30T05:50:25.628Z
+C00265,User C00265,customer.c00265@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-08-31T05:50:25.628Z
+C00266,User C00266,customer.c00266@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-09-01T05:50:25.628Z
+C00267,User C00267,customer.c00267@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-09-02T05:50:25.628Z
+C00268,User C00268,customer.c00268@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-09-03T05:50:25.628Z
+C00269,User C00269,customer.c00269@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-09-04T05:50:25.628Z
+C00270,User C00270,customer.c00270@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-09-05T05:50:25.628Z
+C00271,User C00271,customer.c00271@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-09-06T05:50:25.628Z
+C00272,User C00272,customer.c00272@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-09-07T05:50:25.628Z
+C00273,User C00273,customer.c00273@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-09-08T05:50:25.628Z
+C00274,User C00274,customer.c00274@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-09-09T05:50:25.628Z
+C00275,User C00275,customer.c00275@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-09-10T05:50:25.628Z
+C00276,User C00276,customer.c00276@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-09-11T05:50:25.628Z
+C00277,User C00277,customer.c00277@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-09-12T05:50:25.628Z
+C00278,User C00278,customer.c00278@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-09-13T05:50:25.628Z
+C00279,User C00279,customer.c00279@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-09-14T05:50:25.628Z
+C00280,User C00280,customer.c00280@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-09-15T05:50:25.628Z
+C00281,User C00281,customer.c00281@dailydrop.com,Value Hunter,Curtin Engineering Guild,Curtin,2026-09-16T05:50:25.628Z
+C00282,User C00282,customer.c00282@dailydrop.com,Protein Lover,Bentley Library Commons,Victoria Park,2026-09-17T05:50:25.628Z
+C00283,User C00283,customer.c00283@dailydrop.com,Healthy Eater,Victoria Park Station Hub,Waterford,2026-09-18T05:50:25.628Z
+C00284,User C00284,customer.c00284@dailydrop.com,Spice Lover,Curtin Central Bus Station,Como,2026-09-19T05:50:25.628Z
+C00285,User C00285,customer.c00285@dailydrop.com,Vegetarian,Curtin Engineering Guild,Bentley,2026-09-20T05:50:25.628Z
+C00286,User C00286,customer.c00286@dailydrop.com,Adventurous Eater,Bentley Library Commons,Curtin,2026-09-21T05:50:25.628Z
+C00287,User C00287,customer.c00287@dailydrop.com,Habitual Eater,Victoria Park Station Hub,Victoria Park,2026-09-22T05:50:25.628Z
+C00288,User C00288,customer.c00288@dailydrop.com,Premium Foodie,Curtin Central Bus Station,Waterford,2026-09-23T05:50:25.628Z
+C00289,User C00289,customer.c00289@dailydrop.com,Student Regular,Curtin Engineering Guild,Como,2026-09-24T05:50:25.628Z
+C00290,User C00290,customer.c00290@dailydrop.com,Peanut Allergy Regular,Bentley Library Commons,Bentley,2026-09-25T05:50:25.628Z
+C00291,User C00291,customer.c00291@dailydrop.com,Value Hunter,Victoria Park Station Hub,Curtin,2026-09-26T05:50:25.628Z
+C00292,User C00292,customer.c00292@dailydrop.com,Protein Lover,Curtin Central Bus Station,Victoria Park,2026-09-27T05:50:25.628Z
+C00293,User C00293,customer.c00293@dailydrop.com,Healthy Eater,Curtin Engineering Guild,Waterford,2026-09-28T05:50:25.628Z
+C00294,User C00294,customer.c00294@dailydrop.com,Spice Lover,Bentley Library Commons,Como,2026-09-29T05:50:25.628Z
+C00295,User C00295,customer.c00295@dailydrop.com,Vegetarian,Victoria Park Station Hub,Bentley,2026-09-30T05:50:25.628Z
+C00296,User C00296,customer.c00296@dailydrop.com,Adventurous Eater,Curtin Central Bus Station,Curtin,2026-10-01T05:50:25.628Z
+C00297,User C00297,customer.c00297@dailydrop.com,Habitual Eater,Curtin Engineering Guild,Victoria Park,2026-10-02T05:50:25.628Z
+C00298,User C00298,customer.c00298@dailydrop.com,Premium Foodie,Bentley Library Commons,Waterford,2026-10-03T05:50:25.628Z
+C00299,User C00299,customer.c00299@dailydrop.com,Student Regular,Victoria Park Station Hub,Como,2026-10-04T05:50:25.628Z
+C00300,User C00300,customer.c00300@dailydrop.com,Peanut Allergy Regular,Curtin Central Bus Station,Bentley,2026-10-05T05:50:25.628Z

@@ -1,0 +1,31 @@
+meal_id,restaurant_id,name,description,price,portion,category,active
+m_01,rest_01,Thai Basil Chili Chicken Bowl,"Spicy wok-fried minced chicken with garlic, bird-eye chili, and crispy basil over jasmine rice.",13.00,650ml,main,true
+m_02,rest_01,Spicy Tamarind Tofu Pad Thai,"Rice noodles wok-tossed with tamarind glaze, crispy pressed tofu, and crushed peanuts.",12.50,600ml,main,true
+m_03,rest_01,Thai Green Curry with Tender Beef,Slow-simmered beef with tender thai eggplant and aromatic kaffir lime leaves.,14.50,650ml,main,true
+m_04,rest_01,Traditional Thai Iced Milk Tea,Slow-brewed spiced Ceylon tea sweetened with rich condensed milk.,3.50,450ml,drink,true
+m_05,rest_07,Hyderabadi Chicken Biryani,Dum-cooked aromatic basmati rice layered with spiced marinated chicken and saffron.,12.00,700ml,main,true
+m_06,rest_07,Creamy Butter Chicken with Garlic Roti,Tender tandoori chicken simmered in silky butter-tomato gravy with warm garlic roti.,14.00,650ml,main,true
+m_07,rest_07,Spiced Chickpea Chana Masala,Slow-cooked organic chickpeas steeped in roasted cumin and ginger-tomato sauce.,11.00,600ml,main,true
+m_08,rest_07,Crispy Vegetable Samosas (2 pcs),Flaky pastry pockets stuffed with spiced potatoes and sweet green peas.,4.00,200g,side,true
+m_09,rest_07,Alphonso Mango Lassi,Chilled artisanal yoghurt blended with sun-ripened Alphonso mango pulp.,3.50,400ml,drink,true
+m_10,rest_08,Smoky West African Jollof Chicken,Fire-roasted pepper rice topped with charred spiced chicken thigh and sweet fried plantain.,12.00,650ml,main,true
+m_11,rest_08,Suya Spiced Beef Skewers Bowl,Thinly sliced flank steak coated in northern suya pepper spice with charred onions.,13.50,600ml,main,true
+m_12,rest_08,Sweet Golden Fried Plantains (Dodo),Sweet ripe plantains fried to golden perfection with caramelized edges.,3.50,200g,side,true
+m_13,rest_08,Zobo Hibiscus Ginger Brew,Traditional cold-steeped Nigerian hibiscus tea infused with crushed ginger and cloves.,3.00,450ml,drink,true
+m_14,rest_02,Teriyaki Glazed Chicken Bento,"Caramelized teriyaki chicken thigh served with sushi rice, steamed edamame, and pickled ginger.",12.50,650ml,main,true
+m_15,rest_02,Crispy Salmon Miso Poke Bowl,Fresh diced Atlantic salmon tossed in white miso sesame dressing over nutty brown rice.,15.00,600ml,main,true
+m_16,rest_02,Cold-Brewed Hojicha Roasted Tea,Sugar-free cold-brewed Kyoto green tea with distinct nutty notes.,2.50,400ml,drink,true
+m_17,rest_03,Warm Halloumi & Ancient Grain Bowl,Pan-seared Cypriot halloumi cheese over ancient grain medley and baby spinach.,13.00,600ml,main,true
+m_18,rest_03,Crispy Herb Falafel Mezze Plate,Fresh parsley-infused falafels served with velvet garlic hummus and toasted wholemeal pita.,11.50,650ml,main,true
+m_19,rest_03,Tender Chicken Caesar Power Salad,Herb-roasted chicken breast over crisp romaine with shaved parmesan and herb croutons.,12.00,600ml,main,true
+m_20,rest_05,Slow-Cooked Beef Lasagne Classica,Layered fresh egg pasta baked with 6-hour slow simmered Angus beef ragu and creamy bechamel.,14.00,650ml,main,true
+m_21,rest_05,Penne Pasta with Chicken & Basil Pesto,Bronze-extruded penne pasta tossed with fresh sweet basil pesto and grilled chicken.,13.00,600ml,main,true
+m_22,rest_04,Charred Chicken Tinga Burrito Bowl,"Shredded smoky chipotle chicken atop cilantro rice, seasoned black beans, and fresh guacamole.",12.50,650ml,main,true
+m_23,rest_04,Spicy Black Bean & Avocado Bowl,Slow-stewed spiced black beans with Hass avocado and tangy tomatillo salsa verde.,11.00,600ml,main,true
+m_24,rest_04,Cucumber Mint Agua Fresca,Freshly pressed cucumber and lime water infused with crushed garden mint.,3.00,450ml,drink,true
+m_25,rest_06,Crispy Gochujang Korean Chicken Rice,Double-fried crunchy chicken bites glazed in sweet honey-gochujang over warm rice.,13.50,650ml,main,true
+m_26,rest_06,Sesame Beef Bulgogi Rice Bowl,Thinly shaved beef marinated in sweet Asian pear and toasted sesame oil with steamed rice.,14.00,600ml,main,true
+m_27,rest_10,Szechuan Pepper Chicken & Green Beans,Fiery wok-tossed chicken laced with tongue-numbing Szechuan red peppercorns.,12.50,600ml,main,true
+m_28,rest_12,Malaysian Chicken Mee Goreng,Mamak-style stir-fried yellow noodles tossed with spiced sambal paste and chicken.,12.00,650ml,main,true
+m_29,rest_12,Beef Rendang Slow-Cooked Bowl,"Tender beef caramelized in rich toasted coconut flakes, lemongrass, and aromatic spices.",13.00,600ml,main,true
+m_30,rest_10,Homestyle Silken Tofu in Ginger Soy,Velvety braised tofu and fresh tender bok choy in warm scallion-ginger reduction.,11.00,600ml,main,true

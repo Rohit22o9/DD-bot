@@ -1,0 +1,31 @@
+meal_id,cuisine,sub_cuisine,protein,base,ingredients,spice_level,dietary,allergens,flavour_profile,health_score,protein_score
+m_01,Thai,Central Thai,chicken,jasmine rice,chicken breast; thai holy basil; birds eye chili; garlic; jasmine rice; fried egg,4,halal; dairy-free,soy; egg,"spicy, savoury, aromatic",0.72,0.85
+m_02,Thai,Street Style,tofu,rice noodles,rice noodles; firm tofu; tamarind; bean sprouts; peanuts; lime,2,vegetarian; vegan; gluten-free,peanuts; soy,"sweet, tangy, nutty",0.75,0.65
+m_03,Thai,Central Thai,beef,jasmine rice,sliced beef; coconut milk; green curry paste; thai eggplant; bamboo shoots; jasmine rice,3,gluten-free; dairy-free,fish sauce,"rich, creamy, herbal, spicy",0.60,0.80
+m_04,Thai,Beverage,none,tea,black tea; star anise; condensed milk; crushed ice,0,vegetarian,dairy,"sweet, creamy, spiced",0.30,0.10
+m_05,Indian,Hyderabadi,chicken,basmati rice,chicken; basmati rice; saffron; onion; yoghurt; cardamom; cloves,3,halal; gluten-free,dairy,"rich, aromatic, fragrant, spiced",0.65,0.88
+m_06,Indian,North Indian,chicken,roti & rice,chicken breast; tomato makhani gravy; butter; cream; fenugreek; garlic roti,1,halal,dairy; gluten,"creamy, sweet, savoury, mild",0.50,0.82
+m_07,Indian,Punjabi,chickpeas,cumin rice,chickpeas; onions; tomatoes; ginger; garam masala; cumin rice,3,vegetarian; vegan; gluten-free; halal,none,"tangy, hearty, spiced",0.85,0.70
+m_08,Indian,Appetizer,none,pastry,potatoes; green peas; cumin; flour; mint chutney,2,vegetarian; vegan; halal,gluten,"crispy, savoury, warm",0.40,0.20
+m_09,Indian,Beverage,none,yoghurt,alphonso mango pulp; probiotic yoghurt; cardamom; sugar,0,vegetarian; gluten-free,dairy,"tropical, creamy, sweet",0.55,0.30
+m_10,African,West African,chicken,jollof rice,roasted chicken thigh; long-grain parboiled rice; red bell pepper; habanero; tomatoes; fried plantain,3,halal; gluten-free; dairy-free,none,"smoky, rich, savory, spicy",0.68,0.86
+m_11,African,Nigerian,beef,seasoned rice,grilled flank steak; kuli-kuli peanut spice rub; onions; tomatoes; cabbage slaw,4,halal; dairy-free,peanuts,"nutty, smoky, intensely peppery",0.70,0.90
+m_12,African,Side,none,plantain,ripe plantain; vegetable oil; sea salt,0,vegetarian; vegan; gluten-free; halal,none,"caramelized, sweet, tender",0.60,0.15
+m_13,African,Beverage,none,hibiscus,dried hibiscus calyx; fresh ginger; pineapple juice; cloves,1,vegetarian; vegan; gluten-free,none,"tart, zesty, refreshing",0.88,0.05
+m_14,Japanese,Bento,chicken,calrose rice,grilled chicken thigh; house teriyaki sauce; calrose rice; tamagoyaki; edamame; pickled ginger,0,dairy-free,soy; egg,"sweet, savory, umami",0.70,0.84
+m_15,Japanese,Poke,salmon,brown rice,raw atlantic salmon; white miso glaze; avocado; seaweed salad; cucumber; brown rice,1,gluten-free; high-protein,fish; soy; sesame,"clean, fresh, umami, nutty",0.90,0.92
+m_16,Japanese,Beverage,none,green tea,roasted green tea leaves; spring water,0,vegetarian; vegan; gluten-free,none,"earthy, nutty, sugar-free",0.95,0.00
+m_17,Mediterranean,Grain Bowls,halloumi,farro & quinoa,grilled cypriot halloumi; farro; quinoa; roasted beets; baby spinach; pomegranate glaze,0,vegetarian,dairy; gluten,"tangy, salty, earthy",0.88,0.75
+m_18,Mediterranean,Levantine,chickpeas,hummus & pita,ground chickpea falafel; tahini; creamy hummus; cucumbers; cherry tomatoes; wholemeal pita,0,vegetarian; vegan,sesame; gluten,"herby, nutty, fresh",0.85,0.70
+m_19,Mediterranean,Salads,chicken,romaine lettuce,grilled chicken breast; romaine hearts; shaved parmesan; boiled egg; garlic sourdough croutons; light caesar dressing,0,high-protein,dairy; egg; fish; gluten,"crisp, savory, zesty",0.82,0.95
+m_20,Italian,Bolognese,beef,pasta,angus beef bolognese; egg pasta sheets; bechamel; fior di latte; parmigiano reggiano,0,,gluten; dairy; egg,"rich, savory, comforting",0.52,0.80
+m_21,Italian,Ligurian,chicken,penne,al dente penne; grilled chicken strips; genovese basil pesto; pine nuts; pecorino,0,,gluten; dairy; pine nuts,"fragrant, herbaceous, nutty",0.65,0.82
+m_22,Mexican,Puebla,chicken,cilantro lime rice,chipotle pulled chicken; black beans; cilantro rice; pico de gallo; charred corn; guacamole,3,gluten-free; dairy-free,none,"smoky, zesty, fresh, spicy",0.80,0.85
+m_23,Mexican,Vegetarian,black beans,cilantro lime rice,spiced black beans; sliced avocado; charred corn; salsa verde; cilantro rice,2,vegetarian; vegan; gluten-free,none,"zesty, earthy, creamy",0.88,0.68
+m_24,Mexican,Beverage,none,fresh juice,cold-pressed cucumber; lime juice; fresh mint; raw agave,0,vegetarian; vegan; gluten-free,none,"crisp, herbal, refreshing",0.90,0.05
+m_25,Korean,Street Food,chicken,short grain rice,crispy chicken bites; sweet gochujang chili glaze; sesame seeds; kimchi; pickled radish,3,dairy-free,soy; sesame; gluten,"spicy, sweet, tangy, crunchy",0.58,0.84
+m_26,Korean,Traditional,beef,short grain rice,marinated ribeye beef; pear-soy marinade; carrots; scallions; sesame oil,1,dairy-free,soy; sesame,"sweet, savory, tender",0.72,0.88
+m_27,Chinese,Szechuan,chicken,jasmine rice,diced chicken; szechuan peppercorns; dry chili; french beans; garlic,5,halal; dairy-free,soy,"numbing, spicy, aromatic",0.72,0.85
+m_28,Malaysian,Mamak,chicken,yellow noodles,yellow noodles; chicken slices; cabbage; sweet soy sauce; sambal chili; calamansi lime,3,halal; dairy-free,gluten; soy; crustacean,"smoky, spicy, savory, sweet",0.60,0.78
+m_29,Malaysian,Malay,beef,coconut rice,beef chuck; toasted kerisik coconut; lemongrass; galangal; coconut cream; coconut rice,3,halal; gluten-free; dairy-free,none,"rich, nutty, aromatic, spicy",0.62,0.88
+m_30,Chinese,Cantonese,tofu,steamed rice,silken tofu; shiitake mushrooms; bok choy; ginger soy broth; scallions,0,vegetarian; vegan,soy; mushrooms,"comforting, silky, umami",0.88,0.65

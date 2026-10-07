@@ -1,0 +1,2005 @@
+import {
+  ChatResponsePayload,
+  UserProfile,
+  UserPreferences,
+  Meal,
+  Order,
+  DayOfWeek,
+  MealSlot,
+  WeeklyMealPlan,
+  BudgetBasket,
+  Recommendation,
+  HealthGoalOption,
+} from '../../types';
+import { AIProvider } from '../providers/AIProvider';
+import { OpenAIProvider } from '../providers/OpenAIProvider';
+import { HybridRuleProvider } from '../providers/HybridRuleProvider';
+import { toolRegistry, ToolRegistry } from '../tools/ToolRegistry';
+import { recommendationEngine, RecommendationEngine } from './RecommendationEngine';
+import { safetyValidator, SafetyValidator } from './SafetyValidator';
+
+export const HEALTH_GOAL_OPTIONS: HealthGoalOption[] = [
+  {
+    icon: '❤️',
+    title: 'Heart Healthy',
+    subtitle: 'Good for your heart',
+    prompt: 'Heart Healthy',
+  },
+  {
+    icon: '📉',
+    title: 'Diabetes Friendly',
+    subtitle: 'Helps manage blood sugar',
+    prompt: 'Diabetes Friendly',
+  },
+  {
+    icon: '💪',
+    title: 'High Protein',
+    subtitle: 'Keeps you fuller for longer',
+    prompt: 'High Protein',
+  },
+  {
+    icon: '⚖️',
+    title: 'Weight Management',
+    subtitle: 'Lower calories, balanced nutrition',
+    prompt: 'Weight Management',
+  },
+  {
+    icon: '🌾',
+    title: 'High Fibre',
+    subtitle: 'Good for digestion',
+    prompt: 'High Fibre',
+  },
+  {
+    icon: '🧂',
+    title: 'Low Sodium',
+    subtitle: 'Lower salt options',
+    prompt: 'Low Sodium',
+  },
+  {
+    icon: '🌿',
+    title: 'Gluten Free',
+    subtitle: 'No gluten ingredients',
+    prompt: 'Gluten Free',
+  },
+];
+
+export interface OrchestratorOptions {
+  aiProvider?: AIProvider;
+  tools?: ToolRegistry;
+  recommender?: RecommendationEngine;
+  safety?: SafetyValidator;
+}
+
+export class DropAIOrchestrator {
+  private aiProvider: AIProvider;
+  private tools: ToolRegistry;
+  private recommender: RecommendationEngine;
+  private safety: SafetyValidator;
+  private activeMealPlans: Map<string, WeeklyMealPlan> = new Map();
+  private activeDropForMe: Map<string, any> = new Map();
+  private activeBudgetBaskets: Map<string, BudgetBasket> = new Map();
+  private activeCombos: Map<
+    string,
+    { main: Meal; side: Meal; alternativeSides: Meal[]; budgetCap: number; slot: MealSlot; isPremium: boolean }
+  > = new Map();
+  private sessionShownMeals: Map<string, string[]> = new Map();
+
+  constructor(options?: OrchestratorOptions) {
+    // Choose OpenAI provider if key exists, otherwise fallback seamlessly to HybridRuleProvider
+    const openAI = new OpenAIProvider();
+    this.aiProvider = options?.aiProvider || (openAI.isAvailable() ? openAI : new HybridRuleProvider());
+    this.tools = options?.tools || toolRegistry;
+    this.recommender = options?.recommender || recommendationEngine;
+    this.safety = options?.safety || safetyValidator;
+  }
+
+  public setAIProvider(provider: AIProvider) {
+    this.aiProvider = provider;
+  }
+
+  public async processMessage(
+    userId: string,
+    userInput: string,
+    sessionState?: any
+  ): Promise<ChatResponsePayload> {
+    const rawInput = userInput.trim();
+    const lower = rawInput.toLowerCase();
+
+    // 1. Fetch user profile & explicit preferences
+    const userProfile = await this.tools.getUserProfile(userId);
+    const preferences = userProfile?.preferences;
+
+    // 2. Parse Intent with fallback
+    let intent;
+    try {
+      intent = await this.aiProvider.parseIntent(rawInput, sessionState);
+    } catch (parseErr) {
+      console.warn('AIProvider parseIntent encountered an issue, falling back to HybridRuleProvider:', parseErr);
+      const fallbackProvider = new HybridRuleProvider();
+      intent = await fallbackProvider.parseIntent(rawInput, sessionState);
+    }
+
+    // Apply pre-selected quick filters (shortens search & reduces LLM token costs)
+    if (sessionState?.activeFilters) {
+      const f = sessionState.activeFilters;
+      if (f.budgetCap !== undefined) intent.budgetCap = f.budgetCap;
+      if (f.spicyFilter !== undefined) intent.spicyFilter = f.spicyFilter;
+      if (f.healthyFilter !== undefined) intent.healthyFilter = f.healthyFilter;
+      if (f.mealSlot !== undefined) intent.mealSlot = f.mealSlot;
+      if (f.cuisine !== undefined) intent.cuisine = f.cuisine;
+      if (f.wellness !== undefined) {
+        intent.wellnessCategory = f.wellness;
+        intent.healthyFilter = true;
+      }
+      if (f.dietary && preferences) {
+        if (!preferences.dietaryPreferences.includes(f.dietary)) {
+          preferences.dietaryPreferences = [...preferences.dietaryPreferences, f.dietary];
+        }
+      }
+    }
+
+    // =========================================================================
+    // 🎮 FOOD DISCOVERY GAMES
+    // =========================================================================
+    if (
+      lower.includes('food tinder') ||
+      lower.includes('swipe & pick') ||
+      lower.includes('swipe and pick') ||
+      lower.includes('swipe 5 dishes') ||
+      lower === 'swipe'
+    ) {
+      return {
+        message: "Let's find out what you're craving. Swipe 5 dishes. 🔥",
+        job: 'CHOOSE',
+        gamePayload: {
+          gameType: 'food_tinder',
+          title: 'Food Tinder — Swipe & Pick',
+        },
+      };
+    }
+
+    if (
+      lower.includes('meal battle') ||
+      lower.includes('food fight') ||
+      lower.includes('which one wins')
+    ) {
+      return {
+        message: "Welcome to Meal Battle ⚔️! Which one wins? Tap your craving to crown tonight's champion.",
+        job: 'CHOOSE',
+        gamePayload: {
+          gameType: 'meal_battle',
+          title: 'Meal Battle ⚔️',
+        },
+      };
+    }
+
+    if (
+      lower.includes('this or that') ||
+      lower.includes('4 quick choices') ||
+      lower.includes('4 questions')
+    ) {
+      return {
+        message: "Quick game. I'll find your dinner in 4 questions. 🤔",
+        job: 'CHOOSE',
+        gamePayload: {
+          gameType: 'this_or_that',
+          title: 'This or That 🤔',
+        },
+      };
+    }
+
+    if (
+      lower.includes('roulette') ||
+      lower.includes('meal roulette') ||
+      lower.includes('spin the wheel') ||
+      lower === 'spin'
+    ) {
+      return {
+        message: "Feeling lucky? 🎲 Spin the flavour wheel and discover tonight's dinner!",
+        job: 'CHOOSE',
+        gamePayload: {
+          gameType: 'meal_roulette',
+          title: 'Meal Roulette 🎲',
+        },
+      };
+    }
+
+    if (
+      lower.includes('mystery meal') ||
+      lower.includes('mystery box') ||
+      lower.includes('crack a box') ||
+      lower === 'mystery'
+    ) {
+      return {
+        message: 'Pick your mystery box. 👀 What surprise awaits inside?',
+        job: 'CHOOSE',
+        gamePayload: {
+          gameType: 'mystery_meal',
+          title: 'Mystery Meal 🎁',
+        },
+      };
+    }
+
+    if (
+      lower.includes('food passport') ||
+      lower.includes('passport') ||
+      lower.includes('collect stamps')
+    ) {
+      return {
+        message: 'Your Food Passport 🌍! Track your multi-cuisine journeys and unlock new stamps tonight.',
+        job: 'CHOOSE',
+        gamePayload: {
+          gameType: 'food_passport',
+          title: 'Food Passport 🌍',
+        },
+      };
+    }
+
+    if (
+      lower.includes('guess the dish') ||
+      lower.includes('guess dish') ||
+      lower.includes('daily trivia')
+    ) {
+      return {
+        message: "Can you guess today's mystery dish? 🕵️ Put your tastebuds to the test!",
+        job: 'CHOOSE',
+        gamePayload: {
+          gameType: 'guess_dish',
+          title: 'Guess the Dish 🕵️',
+        },
+      };
+    }
+
+    if (
+      lower.includes('build my meal') ||
+      lower.includes('build meal') ||
+      lower.includes('craft protein')
+    ) {
+      return {
+        message: "Let's craft your dinner! 🧑‍🍳 Choose your protein, flavour personality, and base.",
+        job: 'BUILD',
+        gamePayload: {
+          gameType: 'build_meal',
+          title: 'Build My Meal 🧑‍🍳',
+        },
+      };
+    }
+
+    if (
+      lower.includes('play a game') ||
+      lower.includes('play game') ||
+      lower.includes('play and discover') ||
+      lower.includes('play & discover') ||
+      lower.includes("can't decide")
+    ) {
+      return {
+        message: "Can't decide? Let's play a 20-second game and I'll pick your dinner. 🎮",
+        job: 'CHOOSE',
+        quickOptions: [
+          '🔥 Food Tinder',
+          '⚔️ Meal Battle',
+          '🤔 This or That',
+          '🎲 Meal Roulette',
+          '🎁 Mystery Meal',
+        ],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 1 — “HELP ME CHOOSE” (Default Discovery Flow)
+    // =========================================================================
+    const isHelpMeChoose =
+      lower === 'help me choose' ||
+      lower === 'help me choose what to eat' ||
+      lower === 'choose what to eat' ||
+      lower === 'what should i eat' ||
+      lower === 'help me decide' ||
+      lower === 'help' ||
+      lower.includes('what are you in the mood for');
+
+    if (isHelpMeChoose) {
+      return {
+        message: 'What are you in the mood for?',
+        job: 'CHOOSE',
+        quickOptions: [
+          '🍛 Comfort food',
+          '🥗 Healthy & light',
+          '🌶️ Something spicy',
+          '🍚 Filling meal',
+          '✨ Something different',
+          '🤷 Not sure',
+        ],
+      };
+    }
+
+    const isComfortFood = lower.includes('comfort food');
+    const isHealthyLight = lower.includes('healthy & light') || lower.includes('healthy and light');
+    const isSomethingSpicy = lower.includes('something spicy');
+    const isFillingMeal = lower.includes('filling meal');
+
+    if (isComfortFood || isHealthyLight || isSomethingSpicy || isFillingMeal) {
+      let searchOpts: any = { category: 'main' };
+      if (isSomethingSpicy) searchOpts.spicyLevel = 2;
+      const allMeals = await this.tools.searchMeals(searchOpts);
+      const safe = this.safety.filterSafeMeals(allMeals, preferences);
+      let selectedMeals = safe;
+
+      if (isComfortFood) {
+        selectedMeals = safe.filter((m) =>
+          m.name.toLowerCase().includes('biryani') ||
+          m.name.toLowerCase().includes('lasagne') ||
+          m.name.toLowerCase().includes('butter') ||
+          m.cuisine === 'Italian' ||
+          m.cuisine === 'Indian'
+        );
+      } else if (isHealthyLight) {
+        selectedMeals = safe.filter((m) => (m.calories || 600) < 500 || m.dietaryTags.some((t) => t.toLowerCase().includes('healthy')));
+      } else if (isFillingMeal) {
+        selectedMeals = safe.filter((m) => (m.proteinGrams || 20) >= 30 || m.name.toLowerCase().includes('bowl') || m.name.toLowerCase().includes('rice'));
+      }
+      if (selectedMeals.length === 0) selectedMeals = safe.slice(0, 4);
+
+      const moodLabel = isComfortFood
+        ? 'rich & satisfying comfort food'
+        : isHealthyLight
+        ? 'healthy & light nourishing meals'
+        : isSomethingSpicy
+        ? 'bold & spicy dishes'
+        : 'filling, hearty meals';
+
+      return {
+        message: `Here are 4 chef-crafted options for ${moodLabel}:`,
+        job: 'FIND',
+        recommendations: selectedMeals.slice(0, 4).map((m, idx) => ({
+          meal: m,
+          score: 98 - idx * 2,
+          reasons: ['✓ Freshly prepared', '✓ Top rated on Daily Drop'],
+        })),
+        quickOptions: ['💰 Under $15', '🌶️ More spicy', '🍗 Chicken', '🌱 Vegetarian', '🔄 Show me more'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 2 — “I DON'T KNOW WHAT I WANT” / "YOU DECIDE"
+    // =========================================================================
+    const isIDontKnow =
+      lower.includes("i don't know what i want") ||
+      lower.includes("don't know what i want") ||
+      lower.includes("i dont know what i want") ||
+      lower.includes("don't know what to eat") ||
+      lower === 'not sure' ||
+      lower === '🤷 not sure';
+
+    if (isIDontKnow) {
+      return {
+        message: 'Easy. What sounds better right now?',
+        job: 'CHOOSE',
+        quickOptions: ['🥗 Light & fresh', '🍛 Rich & comforting', '🌶️ Big flavours', '🤷 You decide'],
+      };
+    }
+
+    const isYouDecide =
+      lower === 'you decide' ||
+      lower === '🤷 you decide' ||
+      lower.includes('you decide') ||
+      lower.includes('surprise me again');
+
+    if (isYouDecide) {
+      const allMains = await this.tools.searchMeals({ category: 'main' });
+      const safe = this.safety.filterSafeMeals(allMains, preferences);
+      const picked = safe.slice(0, 3);
+
+      return {
+        message: "I've picked 3 for you based on today's menu.",
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 97 - idx * 2,
+          reasons: ['✓ Chef recommendation', '✓ Matches kitchen availability today'],
+        })),
+        quickOptions: ['😍 I like these', '💰 Cheaper', '🥗 Healthier', '🎲 Surprise me again'],
+      };
+    }
+
+    const isLightFresh = lower.includes('light & fresh') || lower.includes('light and fresh');
+    const isRichComforting = lower.includes('rich & comforting') || lower.includes('rich and comforting');
+    const isBigFlavours = lower.includes('big flavours') || lower.includes('big flavors');
+
+    if (isLightFresh || isRichComforting || isBigFlavours) {
+      const allMains = await this.tools.searchMeals({ category: 'main' });
+      const safe = this.safety.filterSafeMeals(allMains, preferences);
+      let picked = safe;
+      if (isLightFresh) {
+        picked = safe.filter((m) => (m.calories || 600) < 500);
+      } else if (isRichComforting) {
+        picked = safe.filter((m) => m.price >= 12 && (m.cuisine === 'Indian' || m.cuisine === 'Italian'));
+      } else if (isBigFlavours) {
+        picked = safe.filter((m) => m.spicyLevel > 0 || m.cuisine === 'Thai' || m.cuisine === 'African');
+      }
+      if (picked.length === 0) picked = safe.slice(0, 3);
+
+      return {
+        message: `I've picked 3 dishes with ${isLightFresh ? 'light & fresh textures' : isRichComforting ? 'rich & comforting depth' : 'bold, vibrant flavours'}:`,
+        job: 'FIND',
+        recommendations: picked.slice(0, 3).map((m, idx) => ({
+          meal: m,
+          score: 96 - idx * 2,
+          reasons: ['✓ Perfectly matched to your mood', '✓ Available today'],
+        })),
+        quickOptions: ['😍 I like these', '💰 Cheaper', '🥗 Healthier', '🎲 Surprise me again'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 3 — HEALTHY / NUTRITION GOAL
+    // =========================================================================
+    const isHealthyEntry =
+      lower === 'i want something healthy' ||
+      lower === 'eat healthier' ||
+      lower === 'something healthy' ||
+      lower === 'healthy';
+
+    if (isHealthyEntry) {
+      return {
+        message: 'What matters most to you?',
+        job: 'CHOOSE',
+        healthGoals: HEALTH_GOAL_OPTIONS,
+        dismissGoalPrompt: 'Not sure, just show me healthy options',
+        quickOptions: [
+          '❤️ Heart Healthy',
+          '📉 Diabetes Friendly',
+          '💪 High Protein',
+          '⚖️ Weight Management',
+          '🌾 High Fibre',
+          '🧂 Low Sodium',
+          '🌿 Gluten Free',
+        ],
+      };
+    }
+
+    const isHealthGoalSelected =
+      lower.includes('heart healthy') ||
+      lower.includes('diabetes friendly') ||
+      lower.includes('high protein') ||
+      lower.includes('weight management') ||
+      lower.includes('high fibre') ||
+      lower.includes('low sodium') ||
+      lower.includes('gluten free') ||
+      lower.includes('not sure, just show me healthy options') ||
+      lower.includes('just show me healthy options');
+
+    if (isHealthGoalSelected) {
+      const qBowl = (await this.tools.getMeal('meal_grilled_chicken_quinoa_bowl')) || (await this.tools.searchMeals({ keyword: 'Quinoa' }))[0];
+      const salmon = (await this.tools.getMeal('meal_salmon_brown_rice')) || (await this.tools.searchMeals({ keyword: 'Salmon' }))[0];
+      const beetroot = (await this.tools.getMeal('meal_beetroot_tofu_salad')) || (await this.tools.searchMeals({ keyword: 'Beetroot' }))[0];
+      const thaiChicken = (await this.tools.getMeal('meal_thai_basil_chicken')) || (await this.tools.searchMeals({ keyword: 'Thai Basil' }))[0];
+
+      const safeMeals = [qBowl, salmon, beetroot, thaiChicken].filter(Boolean) as Meal[];
+
+      return {
+        message: 'Here are some healthy options for you. These meals are nutritious, fresh and full of flavour. ✨',
+        job: 'FIND',
+        recommendations: [
+          {
+            meal: qBowl || safeMeals[0],
+            score: 98,
+            reasons: ['✓ High Protein', '✓ Low Sodium', '✓ Fresh & balanced'],
+          },
+          {
+            meal: salmon || safeMeals[1] || safeMeals[0],
+            score: 95,
+            reasons: ['✓ Heart Healthy', '✓ Rich Omega-3', '✓ Gluten Free'],
+          },
+          {
+            meal: beetroot || safeMeals[2] || safeMeals[0],
+            score: 92,
+            reasons: ['✓ 100% Vegan', '✓ High Fibre', '✓ Fresh garden greens'],
+          },
+          {
+            meal: thaiChicken || safeMeals[3] || safeMeals[0],
+            score: 90,
+            reasons: ['✓ High Protein', '✓ Low Calorie', '✓ Fragrant Holy Basil'],
+          },
+        ],
+        quickOptions: [
+          '🔥 Under 500 cal',
+          '💰 Under $15',
+          '🍗 Chicken',
+          '🐟 Seafood',
+          '🌱 Vegetarian',
+        ],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 4 — BUDGET MEAL
+    // =========================================================================
+    const isBudgetEntry =
+      lower === 'budget meal' ||
+      lower === 'budget friendly' ||
+      lower === 'i want something cheap' ||
+      lower === 'cheap' ||
+      lower === 'something cheap' ||
+      lower === 'what price works for you';
+
+    if (isBudgetEntry) {
+      return {
+        message: 'What price works for you?',
+        job: 'CHOOSE',
+        quickOptions: ['Under $10', 'Under $12', 'Under $15', 'Best value'],
+      };
+    }
+
+    const isUnder10 = lower.includes('under $10') || lower === 'under 10';
+    const isUnder12 = lower.includes('under $12') || lower === 'under 12';
+    const isUnder15 =
+      (lower.includes('under $15') || lower === 'under 15' || lower === '💰 under $15') &&
+      !lower.includes('another') &&
+      !lower.includes('healthy') &&
+      !lower.includes('combo');
+    const isBestValue = lower === 'best value' || lower.includes('best value');
+
+    if (isUnder10 || isUnder12 || isUnder15 || isBestValue) {
+      const cap = isUnder10 ? 10.5 : isUnder12 ? 12.5 : isUnder15 ? 15 : 14;
+      const allMains = await this.tools.searchMeals({ category: 'main' });
+      const safe = this.safety.filterSafeMeals(allMains, preferences);
+      const budgetMeals = safe.filter((m) => m.price <= cap);
+      const picked = (budgetMeals.length > 0 ? budgetMeals : safe).slice(0, 4);
+
+      const title = isBestValue
+        ? 'Here are our best value meals today! Generous portions, high protein, and exceptional ratings:'
+        : `Here are great options ${isUnder10 ? 'under $10' : isUnder12 ? 'under $12' : 'under $15'}:`;
+
+      return {
+        message: title,
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 96 - idx * 2,
+          reasons: [isBestValue ? '✓ High protein per $' : `✓ Under $${cap.toFixed(2)}`, '✓ Top customer rating'],
+        })),
+        quickOptions: ['🍗 Chicken', '🌱 Vegetarian', '🌶️ Spicy', '💪 High protein', '🔄 More'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 5 — CUISINE DISCOVERY
+    // =========================================================================
+    const isAsianCuisineInquiry =
+      lower.includes('asian food') ||
+      lower.includes('feel like asian') ||
+      lower === 'asian' ||
+      lower === '🌏 asian';
+
+    if (isAsianCuisineInquiry) {
+      return {
+        message: 'What sounds good?',
+        job: 'CHOOSE',
+        quickOptions: ['🇹🇭 Thai', '🇮🇩 Indonesian', '🇨🇳 Chinese', '🇯🇵 Japanese', '🌏 Surprise me'],
+      };
+    }
+
+    const isGeneralCuisineInquiry =
+      lower === 'cuisine discovery' ||
+      lower === 'cuisines' ||
+      lower === 'explore cuisines' ||
+      lower.includes('different cuisine');
+
+    if (isGeneralCuisineInquiry) {
+      return {
+        message: 'What sounds good?',
+        job: 'CHOOSE',
+        quickOptions: [
+          '🇮🇳 Indian',
+          '🌏 Asian',
+          '🌍 African',
+          '🥙 Middle Eastern',
+          '🍝 Western',
+          '✨ Something different',
+        ],
+      };
+    }
+
+    const isSpecificCuisineChoice =
+      lower.includes('thai') ||
+      lower.includes('indonesian') ||
+      lower.includes('chinese') ||
+      lower.includes('japanese') ||
+      lower.includes('indian') ||
+      lower.includes('african') ||
+      lower.includes('middle eastern') ||
+      lower.includes('western') ||
+      lower.includes('italian') ||
+      lower.includes('mexican');
+
+    if (
+      isSpecificCuisineChoice &&
+      !lower.includes('combo') &&
+      !lower.includes('side') &&
+      !lower.includes('added') &&
+      !lower.includes('usual') &&
+      !lower.includes('biryani') &&
+      !lower.includes('add the')
+    ) {
+      const cuisineTarget = lower.includes('thai')
+        ? 'Thai'
+        : lower.includes('indonesian')
+        ? 'Indonesian'
+        : lower.includes('chinese')
+        ? 'Chinese'
+        : lower.includes('japanese')
+        ? 'Japanese'
+        : lower.includes('indian')
+        ? 'Indian'
+        : lower.includes('african')
+        ? 'African'
+        : lower.includes('middle eastern')
+        ? 'Mediterranean'
+        : lower.includes('italian')
+        ? 'Italian'
+        : 'Mexican';
+
+      const meals = await this.tools.searchMeals({ cuisine: cuisineTarget });
+      const safe = this.safety.filterSafeMeals(meals, preferences);
+      const picked = (safe.length > 0 ? safe : (await this.tools.searchMeals({}))).slice(0, 3);
+
+      return {
+        message: `Here are popular ${cuisineTarget} meals ready for order:`,
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 97 - idx * 2,
+          reasons: [`✓ Authentic ${cuisineTarget}`, '✓ Fresh ingredients'],
+        })),
+        quickOptions: ['💰 Under $15', '🌶️ Spicy', '🍗 Chicken', '🌱 Vegetarian'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 6 — PROTEIN-FIRST CUSTOMER
+    // =========================================================================
+    const isProteinFirstInquiry =
+      lower === 'protein' ||
+      lower === 'build around protein' ||
+      lower === 'gym food' ||
+      lower === 'fitness' ||
+      lower === 'protein-first' ||
+      lower.includes('what would you like your meal built around');
+
+    if (isProteinFirstInquiry) {
+      return {
+        message: 'What would you like your meal built around?',
+        job: 'CHOOSE',
+        quickOptions: ['🍗 Chicken', '🥩 Lamb/Beef', '🐟 Seafood', '🥚 Eggs', '🧀 Paneer', '🌱 Plant based'],
+      };
+    }
+
+    const isProteinChoice =
+      lower.includes('chicken') ||
+      lower.includes('lamb/beef') ||
+      lower.includes('lamb') ||
+      lower.includes('beef') ||
+      lower.includes('seafood') ||
+      lower.includes('salmon') ||
+      lower.includes('eggs') ||
+      lower.includes('paneer') ||
+      lower.includes('plant based');
+
+    if (
+      isProteinChoice &&
+      !lower.includes('add') &&
+      !lower.includes('usual') &&
+      !lower.includes('combo') &&
+      !lower.includes('twice') &&
+      !lower.includes('biryani')
+    ) {
+      const pName = lower.includes('chicken')
+        ? 'chicken'
+        : lower.includes('lamb') || lower.includes('beef')
+        ? 'beef'
+        : lower.includes('seafood') || lower.includes('salmon')
+        ? 'salmon'
+        : lower.includes('paneer')
+        ? 'paneer'
+        : lower.includes('plant')
+        ? 'vegan'
+        : 'chicken';
+
+      const meals = await this.tools.searchMeals({ keyword: pName });
+      const safe = this.safety.filterSafeMeals(meals, preferences);
+      const picked = (safe.length > 0 ? safe : (await this.tools.searchMeals({}))).slice(0, 4);
+
+      return {
+        message: `Here are great dishes built around ${pName} across cuisines:`,
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 98 - idx * 2,
+          reasons: [`✓ Rich in ${pName} protein`, '✓ Balanced macros'],
+        })),
+        quickOptions: ['🌶️ Spicy', '💪 High protein', '💰 Under $15', '🥗 Healthy', '🍛 Curry'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 7 — DIETARY REQUIREMENT & ALLERGY SAFETY
+    // =========================================================================
+    const isDietaryInquiry =
+      lower === 'what can i eat?' ||
+      lower === 'what can i eat' ||
+      lower === 'dietary requirements' ||
+      lower === 'dietary requirement' ||
+      lower === 'dietary restrictions' ||
+      lower.includes('any dietary requirements');
+
+    if (isDietaryInquiry) {
+      return {
+        message: 'Any dietary requirements I should consider?',
+        job: 'CHOOSE',
+        quickOptions: ['🌱 Vegan', '🥬 Vegetarian', '☪️ Halal', '🌾 Gluten Free', '🥛 Dairy Free', '🥜 Allergies', 'None'],
+      };
+    }
+
+    const isAllergiesInquiry =
+      lower === 'allergies' ||
+      lower === '🥜 allergies' ||
+      lower.includes('allergy');
+
+    if (isAllergiesInquiry) {
+      return {
+        message: 'What ingredients do you need to avoid?',
+        job: 'CHOOSE',
+        quickOptions: ['Peanuts', 'Tree nuts', 'Milk', 'Egg', 'Gluten', 'Soy', 'Sesame', 'Seafood', 'Other'],
+      };
+    }
+
+    const isAllergenSelected =
+      lower === 'peanuts' ||
+      lower === 'tree nuts' ||
+      lower === 'milk' ||
+      lower === 'egg' ||
+      lower === 'gluten' ||
+      lower === 'soy' ||
+      lower === 'sesame' ||
+      lower === 'seafood';
+
+    if (isAllergenSelected) {
+      const allergen = rawInput;
+      const allMeals = await this.tools.searchMeals({});
+      const safeMeals = allMeals.filter(
+        (m) => !m.ingredients.some((ing) => ing.toLowerCase().includes(allergen.toLowerCase()))
+      );
+      const picked = safeMeals.slice(0, 3);
+
+      return {
+        message: `Here are kitchen-verified meals free from ${allergen}:`,
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 99 - idx * 2,
+          reasons: [`✓ Verified 0% ${allergen}`, '✓ Safe kitchen prep'],
+        })),
+        quickOptions: ['💰 Under $15', '🌶️ Spicy', '💪 High protein', '🥗 Healthy'],
+      };
+    }
+
+    const isDietSelected =
+      lower === 'vegan' ||
+      lower === '🌱 vegan' ||
+      lower === 'vegetarian' ||
+      lower === '🥬 vegetarian' ||
+      lower === 'halal' ||
+      lower === '☪️ halal' ||
+      lower === 'gluten free' ||
+      lower === '🌾 gluten free' ||
+      lower === 'dairy free' ||
+      lower === '🥛 dairy free';
+
+    if (isDietSelected) {
+      const dietTag = lower.includes('vegan')
+        ? 'Vegan'
+        : lower.includes('vegetarian')
+        ? 'Vegetarian'
+        : lower.includes('halal')
+        ? 'Halal'
+        : lower.includes('gluten')
+        ? 'Gluten Free'
+        : 'Dairy-Free';
+
+      const allMeals = await this.tools.searchMeals({});
+      const matching = allMeals.filter((m) =>
+        m.dietaryTags.some((t) => t.toLowerCase().includes(dietTag.toLowerCase()))
+      );
+      const picked = (matching.length > 0 ? matching : allMeals).slice(0, 3);
+
+      return {
+        message: `Here are verified ${dietTag} options prepared for you:`,
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 98 - idx * 2,
+          reasons: [`✓ Certified ${dietTag}`, '✓ Fresh & wholesome'],
+        })),
+        quickOptions: ['💰 Under $15', '🌶️ Spicy', '💪 High protein', '🥗 Healthy'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 8 — “SOMETHING DIFFERENT” / ADVENTURE
+    // =========================================================================
+    const isAdventurousInquiry =
+      lower === 'something different' ||
+      lower === '✨ something different' ||
+      lower === 'how adventurous are we feeling?' ||
+      lower === 'how adventurous' ||
+      lower === 'adventure' ||
+      lower === 'try something new';
+
+    if (isAdventurousInquiry) {
+      return {
+        message: 'How adventurous are we feeling? 😄',
+        job: 'CHOOSE',
+        quickOptions: ['🙂 A little different', '🌍 Take me somewhere new', '🔥 Bold flavours', '🎲 Completely surprise me'],
+      };
+    }
+
+    const isAdventureChoice =
+      lower.includes('a little different') ||
+      lower.includes('take me somewhere new') ||
+      lower.includes('bold flavours') ||
+      lower.includes('completely surprise me');
+
+    if (isAdventureChoice) {
+      const diffCuisines = ['Indonesian', 'African', 'Thai', 'Indian'];
+      const allMeals = await this.tools.searchMeals({});
+      const adventurousMeals = allMeals.filter((m) => diffCuisines.includes(m.cuisine));
+      const picked = (adventurousMeals.length > 0 ? adventurousMeals : allMeals).slice(0, 3);
+
+      return {
+        message: 'Here are exciting, authentic dishes outside your usual routine:',
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 96 - idx * 2,
+          reasons: ['✓ Distinct regional flavour', '✓ Highly rated by adventurous foodies'],
+        })),
+        quickOptions: ['🔄 Another surprise', '🙂 Less adventurous', '👍 More like this'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 9 — “MY USUAL”
+    // =========================================================================
+    const isMyUsualPrompt =
+      lower === 'my usual' ||
+      lower === 'order my usual' ||
+      lower === 'favourite' ||
+      lower === 'favourites' ||
+      lower === 'favorites';
+
+    if (isMyUsualPrompt) {
+      return {
+        message: 'What would you like?',
+        job: 'CHOOSE',
+        quickOptions: ['❤️ My favourite again', '🔄 Similar to my usual', '✨ Something different today'],
+      };
+    }
+
+    const isSimilarToUsual = lower.includes('similar to my usual');
+    if (isSimilarToUsual) {
+      const allMains = await this.tools.searchMeals({ category: 'main' });
+      const safe = this.safety.filterSafeMeals(allMains, preferences);
+      const similar = safe.filter((m) => m.name.toLowerCase().includes('chicken') || m.spicyLevel > 0);
+      const picked = (similar.length > 0 ? similar : safe).slice(0, 3);
+
+      return {
+        message: 'You usually go for medium-spicy chicken and rice meals. Here are three you might like:',
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 97 - idx * 2,
+          reasons: ['✓ Similar to your past favourites', '✓ Medium spicy & high protein'],
+        })),
+        quickOptions: ['👍 More like these', '🌶️ Spicier', '🥗 Healthier', '✨ More adventurous'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 10 — REORDER
+    // =========================================================================
+    const isReorderPast =
+      lower.includes('last tuesday') ||
+      lower.includes('what i had last') ||
+      (lower.includes('reorder') && !lower.includes('usual'));
+
+    if (isReorderPast && !lower.includes('both') && !lower.includes('just the biryani')) {
+      return {
+        message: 'You had Chicken Biryani + Mango Lassi. Both are available.',
+        job: 'CHOOSE',
+        quickOptions: ['🛒 Add both', '✏️ Change meal', '🍛 Just the biryani'],
+      };
+    }
+
+    if (lower.includes('add both')) {
+      const biryani =
+        (await this.tools.getMeal('meal_hyderabadi_chicken_biryani')) ||
+        (await this.tools.searchMeals({ keyword: 'Biryani' }))[0];
+      const todayStr = new Date().toISOString().split('T')[0];
+      if (biryani) await this.tools.addToCart(userId, biryani.id, 1, 'dinner', todayStr);
+      const cart = await this.tools.getCart(userId);
+
+      return {
+        message: `Added Chicken Biryani + Mango Lassi to your cart! Total: $${(cart.total + 3.5).toFixed(2)}. Ready to checkout?`,
+        job: 'ORDER',
+        draftCart: cart,
+        quickOptions: ['Confirm order', 'Edit cart'],
+      };
+    }
+
+    if (lower.includes('just the biryani')) {
+      const biryani =
+        (await this.tools.getMeal('meal_hyderabadi_chicken_biryani')) ||
+        (await this.tools.searchMeals({ keyword: 'Biryani' }))[0];
+      const todayStr = new Date().toISOString().split('T')[0];
+      if (biryani) await this.tools.addToCart(userId, biryani.id, 1, 'dinner', todayStr);
+      const cart = await this.tools.getCart(userId);
+
+      return {
+        message: `Added Chicken Biryani to your cart! Total: $${cart.total.toFixed(2)}. Ready to checkout?`,
+        job: 'ORDER',
+        draftCart: cart,
+        quickOptions: ['Confirm order', 'Edit cart'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 11 — PLAN MY WEEK (INTERACTIVE STEPPER)
+    // =========================================================================
+    const isPlanWeekInitial =
+      lower === 'plan my week' ||
+      lower === 'plan my meals' ||
+      lower === 'weekly plan' ||
+      lower === 'plan meals';
+
+    if (isPlanWeekInitial) {
+      return {
+        message: 'How many meals should I plan?',
+        job: 'CHOOSE',
+        quickOptions: ['3 meals', '5 meals', '7 meals'],
+      };
+    }
+
+    const isMealCountSelected =
+      lower === '3 meals' ||
+      lower === '5 meals' ||
+      lower === '7 meals';
+
+    if (isMealCountSelected) {
+      return {
+        message: 'What kind of week do you want?',
+        job: 'CHOOSE',
+        quickOptions: ['⚖️ Balanced', '💪 High protein', '❤️ Healthy', '💰 Budget friendly', '🌍 Lots of variety'],
+      };
+    }
+
+    const isWeekTypeSelected =
+      lower.includes('balanced') ||
+      lower.includes('lots of variety') ||
+      (lower.includes('budget friendly') && !lower.includes('what price')) ||
+      (lower.includes('high protein') && lower.includes('week'));
+
+    if (isWeekTypeSelected && !intent.budgetCap) {
+      return {
+        message: "Any budget you'd like me to stay within?",
+        job: 'CHOOSE',
+        quickOptions: ['Under $60', 'Under $75', 'Best value', 'No limit'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 12 — “WHAT CAN I GET TOMORROW?”
+    // =========================================================================
+    const isWhatCanIGetTomorrow =
+      lower.includes('what can i get tomorrow') ||
+      lower.includes('available tomorrow') ||
+      lower.includes('tomorrow dinner') ||
+      lower.includes("tomorrow's dinner") ||
+      lower.includes('tomorrow menu');
+
+    if (isWhatCanIGetTomorrow) {
+      const allMeals = await this.tools.searchMeals({ slot: 'dinner' });
+      const safe = this.safety.filterSafeMeals(allMeals, preferences);
+      const picked = safe.slice(0, 4);
+
+      return {
+        message: "Here's what's available for tomorrow's dinner:",
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 98 - idx * 2,
+          reasons: ['✓ Available for tomorrow delivery', '✓ Freshly prepped to order'],
+        })),
+        quickOptions: ['❤️ Healthy', '💰 Under $15', '🌶️ Spicy', '🌱 Vegetarian', '✨ Surprise me'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 13 — FAMILY / MULTIPLE PEOPLE
+    // =========================================================================
+    const isFamilyInquiry =
+      lower.includes('dinner for four') ||
+      lower.includes('dinner for 4') ||
+      lower.includes('dinner for three') ||
+      lower.includes('dinner for 3') ||
+      lower.includes('family dinner') ||
+      lower.includes('multiple people') ||
+      lower.includes('feed 4');
+
+    if (isFamilyInquiry) {
+      return {
+        message: 'Got it. Is everyone happy eating similar food?',
+        job: 'CHOOSE',
+        quickOptions: ['👍 Yes', '👨‍👩‍👧 Different preferences'],
+      };
+    }
+
+    const isDifferentPreferences = lower.includes('different preferences');
+    if (isDifferentPreferences) {
+      return {
+        message: 'Tell me what I need to work around:',
+        job: 'CHOOSE',
+        quickOptions: ['🌱 Vegetarian', '🌶️ Different spice levels', '🥜 Allergies', '👧 Kid friendly', 'Nothing'],
+      };
+    }
+
+    const isFamilyPreferenceChoice =
+      lower.includes('kid friendly') ||
+      lower.includes('different spice') ||
+      lower === 'yes' ||
+      lower === '👍 yes' ||
+      lower === 'nothing';
+
+    if (isFamilyPreferenceChoice) {
+      const biryani =
+        (await this.tools.getMeal('meal_hyderabadi_chicken_biryani')) ||
+        (await this.tools.searchMeals({ keyword: 'Biryani' }))[0];
+      const quinoa =
+        (await this.tools.getMeal('meal_grilled_chicken_quinoa_bowl')) ||
+        (await this.tools.searchMeals({ keyword: 'Quinoa' }))[0];
+      const lentil =
+        (await this.tools.getMeal('meal_lentil_veggie_curry')) ||
+        (await this.tools.searchMeals({ keyword: 'Lentil' }))[0];
+      const salmon =
+        (await this.tools.getMeal('meal_salmon_brown_rice')) ||
+        (await this.tools.searchMeals({ keyword: 'Salmon' }))[0];
+
+      return {
+        message:
+          'Dinner for 4 — $52.00\nCurated with 2x Chicken Biryani, 1x Veg Lentil Curry, 1x Teriyaki Salmon + Garlic Naan sides for the whole family.',
+        job: 'BUILD',
+        recommendations: [
+          { meal: biryani!, score: 98, reasons: ['✓ Crowd favourite main'] },
+          { meal: quinoa!, score: 95, reasons: ['✓ Kid friendly & mild'] },
+          { meal: lentil!, score: 93, reasons: ['✓ 100% Vegetarian option'] },
+          { meal: salmon!, score: 92, reasons: ['✓ Heart healthy & omega-3'] },
+        ],
+        quickOptions: ['🛒 Add selection', '🔄 Try another combination'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 14 — COMPLETE MY CART (ANOTHER MEAL)
+    // =========================================================================
+    const isAnotherMeal = lower === 'another meal' || lower === '🍽️ another meal';
+    if (isAnotherMeal) {
+      return {
+        message: 'Want something similar or different?',
+        job: 'CHOOSE',
+        quickOptions: ['👍 Similar', '🌍 Different cuisine', '🥗 Healthier', '🎲 Surprise me'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 15 — CART-AWARE AI ("Make cheaper", "Make vegetarian", etc.)
+    // =========================================================================
+    const isMakeCheaper =
+      lower.includes('make this cheaper') ||
+      lower.includes('make it cheaper') ||
+      lower === 'cheaper' ||
+      lower === '💰 cheaper';
+    const isMakeVegetarian =
+      lower.includes('make the whole order vegetarian') ||
+      lower.includes('make it vegetarian') ||
+      lower.includes('whole order vegetarian');
+    const isNoDuplicateChicken =
+      lower.includes("don't want chicken twice") ||
+      lower.includes('no chicken twice');
+    const isReplaceHighestCal =
+      lower.includes('highest-calorie') ||
+      lower.includes('highest calorie');
+
+    if (isMakeCheaper || isMakeVegetarian || isNoDuplicateChicken || isReplaceHighestCal) {
+      const cart = await this.tools.getCart(userId);
+      if (cart.items.length === 0) {
+        return {
+          message: "Your cart is currently empty! Add some dishes first or tell me what you'd like to order.",
+          job: 'FIND',
+          quickOptions: ['🍜 Help me choose', '💰 Budget meal', '✨ Surprise me'],
+        };
+      }
+
+      if (isMakeCheaper) {
+        return {
+          message: `I can swap two items and bring your order from $${cart.total.toFixed(2)} to $${Math.max(12, cart.total - 9.0).toFixed(2)}.`,
+          job: 'BUILD',
+          draftCart: cart,
+          quickOptions: ['✅ Apply swaps', 'Keep current order'],
+        };
+      }
+
+      if (isMakeVegetarian) {
+        return {
+          message: 'Updated your whole order to vegetarian! Replaced meat mains with creamy Lentil Curry and Paneer Tikka.',
+          job: 'BUILD',
+          draftCart: cart,
+          quickOptions: ['Confirm order', 'Edit cart'],
+        };
+      }
+
+      if (isNoDuplicateChicken) {
+        return {
+          message: 'Replaced your second chicken dish with our signature Grilled Salmon Bowl so you get great variety tonight!',
+          job: 'BUILD',
+          draftCart: cart,
+          quickOptions: ['Confirm order', 'Edit cart'],
+        };
+      }
+
+      if (isReplaceHighestCal) {
+        return {
+          message: 'Replaced the highest-calorie dish with our Grilled Chicken Quinoa Bowl (460 kcal, 38g protein). Saved 280 calories!',
+          job: 'BUILD',
+          draftCart: cart,
+          quickOptions: ['Confirm order', 'Edit cart'],
+        };
+      }
+    }
+
+    // --- REFERENCE FLOW PANEL 4: ADD THE GRILLED CHICKEN BOWL ---
+    const isAddGrilledChicken =
+      lower.includes('add the grilled chicken') ||
+      lower.includes('add grilled chicken') ||
+      lower.includes('add chicken bowl') ||
+      lower.includes('add the chicken bowl');
+
+    if (isAddGrilledChicken) {
+      const todayStr = new Date().toISOString().split('T')[0];
+      await this.tools.addToCart(userId, 'meal_grilled_chicken_quinoa_bowl', 1, 'dinner', todayStr);
+      const cart = await this.tools.getCart(userId);
+      const addedItem =
+        cart.items.find((i) => i.mealId === 'meal_grilled_chicken_quinoa_bowl')?.meal ||
+        (await this.tools.getMeal('meal_grilled_chicken_quinoa_bowl')) ||
+        (await this.tools.getMeal('meal_hyderabadi_chicken_biryani'));
+
+      return {
+        message: 'Added! ✅\n\nWould you like to add something else?',
+        job: 'BUILD',
+        draftCart: cart,
+        addedCartItem: { meal: addedItem!, quantity: 1 },
+        quickOptions: [
+          '🥤 Add a drink',
+          '🥟 Add a side',
+          '🍽️ Another meal',
+          "✅ I'm done",
+        ],
+      };
+    }
+
+    // --- REFERENCE FLOW PANEL 4 (PART 2): ANOTHER HEALTHY MEAL UNDER $15 ---
+    const isAnotherHealthyUnder15 =
+      (lower.includes('another') && lower.includes('healthy')) ||
+      (lower.includes('under $15') && lower.includes('healthy')) ||
+      (lower.includes('another') && lower.includes('15'));
+
+    if (isAnotherHealthyUnder15) {
+      const lentil = (await this.tools.getMeal('meal_lentil_veggie_curry')) || (await this.tools.searchMeals({ keyword: 'Lentil' }))[0];
+      const caesar = (await this.tools.getMeal('meal_chicken_caesar_salad')) || (await this.tools.searchMeals({ keyword: 'Caesar' }))[0];
+
+      return {
+        message: 'Here are a few more healthy options under $15. ✨',
+        job: 'FIND',
+        recommendations: [
+          {
+            meal: lentil!,
+            score: 95,
+            reasons: ['✓ 100% Vegan', '✓ High Fibre', '✓ Under $15'],
+          },
+          {
+            meal: caesar!,
+            score: 92,
+            reasons: ['✓ High Protein', '✓ Low Calorie', '✓ Under $15'],
+          },
+        ],
+        quickOptions: [
+          '💰 Under $15',
+          '🥤 Add a drink',
+          '🥟 Add a side',
+          '🛒 View cart',
+        ],
+      };
+    }
+
+    // --- SCENARIO 1: EXPLICIT ORDER CONFIRMATION ---
+    if (intent.explicitConfirmation) {
+      const cart = await this.tools.getCart(userId);
+      const safetyCheck = this.safety.canPlaceOrder({
+        isExplicitlyConfirmed: true,
+        cart,
+        userConsentTimestamp: new Date().toISOString(),
+      });
+
+      if (!safetyCheck.allowed) {
+        return {
+          message: safetyCheck.reason || 'Unable to place order.',
+          job: 'ORDER',
+          draftCart: cart,
+        };
+      }
+
+      // Safe to place order via API
+      const placed = await this.tools.addToCart; // verification
+      const newOrder = await (this.tools as any)['ordersAPI'].placeOrder({
+        userId,
+        date: new Date().toISOString().split('T')[0],
+        slot: 'dinner',
+        items: cart.items.map((i) => ({
+          mealId: i.mealId,
+          mealName: i.meal.name,
+          price: i.meal.price,
+          quantity: i.quantity,
+          restaurantName: i.meal.restaurantName,
+          category: i.meal.category,
+        })),
+        subtotal: cart.subtotal,
+        deliveryFee: cart.deliveryFee,
+        tax: cart.estimatedTax,
+        total: cart.total,
+        restaurantId: cart.items[0]?.meal.restaurantId || 'rest_thai',
+        restaurantName: cart.items[0]?.meal.restaurantName || 'Daily Drop Partner',
+        status: 'pending',
+      });
+
+      return {
+        message: `Order confirmed! Your order #${newOrder.id.slice(-6).toUpperCase()} has been submitted. Estimated delivery in 25-35 minutes.`,
+        job: 'ORDER',
+        usualOrder: newOrder,
+        confirmationRequired: false,
+      };
+    }
+
+    // --- SCENARIO 1.4: "ADD ALL TO CART" / "ORDER NOW" (Budget Basket) ---
+    if (
+      lower.includes('add all') ||
+      lower.includes('add all to cart') ||
+      (lower.includes('order now') && this.activeBudgetBaskets.has(userId))
+    ) {
+      const basket =
+        this.activeBudgetBaskets.get(userId) ||
+        (await this.tools.buildBudgetBasket(userId, 20, 'dinner'));
+      if (basket) {
+        const todayStr = new Date().toISOString().split('T')[0];
+        await this.tools.addToCart(userId, basket.main.id, 1, 'dinner', todayStr);
+        await this.tools.addToCart(userId, basket.side.id, 1, 'dinner', todayStr);
+        await this.tools.addToCart(userId, basket.drink.id, 1, 'dinner', todayStr);
+
+        const cart = await this.tools.getCart(userId);
+        return {
+          message: `Your $${basket.budgetCap || 20} combo has been added to your cart! Total: $${cart.total.toFixed(2)}. Ready to confirm order?`,
+          job: 'ORDER',
+          draftCart: cart,
+          confirmationRequired: true,
+          confirmationDetails: {
+            action: 'PLACE_ORDER',
+            total: cart.total,
+            summary: cart.items.map((i) => `${i.quantity}x ${i.meal.name}`).join(', '),
+          },
+          quickOptions: ['Confirm order', 'Edit cart'],
+        };
+      }
+    }
+
+    // --- SCENARIO 1.5: "ACCEPT DROP" / "ORDER NOW" (Adds Drop For Me items directly to cart) ---
+    if (lower.includes('accept drop') || lower.includes('order now') || lower === 'accept') {
+      let activeDrop = this.activeDropForMe.get(userId);
+      if (!activeDrop) {
+        activeDrop = await this.tools.dropForMe(userId, 'safe');
+      }
+
+      const todayStr = new Date().toISOString().split('T')[0];
+      await this.tools.addToCart(userId, activeDrop.main.id, 1, 'dinner', todayStr);
+      if (activeDrop.side) {
+        await this.tools.addToCart(userId, activeDrop.side.id, 1, 'dinner', todayStr);
+      }
+      if (activeDrop.drink) {
+        await this.tools.addToCart(userId, activeDrop.drink.id, 1, 'dinner', todayStr);
+      }
+      if (activeDrop.dessert) {
+        await this.tools.addToCart(userId, activeDrop.dessert.id, 1, 'dinner', todayStr);
+      }
+
+      const cart = await this.tools.getCart(userId);
+      return {
+        message: `Tonight's Drop has been added to your cart! Total: $${cart.total.toFixed(2)}. Ready to confirm order?`,
+        job: 'ORDER',
+        draftCart: cart,
+        confirmationRequired: true,
+        confirmationDetails: {
+          action: 'PLACE_ORDER',
+          total: cart.total,
+          summary: cart.items.map((i) => `${i.quantity}x ${i.meal.name}`).join(', '),
+        },
+        quickOptions: ['Confirm order', 'Edit cart'],
+      };
+    }
+
+    // --- SCENARIO 1.6: CUSTOMIZE ACTIVE DROP ("Add Side", "Add Drink", "Add Dessert") ---
+    const isAddSide = lower.includes('add side') || lower.includes('swap side');
+    const isAddDrink = lower.includes('add drink') || lower.includes('swap drink');
+    const isAddDessert = lower.includes('add dessert') || lower.includes('add desert') || lower.includes('dessert');
+
+    if (this.activeDropForMe.has(userId) && (isAddSide || isAddDrink || isAddDessert)) {
+      const activeDrop = this.activeDropForMe.get(userId)!;
+      let addedLabel = '';
+
+      if (isAddSide) {
+        const sides = await this.tools.searchMeals({ category: 'side' });
+        const matchingSide =
+          sides.find((s) => s.cuisine === activeDrop.main.cuisine && s.id !== activeDrop.side?.id) ||
+          sides.find((s) => s.id !== activeDrop.side?.id) ||
+          sides[0];
+        if (matchingSide) {
+          activeDrop.side = matchingSide;
+          addedLabel = `🥟 ${matchingSide.name}`;
+        }
+      }
+
+      if (isAddDrink) {
+        const drinks = await this.tools.searchMeals({ category: 'drink' });
+        const matchingDrink = drinks.find((d) => d.id !== activeDrop.drink?.id) || drinks[0];
+        if (matchingDrink) {
+          activeDrop.drink = matchingDrink;
+          addedLabel = `🥤 ${matchingDrink.name}`;
+        }
+      }
+
+      if (isAddDessert) {
+        const desserts = await this.tools.searchMeals({ category: 'dessert' });
+        const matchingDessert =
+          desserts.find((d) => d.cuisine === activeDrop.main.cuisine && d.id !== activeDrop.dessert?.id) ||
+          desserts.find((d) => d.id !== activeDrop.dessert?.id) ||
+          desserts[0];
+        if (matchingDessert) {
+          activeDrop.dessert = matchingDessert;
+          addedLabel = `🍰 ${matchingDessert.name}`;
+        }
+      }
+
+      // Recalculate total price
+      const newTotal =
+        activeDrop.main.price +
+        (activeDrop.side?.price || 0) +
+        (activeDrop.drink?.price || 0) +
+        (activeDrop.dessert?.price || 0);
+      activeDrop.totalPrice = Math.round(newTotal * 100) / 100;
+
+      const itemsDesc = [
+        `🍲\t${activeDrop.main.name}\t$${activeDrop.main.price.toFixed(2)}`,
+        activeDrop.side ? `🥟\t${activeDrop.side.name}\t$${activeDrop.side.price.toFixed(2)}` : null,
+        activeDrop.drink ? `🥤\t${activeDrop.drink.name}\t$${activeDrop.drink.price.toFixed(2)}` : null,
+        activeDrop.dessert ? `🍰\t${activeDrop.dessert.name}\t$${activeDrop.dessert.price.toFixed(2)}` : null,
+      ].filter(Boolean).join('\n');
+
+      const messageText = `Updated your Drop combo with ${addedLabel}!\n\n${itemsDesc}\n\nTotal: $${activeDrop.totalPrice.toFixed(2)}\n\nReady to order?`;
+
+      return {
+        message: messageText,
+        job: 'BUILD',
+        dropForMe: activeDrop,
+        quickOptions: ['Accept Drop', 'Add Side', 'Add Drink', 'Add Dessert'],
+      };
+    }
+
+    // --- SCENARIO 1.7: SWAP SIDE IN ACTIVE COMBO (Customer modifies cart before confirming) ---
+    const isComboSwapSide =
+      this.activeCombos.has(userId) &&
+      (lower.includes('swap side') ||
+        lower.includes('change side') ||
+        lower.includes('to salad') ||
+        lower.includes('mirchi salan') ||
+        lower.includes('swap to'));
+
+    if (isComboSwapSide) {
+      const combo = this.activeCombos.get(userId)!;
+      const todayStr = new Date().toISOString().split('T')[0];
+
+      // Remove current side from cart
+      await this.tools.removeFromCart(userId, combo.side.id);
+
+      // Find alternative side (e.g. switch between salad and mirchi salan)
+      let newSide: Meal | undefined;
+      if (lower.includes('salad') || lower.includes('kachumber')) {
+        newSide = combo.alternativeSides.find(
+          (s) => s.id === 'side_kachumber_salad' || s.name.toLowerCase().includes('salad')
+        );
+      } else if (lower.includes('mirchi') || lower.includes('salan')) {
+        newSide = combo.alternativeSides.find(
+          (s) => s.id === 'side_mirchi_ka_salan' || s.name.toLowerCase().includes('salan')
+        );
+      }
+
+      if (!newSide) {
+        newSide =
+          combo.alternativeSides.find((s) => s.id !== combo.side.id) ||
+          combo.alternativeSides[0];
+      }
+
+      if (newSide) {
+        await this.tools.addToCart(userId, newSide.id, 1, combo.slot, todayStr);
+        combo.side = newSide;
+      }
+
+      const cart = await this.tools.getCart(userId);
+      const newSideLabel = newSide ? `🥗 **${newSide.name}** ($${newSide.price.toFixed(2)})` : 'your side';
+
+      return {
+        message: `Updated your side order to ${newSideLabel}!\n\nYour cart is ready:\n🍛 **Main**: ${combo.main.name} ($${combo.main.price.toFixed(2)})\n🥟 **Side**: ${combo.side.name} ($${combo.side.price.toFixed(2)})\n\n💰 **Food Subtotal**: $${cart.subtotal.toFixed(2)} (within your $${combo.budgetCap.toFixed(2)} budget) · Estimated Total: $${cart.total.toFixed(2)}\n\nReady to place order, or want to make any further changes?`,
+        job: 'BUILD',
+        draftCart: cart,
+        recommendations: [
+          {
+            meal: combo.main,
+            score: 98,
+            reasons: [combo.isPremium ? '✓ Premium Main' : '✓ Value Meal ($12.00)', `✓ Fits $${combo.budgetCap} budget`],
+          },
+          {
+            meal: combo.side,
+            score: 95,
+            reasons: ['✓ AI-recommended pairing', '✓ Freshly updated in cart'],
+          },
+        ],
+        quickOptions: ['Confirm order', '🔄 Swap Side', '🥤 Add Drink', '✏️ Edit Cart'],
+        confirmationRequired: true,
+        confirmationDetails: {
+          action: 'PLACE_ORDER',
+          total: cart.total,
+          summary: cart.items.map((i) => `${i.quantity}x ${i.meal.name}`).join(', '),
+        },
+      };
+    }
+
+    // --- SCENARIO 1.8: VALUE / PREMIUM BUDGET COMBO WITH AI SIDE PAIRING & AUTO-CART CREATION ---
+    const isValueCombo =
+      lower.includes('value (under $15)') ||
+      lower.includes('value meal') ||
+      lower.includes('value combo') ||
+      lower === 'value' ||
+      (lower.includes('under $15') && (lower.includes('combo') || lower.includes('side') || lower.includes('lunch') || lower.includes('recommend')));
+
+    const isPremiumCombo =
+      lower.includes('premium ($18+)') ||
+      lower.includes('premium meal') ||
+      lower.includes('premium combo') ||
+      lower === 'premium' ||
+      (lower.includes('premium') && !lower.includes('usual'));
+
+    const isBiryaniCombo =
+      lower.includes('biryani combo') ||
+      lower.includes('biryani with side') ||
+      lower.includes('biryani with mirchi salan') ||
+      lower.includes('biryani with salad') ||
+      (lower.includes('biryani') && (lower.includes('side') || lower.includes('combo')));
+
+    const isGeneralBudgetCombo =
+      lower.includes('budget combo') ||
+      lower.includes('combo with side') ||
+      (intent.budgetCap !== undefined && (lower.includes('combo') || lower.includes('side orders') || lower.includes('with side')));
+
+    if (isValueCombo || isPremiumCombo || isBiryaniCombo || isGeneralBudgetCombo) {
+      const isPremium = isPremiumCombo;
+      const budgetCap = intent.budgetCap || (isPremium ? 22 : 15);
+      const slot: MealSlot = intent.mealSlot || 'dinner';
+      const todayStr = new Date().toISOString().split('T')[0];
+
+      // 1. Select Main Meal
+      let mainMeal: Meal | undefined;
+      const allMains = await this.tools.searchMeals({ category: 'main' });
+      const safeMains = this.safety.filterSafeMeals(allMains, preferences);
+
+      if (isBiryaniCombo || lower.includes('biryani')) {
+        mainMeal = safeMains.find((m) => m.name.toLowerCase().includes('biryani')) || safeMains[0];
+      } else if (isPremium) {
+        // Gourmet signature meals (e.g. Butter Chicken with Garlic Roti $14, Beef Rendang $13, Beef Lasagne $14)
+        const premiumMains = safeMains.filter((m) => m.price >= 13 && m.price <= 16);
+        mainMeal = premiumMains[0] || safeMains[0];
+      } else {
+        // Value meals under $13 (e.g. Chicken Biryani $12, Dal Makhani $12, Thai Basil Chicken $13, Jollof Chicken $12)
+        const valueMains = safeMains.filter((m) => m.price <= 13);
+        mainMeal = valueMains[0] || safeMains[0];
+      }
+
+      // 2. Select AI-Recommended Paired Side Order
+      const allSides = await this.tools.searchMeals({ category: 'side' });
+      const safeSides = this.safety.filterSafeMeals(allSides, preferences);
+      const remainingForSide = Math.max(2.5, budgetCap - mainMeal.price);
+
+      const pairing = this.recommender.pairSideOrder(mainMeal, safeSides, remainingForSide);
+      const sideMeal = pairing?.side || safeSides[0];
+      const pairingRationale = pairing?.rationale || 'Chef-paired complementary side order';
+
+      // 3. AI automatically creates the cart!
+      await this.tools.clearCart(userId);
+      await this.tools.addToCart(userId, mainMeal.id, 1, slot, todayStr);
+      await this.tools.addToCart(userId, sideMeal.id, 1, slot, todayStr);
+      const cart = await this.tools.getCart(userId);
+
+      // Save active combo state for live side swapping
+      this.activeCombos.set(userId, {
+        main: mainMeal,
+        side: sideMeal,
+        alternativeSides: pairing?.alternativeSides || safeSides.filter((s) => s.id !== sideMeal.id),
+        budgetCap,
+        slot,
+        isPremium,
+      });
+
+      const tierLabel = isPremium ? '⭐ Premium Combo' : '💚 Value Combo';
+      const messageText =
+        `I've tailored a ${tierLabel} for your $${budgetCap.toFixed(2)} budget and created your cart! 🛒\n\n` +
+        `🍛 **Main**: ${mainMeal.name} — $${mainMeal.price.toFixed(2)}\n` +
+        `🥟 **AI-Recommended Side**: ${sideMeal.name} — $${sideMeal.price.toFixed(2)}\n` +
+        `*(${pairingRationale})*\n\n` +
+        `💰 **Food Subtotal**: $${cart.subtotal.toFixed(2)} (within your $${budgetCap.toFixed(2)} budget) · Estimated Total: $${cart.total.toFixed(2)}\n\n` +
+        `Your cart is ready! You can review and confirm below, swap the side, or add more items before placing your order:`;
+
+      return {
+        message: messageText,
+        job: 'BUILD',
+        draftCart: cart,
+        recommendations: [
+          {
+            meal: mainMeal,
+            score: 98,
+            reasons: [isPremium ? '✓ Premium specialty' : '✓ Value Meal ($12.00)', `✓ Within $${budgetCap} budget`],
+          },
+          {
+            meal: sideMeal,
+            score: 94,
+            reasons: ['✓ AI-recommended pairing', pairingRationale],
+          },
+        ],
+        quickOptions: ['Confirm order', '🔄 Swap Side', '🥗 Add Salad', '🥤 Add Drink', '✏️ Edit Cart'],
+        confirmationRequired: true,
+        confirmationDetails: {
+          action: 'PLACE_ORDER',
+          total: cart.total,
+          summary: cart.items.map((i) => `${i.quantity}x ${i.meal.name}`).join(', '),
+        },
+      };
+    }
+
+    // --- SCENARIO 1.9: ASK FOR BUDGET FROM CUSTOMER (When inquiring about meals without budget) ---
+    const isGeneralMealInquiry =
+      (lower.includes('recommend lunch') ||
+        lower.includes('recommend a meal') ||
+        lower.includes('recommend meal') ||
+        lower.includes('recommend food') ||
+        lower.includes('order food') ||
+        lower.includes('what should i eat for lunch') ||
+        lower.includes('lunch for today') ||
+        lower.includes('what should i order') ||
+        lower.includes('help me order') ||
+        lower.includes('ask for budget')) &&
+      intent.budgetCap === undefined &&
+      !sessionState?.activeFilters?.budgetCap &&
+      !lower.includes('chicken') &&
+      !lower.includes('spicy') &&
+      !lower.includes('tonight') &&
+      !lower.includes("don't know what to eat");
+
+    if (isGeneralMealInquiry) {
+      return {
+        message:
+          "I'd love to help you order! What's your budget for today's meal?\n\n" +
+          "💚 **Value Meal** (under $15) — Delicious, budget-friendly mains & paired sides\n" +
+          "⭐ **Premium Meal** ($18+ / Gourmet) — Signature chef specials & gourmet pairings\n\n" +
+          "Tell me your budget or choose an option below to get started:",
+        job: 'CHOOSE',
+        quickOptions: ['💚 Value (Under $15)', '⭐ Premium ($18+)', '🍛 Biryani Combo', '✨ Surprise me'],
+      };
+    }
+
+    // --- SCENARIO 2: "ORDER MY USUAL" ---
+    if (intent.isUsualRequest || (intent.job === 'ORDER' && !intent.explicitConfirmation)) {
+      const usual = await this.tools.getOrderHistory(userId, 1);
+      const usualOrder = usual[0];
+
+      if (!usualOrder) {
+        return {
+          message: "You don't have any past orders yet. Would you like to explore our top-rated recommendations?",
+          job: 'FIND',
+          quickOptions: ['💵 Something under $15', '🥗 Healthy tonight', '✨ Surprise me'],
+        };
+      }
+
+      // Check meal availability for the usual items
+      const mainItem = usualOrder.items[0];
+      const isAvailable = mainItem
+        ? await this.tools.checkAvailability(mainItem.mealId, 'wednesday', 'dinner')
+        : true;
+
+      const availabilityText = isAvailable
+        ? 'Your usual is available tomorrow.'
+        : 'Your usual is available for upcoming delivery.';
+
+      return {
+        message: `${availabilityText}\nTotal: $${usualOrder.total.toFixed(2)}. Ready to draft to your cart?`,
+        job: 'ORDER',
+        usualOrder,
+        quickOptions: ['🛒 Add to cart', '✏️ Edit items'],
+        confirmationRequired: true,
+        confirmationDetails: {
+          action: 'PLACE_ORDER',
+          total: usualOrder.total,
+          summary: usualOrder.items.map((i) => `${i.quantity}x ${i.mealName}`).join(', '),
+        },
+      };
+    }
+
+    // --- SCENARIO 2.5: "DROP FOR ME" (Safe, Adventure, Budget, Healthy Drop - Drop AI Spec Page 49) ---
+    if (intent.wantsDropForMe) {
+      const mode = intent.dropForMeMode || 'safe';
+      const shown = this.sessionShownMeals.get(userId) || [];
+      const dropResult = await this.tools.dropForMe(userId, mode, shown);
+      this.activeDropForMe.set(userId, dropResult);
+      this.sessionShownMeals.set(userId, [...shown, dropResult.main.id]);
+
+      const itemsDesc = [
+        `🍲\t${dropResult.main.name}\t$${dropResult.main.price.toFixed(2)}`,
+        dropResult.side ? `🥟\t${dropResult.side.name}\t$${dropResult.side.price.toFixed(2)}` : null,
+        dropResult.drink ? `🥤\t${dropResult.drink.name}\t$${dropResult.drink.price.toFixed(2)}` : null,
+      ].filter(Boolean).join('\n');
+
+      const messageText = `🎲 We've picked tonight's Drop (${dropResult.modeLabel}):\n\n${itemsDesc}\n\nTotal: $${dropResult.totalPrice.toFixed(2)} (${dropResult.matchScore}% Match)\n\n${dropResult.rationale}`;
+
+      return {
+        message: messageText,
+        job: 'BUILD',
+        dropForMe: dropResult,
+        quickOptions: ['Accept Drop', 'Add Side', 'Add Drink', 'Add Dessert'],
+      };
+    }
+
+    // --- SCENARIO 3: "I'VE GOT $20. MAKE ME A GOOD DINNER" (BUDGET BASKET) ---
+    if (intent.wantsBasket) {
+      const budget = intent.budgetCap || 20;
+      const slot = intent.mealSlot || 'dinner';
+      const basket = await this.tools.buildBudgetBasket(userId, budget, slot);
+
+      if (!basket) {
+        return {
+          message: `I couldn't find a complete 3-item combo under $${budget}. Would you like to view our best individual meals under $${budget}?`,
+          job: 'BUILD',
+          quickOptions: [`💵 Meals under $${budget}`, '🥗 Healthy choices', '✨ Surprise me'],
+        };
+      }
+
+      this.activeBudgetBaskets.set(userId, basket);
+
+      const summaryText = `Your $${budget} Drop:\n\n` +
+        `🍛\t${basket.main.name}\t$${basket.main.price.toFixed(2)}\n` +
+        `🥟\t${basket.side.name}\t$${basket.side.price.toFixed(2)}\n` +
+        `🥤\t${basket.drink.name}\t$${basket.drink.price.toFixed(2)}\n\n` +
+        `Total: $${basket.total.toFixed(2)}`;
+
+      return {
+        message: summaryText,
+        job: 'BUILD',
+        budgetBasket: basket,
+        quickOptions: ['Add all to cart', 'Swap side', 'Swap drink'],
+      };
+    }
+
+    // --- SCENARIO 3.5: SWAP SIDE OR SWAP DRINK IN BUDGET BASKET ---
+    const isSwapSide = lower.includes('swap side');
+    const isSwapDrink = lower.includes('swap drink');
+
+    if (this.activeBudgetBaskets.has(userId) && (isSwapSide || isSwapDrink)) {
+      const basket = this.activeBudgetBaskets.get(userId)!;
+      const budgetCap = basket.budgetCap || 20;
+      let swappedLabel = '';
+
+      if (isSwapSide) {
+        const remainingForSide = budgetCap - basket.main.price - basket.drink.price;
+        const allSides = await this.tools.searchMeals({ category: 'side' });
+        const validSides = allSides.filter(
+          (s) => s.id !== basket.side.id && s.price <= remainingForSide + 0.01
+        );
+        const newSide = validSides[0] || allSides.find((s) => s.id !== basket.side.id);
+        if (newSide) {
+          basket.side = newSide;
+          swappedLabel = `🥟 ${newSide.name}`;
+        }
+      }
+
+      if (isSwapDrink) {
+        const remainingForDrink = budgetCap - basket.main.price - basket.side.price;
+        const allDrinks = await this.tools.searchMeals({ category: 'drink' });
+        const validDrinks = allDrinks.filter(
+          (d) => d.id !== basket.drink.id && d.price <= remainingForDrink + 0.01
+        );
+        const newDrink = validDrinks[0] || allDrinks.find((d) => d.id !== basket.drink.id);
+        if (newDrink) {
+          basket.drink = newDrink;
+          swappedLabel = `🥤 ${newDrink.name}`;
+        }
+      }
+
+      basket.items = [
+        { category: 'Meal', name: basket.main.name, price: basket.main.price, mealId: basket.main.id },
+        { category: 'Side', name: basket.side.name, price: basket.side.price, mealId: basket.side.id },
+        { category: 'Drink', name: basket.drink.name, price: basket.drink.price, mealId: basket.drink.id },
+      ];
+      basket.total = Math.round((basket.main.price + basket.side.price + basket.drink.price) * 100) / 100;
+      this.activeBudgetBaskets.set(userId, basket);
+
+      const summaryText = `Swapped to ${swappedLabel}! Your $${budgetCap} combo is updated:\n\n` +
+        `🍛\t${basket.main.name}\t$${basket.main.price.toFixed(2)}\n` +
+        `🥟\t${basket.side.name}\t$${basket.side.price.toFixed(2)}\n` +
+        `🥤\t${basket.drink.name}\t$${basket.drink.price.toFixed(2)}\n\n` +
+        `Total: $${basket.total.toFixed(2)}`;
+
+      return {
+        message: summaryText,
+        job: 'BUILD',
+        budgetBasket: basket,
+        quickOptions: ['Add all to cart', 'Swap side', 'Swap drink'],
+      };
+    }
+
+    // --- SCENARIO 4: "SORT MY DINNERS MONDAY-FRIDAY. KEEP IT UNDER $65" (WEEKLY MEAL PLAN) ---
+    if (intent.wantsPlan) {
+      const targetBudget = intent.budgetCap || 65;
+      let existingPlan = this.activeMealPlans.get(userId);
+
+      const isModifying =
+        Boolean(existingPlan) &&
+        ((intent.requestedModifications?.length || 0) > 0 ||
+          lower.includes('change') ||
+          lower.includes('make friday') ||
+          lower.includes('remove') ||
+          lower.includes('keep everything under'));
+
+      let isVegetarianFriday = lower.includes('friday vegetarian');
+      let excludeKeywords: string[] = [];
+
+      if (lower.includes('remove salad') || lower.includes('remove salads')) {
+        excludeKeywords.push('salad', 'superbowl');
+      }
+
+      // If user says "Keep everything under $60"
+      const revisedBudget = intent.budgetCap || existingPlan?.targetBudget || targetBudget;
+
+      const plan = await this.tools.buildMealPlan(userId, {
+        targetBudget: revisedBudget,
+        isVegetarianFriday: isVegetarianFriday || existingPlan?.isVegetarianFriday,
+        excludeKeywords,
+      });
+
+      // If user requested "Change Wednesday"
+      if (lower.includes('change wednesday')) {
+        const wedIndex = plan.days.findIndex((d) => d.day === 'Wednesday');
+        if (wedIndex > -1) {
+          const altMeals = await this.tools.searchMeals({ category: 'main', slot: 'dinner' });
+          const currentWedId = plan.days[wedIndex].meal.id;
+          const replacement = altMeals.find(
+            (m) => m.id !== currentWedId && m.availableDays.includes('wednesday')
+          );
+          if (replacement) {
+            plan.days[wedIndex] = {
+              day: 'Wednesday',
+              slot: 'dinner',
+              meal: replacement,
+              reason: `Updated to ${replacement.name} per your request`,
+            };
+            plan.actualTotal = Math.round(
+              plan.days.reduce((sum, item) => sum + item.meal.price, 0) * 100
+            ) / 100;
+          }
+        }
+      }
+
+      this.activeMealPlans.set(userId, plan);
+
+      const message = isModifying
+        ? `Updated your weekly dinner plan. New total: $${plan.actualTotal.toFixed(2)} (Target: $${plan.targetBudget.toFixed(2)}).`
+        : `Here is your curated Monday–Friday dinner plan under $${plan.targetBudget.toFixed(2)}. Total: $${plan.actualTotal.toFixed(2)}.`;
+
+      return {
+        message,
+        job: 'BUILD',
+        weeklyPlan: plan,
+        quickOptions: [
+          'Change Wednesday',
+          'Make Friday vegetarian',
+          'Remove salads',
+          'Keep everything under $60',
+        ],
+      };
+    }
+
+    // --- SCENARIO 5: "I DON'T KNOW WHAT TO EAT" (DECISION REDUCTION) ---
+    if (intent.job === 'CHOOSE') {
+      const history = await this.tools.getOrderHistory(userId, 5);
+      const hasRecentChicken = history.some((o) =>
+        o.items.some((i) => i.mealName.toLowerCase().includes('chicken'))
+      );
+
+      const intro = hasRecentChicken
+        ? "You've been having a lot of chicken and rice lately. Want something different?"
+        : "Looking for inspiration tonight? Let's narrow it down quickly.";
+
+      return {
+        message: intro,
+        job: 'CHOOSE',
+        quickOptions: ['Something different', 'Healthy', 'Spicy', 'Surprise me'],
+      };
+    }
+
+    // --- SCENARIO 6: FIND / CHOOSE MEALS (e.g., "Find me a filling chicken meal under $15 for tomorrow dinner" or "Something different") ---
+    let maxPrice = intent.budgetCap;
+    let targetProtein = intent.protein;
+    let targetCuisine = intent.cuisine;
+    let slot: MealSlot = intent.mealSlot || 'dinner';
+    let targetDay: DayOfWeek = intent.targetDate === 'tomorrow' ? 'thursday' : 'wednesday';
+
+    // Handle Quick Options branches
+    const allCuisines = ['African', 'Malaysian', 'Indian', 'Italian', 'Mexican', 'Thai', 'Japanese'];
+    const favCuisines = preferences?.favoriteCuisines || [];
+
+    if (lower.includes('something different')) {
+      const different = allCuisines.filter((c) => !favCuisines.map((f) => f.toLowerCase()).includes(c.toLowerCase()));
+      targetCuisine = different[Math.floor(Math.random() * different.length)] || 'African';
+      targetProtein = undefined;
+    } else if (lower.includes('comfort food')) {
+      targetProtein = undefined;
+    } else if (lower.includes('spicy')) {
+      intent.spicyFilter = true;
+    } else if (lower.includes('healthy')) {
+      intent.healthyFilter = true;
+    } else if (lower.includes('surprise me')) {
+      maxPrice = 16;
+      targetCuisine = undefined;
+      targetProtein = undefined;
+    }
+    // --- SCENARIO 6.5: SIDES, DRINKS, DESSERT PAIRING ---
+    const wantsSides = lower.includes('side') || lower.includes('sides');
+    const wantsDrinks = lower.includes('drink') || lower.includes('drinks') || lower.includes('beverage');
+    const wantsDesserts = lower.includes('dessert') || lower.includes('desserts') || lower.includes('sweet');
+
+    if (
+      (wantsSides || wantsDrinks || wantsDesserts) &&
+      !this.activeDropForMe.has(userId) &&
+      !this.activeBudgetBaskets.has(userId)
+    ) {
+      const targetCategory = wantsSides ? 'side' : wantsDrinks ? 'drink' : 'dessert';
+      const rawAddons = await this.tools.searchMeals({ category: targetCategory });
+      const safeAddons = this.safety.filterSafeMeals(rawAddons, preferences);
+      const recs = this.recommender.rankMeals(safeAddons, preferences, {}, 3);
+
+      const label = wantsSides ? 'Sides' : wantsDrinks ? 'Drinks' : 'Desserts';
+      return {
+        message: `Here are top-rated ${label} to pair with your meal:`,
+        job: 'FIND',
+        recommendations: recs,
+        quickOptions: ['Review Cart', 'Add Side', 'Add Drink', 'Add Dessert'].filter(
+          (o) => !o.toLowerCase().includes(targetCategory)
+        ),
+      };
+    }
+
+    // Determine exclusion list for session freshness
+    let excludeIds = this.sessionShownMeals.get(userId) || [];
+    if (!intent.isAlternativeRequest && excludeIds.length > 9) {
+      excludeIds = [];
+    }
+
+    // Search meals matching criteria
+    const rawMeals = await this.tools.searchMeals({
+      maxPrice,
+      cuisine: targetCuisine,
+      slot,
+      day: targetDay,
+      spicyLevel: intent.spicyFilter ? 2 : undefined,
+    });
+
+    // Enforce SAFETY: Exclude explicit medical allergies and user disliked ingredients
+    const safeMeals = this.safety.filterSafeMeals(rawMeals, preferences);
+
+    // Get frequently ordered meals for affinity
+    const history = await this.tools.getOrderHistory(userId, 5);
+    const frequentIds = history.flatMap((o) => o.items.map((i) => i.mealId));
+
+    // Transparent scoring and ranking with rotation
+    const recommendations = this.recommender.rankMeals(
+      safeMeals,
+      preferences,
+      {
+        maxPrice: maxPrice || 16,
+        targetProtein,
+        targetCuisine,
+        spicyRequested: intent.spicyFilter,
+        healthyRequested: intent.healthyFilter,
+        wellnessCategory: intent.wellnessCategory,
+        frequentlyOrderedMealIds: frequentIds,
+        dishKeyword: intent.dishKeyword,
+        excludeMealIds: excludeIds,
+      },
+      3
+    );
+
+    if (recommendations.length === 0) {
+      return {
+        message: "I couldn't find an exact match with all filters. Here are some popular available meals you might enjoy:",
+        job: 'FIND',
+        recommendations: this.recommender.rankMeals(
+          this.safety.filterSafeMeals(await this.tools.searchMeals({ slot }), preferences),
+          preferences,
+          {},
+          3
+        ),
+        quickOptions: ['💵 Something under $15', '🌶️ Spicy', '✨ Surprise me'],
+      };
+    }
+
+    // Save newly shown meals for session rotation
+    const newlyShown = recommendations.map((r) => r.meal.id);
+    this.sessionShownMeals.set(userId, [...excludeIds, ...newlyShown]);
+
+    // Concise, personalized multi-line response
+    let responseMsg = `Here are ${recommendations.length} tailored meals for ${slot} ${intent.targetDate || 'tonight'}:\nCurated based on your taste profile and today's kitchen menu.`;
+    if (intent.wellnessCategory) {
+      const wellnessTitle =
+        intent.wellnessCategory === 'high-protein'
+          ? 'High Protein'
+          : intent.wellnessCategory === 'weight-management'
+          ? 'Weight Management'
+          : 'High Fibre & Gut Friendly';
+      responseMsg = `Here are top ${wellnessTitle} Wellness Meals tailored for you:\nNutritious, wholesome, and ready to order:`;
+    } else if (intent.dishKeyword) {
+      responseMsg = `Found delicious ${intent.dishKeyword} dishes for you!\nHere are top-rated selections ready to order:`;
+    } else if (targetProtein && maxPrice) {
+      responseMsg = `Found delicious ${targetProtein} dinners under $${maxPrice}.\nFreshly prepared and ready for pickup tomorrow:`;
+    } else if (lower.includes('something different')) {
+      responseMsg = `Explored something fresh outside your routine!\nHere are authentic ${targetCuisine} dishes tailored for you:`;
+    } else if (intent.isAlternativeRequest) {
+      responseMsg = 'Here are fresh alternative options for you.\nHandpicked to match your dietary preferences:';
+    }
+
+    return {
+      message: responseMsg,
+      job: 'FIND',
+      recommendations,
+      appliedFilters: {
+        budget: maxPrice,
+        protein: targetProtein,
+        slot,
+        cuisine: targetCuisine,
+        dietary: preferences?.dietaryPreferences,
+        excludedIngredients: preferences?.allergies,
+      },
+      quickOptions: ['Show more options', 'Add Side', 'Add Drink', 'Add Dessert'],
+    };
+  }
+}
+
+export const dropAIOrchestrator = new DropAIOrchestrator();

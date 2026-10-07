@@ -1,0 +1,16 @@
+{
+  "name": "drop-ai-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Drop AI - Personal Food Assistant Mobile App & Backend for Daily Drop",
+  "scripts": {
+    "install:all": "npm --prefix backend install && npm --prefix mobile install",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:mobile": "npm --prefix mobile run start",
+    "test:backend": "npm --prefix backend test",
+    "build:backend": "npm --prefix backend run build"
+  },
+  "dependencies": {
+    "expo": "^57.0.27"
+  }
+}

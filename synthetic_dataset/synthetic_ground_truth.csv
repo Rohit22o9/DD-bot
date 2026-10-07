@@ -1,0 +1,301 @@
+customer_id,primary_persona,secondary_persona,budget_target,chicken_affinity,beef_affinity,vegetarian_affinity,spice_affinity,novelty_preference,price_sensitivity,healthy_affinity,has_allergy
+C00001,Value Hunter,Spice Lover,10.77,0.82,0.37,0.24,0.6,0.39,0.87,0.47,none
+C00002,Protein Lover,Habitual Eater,14.67,0.93,0.81,0.06,0.61,0.48,0.38,0.73,none
+C00003,Healthy Eater,Peanut Allergy Regular,14.6,0.68,0.14,0.84,0.2,0.69,0.55,0.93,none
+C00004,Spice Lover,Healthy Eater,13.93,0.85,0.79,0.42,0.87,0.74,0.44,0.46,none
+C00005,Vegetarian,Adventurous Eater,10.97,0,0,1,0.51,0.58,0.69,0.77,none
+C00006,Adventurous Eater,Student Regular,14.35,0.67,0.81,0.62,0.81,0.92,0.25,0.61,none
+C00007,Habitual Eater,Protein Lover,13.34,0.78,0.47,0.14,0.35,0.14,0.6,0.58,none
+C00008,Premium Foodie,Vegetarian,19.73,0.62,0.83,0.58,0.62,0.9,0.03,0.69,none
+C00009,Student Regular,Premium Foodie,10.03,0.89,0.63,0.39,0.66,0.45,0.95,0.4,none
+C00010,Peanut Allergy Regular,Value Hunter,12.84,0.8,0.65,0.52,0.45,0.43,0.63,0.67,peanuts
+C00011,Value Hunter,Spice Lover,11.65,0.76,0.36,0.3,0.55,0.32,0.91,0.44,none
+C00012,Protein Lover,Habitual Eater,12.45,1,0.92,0.13,0.73,0.56,0.47,0.73,none
+C00013,Healthy Eater,Peanut Allergy Regular,14.64,0.53,0.13,0.84,0.24,0.69,0.5,0.92,none
+C00014,Spice Lover,Healthy Eater,11.19,0.89,0.71,0.38,1,0.71,0.54,0.56,none
+C00015,Vegetarian,Adventurous Eater,12.48,0,0,0.95,0.45,0.62,0.68,0.8,none
+C00016,Adventurous Eater,Student Regular,13.87,0.7,0.84,0.53,0.75,0.94,0.24,0.63,none
+C00017,Habitual Eater,Protein Lover,12.35,0.83,0.46,0.24,0.39,0.02,0.53,0.47,none
+C00018,Premium Foodie,Vegetarian,18.4,0.74,0.83,0.47,0.55,0.77,0.11,0.66,none
+C00019,Student Regular,Premium Foodie,11.36,0.79,0.59,0.46,0.63,0.56,0.83,0.4,none
+C00020,Peanut Allergy Regular,Value Hunter,14.29,0.73,0.57,0.44,0.6,0.42,0.6,0.65,peanuts
+C00021,Value Hunter,Spice Lover,12.97,0.71,0.41,0.32,0.53,0.37,0.97,0.41,none
+C00022,Protein Lover,Habitual Eater,13.91,0.95,0.89,0,0.61,0.42,0.34,0.88,none
+C00023,Healthy Eater,Peanut Allergy Regular,14.75,0.53,0.05,0.91,0.36,0.6,0.53,0.98,none
+C00024,Spice Lover,Healthy Eater,14.65,0.86,0.85,0.46,1,0.69,0.5,0.41,none
+C00025,Vegetarian,Adventurous Eater,13.2,0,0,0.93,0.58,0.52,0.55,0.83,none
+C00026,Adventurous Eater,Student Regular,17.62,0.76,0.83,0.7,0.72,0.86,0.25,0.54,none
+C00027,Habitual Eater,Protein Lover,11.24,0.8,0.5,0.15,0.32,0,0.68,0.57,none
+C00028,Premium Foodie,Vegetarian,14.68,0.8,0.96,0.52,0.59,0.9,0.16,0.75,none
+C00029,Student Regular,Premium Foodie,11.48,0.76,0.51,0.46,0.76,0.48,0.99,0.36,none
+C00030,Peanut Allergy Regular,Value Hunter,14.61,0.86,0.61,0.53,0.54,0.48,0.67,0.54,peanuts
+C00031,Value Hunter,Spice Lover,12.36,0.85,0.42,0.26,0.7,0.31,1,0.43,none
+C00032,Protein Lover,Habitual Eater,13.41,0.98,0.82,0.12,0.66,0.43,0.47,0.72,none
+C00033,Healthy Eater,Peanut Allergy Regular,14.54,0.63,0.05,0.91,0.31,0.54,0.55,0.93,none
+C00034,Spice Lover,Healthy Eater,13.7,0.76,0.82,0.45,0.88,0.69,0.48,0.57,none
+C00035,Vegetarian,Adventurous Eater,11.43,0.1,0,1,0.52,0.55,0.67,0.88,none
+C00036,Adventurous Eater,Student Regular,13.58,0.65,0.79,0.63,0.9,1,0.25,0.61,none
+C00037,Habitual Eater,Protein Lover,11.31,0.81,0.58,0.27,0.32,0.09,0.56,0.49,none
+C00038,Premium Foodie,Vegetarian,21.53,0.75,0.8,0.46,0.51,0.76,0.08,0.66,none
+C00039,Student Regular,Premium Foodie,11.41,0.87,0.66,0.35,0.76,0.5,0.9,0.54,none
+C00040,Peanut Allergy Regular,Value Hunter,13.21,0.73,0.59,0.57,0.45,0.49,0.65,0.66,peanuts
+C00041,Value Hunter,Spice Lover,12.64,0.85,0.49,0.32,0.66,0.49,0.94,0.44,none
+C00042,Protein Lover,Habitual Eater,12.51,0.91,0.81,0.04,0.68,0.54,0.32,0.86,none
+C00043,Healthy Eater,Peanut Allergy Regular,12.58,0.64,0.08,0.77,0.33,0.55,0.6,0.96,none
+C00044,Spice Lover,Healthy Eater,15.41,0.89,0.77,0.31,1,0.68,0.48,0.59,none
+C00045,Vegetarian,Adventurous Eater,12.85,0,0.09,1,0.4,0.63,0.52,0.88,none
+C00046,Adventurous Eater,Student Regular,14.61,0.7,0.68,0.69,0.8,0.86,0.28,0.69,none
+C00047,Habitual Eater,Protein Lover,11.5,0.87,0.5,0.28,0.49,0.13,0.54,0.53,none
+C00048,Premium Foodie,Vegetarian,16.85,0.72,0.84,0.54,0.6,0.81,0.14,0.77,none
+C00049,Student Regular,Premium Foodie,10.42,0.93,0.65,0.41,0.71,0.49,0.98,0.43,none
+C00050,Peanut Allergy Regular,Value Hunter,14.08,0.71,0.55,0.42,0.56,0.54,0.61,0.61,peanuts
+C00051,Value Hunter,Spice Lover,10.26,0.71,0.4,0.32,0.58,0.38,0.89,0.46,none
+C00052,Protein Lover,Habitual Eater,14.26,0.92,0.82,0.02,0.61,0.42,0.32,0.82,none
+C00053,Healthy Eater,Peanut Allergy Regular,11.53,0.61,0.2,0.9,0.27,0.52,0.44,1,none
+C00054,Spice Lover,Healthy Eater,15.56,0.78,0.84,0.41,0.99,0.67,0.41,0.59,none
+C00055,Vegetarian,Adventurous Eater,13.73,0,0,1,0.48,0.6,0.52,0.88,none
+C00056,Adventurous Eater,Student Regular,17.22,0.77,0.71,0.61,0.7,0.99,0.26,0.58,none
+C00057,Habitual Eater,Protein Lover,11.42,0.75,0.52,0.27,0.43,0,0.67,0.5,none
+C00058,Premium Foodie,Vegetarian,15.73,0.61,1,0.51,0.51,0.86,0.13,0.73,none
+C00059,Student Regular,Premium Foodie,11.48,0.85,0.68,0.36,0.72,0.41,0.87,0.4,none
+C00060,Peanut Allergy Regular,Value Hunter,13.1,0.87,0.64,0.49,0.6,0.57,0.63,0.54,peanuts
+C00061,Value Hunter,Spice Lover,11.59,0.78,0.38,0.36,0.5,0.39,0.89,0.46,none
+C00062,Protein Lover,Habitual Eater,15.1,1,0.81,0.14,0.7,0.51,0.5,0.76,none
+C00063,Healthy Eater,Peanut Allergy Regular,14.2,0.65,0.16,0.76,0.22,0.64,0.55,0.88,none
+C00064,Spice Lover,Healthy Eater,12.88,0.81,0.82,0.45,0.93,0.64,0.52,0.42,none
+C00065,Vegetarian,Adventurous Eater,13.91,0,0.05,0.91,0.45,0.61,0.57,0.72,none
+C00066,Adventurous Eater,Student Regular,16.67,0.74,0.78,0.58,0.76,1,0.24,0.53,none
+C00067,Habitual Eater,Protein Lover,11.15,0.85,0.56,0.24,0.45,0.08,0.62,0.46,none
+C00068,Premium Foodie,Vegetarian,14.09,0.65,0.86,0.41,0.68,0.76,0.06,0.77,none
+C00069,Student Regular,Premium Foodie,10.39,0.79,0.53,0.35,0.71,0.53,0.82,0.53,none
+C00070,Peanut Allergy Regular,Value Hunter,12.72,0.82,0.54,0.5,0.6,0.55,0.66,0.67,peanuts
+C00071,Value Hunter,Spice Lover,11.83,0.87,0.37,0.21,0.66,0.3,1,0.45,none
+C00072,Protein Lover,Habitual Eater,13.05,0.92,0.85,0.07,0.79,0.57,0.35,0.84,none
+C00073,Healthy Eater,Peanut Allergy Regular,13.93,0.56,0.14,0.95,0.3,0.57,0.42,0.88,none
+C00074,Spice Lover,Healthy Eater,14.4,0.78,0.81,0.33,0.87,0.77,0.48,0.53,none
+C00075,Vegetarian,Adventurous Eater,11.96,0,0.08,0.97,0.43,0.6,0.65,0.8,none
+C00076,Adventurous Eater,Student Regular,15.74,0.74,0.73,0.68,0.81,0.88,0.28,0.7,none
+C00077,Habitual Eater,Protein Lover,12.35,0.85,0.59,0.16,0.42,0.06,0.6,0.56,none
+C00078,Premium Foodie,Vegetarian,14.76,0.78,0.88,0.53,0.57,0.76,0.1,0.69,none
+C00079,Student Regular,Premium Foodie,10.19,0.9,0.67,0.36,0.63,0.41,0.91,0.53,none
+C00080,Peanut Allergy Regular,Value Hunter,13.08,0.71,0.63,0.57,0.41,0.49,0.54,0.69,peanuts
+C00081,Value Hunter,Spice Lover,12.3,0.76,0.5,0.2,0.55,0.33,1,0.42,none
+C00082,Protein Lover,Habitual Eater,15.73,0.91,0.98,0.13,0.76,0.43,0.45,0.74,none
+C00083,Healthy Eater,Peanut Allergy Regular,11.99,0.66,0.14,0.76,0.28,0.5,0.58,0.88,none
+C00084,Spice Lover,Healthy Eater,13.38,0.81,0.76,0.35,1,0.74,0.57,0.43,none
+C00085,Vegetarian,Adventurous Eater,11.45,0.08,0.05,1,0.57,0.5,0.63,0.8,none
+C00086,Adventurous Eater,Student Regular,15.82,0.62,0.74,0.52,0.76,0.86,0.27,0.69,none
+C00087,Habitual Eater,Protein Lover,12.61,0.84,0.57,0.16,0.49,0,0.52,0.53,none
+C00088,Premium Foodie,Vegetarian,21.92,0.74,0.95,0.51,0.56,0.82,0.04,0.67,none
+C00089,Student Regular,Premium Foodie,11.02,0.89,0.55,0.35,0.69,0.47,0.93,0.43,none
+C00090,Peanut Allergy Regular,Value Hunter,12.93,0.73,0.54,0.47,0.58,0.52,0.69,0.67,peanuts
+C00091,Value Hunter,Spice Lover,10.5,0.8,0.44,0.27,0.69,0.31,0.99,0.32,none
+C00092,Protein Lover,Habitual Eater,13.78,0.91,1,0.05,0.78,0.49,0.44,0.75,none
+C00093,Healthy Eater,Peanut Allergy Regular,12.59,0.56,0.14,0.93,0.29,0.64,0.43,0.96,none
+C00094,Spice Lover,Healthy Eater,13.06,0.93,0.8,0.37,0.99,0.68,0.45,0.45,none
+C00095,Vegetarian,Adventurous Eater,11.51,0.04,0.05,1,0.54,0.54,0.65,0.85,none
+C00096,Adventurous Eater,Student Regular,16.45,0.77,0.74,0.63,0.82,0.99,0.26,0.58,none
+C00097,Habitual Eater,Protein Lover,11.12,0.83,0.46,0.15,0.43,0.12,0.64,0.44,none
+C00098,Premium Foodie,Vegetarian,15.51,0.63,0.84,0.42,0.5,0.84,0.01,0.77,none
+C00099,Student Regular,Premium Foodie,10.35,0.78,0.6,0.47,0.73,0.52,0.89,0.39,none
+C00100,Peanut Allergy Regular,Value Hunter,13.79,0.74,0.6,0.49,0.45,0.57,0.67,0.7,peanuts
+C00101,Value Hunter,Spice Lover,11.27,0.87,0.32,0.31,0.55,0.37,0.89,0.33,none
+C00102,Protein Lover,Habitual Eater,12.39,1,0.89,0.08,0.67,0.44,0.39,0.88,none
+C00103,Healthy Eater,Peanut Allergy Regular,12.73,0.69,0.01,0.9,0.34,0.57,0.47,1,none
+C00104,Spice Lover,Healthy Eater,15.22,0.78,0.89,0.34,0.92,0.75,0.41,0.52,none
+C00105,Vegetarian,Adventurous Eater,11.52,0,0,0.98,0.49,0.56,0.51,0.77,none
+C00106,Adventurous Eater,Student Regular,15.44,0.69,0.67,0.6,0.8,0.94,0.3,0.5,none
+C00107,Habitual Eater,Protein Lover,13.47,0.88,0.58,0.13,0.46,0.09,0.58,0.58,none
+C00108,Premium Foodie,Vegetarian,14.55,0.62,0.86,0.45,0.56,0.86,0.07,0.63,none
+C00109,Student Regular,Premium Foodie,10.67,0.81,0.62,0.33,0.65,0.44,1,0.48,none
+C00110,Peanut Allergy Regular,Value Hunter,12.36,0.89,0.64,0.56,0.53,0.47,0.53,0.52,peanuts
+C00111,Value Hunter,Spice Lover,11.88,0.8,0.35,0.3,0.53,0.3,0.89,0.35,none
+C00112,Protein Lover,Habitual Eater,13.51,1,0.8,0.05,0.74,0.5,0.36,0.76,none
+C00113,Healthy Eater,Peanut Allergy Regular,13.36,0.62,0.15,0.86,0.35,0.56,0.57,0.93,none
+C00114,Spice Lover,Healthy Eater,12.94,0.94,0.87,0.41,0.93,0.63,0.55,0.58,none
+C00115,Vegetarian,Adventurous Eater,10.7,0.02,0.07,0.93,0.54,0.7,0.68,0.77,none
+C00116,Adventurous Eater,Student Regular,12.82,0.61,0.67,0.52,0.81,0.86,0.3,0.69,none
+C00117,Habitual Eater,Protein Lover,12.92,0.94,0.44,0.29,0.39,0.08,0.51,0.52,none
+C00118,Premium Foodie,Vegetarian,20.84,0.7,1,0.57,0.56,0.9,0.18,0.71,none
+C00119,Student Regular,Premium Foodie,12.09,0.8,0.55,0.37,0.67,0.5,0.92,0.47,none
+C00120,Peanut Allergy Regular,Value Hunter,12.7,0.77,0.61,0.5,0.42,0.54,0.62,0.64,peanuts
+C00121,Value Hunter,Spice Lover,12.6,0.87,0.34,0.3,0.61,0.33,1,0.43,none
+C00122,Protein Lover,Habitual Eater,13.57,0.92,1,0.15,0.73,0.54,0.33,0.87,none
+C00123,Healthy Eater,Peanut Allergy Regular,12.38,0.68,0.07,0.92,0.34,0.65,0.42,0.86,none
+C00124,Spice Lover,Healthy Eater,11.78,0.94,0.84,0.41,0.97,0.67,0.55,0.5,none
+C00125,Vegetarian,Adventurous Eater,12.53,0,0,1,0.49,0.66,0.68,0.83,none
+C00126,Adventurous Eater,Student Regular,13.48,0.66,0.82,0.62,0.85,0.87,0.23,0.54,none
+C00127,Habitual Eater,Protein Lover,13.9,0.93,0.59,0.27,0.3,0.08,0.59,0.54,none
+C00128,Premium Foodie,Vegetarian,17.43,0.61,0.97,0.53,0.53,0.91,0.08,0.65,none
+C00129,Student Regular,Premium Foodie,11.45,0.84,0.69,0.33,0.61,0.48,0.87,0.37,none
+C00130,Peanut Allergy Regular,Value Hunter,11.15,0.74,0.62,0.52,0.58,0.53,0.69,0.56,peanuts
+C00131,Value Hunter,Spice Lover,10.94,0.87,0.33,0.36,0.54,0.31,0.99,0.32,none
+C00132,Protein Lover,Habitual Eater,13.56,1,0.91,0,0.69,0.5,0.42,0.9,none
+C00133,Healthy Eater,Peanut Allergy Regular,12.33,0.56,0.05,0.78,0.25,0.53,0.49,0.94,none
+C00134,Spice Lover,Healthy Eater,15.31,0.93,0.78,0.4,0.98,0.66,0.44,0.41,none
+C00135,Vegetarian,Adventurous Eater,11.2,0.07,0,1,0.58,0.67,0.52,0.84,none
+C00136,Adventurous Eater,Student Regular,16.16,0.63,0.84,0.5,0.89,0.95,0.2,0.57,none
+C00137,Habitual Eater,Protein Lover,13.76,0.75,0.46,0.28,0.32,0,0.6,0.43,none
+C00138,Premium Foodie,Vegetarian,17.81,0.69,0.85,0.51,0.69,0.78,0.05,0.63,none
+C00139,Student Regular,Premium Foodie,10.65,0.79,0.57,0.43,0.78,0.58,0.84,0.39,none
+C00140,Peanut Allergy Regular,Value Hunter,14.47,0.72,0.66,0.49,0.5,0.59,0.56,0.59,peanuts
+C00141,Value Hunter,Spice Lover,11.18,0.77,0.4,0.38,0.55,0.35,0.9,0.31,none
+C00142,Protein Lover,Habitual Eater,15.21,1,0.84,0.05,0.78,0.52,0.42,0.88,none
+C00143,Healthy Eater,Peanut Allergy Regular,12.2,0.6,0.08,0.75,0.25,0.66,0.49,0.89,none
+C00144,Spice Lover,Healthy Eater,11.14,0.78,0.84,0.46,0.85,0.68,0.41,0.48,none
+C00145,Vegetarian,Adventurous Eater,12.12,0.03,0,0.99,0.47,0.53,0.64,0.71,none
+C00146,Adventurous Eater,Student Regular,12.38,0.74,0.75,0.56,0.8,1,0.22,0.66,none
+C00147,Habitual Eater,Protein Lover,11.68,0.83,0.58,0.22,0.43,0.06,0.58,0.45,none
+C00148,Premium Foodie,Vegetarian,14.43,0.75,0.86,0.41,0.58,0.92,0.03,0.73,none
+C00149,Student Regular,Premium Foodie,12.43,0.92,0.5,0.3,0.68,0.53,1,0.5,none
+C00150,Peanut Allergy Regular,Value Hunter,13.02,0.72,0.61,0.42,0.51,0.43,0.5,0.54,peanuts
+C00151,Value Hunter,Spice Lover,10.3,0.77,0.4,0.38,0.64,0.43,0.9,0.43,none
+C00152,Protein Lover,Habitual Eater,12.37,0.96,0.82,0,0.64,0.45,0.37,0.77,none
+C00153,Healthy Eater,Peanut Allergy Regular,13.05,0.54,0.15,0.88,0.29,0.63,0.58,0.89,none
+C00154,Spice Lover,Healthy Eater,14.58,0.76,0.78,0.35,0.88,0.73,0.55,0.41,none
+C00155,Vegetarian,Adventurous Eater,12.92,0,0.08,0.94,0.48,0.63,0.54,0.73,none
+C00156,Adventurous Eater,Student Regular,13.76,0.64,0.82,0.59,0.73,0.97,0.2,0.53,none
+C00157,Habitual Eater,Protein Lover,13.99,0.92,0.55,0.21,0.42,0.12,0.66,0.47,none
+C00158,Premium Foodie,Vegetarian,17.96,0.73,0.87,0.41,0.53,0.83,0.01,0.66,none
+C00159,Student Regular,Premium Foodie,10.91,0.81,0.52,0.49,0.73,0.55,0.82,0.51,none
+C00160,Peanut Allergy Regular,Value Hunter,14.46,0.83,0.58,0.4,0.5,0.54,0.64,0.68,peanuts
+C00161,Value Hunter,Spice Lover,11.97,0.85,0.33,0.24,0.67,0.49,0.93,0.48,none
+C00162,Protein Lover,Habitual Eater,15.07,1,0.99,0.02,0.78,0.59,0.4,0.87,none
+C00163,Healthy Eater,Peanut Allergy Regular,14.63,0.65,0.11,0.8,0.29,0.57,0.47,0.97,none
+C00164,Spice Lover,Healthy Eater,12.79,0.85,0.84,0.43,0.93,0.63,0.47,0.58,none
+C00165,Vegetarian,Adventurous Eater,12.52,0,0,1,0.56,0.56,0.52,0.8,none
+C00166,Adventurous Eater,Student Regular,12.86,0.75,0.83,0.58,0.86,0.86,0.21,0.67,none
+C00167,Habitual Eater,Protein Lover,11.3,0.78,0.58,0.29,0.33,0.07,0.54,0.51,none
+C00168,Premium Foodie,Vegetarian,17.44,0.75,0.9,0.58,0.53,0.85,0.13,0.77,none
+C00169,Student Regular,Premium Foodie,12.07,0.81,0.63,0.31,0.76,0.49,0.8,0.44,none
+C00170,Peanut Allergy Regular,Value Hunter,12.49,0.82,0.54,0.46,0.52,0.5,0.56,0.59,peanuts
+C00171,Value Hunter,Spice Lover,12.92,0.83,0.43,0.21,0.51,0.31,1,0.3,none
+C00172,Protein Lover,Habitual Eater,13.64,0.86,0.99,0.02,0.67,0.55,0.45,0.87,none
+C00173,Healthy Eater,Peanut Allergy Regular,11.96,0.6,0.02,0.82,0.23,0.62,0.47,0.88,none
+C00174,Spice Lover,Healthy Eater,12.82,0.88,0.78,0.44,0.85,0.75,0.44,0.42,none
+C00175,Vegetarian,Adventurous Eater,10.72,0.09,0,1,0.41,0.69,0.57,0.82,none
+C00176,Adventurous Eater,Student Regular,16.74,0.65,0.81,0.69,0.78,1,0.26,0.63,none
+C00177,Habitual Eater,Protein Lover,12.74,0.86,0.49,0.11,0.38,0.1,0.5,0.58,none
+C00178,Premium Foodie,Vegetarian,16.48,0.62,0.9,0.47,0.56,0.86,0.03,0.8,none
+C00179,Student Regular,Premium Foodie,11.01,0.91,0.52,0.48,0.68,0.56,0.87,0.4,none
+C00180,Peanut Allergy Regular,Value Hunter,12.92,0.83,0.61,0.58,0.42,0.47,0.64,0.58,peanuts
+C00181,Value Hunter,Spice Lover,11.76,0.88,0.32,0.36,0.64,0.37,0.96,0.44,none
+C00182,Protein Lover,Habitual Eater,15.47,0.86,0.81,0,0.8,0.59,0.32,0.89,none
+C00183,Healthy Eater,Peanut Allergy Regular,11.63,0.53,0.18,0.87,0.26,0.55,0.44,1,none
+C00184,Spice Lover,Healthy Eater,15.38,0.76,0.9,0.48,0.99,0.72,0.46,0.46,none
+C00185,Vegetarian,Adventurous Eater,10.07,0.07,0.02,0.93,0.49,0.57,0.58,0.85,none
+C00186,Adventurous Eater,Student Regular,13.93,0.63,0.7,0.54,0.85,0.9,0.32,0.52,none
+C00187,Habitual Eater,Protein Lover,13.32,0.82,0.52,0.16,0.31,0.02,0.57,0.43,none
+C00188,Premium Foodie,Vegetarian,15.16,0.72,0.92,0.41,0.62,0.9,0.15,0.64,none
+C00189,Student Regular,Premium Foodie,12.14,0.86,0.58,0.36,0.74,0.51,0.97,0.53,none
+C00190,Peanut Allergy Regular,Value Hunter,11.88,0.72,0.62,0.5,0.57,0.42,0.55,0.59,peanuts
+C00191,Value Hunter,Spice Lover,10.71,0.73,0.39,0.34,0.51,0.42,0.88,0.41,none
+C00192,Protein Lover,Habitual Eater,13.34,0.9,0.92,0,0.73,0.57,0.47,0.88,none
+C00193,Healthy Eater,Peanut Allergy Regular,14.9,0.62,0.05,0.82,0.25,0.64,0.42,0.92,none
+C00194,Spice Lover,Healthy Eater,13.81,0.82,0.7,0.39,0.99,0.66,0.42,0.57,none
+C00195,Vegetarian,Adventurous Eater,12.93,0.05,0.02,1,0.45,0.63,0.57,0.72,none
+C00196,Adventurous Eater,Student Regular,13.66,0.63,0.75,0.68,0.75,0.91,0.29,0.62,none
+C00197,Habitual Eater,Protein Lover,12.24,0.8,0.5,0.26,0.32,0.14,0.68,0.5,none
+C00198,Premium Foodie,Vegetarian,18.01,0.63,0.82,0.59,0.58,0.93,0.04,0.63,none
+C00199,Student Regular,Premium Foodie,10.09,0.83,0.59,0.41,0.78,0.45,0.87,0.51,none
+C00200,Peanut Allergy Regular,Value Hunter,13.24,0.73,0.58,0.45,0.42,0.48,0.55,0.63,peanuts
+C00201,Value Hunter,Spice Lover,12.6,0.82,0.39,0.33,0.5,0.36,0.97,0.48,none
+C00202,Protein Lover,Habitual Eater,15.23,0.95,1,0.07,0.8,0.42,0.41,0.83,none
+C00203,Healthy Eater,Peanut Allergy Regular,13.69,0.58,0.14,0.83,0.33,0.6,0.54,1,none
+C00204,Spice Lover,Healthy Eater,15.49,0.94,0.73,0.39,0.91,0.69,0.54,0.46,none
+C00205,Vegetarian,Adventurous Eater,11.29,0,0.08,0.98,0.41,0.62,0.54,0.76,none
+C00206,Adventurous Eater,Student Regular,16.69,0.73,0.73,0.58,0.73,0.92,0.3,0.52,none
+C00207,Habitual Eater,Protein Lover,12.09,0.78,0.54,0.16,0.43,0.12,0.64,0.5,none
+C00208,Premium Foodie,Vegetarian,14.31,0.78,1,0.55,0.54,0.84,0.11,0.79,none
+C00209,Student Regular,Premium Foodie,11.36,0.83,0.67,0.36,0.69,0.51,0.85,0.47,none
+C00210,Peanut Allergy Regular,Value Hunter,14.08,0.9,0.52,0.52,0.48,0.55,0.59,0.56,peanuts
+C00211,Value Hunter,Spice Lover,12.77,0.85,0.43,0.25,0.56,0.42,0.86,0.42,none
+C00212,Protein Lover,Habitual Eater,13.14,0.94,0.81,0.15,0.61,0.42,0.4,0.78,none
+C00213,Healthy Eater,Peanut Allergy Regular,12.71,0.53,0.19,0.78,0.23,0.54,0.43,0.93,none
+C00214,Spice Lover,Healthy Eater,15.98,0.85,0.86,0.43,0.99,0.63,0.5,0.41,none
+C00215,Vegetarian,Adventurous Eater,10.05,0.03,0.02,1,0.52,0.69,0.52,0.77,none
+C00216,Adventurous Eater,Student Regular,15.77,0.68,0.66,0.65,0.7,1,0.36,0.57,none
+C00217,Habitual Eater,Protein Lover,11.64,0.95,0.48,0.3,0.45,0.06,0.7,0.57,none
+C00218,Premium Foodie,Vegetarian,15.61,0.74,0.98,0.55,0.66,0.87,0.02,0.79,none
+C00219,Student Regular,Premium Foodie,11.22,0.86,0.7,0.47,0.7,0.5,0.9,0.41,none
+C00220,Peanut Allergy Regular,Value Hunter,13.25,0.74,0.65,0.49,0.43,0.57,0.62,0.69,peanuts
+C00221,Value Hunter,Spice Lover,11.07,0.88,0.49,0.36,0.6,0.34,1,0.33,none
+C00222,Protein Lover,Habitual Eater,12.39,0.93,0.87,0.13,0.7,0.59,0.41,0.78,none
+C00223,Healthy Eater,Peanut Allergy Regular,13.45,0.52,0.1,0.88,0.24,0.62,0.51,0.86,none
+C00224,Spice Lover,Healthy Eater,15.96,0.94,0.74,0.46,1,0.65,0.46,0.59,none
+C00225,Vegetarian,Adventurous Eater,11.49,0,0.07,1,0.44,0.69,0.59,0.77,none
+C00226,Adventurous Eater,Student Regular,12.27,0.79,0.73,0.53,0.79,0.99,0.35,0.53,none
+C00227,Habitual Eater,Protein Lover,11.12,0.81,0.47,0.19,0.36,0.07,0.59,0.54,none
+C00228,Premium Foodie,Vegetarian,19.94,0.62,0.86,0.49,0.69,0.91,0.07,0.6,none
+C00229,Student Regular,Premium Foodie,12.97,0.9,0.68,0.39,0.8,0.56,0.89,0.43,none
+C00230,Peanut Allergy Regular,Value Hunter,11.43,0.74,0.55,0.42,0.51,0.47,0.69,0.65,peanuts
+C00231,Value Hunter,Spice Lover,12.86,0.83,0.34,0.33,0.64,0.31,0.92,0.48,none
+C00232,Protein Lover,Habitual Eater,14.79,0.86,0.85,0,0.62,0.48,0.34,0.78,none
+C00233,Healthy Eater,Peanut Allergy Regular,11.73,0.52,0.09,0.89,0.34,0.56,0.55,0.89,none
+C00234,Spice Lover,Healthy Eater,14.6,0.92,0.83,0.37,0.85,0.61,0.54,0.45,none
+C00235,Vegetarian,Adventurous Eater,12.18,0,0.01,0.91,0.57,0.52,0.52,0.81,none
+C00236,Adventurous Eater,Student Regular,13.65,0.78,0.76,0.58,0.84,0.99,0.35,0.64,none
+C00237,Habitual Eater,Protein Lover,13.36,0.76,0.57,0.28,0.34,0,0.51,0.5,none
+C00238,Premium Foodie,Vegetarian,16.78,0.66,0.93,0.47,0.62,0.84,0.05,0.71,none
+C00239,Student Regular,Premium Foodie,11.49,0.85,0.55,0.41,0.62,0.48,0.84,0.49,none
+C00240,Peanut Allergy Regular,Value Hunter,13.85,0.8,0.64,0.42,0.44,0.46,0.53,0.6,peanuts
+C00241,Value Hunter,Spice Lover,12.2,0.72,0.34,0.23,0.57,0.36,0.88,0.41,none
+C00242,Protein Lover,Habitual Eater,13.49,1,0.95,0,0.73,0.57,0.4,0.8,none
+C00243,Healthy Eater,Peanut Allergy Regular,14.94,0.58,0.12,0.86,0.29,0.7,0.45,0.95,none
+C00244,Spice Lover,Healthy Eater,12.43,0.82,0.73,0.35,0.9,0.73,0.5,0.4,none
+C00245,Vegetarian,Adventurous Eater,11.36,0,0,1,0.47,0.57,0.62,0.79,none
+C00246,Adventurous Eater,Student Regular,14.3,0.62,0.71,0.54,0.81,0.99,0.33,0.5,none
+C00247,Habitual Eater,Protein Lover,12.73,0.89,0.55,0.13,0.33,0.03,0.58,0.5,none
+C00248,Premium Foodie,Vegetarian,14.14,0.73,0.93,0.55,0.59,0.75,0.14,0.7,none
+C00249,Student Regular,Premium Foodie,11.67,0.84,0.56,0.39,0.71,0.42,0.98,0.52,none
+C00250,Peanut Allergy Regular,Value Hunter,11.27,0.86,0.68,0.58,0.53,0.52,0.66,0.55,peanuts
+C00251,Value Hunter,Spice Lover,10.97,0.83,0.5,0.25,0.55,0.39,0.9,0.37,none
+C00252,Protein Lover,Habitual Eater,12.65,0.88,0.86,0,0.8,0.45,0.41,0.76,none
+C00253,Healthy Eater,Peanut Allergy Regular,13.39,0.65,0.17,0.83,0.38,0.5,0.51,0.91,none
+C00254,Spice Lover,Healthy Eater,14.51,0.91,0.72,0.35,1,0.77,0.5,0.58,none
+C00255,Vegetarian,Adventurous Eater,10.17,0,0,1,0.41,0.57,0.56,0.72,none
+C00256,Adventurous Eater,Student Regular,15.91,0.65,0.71,0.68,0.75,0.91,0.4,0.56,none
+C00257,Habitual Eater,Protein Lover,11.03,0.78,0.54,0.22,0.45,0.12,0.64,0.54,none
+C00258,Premium Foodie,Vegetarian,21.21,0.8,0.87,0.52,0.53,0.79,0.08,0.63,none
+C00259,Student Regular,Premium Foodie,11.02,0.84,0.62,0.42,0.75,0.58,0.82,0.45,none
+C00260,Peanut Allergy Regular,Value Hunter,13.84,0.83,0.6,0.42,0.58,0.44,0.53,0.62,peanuts
+C00261,Value Hunter,Spice Lover,12.97,0.78,0.4,0.31,0.66,0.49,1,0.42,none
+C00262,Protein Lover,Habitual Eater,14.73,1,0.84,0,0.61,0.41,0.43,0.82,none
+C00263,Healthy Eater,Peanut Allergy Regular,13.23,0.66,0.01,0.81,0.35,0.67,0.46,0.98,none
+C00264,Spice Lover,Healthy Eater,11.58,0.76,0.73,0.39,0.89,0.76,0.59,0.6,none
+C00265,Vegetarian,Adventurous Eater,10.42,0.08,0.08,0.98,0.53,0.68,0.6,0.83,none
+C00266,Adventurous Eater,Student Regular,17.72,0.71,0.66,0.54,0.82,0.87,0.24,0.57,none
+C00267,Habitual Eater,Protein Lover,11.94,0.92,0.47,0.23,0.49,0.14,0.55,0.58,none
+C00268,Premium Foodie,Vegetarian,17.1,0.61,0.82,0.54,0.65,0.95,0.04,0.79,none
+C00269,Student Regular,Premium Foodie,10.11,0.76,0.68,0.44,0.78,0.48,0.84,0.48,none
+C00270,Peanut Allergy Regular,Value Hunter,12.24,0.86,0.62,0.54,0.59,0.59,0.56,0.54,peanuts
+C00271,Value Hunter,Spice Lover,12.57,0.75,0.47,0.27,0.61,0.35,0.96,0.41,none
+C00272,Protein Lover,Habitual Eater,15.45,0.91,0.92,0,0.72,0.47,0.42,0.77,none
+C00273,Healthy Eater,Peanut Allergy Regular,13.9,0.58,0.1,0.89,0.28,0.51,0.58,0.93,none
+C00274,Spice Lover,Healthy Eater,15.81,0.91,0.88,0.44,0.92,0.72,0.43,0.41,none
+C00275,Vegetarian,Adventurous Eater,11.26,0.08,0,1,0.49,0.56,0.51,0.73,none
+C00276,Adventurous Eater,Student Regular,12.74,0.8,0.74,0.69,0.7,1,0.3,0.61,none
+C00277,Habitual Eater,Protein Lover,12.12,0.91,0.42,0.28,0.41,0.01,0.69,0.52,none
+C00278,Premium Foodie,Vegetarian,18.79,0.69,0.88,0.58,0.68,0.82,0.09,0.6,none
+C00279,Student Regular,Premium Foodie,11.86,0.82,0.69,0.35,0.64,0.51,0.82,0.51,none
+C00280,Peanut Allergy Regular,Value Hunter,14.84,0.72,0.65,0.59,0.56,0.45,0.52,0.58,peanuts
+C00281,Value Hunter,Spice Lover,12.37,0.76,0.47,0.2,0.54,0.31,1,0.48,none
+C00282,Protein Lover,Habitual Eater,15.71,1,0.82,0.07,0.67,0.48,0.42,0.89,none
+C00283,Healthy Eater,Peanut Allergy Regular,14.26,0.59,0.11,0.83,0.25,0.54,0.49,0.95,none
+C00284,Spice Lover,Healthy Eater,12.37,0.86,0.85,0.35,0.95,0.78,0.48,0.55,none
+C00285,Vegetarian,Adventurous Eater,11.41,0.09,0,0.91,0.41,0.63,0.54,0.86,none
+C00286,Adventurous Eater,Student Regular,15.11,0.68,0.84,0.62,0.82,1,0.36,0.5,none
+C00287,Habitual Eater,Protein Lover,13.89,0.89,0.46,0.14,0.36,0.13,0.64,0.54,none
+C00288,Premium Foodie,Vegetarian,21.85,0.79,0.96,0.54,0.66,0.93,0.2,0.64,none
+C00289,Student Regular,Premium Foodie,11.99,0.79,0.64,0.39,0.74,0.46,0.83,0.51,none
+C00290,Peanut Allergy Regular,Value Hunter,14.41,0.88,0.68,0.56,0.52,0.43,0.53,0.52,peanuts
+C00291,Value Hunter,Spice Lover,10.09,0.79,0.31,0.38,0.65,0.35,0.91,0.33,none
+C00292,Protein Lover,Habitual Eater,13.17,1,0.96,0.04,0.68,0.46,0.48,0.77,none
+C00293,Healthy Eater,Peanut Allergy Regular,14.13,0.59,0.08,0.78,0.4,0.66,0.56,0.99,none
+C00294,Spice Lover,Healthy Eater,13.89,0.95,0.75,0.39,0.98,0.73,0.59,0.5,none
+C00295,Vegetarian,Adventurous Eater,11.48,0,0.03,0.93,0.46,0.57,0.62,0.82,none
+C00296,Adventurous Eater,Student Regular,16.11,0.64,0.66,0.53,0.83,1,0.34,0.57,none
+C00297,Habitual Eater,Protein Lover,13.93,0.82,0.55,0.24,0.31,0.03,0.64,0.58,none
+C00298,Premium Foodie,Vegetarian,17.97,0.65,0.85,0.47,0.58,0.78,0.1,0.75,none
+C00299,Student Regular,Premium Foodie,11.46,0.84,0.53,0.49,0.72,0.46,0.9,0.43,none
+C00300,Peanut Allergy Regular,Value Hunter,12.34,0.74,0.69,0.53,0.6,0.47,0.63,0.58,peanuts

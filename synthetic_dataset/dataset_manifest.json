@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0",
+  "description": "Drop AI Relational Synthetic Dataset matching Drop AI specifications",
+  "generated_at": "2026-10-05T05:50:25.712Z",
+  "counts": {
+    "customers": 300,
+    "customer_preferences": 1170,
+    "restaurants": 30,
+    "meals": 30,
+    "meal_attributes": 30,
+    "menu_availability": 468,
+    "interaction_events": 44283,
+    "orders": 1428,
+    "order_items": 1428,
+    "ai_conversations": 1073,
+    "ai_messages": 1073,
+    "ai_recommendations": 3219,
+    "recommendation_outcomes": 1073,
+    "synthetic_ground_truth": 300
+  },
+  "archetypes": [
+    "Value Hunter",
+    "Protein Lover",
+    "Healthy Eater",
+    "Spice Lover",
+    "Vegetarian",
+    "Adventurous Eater",
+    "Habitual Eater",
+    "Premium Foodie",
+    "Student Regular",
+    "Peanut Allergy Regular"
+  ],
+  "edge_cases": [
+    "C00001 (Zero history)",
+    "C00002 (Single order)",
+    "C00003 (50+ orders)",
+    "C00004 (High impressions, low conversion)"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Drop AI",
+    "slug": "drop-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dailydrop.dropai"
+    },
+    "android": {
+      "package": "com.dailydrop.dropai",
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a3343b25-b15f-455d-a0ff-511c248ad3c1"
+      }
+    },
+    "plugins": [
+      "expo-status-bar",
+      "expo-font"
+    ]
+  }
+}

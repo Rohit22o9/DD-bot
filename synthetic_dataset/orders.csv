@@ -1,0 +1,1429 @@
+order_id,customer_id,order_date,pickup_location,delivery_suburb,total_amount,status,day_of_week,meal_occasion,ordering_mode
+ord_1,C00002,2026-10-03T05:50:25.629Z,Bentley Library Commons,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_2,C00003,2026-10-03T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_3,C00003,2026-09-29T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_4,C00003,2026-09-25T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_5,C00003,2026-09-21T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_6,C00003,2026-09-17T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Friday,Dinner,Individual
+ord_7,C00003,2026-09-13T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_8,C00003,2026-09-09T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_9,C00003,2026-09-05T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Wednesday,Dinner,Individual
+ord_10,C00003,2026-09-01T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Thursday,Dinner,Individual
+ord_11,C00003,2026-08-28T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Friday,Dinner,Individual
+ord_12,C00003,2026-08-24T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_13,C00003,2026-08-20T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_14,C00003,2026-08-16T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_15,C00003,2026-08-12T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_16,C00003,2026-08-08T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Friday,Dinner,Individual
+ord_17,C00003,2026-08-04T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_18,C00003,2026-07-31T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_19,C00003,2026-07-27T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_20,C00003,2026-07-23T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_21,C00003,2026-07-19T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Friday,Dinner,Individual
+ord_22,C00003,2026-07-15T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_23,C00003,2026-07-11T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_24,C00003,2026-07-07T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Wednesday,Dinner,Individual
+ord_25,C00003,2026-07-03T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Thursday,Dinner,Individual
+ord_26,C00003,2026-06-29T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Friday,Dinner,Individual
+ord_27,C00003,2026-06-25T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_28,C00003,2026-06-21T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_29,C00003,2026-06-17T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_30,C00003,2026-06-13T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_31,C00003,2026-06-09T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Friday,Dinner,Individual
+ord_32,C00003,2026-06-05T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_33,C00003,2026-06-01T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_34,C00003,2026-05-28T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_35,C00003,2026-05-24T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_36,C00003,2026-05-20T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Friday,Dinner,Individual
+ord_37,C00003,2026-05-16T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_38,C00003,2026-05-12T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_39,C00003,2026-05-08T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Wednesday,Dinner,Individual
+ord_40,C00003,2026-05-04T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Thursday,Dinner,Individual
+ord_41,C00003,2026-04-30T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Friday,Dinner,Individual
+ord_42,C00003,2026-04-26T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_43,C00003,2026-04-22T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_44,C00003,2026-04-18T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_45,C00003,2026-04-14T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_46,C00003,2026-04-10T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Friday,Dinner,Individual
+ord_47,C00003,2026-04-06T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_48,C00003,2026-04-02T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_49,C00003,2026-03-29T05:50:25.630Z,Victoria Park Station Hub,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_50,C00003,2026-03-25T05:50:25.630Z,Victoria Park Station Hub,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_51,C00003,2026-03-21T05:50:25.630Z,Victoria Park Station Hub,Waterford,13.00,completed,Friday,Dinner,Individual
+ord_52,C00004,2026-10-03T05:50:25.630Z,Curtin Central Bus Station,Como,13.50,completed,Monday,Dinner,Individual
+ord_53,C00005,2026-10-03T05:50:25.630Z,Curtin Engineering Guild,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_54,C00005,2026-09-29T05:50:25.630Z,Curtin Engineering Guild,Bentley,2.50,completed,Tuesday,Dinner,Individual
+ord_55,C00005,2026-09-25T05:50:25.630Z,Curtin Engineering Guild,Bentley,3.50,completed,Wednesday,Dinner,Individual
+ord_56,C00005,2026-09-21T05:50:25.630Z,Curtin Engineering Guild,Bentley,3.00,completed,Thursday,Dinner,Individual
+ord_57,C00005,2026-09-17T05:50:25.630Z,Curtin Engineering Guild,Bentley,2.50,completed,Friday,Dinner,Individual
+ord_58,C00005,2026-09-13T05:50:25.630Z,Curtin Engineering Guild,Bentley,3.50,completed,Monday,Dinner,Individual
+ord_59,C00006,2026-10-03T05:50:25.630Z,Bentley Library Commons,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_60,C00006,2026-09-29T05:50:25.630Z,Bentley Library Commons,Curtin,11.00,completed,Tuesday,Dinner,Individual
+ord_61,C00007,2026-10-03T05:50:25.630Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_62,C00007,2026-09-29T05:50:25.630Z,Victoria Park Station Hub,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_63,C00007,2026-09-25T05:50:25.630Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_64,C00007,2026-09-21T05:50:25.630Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_65,C00007,2026-09-17T05:50:25.630Z,Victoria Park Station Hub,Victoria Park,12.50,completed,Friday,Dinner,Individual
+ord_66,C00007,2026-09-13T05:50:25.630Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_67,C00007,2026-09-09T05:50:25.630Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_68,C00007,2026-09-05T05:50:25.630Z,Victoria Park Station Hub,Victoria Park,12.50,completed,Wednesday,Dinner,Individual
+ord_69,C00008,2026-10-03T05:50:25.630Z,Curtin Central Bus Station,Waterford,12.00,completed,Monday,Dinner,Individual
+ord_70,C00008,2026-09-29T05:50:25.630Z,Curtin Central Bus Station,Waterford,13.50,completed,Tuesday,Dinner,Individual
+ord_71,C00008,2026-09-25T05:50:25.630Z,Curtin Central Bus Station,Waterford,13.00,completed,Wednesday,Dinner,Individual
+ord_72,C00008,2026-09-21T05:50:25.630Z,Curtin Central Bus Station,Waterford,12.00,completed,Thursday,Dinner,Individual
+ord_73,C00008,2026-09-17T05:50:25.630Z,Curtin Central Bus Station,Waterford,13.50,completed,Friday,Dinner,Individual
+ord_74,C00008,2026-09-13T05:50:25.630Z,Curtin Central Bus Station,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_75,C00009,2026-10-03T05:50:25.631Z,Curtin Engineering Guild,Como,4.00,completed,Monday,Dinner,Individual
+ord_76,C00009,2026-09-29T05:50:25.631Z,Curtin Engineering Guild,Como,3.00,completed,Tuesday,Dinner,Individual
+ord_77,C00009,2026-09-25T05:50:25.631Z,Curtin Engineering Guild,Como,3.50,completed,Wednesday,Dinner,Individual
+ord_78,C00009,2026-09-21T05:50:25.631Z,Curtin Engineering Guild,Como,4.00,completed,Thursday,Dinner,Individual
+ord_79,C00009,2026-09-17T05:50:25.631Z,Curtin Engineering Guild,Como,3.00,completed,Friday,Dinner,Individual
+ord_80,C00009,2026-09-13T05:50:25.631Z,Curtin Engineering Guild,Como,3.50,completed,Monday,Dinner,Individual
+ord_81,C00009,2026-09-09T05:50:25.631Z,Curtin Engineering Guild,Como,4.00,completed,Tuesday,Dinner,Individual
+ord_82,C00009,2026-09-05T05:50:25.631Z,Curtin Engineering Guild,Como,3.00,completed,Wednesday,Dinner,Individual
+ord_83,C00010,2026-10-03T05:50:25.631Z,Bentley Library Commons,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_84,C00010,2026-09-29T05:50:25.631Z,Bentley Library Commons,Bentley,12.50,completed,Tuesday,Dinner,Individual
+ord_85,C00010,2026-09-25T05:50:25.631Z,Bentley Library Commons,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_86,C00010,2026-09-21T05:50:25.631Z,Bentley Library Commons,Bentley,12.00,completed,Thursday,Dinner,Individual
+ord_87,C00011,2026-10-03T05:50:25.631Z,Victoria Park Station Hub,Curtin,11.00,completed,Monday,Dinner,Individual
+ord_88,C00011,2026-09-29T05:50:25.631Z,Victoria Park Station Hub,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_89,C00012,2026-10-03T05:50:25.631Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_90,C00012,2026-09-29T05:50:25.631Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_91,C00012,2026-09-25T05:50:25.631Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_92,C00013,2026-10-03T05:50:25.631Z,Curtin Engineering Guild,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_93,C00013,2026-09-29T05:50:25.631Z,Curtin Engineering Guild,Waterford,2.50,completed,Tuesday,Dinner,Individual
+ord_94,C00013,2026-09-25T05:50:25.631Z,Curtin Engineering Guild,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_95,C00013,2026-09-21T05:50:25.631Z,Curtin Engineering Guild,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_96,C00014,2026-10-03T05:50:25.631Z,Bentley Library Commons,Como,11.00,completed,Monday,Dinner,Individual
+ord_97,C00014,2026-09-29T05:50:25.631Z,Bentley Library Commons,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_98,C00014,2026-09-25T05:50:25.631Z,Bentley Library Commons,Como,4.00,completed,Wednesday,Dinner,Individual
+ord_99,C00014,2026-09-21T05:50:25.631Z,Bentley Library Commons,Como,11.00,completed,Thursday,Dinner,Individual
+ord_100,C00015,2026-10-03T05:50:25.632Z,Victoria Park Station Hub,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_101,C00015,2026-09-29T05:50:25.632Z,Victoria Park Station Hub,Bentley,2.50,completed,Tuesday,Dinner,Individual
+ord_102,C00015,2026-09-25T05:50:25.632Z,Victoria Park Station Hub,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_103,C00015,2026-09-21T05:50:25.632Z,Victoria Park Station Hub,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_104,C00015,2026-09-17T05:50:25.632Z,Victoria Park Station Hub,Bentley,2.50,completed,Friday,Dinner,Individual
+ord_105,C00015,2026-09-13T05:50:25.632Z,Victoria Park Station Hub,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_106,C00015,2026-09-09T05:50:25.632Z,Victoria Park Station Hub,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_107,C00015,2026-09-05T05:50:25.632Z,Victoria Park Station Hub,Bentley,2.50,completed,Wednesday,Dinner,Individual
+ord_108,C00016,2026-10-03T05:50:25.632Z,Curtin Central Bus Station,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_109,C00017,2026-10-03T05:50:25.632Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_110,C00017,2026-09-29T05:50:25.632Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_111,C00017,2026-09-25T05:50:25.632Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_112,C00017,2026-09-21T05:50:25.632Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_113,C00017,2026-09-17T05:50:25.632Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_114,C00018,2026-10-03T05:50:25.632Z,Bentley Library Commons,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_115,C00018,2026-09-29T05:50:25.632Z,Bentley Library Commons,Waterford,12.50,completed,Tuesday,Dinner,Individual
+ord_116,C00018,2026-09-25T05:50:25.632Z,Bentley Library Commons,Waterford,12.00,completed,Wednesday,Dinner,Individual
+ord_117,C00018,2026-09-21T05:50:25.632Z,Bentley Library Commons,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_118,C00018,2026-09-17T05:50:25.632Z,Bentley Library Commons,Waterford,12.50,completed,Friday,Dinner,Individual
+ord_119,C00018,2026-09-13T05:50:25.632Z,Bentley Library Commons,Waterford,12.00,completed,Monday,Dinner,Individual
+ord_120,C00018,2026-09-09T05:50:25.632Z,Bentley Library Commons,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_121,C00018,2026-09-05T05:50:25.632Z,Bentley Library Commons,Waterford,12.50,completed,Wednesday,Dinner,Individual
+ord_122,C00019,2026-10-03T05:50:25.632Z,Victoria Park Station Hub,Como,11.00,completed,Monday,Dinner,Individual
+ord_123,C00019,2026-09-29T05:50:25.632Z,Victoria Park Station Hub,Como,11.00,completed,Tuesday,Dinner,Individual
+ord_124,C00019,2026-09-25T05:50:25.632Z,Victoria Park Station Hub,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_125,C00019,2026-09-21T05:50:25.632Z,Victoria Park Station Hub,Como,11.00,completed,Thursday,Dinner,Individual
+ord_126,C00020,2026-10-03T05:50:25.632Z,Curtin Central Bus Station,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_127,C00020,2026-09-29T05:50:25.632Z,Curtin Central Bus Station,Bentley,13.00,completed,Tuesday,Dinner,Individual
+ord_128,C00021,2026-10-03T05:50:25.632Z,Curtin Engineering Guild,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_129,C00021,2026-09-29T05:50:25.632Z,Curtin Engineering Guild,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_130,C00021,2026-09-25T05:50:25.632Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_131,C00021,2026-09-21T05:50:25.632Z,Curtin Engineering Guild,Curtin,12.50,completed,Thursday,Dinner,Individual
+ord_132,C00021,2026-09-17T05:50:25.632Z,Curtin Engineering Guild,Curtin,12.00,completed,Friday,Dinner,Individual
+ord_133,C00021,2026-09-13T05:50:25.632Z,Curtin Engineering Guild,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_134,C00021,2026-09-09T05:50:25.632Z,Curtin Engineering Guild,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_135,C00022,2026-10-03T05:50:25.632Z,Bentley Library Commons,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_136,C00022,2026-09-29T05:50:25.632Z,Bentley Library Commons,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_137,C00023,2026-10-03T05:50:25.632Z,Victoria Park Station Hub,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_138,C00023,2026-09-29T05:50:25.632Z,Victoria Park Station Hub,Waterford,12.50,completed,Tuesday,Dinner,Individual
+ord_139,C00024,2026-10-03T05:50:25.632Z,Curtin Central Bus Station,Como,12.50,completed,Monday,Dinner,Individual
+ord_140,C00024,2026-09-29T05:50:25.632Z,Curtin Central Bus Station,Como,13.50,completed,Tuesday,Dinner,Individual
+ord_141,C00024,2026-09-25T05:50:25.632Z,Curtin Central Bus Station,Como,13.00,completed,Wednesday,Dinner,Individual
+ord_142,C00024,2026-09-21T05:50:25.632Z,Curtin Central Bus Station,Como,12.50,completed,Thursday,Dinner,Individual
+ord_143,C00024,2026-09-17T05:50:25.632Z,Curtin Central Bus Station,Como,13.50,completed,Friday,Dinner,Individual
+ord_144,C00025,2026-10-03T05:50:25.632Z,Curtin Engineering Guild,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_145,C00025,2026-09-29T05:50:25.632Z,Curtin Engineering Guild,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_146,C00025,2026-09-25T05:50:25.632Z,Curtin Engineering Guild,Bentley,3.00,completed,Wednesday,Dinner,Individual
+ord_147,C00026,2026-10-03T05:50:25.632Z,Bentley Library Commons,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_148,C00026,2026-09-29T05:50:25.632Z,Bentley Library Commons,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_149,C00026,2026-09-25T05:50:25.632Z,Bentley Library Commons,Curtin,13.00,completed,Wednesday,Dinner,Individual
+ord_150,C00026,2026-09-21T05:50:25.632Z,Bentley Library Commons,Curtin,12.50,completed,Thursday,Dinner,Individual
+ord_151,C00026,2026-09-17T05:50:25.632Z,Bentley Library Commons,Curtin,13.50,completed,Friday,Dinner,Individual
+ord_152,C00026,2026-09-13T05:50:25.632Z,Bentley Library Commons,Curtin,13.00,completed,Monday,Dinner,Individual
+ord_153,C00026,2026-09-09T05:50:25.632Z,Bentley Library Commons,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_154,C00027,2026-10-03T05:50:25.632Z,Victoria Park Station Hub,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_155,C00027,2026-09-29T05:50:25.632Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_156,C00028,2026-10-03T05:50:25.632Z,Curtin Central Bus Station,Waterford,14.50,completed,Monday,Dinner,Individual
+ord_157,C00028,2026-09-29T05:50:25.632Z,Curtin Central Bus Station,Waterford,12.00,completed,Tuesday,Dinner,Individual
+ord_158,C00028,2026-09-25T05:50:25.632Z,Curtin Central Bus Station,Waterford,13.50,completed,Wednesday,Dinner,Individual
+ord_159,C00028,2026-09-21T05:50:25.632Z,Curtin Central Bus Station,Waterford,14.50,completed,Thursday,Dinner,Individual
+ord_160,C00028,2026-09-17T05:50:25.632Z,Curtin Central Bus Station,Waterford,12.00,completed,Friday,Dinner,Individual
+ord_161,C00028,2026-09-13T05:50:25.632Z,Curtin Central Bus Station,Waterford,13.50,completed,Monday,Dinner,Individual
+ord_162,C00028,2026-09-09T05:50:25.632Z,Curtin Central Bus Station,Waterford,14.50,completed,Tuesday,Dinner,Individual
+ord_163,C00028,2026-09-05T05:50:25.632Z,Curtin Central Bus Station,Waterford,12.00,completed,Wednesday,Dinner,Individual
+ord_164,C00029,2026-10-03T05:50:25.632Z,Curtin Engineering Guild,Como,11.00,completed,Monday,Dinner,Individual
+ord_165,C00029,2026-09-29T05:50:25.632Z,Curtin Engineering Guild,Como,11.00,completed,Tuesday,Dinner,Individual
+ord_166,C00029,2026-09-25T05:50:25.632Z,Curtin Engineering Guild,Como,3.00,completed,Wednesday,Dinner,Individual
+ord_167,C00029,2026-09-21T05:50:25.632Z,Curtin Engineering Guild,Como,11.00,completed,Thursday,Dinner,Individual
+ord_168,C00029,2026-09-17T05:50:25.632Z,Curtin Engineering Guild,Como,11.00,completed,Friday,Dinner,Individual
+ord_169,C00029,2026-09-13T05:50:25.632Z,Curtin Engineering Guild,Como,3.00,completed,Monday,Dinner,Individual
+ord_170,C00030,2026-10-03T05:50:25.632Z,Bentley Library Commons,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_171,C00030,2026-09-29T05:50:25.632Z,Bentley Library Commons,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_172,C00030,2026-09-25T05:50:25.632Z,Bentley Library Commons,Bentley,12.50,completed,Wednesday,Dinner,Individual
+ord_173,C00030,2026-09-21T05:50:25.632Z,Bentley Library Commons,Bentley,12.00,completed,Thursday,Dinner,Individual
+ord_174,C00030,2026-09-17T05:50:25.632Z,Bentley Library Commons,Bentley,12.00,completed,Friday,Dinner,Individual
+ord_175,C00030,2026-09-13T05:50:25.632Z,Bentley Library Commons,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_176,C00031,2026-10-03T05:50:25.632Z,Victoria Park Station Hub,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_177,C00031,2026-09-29T05:50:25.632Z,Victoria Park Station Hub,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_178,C00031,2026-09-25T05:50:25.632Z,Victoria Park Station Hub,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_179,C00031,2026-09-21T05:50:25.632Z,Victoria Park Station Hub,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_180,C00032,2026-10-03T05:50:25.632Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_181,C00032,2026-09-29T05:50:25.632Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_182,C00032,2026-09-25T05:50:25.632Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_183,C00032,2026-09-21T05:50:25.632Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Thursday,Dinner,Individual
+ord_184,C00032,2026-09-17T05:50:25.632Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_185,C00032,2026-09-13T05:50:25.632Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Monday,Dinner,Individual
+ord_186,C00033,2026-10-03T05:50:25.632Z,Curtin Engineering Guild,Waterford,2.50,completed,Monday,Dinner,Individual
+ord_187,C00033,2026-09-29T05:50:25.632Z,Curtin Engineering Guild,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_188,C00033,2026-09-25T05:50:25.632Z,Curtin Engineering Guild,Waterford,12.50,completed,Wednesday,Dinner,Individual
+ord_189,C00033,2026-09-21T05:50:25.632Z,Curtin Engineering Guild,Waterford,2.50,completed,Thursday,Dinner,Individual
+ord_190,C00033,2026-09-17T05:50:25.632Z,Curtin Engineering Guild,Waterford,3.00,completed,Friday,Dinner,Individual
+ord_191,C00033,2026-09-13T05:50:25.632Z,Curtin Engineering Guild,Waterford,12.50,completed,Monday,Dinner,Individual
+ord_192,C00033,2026-09-09T05:50:25.632Z,Curtin Engineering Guild,Waterford,2.50,completed,Tuesday,Dinner,Individual
+ord_193,C00033,2026-09-05T05:50:25.632Z,Curtin Engineering Guild,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_194,C00034,2026-10-03T05:50:25.632Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_195,C00034,2026-09-29T05:50:25.632Z,Bentley Library Commons,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_196,C00034,2026-09-25T05:50:25.632Z,Bentley Library Commons,Como,13.50,completed,Wednesday,Dinner,Individual
+ord_197,C00034,2026-09-21T05:50:25.632Z,Bentley Library Commons,Como,12.50,completed,Thursday,Dinner,Individual
+ord_198,C00035,2026-10-03T05:50:25.633Z,Victoria Park Station Hub,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_199,C00035,2026-09-29T05:50:25.633Z,Victoria Park Station Hub,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_200,C00035,2026-09-25T05:50:25.633Z,Victoria Park Station Hub,Bentley,2.50,completed,Wednesday,Dinner,Individual
+ord_201,C00035,2026-09-21T05:50:25.633Z,Victoria Park Station Hub,Bentley,3.00,completed,Thursday,Dinner,Individual
+ord_202,C00036,2026-10-03T05:50:25.633Z,Curtin Central Bus Station,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_203,C00036,2026-09-29T05:50:25.633Z,Curtin Central Bus Station,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_204,C00036,2026-09-25T05:50:25.633Z,Curtin Central Bus Station,Curtin,12.50,completed,Wednesday,Dinner,Individual
+ord_205,C00036,2026-09-21T05:50:25.633Z,Curtin Central Bus Station,Curtin,12.50,completed,Thursday,Dinner,Individual
+ord_206,C00037,2026-10-03T05:50:25.633Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_207,C00037,2026-09-29T05:50:25.633Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Tuesday,Dinner,Individual
+ord_208,C00037,2026-09-25T05:50:25.633Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Wednesday,Dinner,Individual
+ord_209,C00037,2026-09-21T05:50:25.633Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Thursday,Dinner,Individual
+ord_210,C00037,2026-09-17T05:50:25.633Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Friday,Dinner,Individual
+ord_211,C00037,2026-09-13T05:50:25.633Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_212,C00037,2026-09-09T05:50:25.633Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Tuesday,Dinner,Individual
+ord_213,C00037,2026-09-05T05:50:25.633Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Wednesday,Dinner,Individual
+ord_214,C00038,2026-10-03T05:50:25.633Z,Bentley Library Commons,Waterford,12.50,completed,Monday,Dinner,Individual
+ord_215,C00038,2026-09-29T05:50:25.633Z,Bentley Library Commons,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_216,C00038,2026-09-25T05:50:25.633Z,Bentley Library Commons,Waterford,12.00,completed,Wednesday,Dinner,Individual
+ord_217,C00039,2026-10-03T05:50:25.633Z,Victoria Park Station Hub,Como,12.00,completed,Monday,Dinner,Individual
+ord_218,C00039,2026-09-29T05:50:25.633Z,Victoria Park Station Hub,Como,11.00,completed,Tuesday,Dinner,Individual
+ord_219,C00040,2026-10-03T05:50:25.633Z,Curtin Central Bus Station,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_220,C00040,2026-09-29T05:50:25.633Z,Curtin Central Bus Station,Bentley,3.00,completed,Tuesday,Dinner,Individual
+ord_221,C00041,2026-10-03T05:50:25.633Z,Curtin Engineering Guild,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_222,C00041,2026-09-29T05:50:25.633Z,Curtin Engineering Guild,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_223,C00041,2026-09-25T05:50:25.633Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_224,C00041,2026-09-21T05:50:25.633Z,Curtin Engineering Guild,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_225,C00041,2026-09-17T05:50:25.633Z,Curtin Engineering Guild,Curtin,12.00,completed,Friday,Dinner,Individual
+ord_226,C00041,2026-09-13T05:50:25.633Z,Curtin Engineering Guild,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_227,C00041,2026-09-09T05:50:25.633Z,Curtin Engineering Guild,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_228,C00041,2026-09-05T05:50:25.633Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_229,C00042,2026-10-03T05:50:25.633Z,Bentley Library Commons,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_230,C00042,2026-09-29T05:50:25.633Z,Bentley Library Commons,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_231,C00042,2026-09-25T05:50:25.633Z,Bentley Library Commons,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_232,C00042,2026-09-21T05:50:25.633Z,Bentley Library Commons,Victoria Park,12.50,completed,Thursday,Dinner,Individual
+ord_233,C00042,2026-09-17T05:50:25.633Z,Bentley Library Commons,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_234,C00042,2026-09-13T05:50:25.633Z,Bentley Library Commons,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_235,C00042,2026-09-09T05:50:25.633Z,Bentley Library Commons,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_236,C00043,2026-10-03T05:50:25.633Z,Victoria Park Station Hub,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_237,C00043,2026-09-29T05:50:25.633Z,Victoria Park Station Hub,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_238,C00043,2026-09-25T05:50:25.633Z,Victoria Park Station Hub,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_239,C00043,2026-09-21T05:50:25.633Z,Victoria Park Station Hub,Waterford,11.00,completed,Thursday,Dinner,Individual
+ord_240,C00043,2026-09-17T05:50:25.633Z,Victoria Park Station Hub,Waterford,3.00,completed,Friday,Dinner,Individual
+ord_241,C00043,2026-09-13T05:50:25.633Z,Victoria Park Station Hub,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_242,C00043,2026-09-09T05:50:25.633Z,Victoria Park Station Hub,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_243,C00043,2026-09-05T05:50:25.633Z,Victoria Park Station Hub,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_244,C00044,2026-10-03T05:50:25.633Z,Curtin Central Bus Station,Como,12.00,completed,Monday,Dinner,Individual
+ord_245,C00044,2026-09-29T05:50:25.633Z,Curtin Central Bus Station,Como,12.50,completed,Tuesday,Dinner,Individual
+ord_246,C00044,2026-09-25T05:50:25.633Z,Curtin Central Bus Station,Como,13.50,completed,Wednesday,Dinner,Individual
+ord_247,C00044,2026-09-21T05:50:25.633Z,Curtin Central Bus Station,Como,12.00,completed,Thursday,Dinner,Individual
+ord_248,C00044,2026-09-17T05:50:25.633Z,Curtin Central Bus Station,Como,12.50,completed,Friday,Dinner,Individual
+ord_249,C00045,2026-10-03T05:50:25.633Z,Curtin Engineering Guild,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_250,C00045,2026-09-29T05:50:25.633Z,Curtin Engineering Guild,Bentley,12.50,completed,Tuesday,Dinner,Individual
+ord_251,C00045,2026-09-25T05:50:25.633Z,Curtin Engineering Guild,Bentley,11.50,completed,Wednesday,Dinner,Individual
+ord_252,C00045,2026-09-21T05:50:25.633Z,Curtin Engineering Guild,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_253,C00046,2026-10-03T05:50:25.633Z,Bentley Library Commons,Curtin,13.00,completed,Monday,Dinner,Individual
+ord_254,C00046,2026-09-29T05:50:25.633Z,Bentley Library Commons,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_255,C00046,2026-09-25T05:50:25.633Z,Bentley Library Commons,Curtin,13.50,completed,Wednesday,Dinner,Individual
+ord_256,C00046,2026-09-21T05:50:25.633Z,Bentley Library Commons,Curtin,13.00,completed,Thursday,Dinner,Individual
+ord_257,C00046,2026-09-17T05:50:25.633Z,Bentley Library Commons,Curtin,13.50,completed,Friday,Dinner,Individual
+ord_258,C00046,2026-09-13T05:50:25.633Z,Bentley Library Commons,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_259,C00047,2026-10-03T05:50:25.633Z,Victoria Park Station Hub,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_260,C00047,2026-09-29T05:50:25.633Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_261,C00047,2026-09-25T05:50:25.633Z,Victoria Park Station Hub,Victoria Park,12.50,completed,Wednesday,Dinner,Individual
+ord_262,C00047,2026-09-21T05:50:25.633Z,Victoria Park Station Hub,Victoria Park,11.00,completed,Thursday,Dinner,Individual
+ord_263,C00047,2026-09-17T05:50:25.633Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_264,C00047,2026-09-13T05:50:25.633Z,Victoria Park Station Hub,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_265,C00047,2026-09-09T05:50:25.633Z,Victoria Park Station Hub,Victoria Park,11.00,completed,Tuesday,Dinner,Individual
+ord_266,C00047,2026-09-05T05:50:25.633Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_267,C00048,2026-10-03T05:50:25.633Z,Curtin Central Bus Station,Waterford,12.00,completed,Monday,Dinner,Individual
+ord_268,C00048,2026-09-29T05:50:25.633Z,Curtin Central Bus Station,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_269,C00048,2026-09-25T05:50:25.633Z,Curtin Central Bus Station,Waterford,12.50,completed,Wednesday,Dinner,Individual
+ord_270,C00048,2026-09-21T05:50:25.633Z,Curtin Central Bus Station,Waterford,12.00,completed,Thursday,Dinner,Individual
+ord_271,C00048,2026-09-17T05:50:25.633Z,Curtin Central Bus Station,Waterford,13.00,completed,Friday,Dinner,Individual
+ord_272,C00048,2026-09-13T05:50:25.633Z,Curtin Central Bus Station,Waterford,12.50,completed,Monday,Dinner,Individual
+ord_273,C00048,2026-09-09T05:50:25.633Z,Curtin Central Bus Station,Waterford,12.00,completed,Tuesday,Dinner,Individual
+ord_274,C00049,2026-10-03T05:50:25.633Z,Curtin Engineering Guild,Como,4.00,completed,Monday,Dinner,Individual
+ord_275,C00049,2026-09-29T05:50:25.633Z,Curtin Engineering Guild,Como,3.00,completed,Tuesday,Dinner,Individual
+ord_276,C00049,2026-09-25T05:50:25.633Z,Curtin Engineering Guild,Como,2.50,completed,Wednesday,Dinner,Individual
+ord_277,C00049,2026-09-21T05:50:25.633Z,Curtin Engineering Guild,Como,4.00,completed,Thursday,Dinner,Individual
+ord_278,C00049,2026-09-17T05:50:25.633Z,Curtin Engineering Guild,Como,3.00,completed,Friday,Dinner,Individual
+ord_279,C00049,2026-09-13T05:50:25.633Z,Curtin Engineering Guild,Como,2.50,completed,Monday,Dinner,Individual
+ord_280,C00049,2026-09-09T05:50:25.633Z,Curtin Engineering Guild,Como,4.00,completed,Tuesday,Dinner,Individual
+ord_281,C00049,2026-09-05T05:50:25.633Z,Curtin Engineering Guild,Como,3.00,completed,Wednesday,Dinner,Individual
+ord_282,C00050,2026-10-03T05:50:25.634Z,Bentley Library Commons,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_283,C00050,2026-09-29T05:50:25.634Z,Bentley Library Commons,Bentley,13.00,completed,Tuesday,Dinner,Individual
+ord_284,C00050,2026-09-25T05:50:25.634Z,Bentley Library Commons,Bentley,13.50,completed,Wednesday,Dinner,Individual
+ord_285,C00050,2026-09-21T05:50:25.634Z,Bentley Library Commons,Bentley,12.00,completed,Thursday,Dinner,Individual
+ord_286,C00050,2026-09-17T05:50:25.634Z,Bentley Library Commons,Bentley,13.00,completed,Friday,Dinner,Individual
+ord_287,C00050,2026-09-13T05:50:25.634Z,Bentley Library Commons,Bentley,13.50,completed,Monday,Dinner,Individual
+ord_288,C00050,2026-09-09T05:50:25.634Z,Bentley Library Commons,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_289,C00051,2026-10-03T05:50:25.634Z,Victoria Park Station Hub,Curtin,4.00,completed,Monday,Dinner,Individual
+ord_290,C00051,2026-09-29T05:50:25.634Z,Victoria Park Station Hub,Curtin,2.50,completed,Tuesday,Dinner,Individual
+ord_291,C00051,2026-09-25T05:50:25.634Z,Victoria Park Station Hub,Curtin,3.50,completed,Wednesday,Dinner,Individual
+ord_292,C00051,2026-09-21T05:50:25.634Z,Victoria Park Station Hub,Curtin,4.00,completed,Thursday,Dinner,Individual
+ord_293,C00051,2026-09-17T05:50:25.634Z,Victoria Park Station Hub,Curtin,2.50,completed,Friday,Dinner,Individual
+ord_294,C00051,2026-09-13T05:50:25.634Z,Victoria Park Station Hub,Curtin,3.50,completed,Monday,Dinner,Individual
+ord_295,C00052,2026-10-03T05:50:25.634Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_296,C00052,2026-09-29T05:50:25.634Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_297,C00052,2026-09-25T05:50:25.634Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Wednesday,Dinner,Individual
+ord_298,C00052,2026-09-21T05:50:25.634Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_299,C00052,2026-09-17T05:50:25.634Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_300,C00053,2026-10-03T05:50:25.634Z,Curtin Engineering Guild,Waterford,11.50,completed,Monday,Dinner,Individual
+ord_301,C00053,2026-09-29T05:50:25.634Z,Curtin Engineering Guild,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_302,C00053,2026-09-25T05:50:25.634Z,Curtin Engineering Guild,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_303,C00054,2026-10-03T05:50:25.634Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_304,C00054,2026-09-29T05:50:25.634Z,Bentley Library Commons,Como,13.50,completed,Tuesday,Dinner,Individual
+ord_305,C00055,2026-10-03T05:50:25.634Z,Victoria Park Station Hub,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_306,C00055,2026-09-29T05:50:25.634Z,Victoria Park Station Hub,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_307,C00055,2026-09-25T05:50:25.634Z,Victoria Park Station Hub,Bentley,2.50,completed,Wednesday,Dinner,Individual
+ord_308,C00055,2026-09-21T05:50:25.634Z,Victoria Park Station Hub,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_309,C00056,2026-10-03T05:50:25.634Z,Curtin Central Bus Station,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_310,C00056,2026-09-29T05:50:25.634Z,Curtin Central Bus Station,Curtin,13.00,completed,Tuesday,Dinner,Individual
+ord_311,C00056,2026-09-25T05:50:25.634Z,Curtin Central Bus Station,Curtin,11.00,completed,Wednesday,Dinner,Individual
+ord_312,C00056,2026-09-21T05:50:25.634Z,Curtin Central Bus Station,Curtin,12.50,completed,Thursday,Dinner,Individual
+ord_313,C00056,2026-09-17T05:50:25.634Z,Curtin Central Bus Station,Curtin,13.00,completed,Friday,Dinner,Individual
+ord_314,C00056,2026-09-13T05:50:25.634Z,Curtin Central Bus Station,Curtin,11.00,completed,Monday,Dinner,Individual
+ord_315,C00057,2026-10-03T05:50:25.634Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_316,C00057,2026-09-29T05:50:25.634Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Tuesday,Dinner,Individual
+ord_317,C00058,2026-10-03T05:50:25.634Z,Bentley Library Commons,Waterford,14.00,completed,Monday,Dinner,Individual
+ord_318,C00058,2026-09-29T05:50:25.634Z,Bentley Library Commons,Waterford,14.50,completed,Tuesday,Dinner,Individual
+ord_319,C00058,2026-09-25T05:50:25.634Z,Bentley Library Commons,Waterford,13.00,completed,Wednesday,Dinner,Individual
+ord_320,C00058,2026-09-21T05:50:25.634Z,Bentley Library Commons,Waterford,14.00,completed,Thursday,Dinner,Individual
+ord_321,C00058,2026-09-17T05:50:25.634Z,Bentley Library Commons,Waterford,14.50,completed,Friday,Dinner,Individual
+ord_322,C00058,2026-09-13T05:50:25.634Z,Bentley Library Commons,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_323,C00059,2026-10-03T05:50:25.634Z,Victoria Park Station Hub,Como,11.00,completed,Monday,Dinner,Individual
+ord_324,C00059,2026-09-29T05:50:25.634Z,Victoria Park Station Hub,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_325,C00060,2026-10-03T05:50:25.634Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_326,C00060,2026-09-29T05:50:25.634Z,Curtin Central Bus Station,Bentley,12.50,completed,Tuesday,Dinner,Individual
+ord_327,C00060,2026-09-25T05:50:25.634Z,Curtin Central Bus Station,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_328,C00060,2026-09-21T05:50:25.634Z,Curtin Central Bus Station,Bentley,12.00,completed,Thursday,Dinner,Individual
+ord_329,C00060,2026-09-17T05:50:25.634Z,Curtin Central Bus Station,Bentley,12.50,completed,Friday,Dinner,Individual
+ord_330,C00060,2026-09-13T05:50:25.634Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_331,C00060,2026-09-09T05:50:25.634Z,Curtin Central Bus Station,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_332,C00061,2026-10-03T05:50:25.634Z,Curtin Engineering Guild,Curtin,4.00,completed,Monday,Dinner,Individual
+ord_333,C00061,2026-09-29T05:50:25.634Z,Curtin Engineering Guild,Curtin,11.00,completed,Tuesday,Dinner,Individual
+ord_334,C00061,2026-09-25T05:50:25.634Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_335,C00061,2026-09-21T05:50:25.634Z,Curtin Engineering Guild,Curtin,4.00,completed,Thursday,Dinner,Individual
+ord_336,C00061,2026-09-17T05:50:25.634Z,Curtin Engineering Guild,Curtin,11.00,completed,Friday,Dinner,Individual
+ord_337,C00062,2026-10-03T05:50:25.634Z,Bentley Library Commons,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_338,C00062,2026-09-29T05:50:25.634Z,Bentley Library Commons,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_339,C00062,2026-09-25T05:50:25.634Z,Bentley Library Commons,Victoria Park,12.50,completed,Wednesday,Dinner,Individual
+ord_340,C00062,2026-09-21T05:50:25.634Z,Bentley Library Commons,Victoria Park,12.50,completed,Thursday,Dinner,Individual
+ord_341,C00062,2026-09-17T05:50:25.634Z,Bentley Library Commons,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_342,C00062,2026-09-13T05:50:25.634Z,Bentley Library Commons,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_343,C00062,2026-09-09T05:50:25.634Z,Bentley Library Commons,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_344,C00063,2026-10-03T05:50:25.634Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_345,C00063,2026-09-29T05:50:25.634Z,Victoria Park Station Hub,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_346,C00063,2026-09-25T05:50:25.634Z,Victoria Park Station Hub,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_347,C00063,2026-09-21T05:50:25.634Z,Victoria Park Station Hub,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_348,C00063,2026-09-17T05:50:25.634Z,Victoria Park Station Hub,Waterford,13.00,completed,Friday,Dinner,Individual
+ord_349,C00064,2026-10-03T05:50:25.636Z,Curtin Central Bus Station,Como,12.50,completed,Monday,Dinner,Individual
+ord_350,C00064,2026-09-29T05:50:25.636Z,Curtin Central Bus Station,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_351,C00064,2026-09-25T05:50:25.636Z,Curtin Central Bus Station,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_352,C00064,2026-09-21T05:50:25.636Z,Curtin Central Bus Station,Como,12.50,completed,Thursday,Dinner,Individual
+ord_353,C00064,2026-09-17T05:50:25.636Z,Curtin Central Bus Station,Como,12.00,completed,Friday,Dinner,Individual
+ord_354,C00064,2026-09-13T05:50:25.636Z,Curtin Central Bus Station,Como,12.00,completed,Monday,Dinner,Individual
+ord_355,C00065,2026-10-03T05:50:25.636Z,Curtin Engineering Guild,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_356,C00065,2026-09-29T05:50:25.636Z,Curtin Engineering Guild,Bentley,12.50,completed,Tuesday,Dinner,Individual
+ord_357,C00066,2026-10-03T05:50:25.636Z,Bentley Library Commons,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_358,C00066,2026-09-29T05:50:25.636Z,Bentley Library Commons,Curtin,13.00,completed,Tuesday,Dinner,Individual
+ord_359,C00066,2026-09-25T05:50:25.636Z,Bentley Library Commons,Curtin,14.50,completed,Wednesday,Dinner,Individual
+ord_360,C00066,2026-09-21T05:50:25.636Z,Bentley Library Commons,Curtin,13.50,completed,Thursday,Dinner,Individual
+ord_361,C00067,2026-10-03T05:50:25.636Z,Victoria Park Station Hub,Victoria Park,3.00,completed,Monday,Dinner,Individual
+ord_362,C00067,2026-09-29T05:50:25.636Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_363,C00067,2026-09-25T05:50:25.636Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_364,C00067,2026-09-21T05:50:25.636Z,Victoria Park Station Hub,Victoria Park,3.00,completed,Thursday,Dinner,Individual
+ord_365,C00067,2026-09-17T05:50:25.636Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_366,C00068,2026-10-03T05:50:25.636Z,Curtin Central Bus Station,Waterford,12.50,completed,Monday,Dinner,Individual
+ord_367,C00068,2026-09-29T05:50:25.636Z,Curtin Central Bus Station,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_368,C00068,2026-09-25T05:50:25.636Z,Curtin Central Bus Station,Waterford,14.00,completed,Wednesday,Dinner,Individual
+ord_369,C00068,2026-09-21T05:50:25.636Z,Curtin Central Bus Station,Waterford,12.50,completed,Thursday,Dinner,Individual
+ord_370,C00068,2026-09-17T05:50:25.636Z,Curtin Central Bus Station,Waterford,13.00,completed,Friday,Dinner,Individual
+ord_371,C00068,2026-09-13T05:50:25.636Z,Curtin Central Bus Station,Waterford,14.00,completed,Monday,Dinner,Individual
+ord_372,C00068,2026-09-09T05:50:25.636Z,Curtin Central Bus Station,Waterford,12.50,completed,Tuesday,Dinner,Individual
+ord_373,C00069,2026-10-03T05:50:25.636Z,Curtin Engineering Guild,Como,3.00,completed,Monday,Dinner,Individual
+ord_374,C00069,2026-09-29T05:50:25.636Z,Curtin Engineering Guild,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_375,C00070,2026-10-03T05:50:25.636Z,Bentley Library Commons,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_376,C00070,2026-09-29T05:50:25.636Z,Bentley Library Commons,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_377,C00070,2026-09-25T05:50:25.636Z,Bentley Library Commons,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_378,C00070,2026-09-21T05:50:25.636Z,Bentley Library Commons,Bentley,12.50,completed,Thursday,Dinner,Individual
+ord_379,C00070,2026-09-17T05:50:25.636Z,Bentley Library Commons,Bentley,11.00,completed,Friday,Dinner,Individual
+ord_380,C00070,2026-09-13T05:50:25.636Z,Bentley Library Commons,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_381,C00071,2026-10-03T05:50:25.636Z,Victoria Park Station Hub,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_382,C00071,2026-09-29T05:50:25.636Z,Victoria Park Station Hub,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_383,C00071,2026-09-25T05:50:25.636Z,Victoria Park Station Hub,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_384,C00071,2026-09-21T05:50:25.636Z,Victoria Park Station Hub,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_385,C00071,2026-09-17T05:50:25.636Z,Victoria Park Station Hub,Curtin,12.00,completed,Friday,Dinner,Individual
+ord_386,C00071,2026-09-13T05:50:25.636Z,Victoria Park Station Hub,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_387,C00071,2026-09-09T05:50:25.636Z,Victoria Park Station Hub,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_388,C00072,2026-10-03T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_389,C00072,2026-09-29T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Tuesday,Dinner,Individual
+ord_390,C00072,2026-09-25T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Wednesday,Dinner,Individual
+ord_391,C00072,2026-09-21T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Thursday,Dinner,Individual
+ord_392,C00072,2026-09-17T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Friday,Dinner,Individual
+ord_393,C00072,2026-09-13T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_394,C00072,2026-09-09T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_395,C00072,2026-09-05T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_396,C00073,2026-10-03T05:50:25.637Z,Curtin Engineering Guild,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_397,C00073,2026-09-29T05:50:25.637Z,Curtin Engineering Guild,Waterford,11.50,completed,Tuesday,Dinner,Individual
+ord_398,C00074,2026-10-03T05:50:25.637Z,Bentley Library Commons,Como,13.50,completed,Monday,Dinner,Individual
+ord_399,C00074,2026-09-29T05:50:25.637Z,Bentley Library Commons,Como,12.50,completed,Tuesday,Dinner,Individual
+ord_400,C00074,2026-09-25T05:50:25.637Z,Bentley Library Commons,Como,12.50,completed,Wednesday,Dinner,Individual
+ord_401,C00074,2026-09-21T05:50:25.637Z,Bentley Library Commons,Como,13.50,completed,Thursday,Dinner,Individual
+ord_402,C00074,2026-09-17T05:50:25.637Z,Bentley Library Commons,Como,12.50,completed,Friday,Dinner,Individual
+ord_403,C00074,2026-09-13T05:50:25.637Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_404,C00074,2026-09-09T05:50:25.637Z,Bentley Library Commons,Como,13.50,completed,Tuesday,Dinner,Individual
+ord_405,C00074,2026-09-05T05:50:25.637Z,Bentley Library Commons,Como,12.50,completed,Wednesday,Dinner,Individual
+ord_406,C00075,2026-10-03T05:50:25.637Z,Victoria Park Station Hub,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_407,C00075,2026-09-29T05:50:25.637Z,Victoria Park Station Hub,Bentley,3.00,completed,Tuesday,Dinner,Individual
+ord_408,C00075,2026-09-25T05:50:25.637Z,Victoria Park Station Hub,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_409,C00075,2026-09-21T05:50:25.637Z,Victoria Park Station Hub,Bentley,3.00,completed,Thursday,Dinner,Individual
+ord_410,C00076,2026-10-03T05:50:25.637Z,Curtin Central Bus Station,Curtin,13.00,completed,Monday,Dinner,Individual
+ord_411,C00076,2026-09-29T05:50:25.637Z,Curtin Central Bus Station,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_412,C00077,2026-10-03T05:50:25.637Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_413,C00077,2026-09-29T05:50:25.637Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_414,C00077,2026-09-25T05:50:25.637Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_415,C00077,2026-09-21T05:50:25.637Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_416,C00077,2026-09-17T05:50:25.637Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_417,C00077,2026-09-13T05:50:25.637Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_418,C00077,2026-09-09T05:50:25.637Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_419,C00078,2026-10-03T05:50:25.637Z,Bentley Library Commons,Waterford,14.50,completed,Monday,Dinner,Individual
+ord_420,C00078,2026-09-29T05:50:25.637Z,Bentley Library Commons,Waterford,12.00,completed,Tuesday,Dinner,Individual
+ord_421,C00078,2026-09-25T05:50:25.637Z,Bentley Library Commons,Waterford,13.50,completed,Wednesday,Dinner,Individual
+ord_422,C00078,2026-09-21T05:50:25.637Z,Bentley Library Commons,Waterford,14.50,completed,Thursday,Dinner,Individual
+ord_423,C00078,2026-09-17T05:50:25.637Z,Bentley Library Commons,Waterford,12.00,completed,Friday,Dinner,Individual
+ord_424,C00078,2026-09-13T05:50:25.637Z,Bentley Library Commons,Waterford,13.50,completed,Monday,Dinner,Individual
+ord_425,C00078,2026-09-09T05:50:25.637Z,Bentley Library Commons,Waterford,14.50,completed,Tuesday,Dinner,Individual
+ord_426,C00079,2026-10-03T05:50:25.637Z,Victoria Park Station Hub,Como,3.00,completed,Monday,Dinner,Individual
+ord_427,C00079,2026-09-29T05:50:25.637Z,Victoria Park Station Hub,Como,4.00,completed,Tuesday,Dinner,Individual
+ord_428,C00079,2026-09-25T05:50:25.637Z,Victoria Park Station Hub,Como,2.50,completed,Wednesday,Dinner,Individual
+ord_429,C00079,2026-09-21T05:50:25.637Z,Victoria Park Station Hub,Como,3.00,completed,Thursday,Dinner,Individual
+ord_430,C00079,2026-09-17T05:50:25.637Z,Victoria Park Station Hub,Como,4.00,completed,Friday,Dinner,Individual
+ord_431,C00080,2026-10-03T05:50:25.637Z,Curtin Central Bus Station,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_432,C00080,2026-09-29T05:50:25.637Z,Curtin Central Bus Station,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_433,C00080,2026-09-25T05:50:25.637Z,Curtin Central Bus Station,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_434,C00080,2026-09-21T05:50:25.637Z,Curtin Central Bus Station,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_435,C00080,2026-09-17T05:50:25.637Z,Curtin Central Bus Station,Bentley,12.00,completed,Friday,Dinner,Individual
+ord_436,C00081,2026-10-03T05:50:25.637Z,Curtin Engineering Guild,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_437,C00081,2026-09-29T05:50:25.637Z,Curtin Engineering Guild,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_438,C00081,2026-09-25T05:50:25.637Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_439,C00081,2026-09-21T05:50:25.637Z,Curtin Engineering Guild,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_440,C00082,2026-10-03T05:50:25.637Z,Bentley Library Commons,Victoria Park,13.50,completed,Monday,Dinner,Individual
+ord_441,C00082,2026-09-29T05:50:25.637Z,Bentley Library Commons,Victoria Park,14.50,completed,Tuesday,Dinner,Individual
+ord_442,C00082,2026-09-25T05:50:25.637Z,Bentley Library Commons,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_443,C00082,2026-09-21T05:50:25.637Z,Bentley Library Commons,Victoria Park,13.50,completed,Thursday,Dinner,Individual
+ord_444,C00082,2026-09-17T05:50:25.637Z,Bentley Library Commons,Victoria Park,14.50,completed,Friday,Dinner,Individual
+ord_445,C00082,2026-09-13T05:50:25.637Z,Bentley Library Commons,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_446,C00082,2026-09-09T05:50:25.637Z,Bentley Library Commons,Victoria Park,13.50,completed,Tuesday,Dinner,Individual
+ord_447,C00083,2026-10-03T05:50:25.637Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_448,C00083,2026-09-29T05:50:25.637Z,Victoria Park Station Hub,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_449,C00083,2026-09-25T05:50:25.637Z,Victoria Park Station Hub,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_450,C00083,2026-09-21T05:50:25.637Z,Victoria Park Station Hub,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_451,C00084,2026-10-03T05:50:25.637Z,Curtin Central Bus Station,Como,12.50,completed,Monday,Dinner,Individual
+ord_452,C00084,2026-09-29T05:50:25.637Z,Curtin Central Bus Station,Como,13.00,completed,Tuesday,Dinner,Individual
+ord_453,C00084,2026-09-25T05:50:25.637Z,Curtin Central Bus Station,Como,12.50,completed,Wednesday,Dinner,Individual
+ord_454,C00084,2026-09-21T05:50:25.637Z,Curtin Central Bus Station,Como,12.50,completed,Thursday,Dinner,Individual
+ord_455,C00084,2026-09-17T05:50:25.637Z,Curtin Central Bus Station,Como,13.00,completed,Friday,Dinner,Individual
+ord_456,C00084,2026-09-13T05:50:25.637Z,Curtin Central Bus Station,Como,12.50,completed,Monday,Dinner,Individual
+ord_457,C00085,2026-10-03T05:50:25.637Z,Curtin Engineering Guild,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_458,C00085,2026-09-29T05:50:25.637Z,Curtin Engineering Guild,Bentley,3.00,completed,Tuesday,Dinner,Individual
+ord_459,C00086,2026-10-03T05:50:25.637Z,Bentley Library Commons,Curtin,14.50,completed,Monday,Dinner,Individual
+ord_460,C00086,2026-09-29T05:50:25.637Z,Bentley Library Commons,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_461,C00086,2026-09-25T05:50:25.637Z,Bentley Library Commons,Curtin,13.00,completed,Wednesday,Dinner,Individual
+ord_462,C00087,2026-10-03T05:50:25.637Z,Victoria Park Station Hub,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_463,C00087,2026-09-29T05:50:25.637Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_464,C00087,2026-09-25T05:50:25.637Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_465,C00088,2026-10-03T05:50:25.637Z,Curtin Central Bus Station,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_466,C00088,2026-09-29T05:50:25.637Z,Curtin Central Bus Station,Waterford,14.00,completed,Tuesday,Dinner,Individual
+ord_467,C00089,2026-10-03T05:50:25.637Z,Curtin Engineering Guild,Como,11.00,completed,Monday,Dinner,Individual
+ord_468,C00090,2026-10-03T05:50:25.637Z,Bentley Library Commons,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_469,C00090,2026-09-29T05:50:25.637Z,Bentley Library Commons,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_470,C00090,2026-09-25T05:50:25.637Z,Bentley Library Commons,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_471,C00090,2026-09-21T05:50:25.637Z,Bentley Library Commons,Bentley,12.50,completed,Thursday,Dinner,Individual
+ord_472,C00090,2026-09-17T05:50:25.637Z,Bentley Library Commons,Bentley,12.00,completed,Friday,Dinner,Individual
+ord_473,C00090,2026-09-13T05:50:25.637Z,Bentley Library Commons,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_474,C00091,2026-10-03T05:50:25.637Z,Victoria Park Station Hub,Curtin,3.00,completed,Monday,Dinner,Individual
+ord_475,C00091,2026-09-29T05:50:25.637Z,Victoria Park Station Hub,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_476,C00091,2026-09-25T05:50:25.637Z,Victoria Park Station Hub,Curtin,3.50,completed,Wednesday,Dinner,Individual
+ord_477,C00091,2026-09-21T05:50:25.637Z,Victoria Park Station Hub,Curtin,3.00,completed,Thursday,Dinner,Individual
+ord_478,C00091,2026-09-17T05:50:25.637Z,Victoria Park Station Hub,Curtin,12.00,completed,Friday,Dinner,Individual
+ord_479,C00091,2026-09-13T05:50:25.637Z,Victoria Park Station Hub,Curtin,3.50,completed,Monday,Dinner,Individual
+ord_480,C00091,2026-09-09T05:50:25.637Z,Victoria Park Station Hub,Curtin,3.00,completed,Tuesday,Dinner,Individual
+ord_481,C00092,2026-10-03T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,13.50,completed,Monday,Dinner,Individual
+ord_482,C00092,2026-09-29T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_483,C00092,2026-09-25T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_484,C00092,2026-09-21T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,13.50,completed,Thursday,Dinner,Individual
+ord_485,C00092,2026-09-17T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Friday,Dinner,Individual
+ord_486,C00092,2026-09-13T05:50:25.637Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Monday,Dinner,Individual
+ord_487,C00093,2026-10-03T05:50:25.637Z,Curtin Engineering Guild,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_488,C00093,2026-09-29T05:50:25.637Z,Curtin Engineering Guild,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_489,C00093,2026-09-25T05:50:25.637Z,Curtin Engineering Guild,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_490,C00093,2026-09-21T05:50:25.637Z,Curtin Engineering Guild,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_491,C00093,2026-09-17T05:50:25.637Z,Curtin Engineering Guild,Waterford,11.00,completed,Friday,Dinner,Individual
+ord_492,C00093,2026-09-13T05:50:25.637Z,Curtin Engineering Guild,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_493,C00093,2026-09-09T05:50:25.637Z,Curtin Engineering Guild,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_494,C00094,2026-10-03T05:50:25.638Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_495,C00094,2026-09-29T05:50:25.638Z,Bentley Library Commons,Como,13.00,completed,Tuesday,Dinner,Individual
+ord_496,C00094,2026-09-25T05:50:25.638Z,Bentley Library Commons,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_497,C00094,2026-09-21T05:50:25.638Z,Bentley Library Commons,Como,12.50,completed,Thursday,Dinner,Individual
+ord_498,C00094,2026-09-17T05:50:25.638Z,Bentley Library Commons,Como,13.00,completed,Friday,Dinner,Individual
+ord_499,C00094,2026-09-13T05:50:25.638Z,Bentley Library Commons,Como,12.00,completed,Monday,Dinner,Individual
+ord_500,C00094,2026-09-09T05:50:25.638Z,Bentley Library Commons,Como,12.50,completed,Tuesday,Dinner,Individual
+ord_501,C00095,2026-10-03T05:50:25.638Z,Victoria Park Station Hub,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_502,C00096,2026-10-03T05:50:25.638Z,Curtin Central Bus Station,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_503,C00096,2026-09-29T05:50:25.638Z,Curtin Central Bus Station,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_504,C00096,2026-09-25T05:50:25.638Z,Curtin Central Bus Station,Curtin,14.50,completed,Wednesday,Dinner,Individual
+ord_505,C00096,2026-09-21T05:50:25.638Z,Curtin Central Bus Station,Curtin,13.50,completed,Thursday,Dinner,Individual
+ord_506,C00096,2026-09-17T05:50:25.638Z,Curtin Central Bus Station,Curtin,12.50,completed,Friday,Dinner,Individual
+ord_507,C00096,2026-09-13T05:50:25.638Z,Curtin Central Bus Station,Curtin,14.50,completed,Monday,Dinner,Individual
+ord_508,C00096,2026-09-09T05:50:25.638Z,Curtin Central Bus Station,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_509,C00096,2026-09-05T05:50:25.638Z,Curtin Central Bus Station,Curtin,12.50,completed,Wednesday,Dinner,Individual
+ord_510,C00097,2026-10-03T05:50:25.638Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_511,C00097,2026-09-29T05:50:25.638Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_512,C00097,2026-09-25T05:50:25.638Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Wednesday,Dinner,Individual
+ord_513,C00097,2026-09-21T05:50:25.638Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Thursday,Dinner,Individual
+ord_514,C00097,2026-09-17T05:50:25.638Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_515,C00097,2026-09-13T05:50:25.638Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_516,C00097,2026-09-09T05:50:25.638Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Tuesday,Dinner,Individual
+ord_517,C00098,2026-10-03T05:50:25.638Z,Bentley Library Commons,Waterford,14.50,completed,Monday,Dinner,Individual
+ord_518,C00098,2026-09-29T05:50:25.638Z,Bentley Library Commons,Waterford,12.50,completed,Tuesday,Dinner,Individual
+ord_519,C00098,2026-09-25T05:50:25.638Z,Bentley Library Commons,Waterford,14.00,completed,Wednesday,Dinner,Individual
+ord_520,C00098,2026-09-21T05:50:25.638Z,Bentley Library Commons,Waterford,14.50,completed,Thursday,Dinner,Individual
+ord_521,C00098,2026-09-17T05:50:25.638Z,Bentley Library Commons,Waterford,12.50,completed,Friday,Dinner,Individual
+ord_522,C00098,2026-09-13T05:50:25.638Z,Bentley Library Commons,Waterford,14.00,completed,Monday,Dinner,Individual
+ord_523,C00099,2026-10-03T05:50:25.638Z,Victoria Park Station Hub,Como,4.00,completed,Monday,Dinner,Individual
+ord_524,C00099,2026-09-29T05:50:25.638Z,Victoria Park Station Hub,Como,3.00,completed,Tuesday,Dinner,Individual
+ord_525,C00099,2026-09-25T05:50:25.638Z,Victoria Park Station Hub,Como,3.00,completed,Wednesday,Dinner,Individual
+ord_526,C00099,2026-09-21T05:50:25.638Z,Victoria Park Station Hub,Como,4.00,completed,Thursday,Dinner,Individual
+ord_527,C00099,2026-09-17T05:50:25.638Z,Victoria Park Station Hub,Como,3.00,completed,Friday,Dinner,Individual
+ord_528,C00099,2026-09-13T05:50:25.638Z,Victoria Park Station Hub,Como,3.00,completed,Monday,Dinner,Individual
+ord_529,C00100,2026-10-03T05:50:25.638Z,Curtin Central Bus Station,Bentley,13.00,completed,Monday,Dinner,Individual
+ord_530,C00100,2026-09-29T05:50:25.638Z,Curtin Central Bus Station,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_531,C00100,2026-09-25T05:50:25.638Z,Curtin Central Bus Station,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_532,C00100,2026-09-21T05:50:25.638Z,Curtin Central Bus Station,Bentley,13.00,completed,Thursday,Dinner,Individual
+ord_533,C00100,2026-09-17T05:50:25.638Z,Curtin Central Bus Station,Bentley,11.00,completed,Friday,Dinner,Individual
+ord_534,C00100,2026-09-13T05:50:25.638Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_535,C00100,2026-09-09T05:50:25.638Z,Curtin Central Bus Station,Bentley,13.00,completed,Tuesday,Dinner,Individual
+ord_536,C00101,2026-10-03T05:50:25.638Z,Curtin Engineering Guild,Curtin,11.00,completed,Monday,Dinner,Individual
+ord_537,C00101,2026-09-29T05:50:25.638Z,Curtin Engineering Guild,Curtin,4.00,completed,Tuesday,Dinner,Individual
+ord_538,C00101,2026-09-25T05:50:25.638Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_539,C00101,2026-09-21T05:50:25.638Z,Curtin Engineering Guild,Curtin,11.00,completed,Thursday,Dinner,Individual
+ord_540,C00102,2026-10-03T05:50:25.638Z,Bentley Library Commons,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_541,C00102,2026-09-29T05:50:25.638Z,Bentley Library Commons,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_542,C00102,2026-09-25T05:50:25.638Z,Bentley Library Commons,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_543,C00102,2026-09-21T05:50:25.638Z,Bentley Library Commons,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_544,C00102,2026-09-17T05:50:25.638Z,Bentley Library Commons,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_545,C00102,2026-09-13T05:50:25.638Z,Bentley Library Commons,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_546,C00102,2026-09-09T05:50:25.638Z,Bentley Library Commons,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_547,C00102,2026-09-05T05:50:25.638Z,Bentley Library Commons,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_548,C00103,2026-10-03T05:50:25.638Z,Victoria Park Station Hub,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_549,C00103,2026-09-29T05:50:25.638Z,Victoria Park Station Hub,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_550,C00104,2026-10-03T05:50:25.638Z,Curtin Central Bus Station,Como,12.50,completed,Monday,Dinner,Individual
+ord_551,C00105,2026-10-03T05:50:25.638Z,Curtin Engineering Guild,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_552,C00105,2026-09-29T05:50:25.638Z,Curtin Engineering Guild,Bentley,3.00,completed,Tuesday,Dinner,Individual
+ord_553,C00105,2026-09-25T05:50:25.638Z,Curtin Engineering Guild,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_554,C00105,2026-09-21T05:50:25.638Z,Curtin Engineering Guild,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_555,C00105,2026-09-17T05:50:25.638Z,Curtin Engineering Guild,Bentley,3.00,completed,Friday,Dinner,Individual
+ord_556,C00106,2026-10-03T05:50:25.638Z,Bentley Library Commons,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_557,C00106,2026-09-29T05:50:25.638Z,Bentley Library Commons,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_558,C00106,2026-09-25T05:50:25.638Z,Bentley Library Commons,Curtin,13.50,completed,Wednesday,Dinner,Individual
+ord_559,C00106,2026-09-21T05:50:25.638Z,Bentley Library Commons,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_560,C00106,2026-09-17T05:50:25.638Z,Bentley Library Commons,Curtin,12.50,completed,Friday,Dinner,Individual
+ord_561,C00107,2026-10-03T05:50:25.638Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_562,C00108,2026-10-03T05:50:25.638Z,Curtin Central Bus Station,Waterford,14.50,completed,Monday,Dinner,Individual
+ord_563,C00108,2026-09-29T05:50:25.638Z,Curtin Central Bus Station,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_564,C00108,2026-09-25T05:50:25.638Z,Curtin Central Bus Station,Waterford,14.00,completed,Wednesday,Dinner,Individual
+ord_565,C00108,2026-09-21T05:50:25.638Z,Curtin Central Bus Station,Waterford,14.50,completed,Thursday,Dinner,Individual
+ord_566,C00108,2026-09-17T05:50:25.638Z,Curtin Central Bus Station,Waterford,13.00,completed,Friday,Dinner,Individual
+ord_567,C00109,2026-10-03T05:50:25.638Z,Curtin Engineering Guild,Como,4.00,completed,Monday,Dinner,Individual
+ord_568,C00109,2026-09-29T05:50:25.638Z,Curtin Engineering Guild,Como,3.50,completed,Tuesday,Dinner,Individual
+ord_569,C00109,2026-09-25T05:50:25.638Z,Curtin Engineering Guild,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_570,C00109,2026-09-21T05:50:25.638Z,Curtin Engineering Guild,Como,4.00,completed,Thursday,Dinner,Individual
+ord_571,C00109,2026-09-17T05:50:25.638Z,Curtin Engineering Guild,Como,3.50,completed,Friday,Dinner,Individual
+ord_572,C00109,2026-09-13T05:50:25.638Z,Curtin Engineering Guild,Como,12.00,completed,Monday,Dinner,Individual
+ord_573,C00110,2026-10-03T05:50:25.638Z,Bentley Library Commons,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_574,C00110,2026-09-29T05:50:25.638Z,Bentley Library Commons,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_575,C00110,2026-09-25T05:50:25.638Z,Bentley Library Commons,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_576,C00111,2026-10-03T05:50:25.638Z,Victoria Park Station Hub,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_577,C00111,2026-09-29T05:50:25.638Z,Victoria Park Station Hub,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_578,C00112,2026-10-03T05:50:25.638Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Monday,Dinner,Individual
+ord_579,C00112,2026-09-29T05:50:25.638Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_580,C00112,2026-09-25T05:50:25.638Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Wednesday,Dinner,Individual
+ord_581,C00112,2026-09-21T05:50:25.638Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Thursday,Dinner,Individual
+ord_582,C00112,2026-09-17T05:50:25.638Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_583,C00112,2026-09-13T05:50:25.638Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_584,C00113,2026-10-03T05:50:25.638Z,Curtin Engineering Guild,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_585,C00113,2026-09-29T05:50:25.638Z,Curtin Engineering Guild,Waterford,2.50,completed,Tuesday,Dinner,Individual
+ord_586,C00113,2026-09-25T05:50:25.638Z,Curtin Engineering Guild,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_587,C00113,2026-09-21T05:50:25.638Z,Curtin Engineering Guild,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_588,C00113,2026-09-17T05:50:25.638Z,Curtin Engineering Guild,Waterford,2.50,completed,Friday,Dinner,Individual
+ord_589,C00114,2026-10-03T05:50:25.638Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_590,C00114,2026-09-29T05:50:25.638Z,Bentley Library Commons,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_591,C00114,2026-09-25T05:50:25.638Z,Bentley Library Commons,Como,12.50,completed,Wednesday,Dinner,Individual
+ord_592,C00114,2026-09-21T05:50:25.638Z,Bentley Library Commons,Como,12.50,completed,Thursday,Dinner,Individual
+ord_593,C00114,2026-09-17T05:50:25.638Z,Bentley Library Commons,Como,12.00,completed,Friday,Dinner,Individual
+ord_594,C00114,2026-09-13T05:50:25.638Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_595,C00114,2026-09-09T05:50:25.638Z,Bentley Library Commons,Como,12.50,completed,Tuesday,Dinner,Individual
+ord_596,C00114,2026-09-05T05:50:25.638Z,Bentley Library Commons,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_597,C00115,2026-10-03T05:50:25.638Z,Victoria Park Station Hub,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_598,C00115,2026-09-29T05:50:25.638Z,Victoria Park Station Hub,Bentley,3.00,completed,Tuesday,Dinner,Individual
+ord_599,C00116,2026-10-03T05:50:25.638Z,Curtin Central Bus Station,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_600,C00116,2026-09-29T05:50:25.638Z,Curtin Central Bus Station,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_601,C00116,2026-09-25T05:50:25.638Z,Curtin Central Bus Station,Curtin,11.00,completed,Wednesday,Dinner,Individual
+ord_602,C00116,2026-09-21T05:50:25.638Z,Curtin Central Bus Station,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_603,C00116,2026-09-17T05:50:25.638Z,Curtin Central Bus Station,Curtin,12.00,completed,Friday,Dinner,Individual
+ord_604,C00117,2026-10-03T05:50:25.638Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_605,C00117,2026-09-29T05:50:25.638Z,Curtin Engineering Guild,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_606,C00117,2026-09-25T05:50:25.638Z,Curtin Engineering Guild,Victoria Park,12.50,completed,Wednesday,Dinner,Individual
+ord_607,C00118,2026-10-03T05:50:25.638Z,Bentley Library Commons,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_608,C00118,2026-09-29T05:50:25.638Z,Bentley Library Commons,Waterford,14.50,completed,Tuesday,Dinner,Individual
+ord_609,C00118,2026-09-25T05:50:25.638Z,Bentley Library Commons,Waterford,13.50,completed,Wednesday,Dinner,Individual
+ord_610,C00118,2026-09-21T05:50:25.638Z,Bentley Library Commons,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_611,C00118,2026-09-17T05:50:25.638Z,Bentley Library Commons,Waterford,14.50,completed,Friday,Dinner,Individual
+ord_612,C00118,2026-09-13T05:50:25.638Z,Bentley Library Commons,Waterford,13.50,completed,Monday,Dinner,Individual
+ord_613,C00119,2026-10-03T05:50:25.638Z,Victoria Park Station Hub,Como,12.00,completed,Monday,Dinner,Individual
+ord_614,C00119,2026-09-29T05:50:25.638Z,Victoria Park Station Hub,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_615,C00120,2026-10-03T05:50:25.638Z,Curtin Central Bus Station,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_616,C00120,2026-09-29T05:50:25.638Z,Curtin Central Bus Station,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_617,C00120,2026-09-25T05:50:25.638Z,Curtin Central Bus Station,Bentley,12.50,completed,Wednesday,Dinner,Individual
+ord_618,C00120,2026-09-21T05:50:25.638Z,Curtin Central Bus Station,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_619,C00120,2026-09-17T05:50:25.638Z,Curtin Central Bus Station,Bentley,12.00,completed,Friday,Dinner,Individual
+ord_620,C00120,2026-09-13T05:50:25.638Z,Curtin Central Bus Station,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_621,C00120,2026-09-09T05:50:25.638Z,Curtin Central Bus Station,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_622,C00120,2026-09-05T05:50:25.638Z,Curtin Central Bus Station,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_623,C00121,2026-10-03T05:50:25.638Z,Curtin Engineering Guild,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_624,C00121,2026-09-29T05:50:25.638Z,Curtin Engineering Guild,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_625,C00121,2026-09-25T05:50:25.638Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_626,C00121,2026-09-21T05:50:25.638Z,Curtin Engineering Guild,Curtin,12.50,completed,Thursday,Dinner,Individual
+ord_627,C00122,2026-10-03T05:50:25.638Z,Bentley Library Commons,Victoria Park,13.00,completed,Monday,Dinner,Individual
+ord_628,C00122,2026-09-29T05:50:25.638Z,Bentley Library Commons,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_629,C00122,2026-09-25T05:50:25.638Z,Bentley Library Commons,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_630,C00122,2026-09-21T05:50:25.638Z,Bentley Library Commons,Victoria Park,13.00,completed,Thursday,Dinner,Individual
+ord_631,C00123,2026-10-03T05:50:25.638Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_632,C00123,2026-09-29T05:50:25.638Z,Victoria Park Station Hub,Waterford,2.50,completed,Tuesday,Dinner,Individual
+ord_633,C00124,2026-10-03T05:50:25.639Z,Curtin Central Bus Station,Como,12.50,completed,Monday,Dinner,Individual
+ord_634,C00125,2026-10-03T05:50:25.639Z,Curtin Engineering Guild,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_635,C00125,2026-09-29T05:50:25.639Z,Curtin Engineering Guild,Bentley,4.00,completed,Tuesday,Dinner,Individual
+ord_636,C00126,2026-10-03T05:50:25.639Z,Bentley Library Commons,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_637,C00126,2026-09-29T05:50:25.639Z,Bentley Library Commons,Curtin,11.00,completed,Tuesday,Dinner,Individual
+ord_638,C00126,2026-09-25T05:50:25.639Z,Bentley Library Commons,Curtin,12.50,completed,Wednesday,Dinner,Individual
+ord_639,C00126,2026-09-21T05:50:25.639Z,Bentley Library Commons,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_640,C00126,2026-09-17T05:50:25.639Z,Bentley Library Commons,Curtin,11.00,completed,Friday,Dinner,Individual
+ord_641,C00126,2026-09-13T05:50:25.639Z,Bentley Library Commons,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_642,C00127,2026-10-03T05:50:25.639Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_643,C00127,2026-09-29T05:50:25.639Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_644,C00127,2026-09-25T05:50:25.639Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_645,C00127,2026-09-21T05:50:25.639Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_646,C00127,2026-09-17T05:50:25.639Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_647,C00127,2026-09-13T05:50:25.639Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_648,C00127,2026-09-09T05:50:25.639Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_649,C00128,2026-10-03T05:50:25.639Z,Curtin Central Bus Station,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_650,C00128,2026-09-29T05:50:25.639Z,Curtin Central Bus Station,Waterford,14.00,completed,Tuesday,Dinner,Individual
+ord_651,C00128,2026-09-25T05:50:25.639Z,Curtin Central Bus Station,Waterford,13.50,completed,Wednesday,Dinner,Individual
+ord_652,C00129,2026-10-03T05:50:25.640Z,Curtin Engineering Guild,Como,11.00,completed,Monday,Dinner,Individual
+ord_653,C00129,2026-09-29T05:50:25.640Z,Curtin Engineering Guild,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_654,C00129,2026-09-25T05:50:25.640Z,Curtin Engineering Guild,Como,4.00,completed,Wednesday,Dinner,Individual
+ord_655,C00129,2026-09-21T05:50:25.640Z,Curtin Engineering Guild,Como,11.00,completed,Thursday,Dinner,Individual
+ord_656,C00129,2026-09-17T05:50:25.640Z,Curtin Engineering Guild,Como,12.00,completed,Friday,Dinner,Individual
+ord_657,C00129,2026-09-13T05:50:25.640Z,Curtin Engineering Guild,Como,4.00,completed,Monday,Dinner,Individual
+ord_658,C00129,2026-09-09T05:50:25.640Z,Curtin Engineering Guild,Como,11.00,completed,Tuesday,Dinner,Individual
+ord_659,C00129,2026-09-05T05:50:25.640Z,Curtin Engineering Guild,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_660,C00130,2026-10-03T05:50:25.640Z,Bentley Library Commons,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_661,C00130,2026-09-29T05:50:25.640Z,Bentley Library Commons,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_662,C00130,2026-09-25T05:50:25.640Z,Bentley Library Commons,Bentley,4.00,completed,Wednesday,Dinner,Individual
+ord_663,C00130,2026-09-21T05:50:25.640Z,Bentley Library Commons,Bentley,3.00,completed,Thursday,Dinner,Individual
+ord_664,C00130,2026-09-17T05:50:25.640Z,Bentley Library Commons,Bentley,11.00,completed,Friday,Dinner,Individual
+ord_665,C00131,2026-10-03T05:50:25.640Z,Victoria Park Station Hub,Curtin,4.00,completed,Monday,Dinner,Individual
+ord_666,C00131,2026-09-29T05:50:25.640Z,Victoria Park Station Hub,Curtin,3.00,completed,Tuesday,Dinner,Individual
+ord_667,C00131,2026-09-25T05:50:25.640Z,Victoria Park Station Hub,Curtin,3.50,completed,Wednesday,Dinner,Individual
+ord_668,C00132,2026-10-03T05:50:25.640Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_669,C00132,2026-09-29T05:50:25.640Z,Curtin Central Bus Station,Victoria Park,13.50,completed,Tuesday,Dinner,Individual
+ord_670,C00133,2026-10-03T05:50:25.640Z,Curtin Engineering Guild,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_671,C00133,2026-09-29T05:50:25.640Z,Curtin Engineering Guild,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_672,C00134,2026-10-03T05:50:25.640Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_673,C00134,2026-09-29T05:50:25.640Z,Bentley Library Commons,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_674,C00134,2026-09-25T05:50:25.640Z,Bentley Library Commons,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_675,C00134,2026-09-21T05:50:25.640Z,Bentley Library Commons,Como,12.50,completed,Thursday,Dinner,Individual
+ord_676,C00135,2026-10-03T05:50:25.640Z,Victoria Park Station Hub,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_677,C00135,2026-09-29T05:50:25.640Z,Victoria Park Station Hub,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_678,C00136,2026-10-03T05:50:25.640Z,Curtin Central Bus Station,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_679,C00136,2026-09-29T05:50:25.640Z,Curtin Central Bus Station,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_680,C00136,2026-09-25T05:50:25.640Z,Curtin Central Bus Station,Curtin,13.00,completed,Wednesday,Dinner,Individual
+ord_681,C00136,2026-09-21T05:50:25.640Z,Curtin Central Bus Station,Curtin,13.50,completed,Thursday,Dinner,Individual
+ord_682,C00136,2026-09-17T05:50:25.640Z,Curtin Central Bus Station,Curtin,12.50,completed,Friday,Dinner,Individual
+ord_683,C00136,2026-09-13T05:50:25.640Z,Curtin Central Bus Station,Curtin,13.00,completed,Monday,Dinner,Individual
+ord_684,C00136,2026-09-09T05:50:25.640Z,Curtin Central Bus Station,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_685,C00136,2026-09-05T05:50:25.640Z,Curtin Central Bus Station,Curtin,12.50,completed,Wednesday,Dinner,Individual
+ord_686,C00137,2026-10-03T05:50:25.641Z,Curtin Engineering Guild,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_687,C00137,2026-09-29T05:50:25.641Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_688,C00138,2026-10-03T05:50:25.641Z,Bentley Library Commons,Waterford,13.50,completed,Monday,Dinner,Individual
+ord_689,C00138,2026-09-29T05:50:25.641Z,Bentley Library Commons,Waterford,12.00,completed,Tuesday,Dinner,Individual
+ord_690,C00139,2026-10-03T05:50:25.641Z,Victoria Park Station Hub,Como,3.00,completed,Monday,Dinner,Individual
+ord_691,C00140,2026-10-03T05:50:25.641Z,Curtin Central Bus Station,Bentley,13.00,completed,Monday,Dinner,Individual
+ord_692,C00140,2026-09-29T05:50:25.641Z,Curtin Central Bus Station,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_693,C00140,2026-09-25T05:50:25.641Z,Curtin Central Bus Station,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_694,C00141,2026-10-03T05:50:25.641Z,Curtin Engineering Guild,Curtin,4.00,completed,Monday,Dinner,Individual
+ord_695,C00141,2026-09-29T05:50:25.641Z,Curtin Engineering Guild,Curtin,11.00,completed,Tuesday,Dinner,Individual
+ord_696,C00141,2026-09-25T05:50:25.641Z,Curtin Engineering Guild,Curtin,11.00,completed,Wednesday,Dinner,Individual
+ord_697,C00141,2026-09-21T05:50:25.641Z,Curtin Engineering Guild,Curtin,4.00,completed,Thursday,Dinner,Individual
+ord_698,C00141,2026-09-17T05:50:25.641Z,Curtin Engineering Guild,Curtin,11.00,completed,Friday,Dinner,Individual
+ord_699,C00142,2026-10-03T05:50:25.641Z,Bentley Library Commons,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_700,C00142,2026-09-29T05:50:25.641Z,Bentley Library Commons,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_701,C00142,2026-09-25T05:50:25.641Z,Bentley Library Commons,Victoria Park,13.50,completed,Wednesday,Dinner,Individual
+ord_702,C00143,2026-10-03T05:50:25.641Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_703,C00143,2026-09-29T05:50:25.641Z,Victoria Park Station Hub,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_704,C00143,2026-09-25T05:50:25.641Z,Victoria Park Station Hub,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_705,C00143,2026-09-21T05:50:25.641Z,Victoria Park Station Hub,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_706,C00144,2026-10-03T05:50:25.641Z,Curtin Central Bus Station,Como,11.00,completed,Monday,Dinner,Individual
+ord_707,C00145,2026-10-03T05:50:25.641Z,Curtin Engineering Guild,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_708,C00146,2026-10-03T05:50:25.641Z,Bentley Library Commons,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_709,C00146,2026-09-29T05:50:25.641Z,Bentley Library Commons,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_710,C00146,2026-09-25T05:50:25.641Z,Bentley Library Commons,Curtin,11.00,completed,Wednesday,Dinner,Individual
+ord_711,C00147,2026-10-03T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_712,C00147,2026-09-29T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,4.00,completed,Tuesday,Dinner,Individual
+ord_713,C00147,2026-09-25T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,11.00,completed,Wednesday,Dinner,Individual
+ord_714,C00147,2026-09-21T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_715,C00147,2026-09-17T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,4.00,completed,Friday,Dinner,Individual
+ord_716,C00147,2026-09-13T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_717,C00147,2026-09-09T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_718,C00147,2026-09-05T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,4.00,completed,Wednesday,Dinner,Individual
+ord_719,C00148,2026-10-03T05:50:25.641Z,Curtin Central Bus Station,Waterford,13.50,completed,Monday,Dinner,Individual
+ord_720,C00148,2026-09-29T05:50:25.641Z,Curtin Central Bus Station,Waterford,12.00,completed,Tuesday,Dinner,Individual
+ord_721,C00148,2026-09-25T05:50:25.641Z,Curtin Central Bus Station,Waterford,12.00,completed,Wednesday,Dinner,Individual
+ord_722,C00148,2026-09-21T05:50:25.641Z,Curtin Central Bus Station,Waterford,13.50,completed,Thursday,Dinner,Individual
+ord_723,C00148,2026-09-17T05:50:25.641Z,Curtin Central Bus Station,Waterford,12.00,completed,Friday,Dinner,Individual
+ord_724,C00148,2026-09-13T05:50:25.641Z,Curtin Central Bus Station,Waterford,12.00,completed,Monday,Dinner,Individual
+ord_725,C00148,2026-09-09T05:50:25.641Z,Curtin Central Bus Station,Waterford,13.50,completed,Tuesday,Dinner,Individual
+ord_726,C00149,2026-10-03T05:50:25.641Z,Curtin Engineering Guild,Como,12.00,completed,Monday,Dinner,Individual
+ord_727,C00150,2026-10-03T05:50:25.641Z,Bentley Library Commons,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_728,C00150,2026-09-29T05:50:25.641Z,Bentley Library Commons,Bentley,13.00,completed,Tuesday,Dinner,Individual
+ord_729,C00150,2026-09-25T05:50:25.641Z,Bentley Library Commons,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_730,C00151,2026-10-03T05:50:25.641Z,Victoria Park Station Hub,Curtin,2.50,completed,Monday,Dinner,Individual
+ord_731,C00151,2026-09-29T05:50:25.641Z,Victoria Park Station Hub,Curtin,3.00,completed,Tuesday,Dinner,Individual
+ord_732,C00151,2026-09-25T05:50:25.641Z,Victoria Park Station Hub,Curtin,3.00,completed,Wednesday,Dinner,Individual
+ord_733,C00151,2026-09-21T05:50:25.641Z,Victoria Park Station Hub,Curtin,2.50,completed,Thursday,Dinner,Individual
+ord_734,C00151,2026-09-17T05:50:25.641Z,Victoria Park Station Hub,Curtin,3.00,completed,Friday,Dinner,Individual
+ord_735,C00151,2026-09-13T05:50:25.641Z,Victoria Park Station Hub,Curtin,3.00,completed,Monday,Dinner,Individual
+ord_736,C00151,2026-09-09T05:50:25.641Z,Victoria Park Station Hub,Curtin,2.50,completed,Tuesday,Dinner,Individual
+ord_737,C00152,2026-10-03T05:50:25.641Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_738,C00152,2026-09-29T05:50:25.641Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_739,C00152,2026-09-25T05:50:25.641Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_740,C00152,2026-09-21T05:50:25.641Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_741,C00152,2026-09-17T05:50:25.641Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_742,C00153,2026-10-03T05:50:25.641Z,Curtin Engineering Guild,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_743,C00153,2026-09-29T05:50:25.641Z,Curtin Engineering Guild,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_744,C00154,2026-10-03T05:50:25.641Z,Bentley Library Commons,Como,13.50,completed,Monday,Dinner,Individual
+ord_745,C00155,2026-10-03T05:50:25.641Z,Victoria Park Station Hub,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_746,C00155,2026-09-29T05:50:25.641Z,Victoria Park Station Hub,Bentley,12.50,completed,Tuesday,Dinner,Individual
+ord_747,C00155,2026-09-25T05:50:25.641Z,Victoria Park Station Hub,Bentley,3.00,completed,Wednesday,Dinner,Individual
+ord_748,C00155,2026-09-21T05:50:25.641Z,Victoria Park Station Hub,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_749,C00155,2026-09-17T05:50:25.641Z,Victoria Park Station Hub,Bentley,12.50,completed,Friday,Dinner,Individual
+ord_750,C00155,2026-09-13T05:50:25.641Z,Victoria Park Station Hub,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_751,C00156,2026-10-03T05:50:25.641Z,Curtin Central Bus Station,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_752,C00156,2026-09-29T05:50:25.641Z,Curtin Central Bus Station,Curtin,13.00,completed,Tuesday,Dinner,Individual
+ord_753,C00156,2026-09-25T05:50:25.641Z,Curtin Central Bus Station,Curtin,12.50,completed,Wednesday,Dinner,Individual
+ord_754,C00157,2026-10-03T05:50:25.641Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_755,C00157,2026-09-29T05:50:25.641Z,Curtin Engineering Guild,Victoria Park,13.50,completed,Tuesday,Dinner,Individual
+ord_756,C00157,2026-09-25T05:50:25.641Z,Curtin Engineering Guild,Victoria Park,12.50,completed,Wednesday,Dinner,Individual
+ord_757,C00157,2026-09-21T05:50:25.641Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_758,C00157,2026-09-17T05:50:25.641Z,Curtin Engineering Guild,Victoria Park,13.50,completed,Friday,Dinner,Individual
+ord_759,C00157,2026-09-13T05:50:25.641Z,Curtin Engineering Guild,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_760,C00157,2026-09-09T05:50:25.641Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_761,C00158,2026-10-03T05:50:25.641Z,Bentley Library Commons,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_762,C00158,2026-09-29T05:50:25.641Z,Bentley Library Commons,Waterford,12.00,completed,Tuesday,Dinner,Individual
+ord_763,C00158,2026-09-25T05:50:25.641Z,Bentley Library Commons,Waterford,12.50,completed,Wednesday,Dinner,Individual
+ord_764,C00158,2026-09-21T05:50:25.641Z,Bentley Library Commons,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_765,C00158,2026-09-17T05:50:25.641Z,Bentley Library Commons,Waterford,12.00,completed,Friday,Dinner,Individual
+ord_766,C00159,2026-10-03T05:50:25.641Z,Victoria Park Station Hub,Como,3.00,completed,Monday,Dinner,Individual
+ord_767,C00159,2026-09-29T05:50:25.641Z,Victoria Park Station Hub,Como,4.00,completed,Tuesday,Dinner,Individual
+ord_768,C00159,2026-09-25T05:50:25.641Z,Victoria Park Station Hub,Como,3.50,completed,Wednesday,Dinner,Individual
+ord_769,C00159,2026-09-21T05:50:25.641Z,Victoria Park Station Hub,Como,3.00,completed,Thursday,Dinner,Individual
+ord_770,C00159,2026-09-17T05:50:25.641Z,Victoria Park Station Hub,Como,4.00,completed,Friday,Dinner,Individual
+ord_771,C00160,2026-10-03T05:50:25.641Z,Curtin Central Bus Station,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_772,C00160,2026-09-29T05:50:25.641Z,Curtin Central Bus Station,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_773,C00160,2026-09-25T05:50:25.641Z,Curtin Central Bus Station,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_774,C00160,2026-09-21T05:50:25.641Z,Curtin Central Bus Station,Bentley,12.50,completed,Thursday,Dinner,Individual
+ord_775,C00160,2026-09-17T05:50:25.641Z,Curtin Central Bus Station,Bentley,12.00,completed,Friday,Dinner,Individual
+ord_776,C00160,2026-09-13T05:50:25.641Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_777,C00161,2026-10-03T05:50:25.641Z,Curtin Engineering Guild,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_778,C00161,2026-09-29T05:50:25.641Z,Curtin Engineering Guild,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_779,C00161,2026-09-25T05:50:25.641Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_780,C00161,2026-09-21T05:50:25.641Z,Curtin Engineering Guild,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_781,C00161,2026-09-17T05:50:25.641Z,Curtin Engineering Guild,Curtin,12.50,completed,Friday,Dinner,Individual
+ord_782,C00161,2026-09-13T05:50:25.641Z,Curtin Engineering Guild,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_783,C00162,2026-10-03T05:50:25.641Z,Bentley Library Commons,Victoria Park,13.50,completed,Monday,Dinner,Individual
+ord_784,C00162,2026-09-29T05:50:25.641Z,Bentley Library Commons,Victoria Park,13.50,completed,Tuesday,Dinner,Individual
+ord_785,C00162,2026-09-25T05:50:25.641Z,Bentley Library Commons,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_786,C00162,2026-09-21T05:50:25.641Z,Bentley Library Commons,Victoria Park,13.50,completed,Thursday,Dinner,Individual
+ord_787,C00163,2026-10-03T05:50:25.641Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_788,C00163,2026-09-29T05:50:25.641Z,Victoria Park Station Hub,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_789,C00164,2026-10-03T05:50:25.641Z,Curtin Central Bus Station,Como,12.00,completed,Monday,Dinner,Individual
+ord_790,C00164,2026-09-29T05:50:25.641Z,Curtin Central Bus Station,Como,12.50,completed,Tuesday,Dinner,Individual
+ord_791,C00164,2026-09-25T05:50:25.641Z,Curtin Central Bus Station,Como,12.50,completed,Wednesday,Dinner,Individual
+ord_792,C00164,2026-09-21T05:50:25.641Z,Curtin Central Bus Station,Como,12.00,completed,Thursday,Dinner,Individual
+ord_793,C00164,2026-09-17T05:50:25.641Z,Curtin Central Bus Station,Como,12.50,completed,Friday,Dinner,Individual
+ord_794,C00164,2026-09-13T05:50:25.641Z,Curtin Central Bus Station,Como,12.50,completed,Monday,Dinner,Individual
+ord_795,C00164,2026-09-09T05:50:25.641Z,Curtin Central Bus Station,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_796,C00165,2026-10-03T05:50:25.641Z,Curtin Engineering Guild,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_797,C00165,2026-09-29T05:50:25.641Z,Curtin Engineering Guild,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_798,C00166,2026-10-03T05:50:25.641Z,Bentley Library Commons,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_799,C00166,2026-09-29T05:50:25.641Z,Bentley Library Commons,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_800,C00166,2026-09-25T05:50:25.641Z,Bentley Library Commons,Curtin,11.00,completed,Wednesday,Dinner,Individual
+ord_801,C00166,2026-09-21T05:50:25.641Z,Bentley Library Commons,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_802,C00166,2026-09-17T05:50:25.641Z,Bentley Library Commons,Curtin,12.50,completed,Friday,Dinner,Individual
+ord_803,C00166,2026-09-13T05:50:25.641Z,Bentley Library Commons,Curtin,11.00,completed,Monday,Dinner,Individual
+ord_804,C00167,2026-10-03T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,3.00,completed,Monday,Dinner,Individual
+ord_805,C00167,2026-09-29T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,3.50,completed,Tuesday,Dinner,Individual
+ord_806,C00167,2026-09-25T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,11.00,completed,Wednesday,Dinner,Individual
+ord_807,C00167,2026-09-21T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,3.00,completed,Thursday,Dinner,Individual
+ord_808,C00167,2026-09-17T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,3.50,completed,Friday,Dinner,Individual
+ord_809,C00167,2026-09-13T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_810,C00167,2026-09-09T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,3.00,completed,Tuesday,Dinner,Individual
+ord_811,C00167,2026-09-05T05:50:25.641Z,Victoria Park Station Hub,Victoria Park,3.50,completed,Wednesday,Dinner,Individual
+ord_812,C00168,2026-10-03T05:50:25.641Z,Curtin Central Bus Station,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_813,C00168,2026-09-29T05:50:25.641Z,Curtin Central Bus Station,Waterford,12.00,completed,Tuesday,Dinner,Individual
+ord_814,C00168,2026-09-25T05:50:25.641Z,Curtin Central Bus Station,Waterford,14.00,completed,Wednesday,Dinner,Individual
+ord_815,C00168,2026-09-21T05:50:25.641Z,Curtin Central Bus Station,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_816,C00168,2026-09-17T05:50:25.641Z,Curtin Central Bus Station,Waterford,12.00,completed,Friday,Dinner,Individual
+ord_817,C00168,2026-09-13T05:50:25.641Z,Curtin Central Bus Station,Waterford,14.00,completed,Monday,Dinner,Individual
+ord_818,C00168,2026-09-09T05:50:25.641Z,Curtin Central Bus Station,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_819,C00168,2026-09-05T05:50:25.641Z,Curtin Central Bus Station,Waterford,12.00,completed,Wednesday,Dinner,Individual
+ord_820,C00169,2026-10-03T05:50:25.642Z,Curtin Engineering Guild,Como,12.00,completed,Monday,Dinner,Individual
+ord_821,C00169,2026-09-29T05:50:25.642Z,Curtin Engineering Guild,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_822,C00169,2026-09-25T05:50:25.642Z,Curtin Engineering Guild,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_823,C00169,2026-09-21T05:50:25.642Z,Curtin Engineering Guild,Como,12.00,completed,Thursday,Dinner,Individual
+ord_824,C00169,2026-09-17T05:50:25.642Z,Curtin Engineering Guild,Como,12.00,completed,Friday,Dinner,Individual
+ord_825,C00170,2026-10-03T05:50:25.642Z,Bentley Library Commons,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_826,C00170,2026-09-29T05:50:25.642Z,Bentley Library Commons,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_827,C00170,2026-09-25T05:50:25.642Z,Bentley Library Commons,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_828,C00170,2026-09-21T05:50:25.642Z,Bentley Library Commons,Bentley,12.00,completed,Thursday,Dinner,Individual
+ord_829,C00170,2026-09-17T05:50:25.642Z,Bentley Library Commons,Bentley,12.00,completed,Friday,Dinner,Individual
+ord_830,C00170,2026-09-13T05:50:25.642Z,Bentley Library Commons,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_831,C00170,2026-09-09T05:50:25.642Z,Bentley Library Commons,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_832,C00171,2026-10-03T05:50:25.642Z,Victoria Park Station Hub,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_833,C00171,2026-09-29T05:50:25.642Z,Victoria Park Station Hub,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_834,C00171,2026-09-25T05:50:25.642Z,Victoria Park Station Hub,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_835,C00171,2026-09-21T05:50:25.642Z,Victoria Park Station Hub,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_836,C00171,2026-09-17T05:50:25.642Z,Victoria Park Station Hub,Curtin,12.50,completed,Friday,Dinner,Individual
+ord_837,C00171,2026-09-13T05:50:25.642Z,Victoria Park Station Hub,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_838,C00171,2026-09-09T05:50:25.642Z,Victoria Park Station Hub,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_839,C00171,2026-09-05T05:50:25.642Z,Victoria Park Station Hub,Curtin,12.50,completed,Wednesday,Dinner,Individual
+ord_840,C00172,2026-10-03T05:50:25.642Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_841,C00172,2026-09-29T05:50:25.642Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_842,C00172,2026-09-25T05:50:25.642Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_843,C00173,2026-10-03T05:50:25.642Z,Curtin Engineering Guild,Waterford,2.50,completed,Monday,Dinner,Individual
+ord_844,C00173,2026-09-29T05:50:25.642Z,Curtin Engineering Guild,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_845,C00173,2026-09-25T05:50:25.642Z,Curtin Engineering Guild,Waterford,11.50,completed,Wednesday,Dinner,Individual
+ord_846,C00173,2026-09-21T05:50:25.642Z,Curtin Engineering Guild,Waterford,2.50,completed,Thursday,Dinner,Individual
+ord_847,C00173,2026-09-17T05:50:25.642Z,Curtin Engineering Guild,Waterford,3.00,completed,Friday,Dinner,Individual
+ord_848,C00173,2026-09-13T05:50:25.642Z,Curtin Engineering Guild,Waterford,11.50,completed,Monday,Dinner,Individual
+ord_849,C00174,2026-10-03T05:50:25.642Z,Bentley Library Commons,Como,12.00,completed,Monday,Dinner,Individual
+ord_850,C00174,2026-09-29T05:50:25.642Z,Bentley Library Commons,Como,12.50,completed,Tuesday,Dinner,Individual
+ord_851,C00174,2026-09-25T05:50:25.642Z,Bentley Library Commons,Como,12.50,completed,Wednesday,Dinner,Individual
+ord_852,C00174,2026-09-21T05:50:25.642Z,Bentley Library Commons,Como,12.00,completed,Thursday,Dinner,Individual
+ord_853,C00174,2026-09-17T05:50:25.642Z,Bentley Library Commons,Como,12.50,completed,Friday,Dinner,Individual
+ord_854,C00174,2026-09-13T05:50:25.642Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_855,C00175,2026-10-03T05:50:25.642Z,Victoria Park Station Hub,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_856,C00175,2026-09-29T05:50:25.642Z,Victoria Park Station Hub,Bentley,3.00,completed,Tuesday,Dinner,Individual
+ord_857,C00176,2026-10-03T05:50:25.642Z,Curtin Central Bus Station,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_858,C00176,2026-09-29T05:50:25.642Z,Curtin Central Bus Station,Curtin,13.00,completed,Tuesday,Dinner,Individual
+ord_859,C00176,2026-09-25T05:50:25.642Z,Curtin Central Bus Station,Curtin,13.00,completed,Wednesday,Dinner,Individual
+ord_860,C00176,2026-09-21T05:50:25.642Z,Curtin Central Bus Station,Curtin,13.50,completed,Thursday,Dinner,Individual
+ord_861,C00176,2026-09-17T05:50:25.642Z,Curtin Central Bus Station,Curtin,13.00,completed,Friday,Dinner,Individual
+ord_862,C00176,2026-09-13T05:50:25.642Z,Curtin Central Bus Station,Curtin,13.00,completed,Monday,Dinner,Individual
+ord_863,C00177,2026-10-03T05:50:25.642Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_864,C00177,2026-09-29T05:50:25.642Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_865,C00177,2026-09-25T05:50:25.642Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_866,C00177,2026-09-21T05:50:25.642Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_867,C00177,2026-09-17T05:50:25.642Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_868,C00178,2026-10-03T05:50:25.642Z,Bentley Library Commons,Waterford,13.50,completed,Monday,Dinner,Individual
+ord_869,C00178,2026-09-29T05:50:25.642Z,Bentley Library Commons,Waterford,12.50,completed,Tuesday,Dinner,Individual
+ord_870,C00178,2026-09-25T05:50:25.642Z,Bentley Library Commons,Waterford,12.00,completed,Wednesday,Dinner,Individual
+ord_871,C00178,2026-09-21T05:50:25.642Z,Bentley Library Commons,Waterford,13.50,completed,Thursday,Dinner,Individual
+ord_872,C00178,2026-09-17T05:50:25.642Z,Bentley Library Commons,Waterford,12.50,completed,Friday,Dinner,Individual
+ord_873,C00178,2026-09-13T05:50:25.642Z,Bentley Library Commons,Waterford,12.00,completed,Monday,Dinner,Individual
+ord_874,C00178,2026-09-09T05:50:25.642Z,Bentley Library Commons,Waterford,13.50,completed,Tuesday,Dinner,Individual
+ord_875,C00179,2026-10-03T05:50:25.642Z,Victoria Park Station Hub,Como,11.00,completed,Monday,Dinner,Individual
+ord_876,C00179,2026-09-29T05:50:25.642Z,Victoria Park Station Hub,Como,11.00,completed,Tuesday,Dinner,Individual
+ord_877,C00180,2026-10-03T05:50:25.642Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_878,C00180,2026-09-29T05:50:25.642Z,Curtin Central Bus Station,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_879,C00180,2026-09-25T05:50:25.642Z,Curtin Central Bus Station,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_880,C00180,2026-09-21T05:50:25.642Z,Curtin Central Bus Station,Bentley,12.00,completed,Thursday,Dinner,Individual
+ord_881,C00181,2026-10-03T05:50:25.642Z,Curtin Engineering Guild,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_882,C00181,2026-09-29T05:50:25.642Z,Curtin Engineering Guild,Curtin,11.00,completed,Tuesday,Dinner,Individual
+ord_883,C00182,2026-10-03T05:50:25.642Z,Bentley Library Commons,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_884,C00182,2026-09-29T05:50:25.642Z,Bentley Library Commons,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_885,C00182,2026-09-25T05:50:25.642Z,Bentley Library Commons,Victoria Park,14.50,completed,Wednesday,Dinner,Individual
+ord_886,C00182,2026-09-21T05:50:25.642Z,Bentley Library Commons,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_887,C00182,2026-09-17T05:50:25.642Z,Bentley Library Commons,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_888,C00182,2026-09-13T05:50:25.642Z,Bentley Library Commons,Victoria Park,14.50,completed,Monday,Dinner,Individual
+ord_889,C00182,2026-09-09T05:50:25.642Z,Bentley Library Commons,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_890,C00182,2026-09-05T05:50:25.642Z,Bentley Library Commons,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_891,C00183,2026-10-03T05:50:25.642Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_892,C00183,2026-09-29T05:50:25.642Z,Victoria Park Station Hub,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_893,C00184,2026-10-03T05:50:25.642Z,Curtin Central Bus Station,Como,12.50,completed,Monday,Dinner,Individual
+ord_894,C00184,2026-09-29T05:50:25.642Z,Curtin Central Bus Station,Como,13.00,completed,Tuesday,Dinner,Individual
+ord_895,C00184,2026-09-25T05:50:25.642Z,Curtin Central Bus Station,Como,14.50,completed,Wednesday,Dinner,Individual
+ord_896,C00184,2026-09-21T05:50:25.642Z,Curtin Central Bus Station,Como,12.50,completed,Thursday,Dinner,Individual
+ord_897,C00185,2026-10-03T05:50:25.642Z,Curtin Engineering Guild,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_898,C00186,2026-10-03T05:50:25.642Z,Bentley Library Commons,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_899,C00186,2026-09-29T05:50:25.642Z,Bentley Library Commons,Curtin,13.00,completed,Tuesday,Dinner,Individual
+ord_900,C00186,2026-09-25T05:50:25.642Z,Bentley Library Commons,Curtin,13.50,completed,Wednesday,Dinner,Individual
+ord_901,C00186,2026-09-21T05:50:25.642Z,Bentley Library Commons,Curtin,13.50,completed,Thursday,Dinner,Individual
+ord_902,C00186,2026-09-17T05:50:25.642Z,Bentley Library Commons,Curtin,13.00,completed,Friday,Dinner,Individual
+ord_903,C00186,2026-09-13T05:50:25.642Z,Bentley Library Commons,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_904,C00187,2026-10-03T05:50:25.642Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_905,C00187,2026-09-29T05:50:25.642Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_906,C00187,2026-09-25T05:50:25.642Z,Victoria Park Station Hub,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_907,C00187,2026-09-21T05:50:25.642Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_908,C00187,2026-09-17T05:50:25.642Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_909,C00188,2026-10-03T05:50:25.642Z,Curtin Central Bus Station,Waterford,12.00,completed,Monday,Dinner,Individual
+ord_910,C00188,2026-09-29T05:50:25.642Z,Curtin Central Bus Station,Waterford,12.50,completed,Tuesday,Dinner,Individual
+ord_911,C00188,2026-09-25T05:50:25.642Z,Curtin Central Bus Station,Waterford,13.00,completed,Wednesday,Dinner,Individual
+ord_912,C00188,2026-09-21T05:50:25.642Z,Curtin Central Bus Station,Waterford,12.00,completed,Thursday,Dinner,Individual
+ord_913,C00188,2026-09-17T05:50:25.642Z,Curtin Central Bus Station,Waterford,12.50,completed,Friday,Dinner,Individual
+ord_914,C00188,2026-09-13T05:50:25.642Z,Curtin Central Bus Station,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_915,C00189,2026-10-03T05:50:25.642Z,Curtin Engineering Guild,Como,12.00,completed,Monday,Dinner,Individual
+ord_916,C00189,2026-09-29T05:50:25.642Z,Curtin Engineering Guild,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_917,C00189,2026-09-25T05:50:25.642Z,Curtin Engineering Guild,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_918,C00189,2026-09-21T05:50:25.642Z,Curtin Engineering Guild,Como,12.00,completed,Thursday,Dinner,Individual
+ord_919,C00189,2026-09-17T05:50:25.642Z,Curtin Engineering Guild,Como,12.00,completed,Friday,Dinner,Individual
+ord_920,C00190,2026-10-03T05:50:25.642Z,Bentley Library Commons,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_921,C00191,2026-10-03T05:50:25.642Z,Victoria Park Station Hub,Curtin,3.00,completed,Monday,Dinner,Individual
+ord_922,C00191,2026-09-29T05:50:25.642Z,Victoria Park Station Hub,Curtin,4.00,completed,Tuesday,Dinner,Individual
+ord_923,C00191,2026-09-25T05:50:25.642Z,Victoria Park Station Hub,Curtin,3.50,completed,Wednesday,Dinner,Individual
+ord_924,C00191,2026-09-21T05:50:25.642Z,Victoria Park Station Hub,Curtin,3.00,completed,Thursday,Dinner,Individual
+ord_925,C00191,2026-09-17T05:50:25.642Z,Victoria Park Station Hub,Curtin,4.00,completed,Friday,Dinner,Individual
+ord_926,C00191,2026-09-13T05:50:25.642Z,Victoria Park Station Hub,Curtin,3.50,completed,Monday,Dinner,Individual
+ord_927,C00191,2026-09-09T05:50:25.642Z,Victoria Park Station Hub,Curtin,3.00,completed,Tuesday,Dinner,Individual
+ord_928,C00192,2026-10-03T05:50:25.642Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Monday,Dinner,Individual
+ord_929,C00192,2026-09-29T05:50:25.642Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_930,C00193,2026-10-03T05:50:25.642Z,Curtin Engineering Guild,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_931,C00193,2026-09-29T05:50:25.642Z,Curtin Engineering Guild,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_932,C00193,2026-09-25T05:50:25.642Z,Curtin Engineering Guild,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_933,C00193,2026-09-21T05:50:25.642Z,Curtin Engineering Guild,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_934,C00193,2026-09-17T05:50:25.642Z,Curtin Engineering Guild,Waterford,11.00,completed,Friday,Dinner,Individual
+ord_935,C00193,2026-09-13T05:50:25.642Z,Curtin Engineering Guild,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_936,C00193,2026-09-09T05:50:25.642Z,Curtin Engineering Guild,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_937,C00194,2026-10-03T05:50:25.642Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_938,C00194,2026-09-29T05:50:25.642Z,Bentley Library Commons,Como,13.00,completed,Tuesday,Dinner,Individual
+ord_939,C00194,2026-09-25T05:50:25.642Z,Bentley Library Commons,Como,13.50,completed,Wednesday,Dinner,Individual
+ord_940,C00194,2026-09-21T05:50:25.642Z,Bentley Library Commons,Como,12.50,completed,Thursday,Dinner,Individual
+ord_941,C00194,2026-09-17T05:50:25.642Z,Bentley Library Commons,Como,13.00,completed,Friday,Dinner,Individual
+ord_942,C00195,2026-10-03T05:50:25.642Z,Victoria Park Station Hub,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_943,C00195,2026-09-29T05:50:25.642Z,Victoria Park Station Hub,Bentley,12.50,completed,Tuesday,Dinner,Individual
+ord_944,C00195,2026-09-25T05:50:25.642Z,Victoria Park Station Hub,Bentley,3.00,completed,Wednesday,Dinner,Individual
+ord_945,C00196,2026-10-03T05:50:25.642Z,Curtin Central Bus Station,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_946,C00196,2026-09-29T05:50:25.642Z,Curtin Central Bus Station,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_947,C00196,2026-09-25T05:50:25.642Z,Curtin Central Bus Station,Curtin,13.50,completed,Wednesday,Dinner,Individual
+ord_948,C00196,2026-09-21T05:50:25.642Z,Curtin Central Bus Station,Curtin,13.50,completed,Thursday,Dinner,Individual
+ord_949,C00196,2026-09-17T05:50:25.642Z,Curtin Central Bus Station,Curtin,12.00,completed,Friday,Dinner,Individual
+ord_950,C00196,2026-09-13T05:50:25.642Z,Curtin Central Bus Station,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_951,C00197,2026-10-03T05:50:25.642Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_952,C00197,2026-09-29T05:50:25.642Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_953,C00197,2026-09-25T05:50:25.642Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_954,C00197,2026-09-21T05:50:25.642Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_955,C00198,2026-10-03T05:50:25.642Z,Bentley Library Commons,Waterford,13.50,completed,Monday,Dinner,Individual
+ord_956,C00198,2026-09-29T05:50:25.642Z,Bentley Library Commons,Waterford,12.50,completed,Tuesday,Dinner,Individual
+ord_957,C00199,2026-10-03T05:50:25.643Z,Victoria Park Station Hub,Como,3.00,completed,Monday,Dinner,Individual
+ord_958,C00199,2026-09-29T05:50:25.643Z,Victoria Park Station Hub,Como,2.50,completed,Tuesday,Dinner,Individual
+ord_959,C00199,2026-09-25T05:50:25.643Z,Victoria Park Station Hub,Como,4.00,completed,Wednesday,Dinner,Individual
+ord_960,C00199,2026-09-21T05:50:25.643Z,Victoria Park Station Hub,Como,3.00,completed,Thursday,Dinner,Individual
+ord_961,C00199,2026-09-17T05:50:25.643Z,Victoria Park Station Hub,Como,2.50,completed,Friday,Dinner,Individual
+ord_962,C00199,2026-09-13T05:50:25.643Z,Victoria Park Station Hub,Como,4.00,completed,Monday,Dinner,Individual
+ord_963,C00200,2026-10-03T05:50:25.643Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_964,C00201,2026-10-03T05:50:25.643Z,Curtin Engineering Guild,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_965,C00201,2026-09-29T05:50:25.643Z,Curtin Engineering Guild,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_966,C00201,2026-09-25T05:50:25.643Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_967,C00201,2026-09-21T05:50:25.643Z,Curtin Engineering Guild,Curtin,12.50,completed,Thursday,Dinner,Individual
+ord_968,C00201,2026-09-17T05:50:25.643Z,Curtin Engineering Guild,Curtin,12.00,completed,Friday,Dinner,Individual
+ord_969,C00201,2026-09-13T05:50:25.643Z,Curtin Engineering Guild,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_970,C00202,2026-10-03T05:50:25.643Z,Bentley Library Commons,Victoria Park,13.50,completed,Monday,Dinner,Individual
+ord_971,C00202,2026-09-29T05:50:25.643Z,Bentley Library Commons,Victoria Park,13.00,completed,Tuesday,Dinner,Individual
+ord_972,C00202,2026-09-25T05:50:25.643Z,Bentley Library Commons,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_973,C00203,2026-10-03T05:50:25.643Z,Victoria Park Station Hub,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_974,C00203,2026-09-29T05:50:25.643Z,Victoria Park Station Hub,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_975,C00203,2026-09-25T05:50:25.643Z,Victoria Park Station Hub,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_976,C00203,2026-09-21T05:50:25.643Z,Victoria Park Station Hub,Waterford,11.00,completed,Thursday,Dinner,Individual
+ord_977,C00203,2026-09-17T05:50:25.643Z,Victoria Park Station Hub,Waterford,3.00,completed,Friday,Dinner,Individual
+ord_978,C00203,2026-09-13T05:50:25.643Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_979,C00204,2026-10-03T05:50:25.643Z,Curtin Central Bus Station,Como,13.00,completed,Monday,Dinner,Individual
+ord_980,C00204,2026-09-29T05:50:25.643Z,Curtin Central Bus Station,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_981,C00204,2026-09-25T05:50:25.643Z,Curtin Central Bus Station,Como,12.50,completed,Wednesday,Dinner,Individual
+ord_982,C00204,2026-09-21T05:50:25.643Z,Curtin Central Bus Station,Como,13.00,completed,Thursday,Dinner,Individual
+ord_983,C00204,2026-09-17T05:50:25.643Z,Curtin Central Bus Station,Como,12.00,completed,Friday,Dinner,Individual
+ord_984,C00204,2026-09-13T05:50:25.643Z,Curtin Central Bus Station,Como,12.50,completed,Monday,Dinner,Individual
+ord_985,C00204,2026-09-09T05:50:25.643Z,Curtin Central Bus Station,Como,13.00,completed,Tuesday,Dinner,Individual
+ord_986,C00204,2026-09-05T05:50:25.643Z,Curtin Central Bus Station,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_987,C00205,2026-10-03T05:50:25.643Z,Curtin Engineering Guild,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_988,C00205,2026-09-29T05:50:25.643Z,Curtin Engineering Guild,Bentley,2.50,completed,Tuesday,Dinner,Individual
+ord_989,C00205,2026-09-25T05:50:25.643Z,Curtin Engineering Guild,Bentley,3.00,completed,Wednesday,Dinner,Individual
+ord_990,C00205,2026-09-21T05:50:25.643Z,Curtin Engineering Guild,Bentley,3.00,completed,Thursday,Dinner,Individual
+ord_991,C00205,2026-09-17T05:50:25.643Z,Curtin Engineering Guild,Bentley,2.50,completed,Friday,Dinner,Individual
+ord_992,C00205,2026-09-13T05:50:25.643Z,Curtin Engineering Guild,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_993,C00206,2026-10-03T05:50:25.643Z,Bentley Library Commons,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_994,C00206,2026-09-29T05:50:25.643Z,Bentley Library Commons,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_995,C00206,2026-09-25T05:50:25.643Z,Bentley Library Commons,Curtin,14.50,completed,Wednesday,Dinner,Individual
+ord_996,C00206,2026-09-21T05:50:25.643Z,Bentley Library Commons,Curtin,12.50,completed,Thursday,Dinner,Individual
+ord_997,C00206,2026-09-17T05:50:25.643Z,Bentley Library Commons,Curtin,13.50,completed,Friday,Dinner,Individual
+ord_998,C00206,2026-09-13T05:50:25.643Z,Bentley Library Commons,Curtin,14.50,completed,Monday,Dinner,Individual
+ord_999,C00207,2026-10-03T05:50:25.643Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_1000,C00207,2026-09-29T05:50:25.643Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1001,C00207,2026-09-25T05:50:25.643Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_1002,C00208,2026-10-03T05:50:25.643Z,Curtin Central Bus Station,Waterford,12.00,completed,Monday,Dinner,Individual
+ord_1003,C00208,2026-09-29T05:50:25.643Z,Curtin Central Bus Station,Waterford,14.00,completed,Tuesday,Dinner,Individual
+ord_1004,C00208,2026-09-25T05:50:25.643Z,Curtin Central Bus Station,Waterford,13.00,completed,Wednesday,Dinner,Individual
+ord_1005,C00208,2026-09-21T05:50:25.643Z,Curtin Central Bus Station,Waterford,12.00,completed,Thursday,Dinner,Individual
+ord_1006,C00208,2026-09-17T05:50:25.643Z,Curtin Central Bus Station,Waterford,14.00,completed,Friday,Dinner,Individual
+ord_1007,C00209,2026-10-03T05:50:25.643Z,Curtin Engineering Guild,Como,11.00,completed,Monday,Dinner,Individual
+ord_1008,C00209,2026-09-29T05:50:25.643Z,Curtin Engineering Guild,Como,3.00,completed,Tuesday,Dinner,Individual
+ord_1009,C00209,2026-09-25T05:50:25.643Z,Curtin Engineering Guild,Como,11.00,completed,Wednesday,Dinner,Individual
+ord_1010,C00209,2026-09-21T05:50:25.643Z,Curtin Engineering Guild,Como,11.00,completed,Thursday,Dinner,Individual
+ord_1011,C00209,2026-09-17T05:50:25.643Z,Curtin Engineering Guild,Como,3.00,completed,Friday,Dinner,Individual
+ord_1012,C00209,2026-09-13T05:50:25.643Z,Curtin Engineering Guild,Como,11.00,completed,Monday,Dinner,Individual
+ord_1013,C00209,2026-09-09T05:50:25.643Z,Curtin Engineering Guild,Como,11.00,completed,Tuesday,Dinner,Individual
+ord_1014,C00209,2026-09-05T05:50:25.643Z,Curtin Engineering Guild,Como,3.00,completed,Wednesday,Dinner,Individual
+ord_1015,C00210,2026-10-03T05:50:25.643Z,Bentley Library Commons,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_1016,C00211,2026-10-03T05:50:25.643Z,Victoria Park Station Hub,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_1017,C00211,2026-09-29T05:50:25.643Z,Victoria Park Station Hub,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_1018,C00211,2026-09-25T05:50:25.643Z,Victoria Park Station Hub,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_1019,C00211,2026-09-21T05:50:25.643Z,Victoria Park Station Hub,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_1020,C00211,2026-09-17T05:50:25.643Z,Victoria Park Station Hub,Curtin,12.50,completed,Friday,Dinner,Individual
+ord_1021,C00211,2026-09-13T05:50:25.643Z,Victoria Park Station Hub,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_1022,C00212,2026-10-03T05:50:25.643Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_1023,C00212,2026-09-29T05:50:25.643Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_1024,C00212,2026-09-25T05:50:25.643Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_1025,C00212,2026-09-21T05:50:25.643Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_1026,C00212,2026-09-17T05:50:25.643Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Friday,Dinner,Individual
+ord_1027,C00213,2026-10-03T05:50:25.643Z,Curtin Engineering Guild,Waterford,2.50,completed,Monday,Dinner,Individual
+ord_1028,C00213,2026-09-29T05:50:25.643Z,Curtin Engineering Guild,Waterford,11.50,completed,Tuesday,Dinner,Individual
+ord_1029,C00213,2026-09-25T05:50:25.643Z,Curtin Engineering Guild,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_1030,C00213,2026-09-21T05:50:25.643Z,Curtin Engineering Guild,Waterford,2.50,completed,Thursday,Dinner,Individual
+ord_1031,C00214,2026-10-03T05:50:25.643Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_1032,C00214,2026-09-29T05:50:25.643Z,Bentley Library Commons,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_1033,C00214,2026-09-25T05:50:25.643Z,Bentley Library Commons,Como,13.00,completed,Wednesday,Dinner,Individual
+ord_1034,C00214,2026-09-21T05:50:25.643Z,Bentley Library Commons,Como,12.50,completed,Thursday,Dinner,Individual
+ord_1035,C00214,2026-09-17T05:50:25.643Z,Bentley Library Commons,Como,12.00,completed,Friday,Dinner,Individual
+ord_1036,C00214,2026-09-13T05:50:25.643Z,Bentley Library Commons,Como,13.00,completed,Monday,Dinner,Individual
+ord_1037,C00214,2026-09-09T05:50:25.643Z,Bentley Library Commons,Como,12.50,completed,Tuesday,Dinner,Individual
+ord_1038,C00214,2026-09-05T05:50:25.643Z,Bentley Library Commons,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_1039,C00215,2026-10-03T05:50:25.643Z,Victoria Park Station Hub,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_1040,C00215,2026-09-29T05:50:25.643Z,Victoria Park Station Hub,Bentley,2.50,completed,Tuesday,Dinner,Individual
+ord_1041,C00215,2026-09-25T05:50:25.643Z,Victoria Park Station Hub,Bentley,3.50,completed,Wednesday,Dinner,Individual
+ord_1042,C00215,2026-09-21T05:50:25.643Z,Victoria Park Station Hub,Bentley,3.00,completed,Thursday,Dinner,Individual
+ord_1043,C00215,2026-09-17T05:50:25.643Z,Victoria Park Station Hub,Bentley,2.50,completed,Friday,Dinner,Individual
+ord_1044,C00216,2026-10-03T05:50:25.643Z,Curtin Central Bus Station,Curtin,11.00,completed,Monday,Dinner,Individual
+ord_1045,C00216,2026-09-29T05:50:25.643Z,Curtin Central Bus Station,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_1046,C00216,2026-09-25T05:50:25.643Z,Curtin Central Bus Station,Curtin,13.00,completed,Wednesday,Dinner,Individual
+ord_1047,C00216,2026-09-21T05:50:25.643Z,Curtin Central Bus Station,Curtin,11.00,completed,Thursday,Dinner,Individual
+ord_1048,C00216,2026-09-17T05:50:25.643Z,Curtin Central Bus Station,Curtin,13.50,completed,Friday,Dinner,Individual
+ord_1049,C00217,2026-10-03T05:50:25.643Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_1050,C00217,2026-09-29T05:50:25.643Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1051,C00217,2026-09-25T05:50:25.643Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Wednesday,Dinner,Individual
+ord_1052,C00217,2026-09-21T05:50:25.643Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_1053,C00217,2026-09-17T05:50:25.643Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_1054,C00217,2026-09-13T05:50:25.643Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_1055,C00217,2026-09-09T05:50:25.643Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1056,C00217,2026-09-05T05:50:25.643Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_1057,C00218,2026-10-03T05:50:25.643Z,Bentley Library Commons,Waterford,12.50,completed,Monday,Dinner,Individual
+ord_1058,C00218,2026-09-29T05:50:25.644Z,Bentley Library Commons,Waterford,13.50,completed,Tuesday,Dinner,Individual
+ord_1059,C00218,2026-09-25T05:50:25.644Z,Bentley Library Commons,Waterford,13.00,completed,Wednesday,Dinner,Individual
+ord_1060,C00218,2026-09-21T05:50:25.644Z,Bentley Library Commons,Waterford,12.50,completed,Thursday,Dinner,Individual
+ord_1061,C00218,2026-09-17T05:50:25.644Z,Bentley Library Commons,Waterford,13.50,completed,Friday,Dinner,Individual
+ord_1062,C00218,2026-09-13T05:50:25.644Z,Bentley Library Commons,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_1063,C00218,2026-09-09T05:50:25.644Z,Bentley Library Commons,Waterford,12.50,completed,Tuesday,Dinner,Individual
+ord_1064,C00218,2026-09-05T05:50:25.644Z,Bentley Library Commons,Waterford,13.50,completed,Wednesday,Dinner,Individual
+ord_1065,C00219,2026-10-03T05:50:25.644Z,Victoria Park Station Hub,Como,11.00,completed,Monday,Dinner,Individual
+ord_1066,C00219,2026-09-29T05:50:25.644Z,Victoria Park Station Hub,Como,3.00,completed,Tuesday,Dinner,Individual
+ord_1067,C00219,2026-09-25T05:50:25.644Z,Victoria Park Station Hub,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_1068,C00219,2026-09-21T05:50:25.644Z,Victoria Park Station Hub,Como,11.00,completed,Thursday,Dinner,Individual
+ord_1069,C00219,2026-09-17T05:50:25.644Z,Victoria Park Station Hub,Como,3.00,completed,Friday,Dinner,Individual
+ord_1070,C00219,2026-09-13T05:50:25.644Z,Victoria Park Station Hub,Como,12.00,completed,Monday,Dinner,Individual
+ord_1071,C00219,2026-09-09T05:50:25.644Z,Victoria Park Station Hub,Como,11.00,completed,Tuesday,Dinner,Individual
+ord_1072,C00220,2026-10-03T05:50:25.644Z,Curtin Central Bus Station,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_1073,C00220,2026-09-29T05:50:25.644Z,Curtin Central Bus Station,Bentley,12.50,completed,Tuesday,Dinner,Individual
+ord_1074,C00220,2026-09-25T05:50:25.644Z,Curtin Central Bus Station,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_1075,C00220,2026-09-21T05:50:25.644Z,Curtin Central Bus Station,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_1076,C00220,2026-09-17T05:50:25.644Z,Curtin Central Bus Station,Bentley,12.50,completed,Friday,Dinner,Individual
+ord_1077,C00220,2026-09-13T05:50:25.644Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_1078,C00220,2026-09-09T05:50:25.644Z,Curtin Central Bus Station,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_1079,C00220,2026-09-05T05:50:25.644Z,Curtin Central Bus Station,Bentley,12.50,completed,Wednesday,Dinner,Individual
+ord_1080,C00221,2026-10-03T05:50:25.644Z,Curtin Engineering Guild,Curtin,11.00,completed,Monday,Dinner,Individual
+ord_1081,C00221,2026-09-29T05:50:25.644Z,Curtin Engineering Guild,Curtin,3.00,completed,Tuesday,Dinner,Individual
+ord_1082,C00221,2026-09-25T05:50:25.644Z,Curtin Engineering Guild,Curtin,4.00,completed,Wednesday,Dinner,Individual
+ord_1083,C00221,2026-09-21T05:50:25.644Z,Curtin Engineering Guild,Curtin,11.00,completed,Thursday,Dinner,Individual
+ord_1084,C00221,2026-09-17T05:50:25.644Z,Curtin Engineering Guild,Curtin,3.00,completed,Friday,Dinner,Individual
+ord_1085,C00222,2026-10-03T05:50:25.644Z,Bentley Library Commons,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_1086,C00222,2026-09-29T05:50:25.644Z,Bentley Library Commons,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1087,C00222,2026-09-25T05:50:25.644Z,Bentley Library Commons,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_1088,C00222,2026-09-21T05:50:25.644Z,Bentley Library Commons,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_1089,C00222,2026-09-17T05:50:25.644Z,Bentley Library Commons,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_1090,C00223,2026-10-03T05:50:25.644Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_1091,C00223,2026-09-29T05:50:25.644Z,Victoria Park Station Hub,Waterford,12.50,completed,Tuesday,Dinner,Individual
+ord_1092,C00223,2026-09-25T05:50:25.644Z,Victoria Park Station Hub,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_1093,C00223,2026-09-21T05:50:25.644Z,Victoria Park Station Hub,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_1094,C00223,2026-09-17T05:50:25.644Z,Victoria Park Station Hub,Waterford,12.50,completed,Friday,Dinner,Individual
+ord_1095,C00223,2026-09-13T05:50:25.644Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_1096,C00224,2026-10-03T05:50:25.644Z,Curtin Central Bus Station,Como,12.50,completed,Monday,Dinner,Individual
+ord_1097,C00224,2026-09-29T05:50:25.644Z,Curtin Central Bus Station,Como,13.50,completed,Tuesday,Dinner,Individual
+ord_1098,C00224,2026-09-25T05:50:25.644Z,Curtin Central Bus Station,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_1099,C00224,2026-09-21T05:50:25.644Z,Curtin Central Bus Station,Como,12.50,completed,Thursday,Dinner,Individual
+ord_1100,C00225,2026-10-03T05:50:25.644Z,Curtin Engineering Guild,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_1101,C00225,2026-09-29T05:50:25.644Z,Curtin Engineering Guild,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_1102,C00225,2026-09-25T05:50:25.644Z,Curtin Engineering Guild,Bentley,3.00,completed,Wednesday,Dinner,Individual
+ord_1103,C00225,2026-09-21T05:50:25.644Z,Curtin Engineering Guild,Bentley,3.00,completed,Thursday,Dinner,Individual
+ord_1104,C00225,2026-09-17T05:50:25.644Z,Curtin Engineering Guild,Bentley,11.00,completed,Friday,Dinner,Individual
+ord_1105,C00225,2026-09-13T05:50:25.644Z,Curtin Engineering Guild,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_1106,C00226,2026-10-03T05:50:25.644Z,Bentley Library Commons,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_1107,C00227,2026-10-03T05:50:25.644Z,Victoria Park Station Hub,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_1108,C00227,2026-09-29T05:50:25.644Z,Victoria Park Station Hub,Victoria Park,3.00,completed,Tuesday,Dinner,Individual
+ord_1109,C00228,2026-10-03T05:50:25.644Z,Curtin Central Bus Station,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_1110,C00228,2026-09-29T05:50:25.644Z,Curtin Central Bus Station,Waterford,13.50,completed,Tuesday,Dinner,Individual
+ord_1111,C00229,2026-10-03T05:50:25.644Z,Curtin Engineering Guild,Como,12.50,completed,Monday,Dinner,Individual
+ord_1112,C00229,2026-09-29T05:50:25.644Z,Curtin Engineering Guild,Como,12.50,completed,Tuesday,Dinner,Individual
+ord_1113,C00229,2026-09-25T05:50:25.644Z,Curtin Engineering Guild,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_1114,C00229,2026-09-21T05:50:25.644Z,Curtin Engineering Guild,Como,12.50,completed,Thursday,Dinner,Individual
+ord_1115,C00230,2026-10-03T05:50:25.644Z,Bentley Library Commons,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_1116,C00230,2026-09-29T05:50:25.644Z,Bentley Library Commons,Bentley,2.50,completed,Tuesday,Dinner,Individual
+ord_1117,C00230,2026-09-25T05:50:25.644Z,Bentley Library Commons,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_1118,C00231,2026-10-03T05:50:25.644Z,Victoria Park Station Hub,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_1119,C00231,2026-09-29T05:50:25.644Z,Victoria Park Station Hub,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_1120,C00231,2026-09-25T05:50:25.644Z,Victoria Park Station Hub,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_1121,C00231,2026-09-21T05:50:25.644Z,Victoria Park Station Hub,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_1122,C00231,2026-09-17T05:50:25.644Z,Victoria Park Station Hub,Curtin,12.00,completed,Friday,Dinner,Individual
+ord_1123,C00231,2026-09-13T05:50:25.644Z,Victoria Park Station Hub,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_1124,C00231,2026-09-09T05:50:25.644Z,Victoria Park Station Hub,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_1125,C00232,2026-10-03T05:50:25.644Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_1126,C00232,2026-09-29T05:50:25.644Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1127,C00232,2026-09-25T05:50:25.644Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_1128,C00232,2026-09-21T05:50:25.644Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Thursday,Dinner,Individual
+ord_1129,C00232,2026-09-17T05:50:25.644Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_1130,C00232,2026-09-13T05:50:25.644Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Monday,Dinner,Individual
+ord_1131,C00232,2026-09-09T05:50:25.644Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_1132,C00232,2026-09-05T05:50:25.644Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_1133,C00233,2026-10-03T05:50:25.644Z,Curtin Engineering Guild,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_1134,C00233,2026-09-29T05:50:25.644Z,Curtin Engineering Guild,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_1135,C00233,2026-09-25T05:50:25.644Z,Curtin Engineering Guild,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_1136,C00233,2026-09-21T05:50:25.644Z,Curtin Engineering Guild,Waterford,11.00,completed,Thursday,Dinner,Individual
+ord_1137,C00233,2026-09-17T05:50:25.644Z,Curtin Engineering Guild,Waterford,11.00,completed,Friday,Dinner,Individual
+ord_1138,C00233,2026-09-13T05:50:25.644Z,Curtin Engineering Guild,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_1139,C00233,2026-09-09T05:50:25.644Z,Curtin Engineering Guild,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_1140,C00233,2026-09-05T05:50:25.644Z,Curtin Engineering Guild,Waterford,11.00,completed,Wednesday,Dinner,Individual
+ord_1141,C00234,2026-10-03T05:50:25.644Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_1142,C00234,2026-09-29T05:50:25.644Z,Bentley Library Commons,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_1143,C00235,2026-10-03T05:50:25.644Z,Victoria Park Station Hub,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_1144,C00235,2026-09-29T05:50:25.644Z,Victoria Park Station Hub,Bentley,2.50,completed,Tuesday,Dinner,Individual
+ord_1145,C00235,2026-09-25T05:50:25.644Z,Victoria Park Station Hub,Bentley,11.50,completed,Wednesday,Dinner,Individual
+ord_1146,C00236,2026-10-03T05:50:25.644Z,Curtin Central Bus Station,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_1147,C00236,2026-09-29T05:50:25.644Z,Curtin Central Bus Station,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_1148,C00236,2026-09-25T05:50:25.644Z,Curtin Central Bus Station,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_1149,C00237,2026-10-03T05:50:25.644Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_1150,C00238,2026-10-03T05:50:25.644Z,Bentley Library Commons,Waterford,13.50,completed,Monday,Dinner,Individual
+ord_1151,C00238,2026-09-29T05:50:25.644Z,Bentley Library Commons,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_1152,C00238,2026-09-25T05:50:25.644Z,Bentley Library Commons,Waterford,12.00,completed,Wednesday,Dinner,Individual
+ord_1153,C00238,2026-09-21T05:50:25.644Z,Bentley Library Commons,Waterford,13.50,completed,Thursday,Dinner,Individual
+ord_1154,C00239,2026-10-03T05:50:25.644Z,Victoria Park Station Hub,Como,11.00,completed,Monday,Dinner,Individual
+ord_1155,C00240,2026-10-03T05:50:25.644Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_1156,C00240,2026-09-29T05:50:25.644Z,Curtin Central Bus Station,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_1157,C00240,2026-09-25T05:50:25.644Z,Curtin Central Bus Station,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_1158,C00240,2026-09-21T05:50:25.644Z,Curtin Central Bus Station,Bentley,12.00,completed,Thursday,Dinner,Individual
+ord_1159,C00241,2026-10-03T05:50:25.644Z,Curtin Engineering Guild,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_1160,C00241,2026-09-29T05:50:25.644Z,Curtin Engineering Guild,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_1161,C00241,2026-09-25T05:50:25.644Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_1162,C00241,2026-09-21T05:50:25.644Z,Curtin Engineering Guild,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_1163,C00242,2026-10-03T05:50:25.644Z,Bentley Library Commons,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_1164,C00242,2026-09-29T05:50:25.644Z,Bentley Library Commons,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_1165,C00242,2026-09-25T05:50:25.644Z,Bentley Library Commons,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_1166,C00242,2026-09-21T05:50:25.644Z,Bentley Library Commons,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_1167,C00243,2026-10-03T05:50:25.644Z,Victoria Park Station Hub,Waterford,2.50,completed,Monday,Dinner,Individual
+ord_1168,C00243,2026-09-29T05:50:25.644Z,Victoria Park Station Hub,Waterford,12.50,completed,Tuesday,Dinner,Individual
+ord_1169,C00243,2026-09-25T05:50:25.644Z,Victoria Park Station Hub,Waterford,3.50,completed,Wednesday,Dinner,Individual
+ord_1170,C00243,2026-09-21T05:50:25.644Z,Victoria Park Station Hub,Waterford,2.50,completed,Thursday,Dinner,Individual
+ord_1171,C00243,2026-09-17T05:50:25.644Z,Victoria Park Station Hub,Waterford,12.50,completed,Friday,Dinner,Individual
+ord_1172,C00243,2026-09-13T05:50:25.644Z,Victoria Park Station Hub,Waterford,3.50,completed,Monday,Dinner,Individual
+ord_1173,C00243,2026-09-09T05:50:25.644Z,Victoria Park Station Hub,Waterford,2.50,completed,Tuesday,Dinner,Individual
+ord_1174,C00244,2026-10-03T05:50:25.645Z,Curtin Central Bus Station,Como,12.00,completed,Monday,Dinner,Individual
+ord_1175,C00244,2026-09-29T05:50:25.645Z,Curtin Central Bus Station,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_1176,C00244,2026-09-25T05:50:25.645Z,Curtin Central Bus Station,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_1177,C00245,2026-10-03T05:50:25.645Z,Curtin Engineering Guild,Bentley,2.50,completed,Monday,Dinner,Individual
+ord_1178,C00245,2026-09-29T05:50:25.645Z,Curtin Engineering Guild,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_1179,C00245,2026-09-25T05:50:25.645Z,Curtin Engineering Guild,Bentley,3.00,completed,Wednesday,Dinner,Individual
+ord_1180,C00245,2026-09-21T05:50:25.645Z,Curtin Engineering Guild,Bentley,2.50,completed,Thursday,Dinner,Individual
+ord_1181,C00246,2026-10-03T05:50:25.645Z,Bentley Library Commons,Curtin,13.00,completed,Monday,Dinner,Individual
+ord_1182,C00246,2026-09-29T05:50:25.645Z,Bentley Library Commons,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_1183,C00246,2026-09-25T05:50:25.645Z,Bentley Library Commons,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_1184,C00246,2026-09-21T05:50:25.645Z,Bentley Library Commons,Curtin,13.00,completed,Thursday,Dinner,Individual
+ord_1185,C00246,2026-09-17T05:50:25.645Z,Bentley Library Commons,Curtin,13.50,completed,Friday,Dinner,Individual
+ord_1186,C00247,2026-10-03T05:50:25.645Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_1187,C00247,2026-09-29T05:50:25.645Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1188,C00247,2026-09-25T05:50:25.645Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_1189,C00247,2026-09-21T05:50:25.645Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_1190,C00247,2026-09-17T05:50:25.645Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_1191,C00248,2026-10-03T05:50:25.645Z,Curtin Central Bus Station,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_1192,C00248,2026-09-29T05:50:25.645Z,Curtin Central Bus Station,Waterford,12.00,completed,Tuesday,Dinner,Individual
+ord_1193,C00248,2026-09-25T05:50:25.645Z,Curtin Central Bus Station,Waterford,12.50,completed,Wednesday,Dinner,Individual
+ord_1194,C00248,2026-09-21T05:50:25.645Z,Curtin Central Bus Station,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_1195,C00248,2026-09-17T05:50:25.645Z,Curtin Central Bus Station,Waterford,12.00,completed,Friday,Dinner,Individual
+ord_1196,C00248,2026-09-13T05:50:25.645Z,Curtin Central Bus Station,Waterford,12.50,completed,Monday,Dinner,Individual
+ord_1197,C00248,2026-09-09T05:50:25.645Z,Curtin Central Bus Station,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_1198,C00248,2026-09-05T05:50:25.645Z,Curtin Central Bus Station,Waterford,12.00,completed,Wednesday,Dinner,Individual
+ord_1199,C00249,2026-10-03T05:50:25.645Z,Curtin Engineering Guild,Como,12.00,completed,Monday,Dinner,Individual
+ord_1200,C00249,2026-09-29T05:50:25.645Z,Curtin Engineering Guild,Como,11.00,completed,Tuesday,Dinner,Individual
+ord_1201,C00249,2026-09-25T05:50:25.645Z,Curtin Engineering Guild,Como,11.00,completed,Wednesday,Dinner,Individual
+ord_1202,C00249,2026-09-21T05:50:25.645Z,Curtin Engineering Guild,Como,12.00,completed,Thursday,Dinner,Individual
+ord_1203,C00250,2026-10-03T05:50:25.645Z,Bentley Library Commons,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_1204,C00250,2026-09-29T05:50:25.645Z,Bentley Library Commons,Bentley,3.00,completed,Tuesday,Dinner,Individual
+ord_1205,C00250,2026-09-25T05:50:25.645Z,Bentley Library Commons,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_1206,C00250,2026-09-21T05:50:25.645Z,Bentley Library Commons,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_1207,C00250,2026-09-17T05:50:25.645Z,Bentley Library Commons,Bentley,3.00,completed,Friday,Dinner,Individual
+ord_1208,C00251,2026-10-03T05:50:25.645Z,Victoria Park Station Hub,Curtin,3.00,completed,Monday,Dinner,Individual
+ord_1209,C00252,2026-10-03T05:50:25.645Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_1210,C00252,2026-09-29T05:50:25.645Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1211,C00252,2026-09-25T05:50:25.645Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_1212,C00252,2026-09-21T05:50:25.645Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Thursday,Dinner,Individual
+ord_1213,C00252,2026-09-17T05:50:25.645Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_1214,C00253,2026-10-03T05:50:25.645Z,Curtin Engineering Guild,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_1215,C00253,2026-09-29T05:50:25.645Z,Curtin Engineering Guild,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_1216,C00253,2026-09-25T05:50:25.645Z,Curtin Engineering Guild,Waterford,2.50,completed,Wednesday,Dinner,Individual
+ord_1217,C00253,2026-09-21T05:50:25.645Z,Curtin Engineering Guild,Waterford,11.00,completed,Thursday,Dinner,Individual
+ord_1218,C00253,2026-09-17T05:50:25.645Z,Curtin Engineering Guild,Waterford,3.00,completed,Friday,Dinner,Individual
+ord_1219,C00254,2026-10-03T05:50:25.645Z,Bentley Library Commons,Como,13.50,completed,Monday,Dinner,Individual
+ord_1220,C00254,2026-09-29T05:50:25.645Z,Bentley Library Commons,Como,13.00,completed,Tuesday,Dinner,Individual
+ord_1221,C00254,2026-09-25T05:50:25.645Z,Bentley Library Commons,Como,13.50,completed,Wednesday,Dinner,Individual
+ord_1222,C00254,2026-09-21T05:50:25.645Z,Bentley Library Commons,Como,13.50,completed,Thursday,Dinner,Individual
+ord_1223,C00255,2026-10-03T05:50:25.645Z,Victoria Park Station Hub,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_1224,C00255,2026-09-29T05:50:25.645Z,Victoria Park Station Hub,Bentley,2.50,completed,Tuesday,Dinner,Individual
+ord_1225,C00255,2026-09-25T05:50:25.645Z,Victoria Park Station Hub,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_1226,C00256,2026-10-03T05:50:25.645Z,Curtin Central Bus Station,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_1227,C00256,2026-09-29T05:50:25.645Z,Curtin Central Bus Station,Curtin,13.00,completed,Tuesday,Dinner,Individual
+ord_1228,C00256,2026-09-25T05:50:25.645Z,Curtin Central Bus Station,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_1229,C00256,2026-09-21T05:50:25.645Z,Curtin Central Bus Station,Curtin,12.50,completed,Thursday,Dinner,Individual
+ord_1230,C00256,2026-09-17T05:50:25.645Z,Curtin Central Bus Station,Curtin,13.00,completed,Friday,Dinner,Individual
+ord_1231,C00257,2026-10-03T05:50:25.645Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Monday,Dinner,Individual
+ord_1232,C00257,2026-09-29T05:50:25.645Z,Curtin Engineering Guild,Victoria Park,2.50,completed,Tuesday,Dinner,Individual
+ord_1233,C00257,2026-09-25T05:50:25.645Z,Curtin Engineering Guild,Victoria Park,3.00,completed,Wednesday,Dinner,Individual
+ord_1234,C00257,2026-09-21T05:50:25.645Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Thursday,Dinner,Individual
+ord_1235,C00257,2026-09-17T05:50:25.645Z,Curtin Engineering Guild,Victoria Park,2.50,completed,Friday,Dinner,Individual
+ord_1236,C00257,2026-09-13T05:50:25.645Z,Curtin Engineering Guild,Victoria Park,3.00,completed,Monday,Dinner,Individual
+ord_1237,C00257,2026-09-09T05:50:25.645Z,Curtin Engineering Guild,Victoria Park,11.00,completed,Tuesday,Dinner,Individual
+ord_1238,C00257,2026-09-05T05:50:25.645Z,Curtin Engineering Guild,Victoria Park,2.50,completed,Wednesday,Dinner,Individual
+ord_1239,C00258,2026-10-03T05:50:25.645Z,Bentley Library Commons,Waterford,14.00,completed,Monday,Dinner,Individual
+ord_1240,C00258,2026-09-29T05:50:25.645Z,Bentley Library Commons,Waterford,12.00,completed,Tuesday,Dinner,Individual
+ord_1241,C00258,2026-09-25T05:50:25.645Z,Bentley Library Commons,Waterford,12.50,completed,Wednesday,Dinner,Individual
+ord_1242,C00258,2026-09-21T05:50:25.645Z,Bentley Library Commons,Waterford,14.00,completed,Thursday,Dinner,Individual
+ord_1243,C00258,2026-09-17T05:50:25.645Z,Bentley Library Commons,Waterford,12.00,completed,Friday,Dinner,Individual
+ord_1244,C00259,2026-10-03T05:50:25.645Z,Victoria Park Station Hub,Como,11.00,completed,Monday,Dinner,Individual
+ord_1245,C00259,2026-09-29T05:50:25.645Z,Victoria Park Station Hub,Como,3.00,completed,Tuesday,Dinner,Individual
+ord_1246,C00259,2026-09-25T05:50:25.645Z,Victoria Park Station Hub,Como,11.00,completed,Wednesday,Dinner,Individual
+ord_1247,C00259,2026-09-21T05:50:25.645Z,Victoria Park Station Hub,Como,11.00,completed,Thursday,Dinner,Individual
+ord_1248,C00259,2026-09-17T05:50:25.645Z,Victoria Park Station Hub,Como,3.00,completed,Friday,Dinner,Individual
+ord_1249,C00259,2026-09-13T05:50:25.645Z,Victoria Park Station Hub,Como,11.00,completed,Monday,Dinner,Individual
+ord_1250,C00259,2026-09-09T05:50:25.645Z,Victoria Park Station Hub,Como,11.00,completed,Tuesday,Dinner,Individual
+ord_1251,C00260,2026-10-03T05:50:25.645Z,Curtin Central Bus Station,Bentley,12.50,completed,Monday,Dinner,Individual
+ord_1252,C00260,2026-09-29T05:50:25.645Z,Curtin Central Bus Station,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_1253,C00260,2026-09-25T05:50:25.645Z,Curtin Central Bus Station,Bentley,12.00,completed,Wednesday,Dinner,Individual
+ord_1254,C00260,2026-09-21T05:50:25.645Z,Curtin Central Bus Station,Bentley,12.50,completed,Thursday,Dinner,Individual
+ord_1255,C00260,2026-09-17T05:50:25.645Z,Curtin Central Bus Station,Bentley,12.00,completed,Friday,Dinner,Individual
+ord_1256,C00260,2026-09-13T05:50:25.645Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_1257,C00260,2026-09-09T05:50:25.645Z,Curtin Central Bus Station,Bentley,12.50,completed,Tuesday,Dinner,Individual
+ord_1258,C00261,2026-10-03T05:50:25.645Z,Curtin Engineering Guild,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_1259,C00261,2026-09-29T05:50:25.645Z,Curtin Engineering Guild,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_1260,C00261,2026-09-25T05:50:25.645Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_1261,C00261,2026-09-21T05:50:25.645Z,Curtin Engineering Guild,Curtin,12.50,completed,Thursday,Dinner,Individual
+ord_1262,C00262,2026-10-03T05:50:25.645Z,Bentley Library Commons,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_1263,C00262,2026-09-29T05:50:25.645Z,Bentley Library Commons,Victoria Park,13.00,completed,Tuesday,Dinner,Individual
+ord_1264,C00262,2026-09-25T05:50:25.645Z,Bentley Library Commons,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_1265,C00262,2026-09-21T05:50:25.645Z,Bentley Library Commons,Victoria Park,12.50,completed,Thursday,Dinner,Individual
+ord_1266,C00263,2026-10-03T05:50:25.645Z,Victoria Park Station Hub,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_1267,C00263,2026-09-29T05:50:25.645Z,Victoria Park Station Hub,Waterford,3.00,completed,Tuesday,Dinner,Individual
+ord_1268,C00263,2026-09-25T05:50:25.645Z,Victoria Park Station Hub,Waterford,12.50,completed,Wednesday,Dinner,Individual
+ord_1269,C00263,2026-09-21T05:50:25.645Z,Victoria Park Station Hub,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_1270,C00263,2026-09-17T05:50:25.645Z,Victoria Park Station Hub,Waterford,3.00,completed,Friday,Dinner,Individual
+ord_1271,C00263,2026-09-13T05:50:25.645Z,Victoria Park Station Hub,Waterford,12.50,completed,Monday,Dinner,Individual
+ord_1272,C00264,2026-10-03T05:50:25.645Z,Curtin Central Bus Station,Como,4.00,completed,Monday,Dinner,Individual
+ord_1273,C00264,2026-09-29T05:50:25.645Z,Curtin Central Bus Station,Como,11.00,completed,Tuesday,Dinner,Individual
+ord_1274,C00264,2026-09-25T05:50:25.645Z,Curtin Central Bus Station,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_1275,C00264,2026-09-21T05:50:25.645Z,Curtin Central Bus Station,Como,4.00,completed,Thursday,Dinner,Individual
+ord_1276,C00264,2026-09-17T05:50:25.645Z,Curtin Central Bus Station,Como,11.00,completed,Friday,Dinner,Individual
+ord_1277,C00264,2026-09-13T05:50:25.645Z,Curtin Central Bus Station,Como,12.00,completed,Monday,Dinner,Individual
+ord_1278,C00265,2026-10-03T05:50:25.645Z,Curtin Engineering Guild,Bentley,2.50,completed,Monday,Dinner,Individual
+ord_1279,C00265,2026-09-29T05:50:25.645Z,Curtin Engineering Guild,Bentley,3.00,completed,Tuesday,Dinner,Individual
+ord_1280,C00265,2026-09-25T05:50:25.645Z,Curtin Engineering Guild,Bentley,3.00,completed,Wednesday,Dinner,Individual
+ord_1281,C00265,2026-09-21T05:50:25.645Z,Curtin Engineering Guild,Bentley,2.50,completed,Thursday,Dinner,Individual
+ord_1282,C00265,2026-09-17T05:50:25.645Z,Curtin Engineering Guild,Bentley,3.00,completed,Friday,Dinner,Individual
+ord_1283,C00265,2026-09-13T05:50:25.645Z,Curtin Engineering Guild,Bentley,3.00,completed,Monday,Dinner,Individual
+ord_1284,C00265,2026-09-09T05:50:25.645Z,Curtin Engineering Guild,Bentley,2.50,completed,Tuesday,Dinner,Individual
+ord_1285,C00265,2026-09-05T05:50:25.645Z,Curtin Engineering Guild,Bentley,3.00,completed,Wednesday,Dinner,Individual
+ord_1286,C00266,2026-10-03T05:50:25.645Z,Bentley Library Commons,Curtin,13.00,completed,Monday,Dinner,Individual
+ord_1287,C00266,2026-09-29T05:50:25.645Z,Bentley Library Commons,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_1288,C00266,2026-09-25T05:50:25.645Z,Bentley Library Commons,Curtin,13.50,completed,Wednesday,Dinner,Individual
+ord_1289,C00266,2026-09-21T05:50:25.645Z,Bentley Library Commons,Curtin,13.00,completed,Thursday,Dinner,Individual
+ord_1290,C00266,2026-09-17T05:50:25.645Z,Bentley Library Commons,Curtin,12.00,completed,Friday,Dinner,Individual
+ord_1291,C00266,2026-09-13T05:50:25.645Z,Bentley Library Commons,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_1292,C00267,2026-10-03T05:50:25.645Z,Victoria Park Station Hub,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_1293,C00267,2026-09-29T05:50:25.645Z,Victoria Park Station Hub,Victoria Park,11.00,completed,Tuesday,Dinner,Individual
+ord_1294,C00267,2026-09-25T05:50:25.645Z,Victoria Park Station Hub,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_1295,C00268,2026-10-03T05:50:25.645Z,Curtin Central Bus Station,Waterford,13.50,completed,Monday,Dinner,Individual
+ord_1296,C00268,2026-09-29T05:50:25.645Z,Curtin Central Bus Station,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_1297,C00268,2026-09-25T05:50:25.645Z,Curtin Central Bus Station,Waterford,14.50,completed,Wednesday,Dinner,Individual
+ord_1298,C00268,2026-09-21T05:50:25.645Z,Curtin Central Bus Station,Waterford,13.50,completed,Thursday,Dinner,Individual
+ord_1299,C00268,2026-09-17T05:50:25.645Z,Curtin Central Bus Station,Waterford,13.00,completed,Friday,Dinner,Individual
+ord_1300,C00269,2026-10-03T05:50:25.646Z,Curtin Engineering Guild,Como,3.00,completed,Monday,Dinner,Individual
+ord_1301,C00269,2026-09-29T05:50:25.646Z,Curtin Engineering Guild,Como,4.00,completed,Tuesday,Dinner,Individual
+ord_1302,C00269,2026-09-25T05:50:25.646Z,Curtin Engineering Guild,Como,2.50,completed,Wednesday,Dinner,Individual
+ord_1303,C00269,2026-09-21T05:50:25.646Z,Curtin Engineering Guild,Como,3.00,completed,Thursday,Dinner,Individual
+ord_1304,C00270,2026-10-03T05:50:25.646Z,Bentley Library Commons,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_1305,C00270,2026-09-29T05:50:25.646Z,Bentley Library Commons,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_1306,C00270,2026-09-25T05:50:25.646Z,Bentley Library Commons,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_1307,C00270,2026-09-21T05:50:25.646Z,Bentley Library Commons,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_1308,C00270,2026-09-17T05:50:25.646Z,Bentley Library Commons,Bentley,12.00,completed,Friday,Dinner,Individual
+ord_1309,C00271,2026-10-03T05:50:25.646Z,Victoria Park Station Hub,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_1310,C00271,2026-09-29T05:50:25.646Z,Victoria Park Station Hub,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_1311,C00272,2026-10-03T05:50:25.646Z,Curtin Central Bus Station,Victoria Park,13.50,completed,Monday,Dinner,Individual
+ord_1312,C00272,2026-09-29T05:50:25.646Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1313,C00272,2026-09-25T05:50:25.646Z,Curtin Central Bus Station,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_1314,C00272,2026-09-21T05:50:25.646Z,Curtin Central Bus Station,Victoria Park,13.50,completed,Thursday,Dinner,Individual
+ord_1315,C00273,2026-10-03T05:50:25.646Z,Curtin Engineering Guild,Waterford,3.00,completed,Monday,Dinner,Individual
+ord_1316,C00273,2026-09-29T05:50:25.646Z,Curtin Engineering Guild,Waterford,2.50,completed,Tuesday,Dinner,Individual
+ord_1317,C00273,2026-09-25T05:50:25.646Z,Curtin Engineering Guild,Waterford,3.00,completed,Wednesday,Dinner,Individual
+ord_1318,C00273,2026-09-21T05:50:25.646Z,Curtin Engineering Guild,Waterford,3.00,completed,Thursday,Dinner,Individual
+ord_1319,C00273,2026-09-17T05:50:25.646Z,Curtin Engineering Guild,Waterford,2.50,completed,Friday,Dinner,Individual
+ord_1320,C00274,2026-10-03T05:50:25.646Z,Bentley Library Commons,Como,13.00,completed,Monday,Dinner,Individual
+ord_1321,C00274,2026-09-29T05:50:25.646Z,Bentley Library Commons,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_1322,C00274,2026-09-25T05:50:25.646Z,Bentley Library Commons,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_1323,C00274,2026-09-21T05:50:25.646Z,Bentley Library Commons,Como,13.00,completed,Thursday,Dinner,Individual
+ord_1324,C00274,2026-09-17T05:50:25.646Z,Bentley Library Commons,Como,12.00,completed,Friday,Dinner,Individual
+ord_1325,C00274,2026-09-13T05:50:25.646Z,Bentley Library Commons,Como,12.00,completed,Monday,Dinner,Individual
+ord_1326,C00275,2026-10-03T05:50:25.646Z,Victoria Park Station Hub,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_1327,C00275,2026-09-29T05:50:25.646Z,Victoria Park Station Hub,Bentley,2.50,completed,Tuesday,Dinner,Individual
+ord_1328,C00275,2026-09-25T05:50:25.646Z,Victoria Park Station Hub,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_1329,C00275,2026-09-21T05:50:25.646Z,Victoria Park Station Hub,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_1330,C00276,2026-10-03T05:50:25.646Z,Curtin Central Bus Station,Curtin,12.50,completed,Monday,Dinner,Individual
+ord_1331,C00276,2026-09-29T05:50:25.646Z,Curtin Central Bus Station,Curtin,11.00,completed,Tuesday,Dinner,Individual
+ord_1332,C00276,2026-09-25T05:50:25.646Z,Curtin Central Bus Station,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_1333,C00277,2026-10-03T05:50:25.646Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_1334,C00277,2026-09-29T05:50:25.646Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1335,C00277,2026-09-25T05:50:25.646Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_1336,C00277,2026-09-21T05:50:25.646Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_1337,C00277,2026-09-17T05:50:25.646Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Friday,Dinner,Individual
+ord_1338,C00278,2026-10-03T05:50:25.646Z,Bentley Library Commons,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_1339,C00278,2026-09-29T05:50:25.646Z,Bentley Library Commons,Waterford,12.00,completed,Tuesday,Dinner,Individual
+ord_1340,C00278,2026-09-25T05:50:25.646Z,Bentley Library Commons,Waterford,12.50,completed,Wednesday,Dinner,Individual
+ord_1341,C00278,2026-09-21T05:50:25.646Z,Bentley Library Commons,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_1342,C00278,2026-09-17T05:50:25.646Z,Bentley Library Commons,Waterford,12.00,completed,Friday,Dinner,Individual
+ord_1343,C00278,2026-09-13T05:50:25.646Z,Bentley Library Commons,Waterford,12.50,completed,Monday,Dinner,Individual
+ord_1344,C00279,2026-10-03T05:50:25.646Z,Victoria Park Station Hub,Como,11.00,completed,Monday,Dinner,Individual
+ord_1345,C00279,2026-09-29T05:50:25.646Z,Victoria Park Station Hub,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_1346,C00280,2026-10-03T05:50:25.646Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_1347,C00280,2026-09-29T05:50:25.646Z,Curtin Central Bus Station,Bentley,12.00,completed,Tuesday,Dinner,Individual
+ord_1348,C00280,2026-09-25T05:50:25.646Z,Curtin Central Bus Station,Bentley,13.50,completed,Wednesday,Dinner,Individual
+ord_1349,C00280,2026-09-21T05:50:25.646Z,Curtin Central Bus Station,Bentley,12.00,completed,Thursday,Dinner,Individual
+ord_1350,C00281,2026-10-03T05:50:25.646Z,Curtin Engineering Guild,Curtin,12.00,completed,Monday,Dinner,Individual
+ord_1351,C00281,2026-09-29T05:50:25.646Z,Curtin Engineering Guild,Curtin,12.00,completed,Tuesday,Dinner,Individual
+ord_1352,C00281,2026-09-25T05:50:25.646Z,Curtin Engineering Guild,Curtin,12.00,completed,Wednesday,Dinner,Individual
+ord_1353,C00281,2026-09-21T05:50:25.646Z,Curtin Engineering Guild,Curtin,12.00,completed,Thursday,Dinner,Individual
+ord_1354,C00282,2026-10-03T05:50:25.646Z,Bentley Library Commons,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_1355,C00282,2026-09-29T05:50:25.646Z,Bentley Library Commons,Victoria Park,13.00,completed,Tuesday,Dinner,Individual
+ord_1356,C00282,2026-09-25T05:50:25.646Z,Bentley Library Commons,Victoria Park,12.00,completed,Wednesday,Dinner,Individual
+ord_1357,C00282,2026-09-21T05:50:25.646Z,Bentley Library Commons,Victoria Park,12.50,completed,Thursday,Dinner,Individual
+ord_1358,C00282,2026-09-17T05:50:25.646Z,Bentley Library Commons,Victoria Park,13.00,completed,Friday,Dinner,Individual
+ord_1359,C00282,2026-09-13T05:50:25.646Z,Bentley Library Commons,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_1360,C00282,2026-09-09T05:50:25.646Z,Bentley Library Commons,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_1361,C00282,2026-09-05T05:50:25.646Z,Bentley Library Commons,Victoria Park,13.00,completed,Wednesday,Dinner,Individual
+ord_1362,C00283,2026-10-03T05:50:25.646Z,Victoria Park Station Hub,Waterford,12.50,completed,Monday,Dinner,Individual
+ord_1363,C00284,2026-10-03T05:50:25.646Z,Curtin Central Bus Station,Como,12.00,completed,Monday,Dinner,Individual
+ord_1364,C00284,2026-09-29T05:50:25.646Z,Curtin Central Bus Station,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_1365,C00284,2026-09-25T05:50:25.646Z,Curtin Central Bus Station,Como,12.00,completed,Wednesday,Dinner,Individual
+ord_1366,C00284,2026-09-21T05:50:25.646Z,Curtin Central Bus Station,Como,12.00,completed,Thursday,Dinner,Individual
+ord_1367,C00284,2026-09-17T05:50:25.646Z,Curtin Central Bus Station,Como,12.00,completed,Friday,Dinner,Individual
+ord_1368,C00284,2026-09-13T05:50:25.646Z,Curtin Central Bus Station,Como,12.00,completed,Monday,Dinner,Individual
+ord_1369,C00285,2026-10-03T05:50:25.646Z,Curtin Engineering Guild,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_1370,C00285,2026-09-29T05:50:25.646Z,Curtin Engineering Guild,Bentley,3.00,completed,Tuesday,Dinner,Individual
+ord_1371,C00285,2026-09-25T05:50:25.646Z,Curtin Engineering Guild,Bentley,11.00,completed,Wednesday,Dinner,Individual
+ord_1372,C00285,2026-09-21T05:50:25.646Z,Curtin Engineering Guild,Bentley,11.00,completed,Thursday,Dinner,Individual
+ord_1373,C00285,2026-09-17T05:50:25.646Z,Curtin Engineering Guild,Bentley,3.00,completed,Friday,Dinner,Individual
+ord_1374,C00285,2026-09-13T05:50:25.646Z,Curtin Engineering Guild,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_1375,C00285,2026-09-09T05:50:25.646Z,Curtin Engineering Guild,Bentley,11.00,completed,Tuesday,Dinner,Individual
+ord_1376,C00285,2026-09-05T05:50:25.646Z,Curtin Engineering Guild,Bentley,3.00,completed,Wednesday,Dinner,Individual
+ord_1377,C00286,2026-10-03T05:50:25.646Z,Bentley Library Commons,Curtin,13.50,completed,Monday,Dinner,Individual
+ord_1378,C00286,2026-09-29T05:50:25.646Z,Bentley Library Commons,Curtin,12.50,completed,Tuesday,Dinner,Individual
+ord_1379,C00287,2026-10-03T05:50:25.646Z,Victoria Park Station Hub,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_1380,C00288,2026-10-03T05:50:25.646Z,Curtin Central Bus Station,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_1381,C00288,2026-09-29T05:50:25.646Z,Curtin Central Bus Station,Waterford,14.50,completed,Tuesday,Dinner,Individual
+ord_1382,C00288,2026-09-25T05:50:25.646Z,Curtin Central Bus Station,Waterford,13.50,completed,Wednesday,Dinner,Individual
+ord_1383,C00288,2026-09-21T05:50:25.646Z,Curtin Central Bus Station,Waterford,13.00,completed,Thursday,Dinner,Individual
+ord_1384,C00288,2026-09-17T05:50:25.646Z,Curtin Central Bus Station,Waterford,14.50,completed,Friday,Dinner,Individual
+ord_1385,C00288,2026-09-13T05:50:25.646Z,Curtin Central Bus Station,Waterford,13.50,completed,Monday,Dinner,Individual
+ord_1386,C00288,2026-09-09T05:50:25.646Z,Curtin Central Bus Station,Waterford,13.00,completed,Tuesday,Dinner,Individual
+ord_1387,C00288,2026-09-05T05:50:25.646Z,Curtin Central Bus Station,Waterford,14.50,completed,Wednesday,Dinner,Individual
+ord_1388,C00289,2026-10-03T05:50:25.646Z,Curtin Engineering Guild,Como,12.50,completed,Monday,Dinner,Individual
+ord_1389,C00289,2026-09-29T05:50:25.646Z,Curtin Engineering Guild,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_1390,C00289,2026-09-25T05:50:25.646Z,Curtin Engineering Guild,Como,11.00,completed,Wednesday,Dinner,Individual
+ord_1391,C00289,2026-09-21T05:50:25.646Z,Curtin Engineering Guild,Como,12.50,completed,Thursday,Dinner,Individual
+ord_1392,C00289,2026-09-17T05:50:25.646Z,Curtin Engineering Guild,Como,12.00,completed,Friday,Dinner,Individual
+ord_1393,C00289,2026-09-13T05:50:25.646Z,Curtin Engineering Guild,Como,11.00,completed,Monday,Dinner,Individual
+ord_1394,C00289,2026-09-09T05:50:25.646Z,Curtin Engineering Guild,Como,12.50,completed,Tuesday,Dinner,Individual
+ord_1395,C00290,2026-10-03T05:50:25.646Z,Bentley Library Commons,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_1396,C00291,2026-10-03T05:50:25.646Z,Victoria Park Station Hub,Curtin,3.00,completed,Monday,Dinner,Individual
+ord_1397,C00291,2026-09-29T05:50:25.646Z,Victoria Park Station Hub,Curtin,4.00,completed,Tuesday,Dinner,Individual
+ord_1398,C00292,2026-10-03T05:50:25.646Z,Curtin Central Bus Station,Victoria Park,12.50,completed,Monday,Dinner,Individual
+ord_1399,C00292,2026-09-29T05:50:25.646Z,Curtin Central Bus Station,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1400,C00293,2026-10-03T05:50:25.646Z,Curtin Engineering Guild,Waterford,11.00,completed,Monday,Dinner,Individual
+ord_1401,C00293,2026-09-29T05:50:25.646Z,Curtin Engineering Guild,Waterford,11.00,completed,Tuesday,Dinner,Individual
+ord_1402,C00294,2026-10-03T05:50:25.646Z,Bentley Library Commons,Como,12.50,completed,Monday,Dinner,Individual
+ord_1403,C00294,2026-09-29T05:50:25.646Z,Bentley Library Commons,Como,12.50,completed,Tuesday,Dinner,Individual
+ord_1404,C00295,2026-10-03T05:50:25.646Z,Victoria Park Station Hub,Bentley,11.00,completed,Monday,Dinner,Individual
+ord_1405,C00296,2026-10-03T05:50:25.646Z,Curtin Central Bus Station,Curtin,13.00,completed,Monday,Dinner,Individual
+ord_1406,C00296,2026-09-29T05:50:25.646Z,Curtin Central Bus Station,Curtin,13.50,completed,Tuesday,Dinner,Individual
+ord_1407,C00296,2026-09-25T05:50:25.646Z,Curtin Central Bus Station,Curtin,13.00,completed,Wednesday,Dinner,Individual
+ord_1408,C00296,2026-09-21T05:50:25.646Z,Curtin Central Bus Station,Curtin,13.00,completed,Thursday,Dinner,Individual
+ord_1409,C00296,2026-09-17T05:50:25.646Z,Curtin Central Bus Station,Curtin,13.50,completed,Friday,Dinner,Individual
+ord_1410,C00296,2026-09-13T05:50:25.646Z,Curtin Central Bus Station,Curtin,13.00,completed,Monday,Dinner,Individual
+ord_1411,C00296,2026-09-09T05:50:25.646Z,Curtin Central Bus Station,Curtin,13.00,completed,Tuesday,Dinner,Individual
+ord_1412,C00296,2026-09-05T05:50:25.646Z,Curtin Central Bus Station,Curtin,13.50,completed,Wednesday,Dinner,Individual
+ord_1413,C00297,2026-10-03T05:50:25.647Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Monday,Dinner,Individual
+ord_1414,C00297,2026-09-29T05:50:25.647Z,Curtin Engineering Guild,Victoria Park,12.50,completed,Tuesday,Dinner,Individual
+ord_1415,C00297,2026-09-25T05:50:25.647Z,Curtin Engineering Guild,Victoria Park,13.50,completed,Wednesday,Dinner,Individual
+ord_1416,C00297,2026-09-21T05:50:25.647Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Thursday,Dinner,Individual
+ord_1417,C00297,2026-09-17T05:50:25.647Z,Curtin Engineering Guild,Victoria Park,12.50,completed,Friday,Dinner,Individual
+ord_1418,C00297,2026-09-13T05:50:25.647Z,Curtin Engineering Guild,Victoria Park,13.50,completed,Monday,Dinner,Individual
+ord_1419,C00297,2026-09-09T05:50:25.647Z,Curtin Engineering Guild,Victoria Park,12.00,completed,Tuesday,Dinner,Individual
+ord_1420,C00297,2026-09-05T05:50:25.647Z,Curtin Engineering Guild,Victoria Park,12.50,completed,Wednesday,Dinner,Individual
+ord_1421,C00298,2026-10-03T05:50:25.647Z,Bentley Library Commons,Waterford,13.00,completed,Monday,Dinner,Individual
+ord_1422,C00298,2026-09-29T05:50:25.647Z,Bentley Library Commons,Waterford,14.50,completed,Tuesday,Dinner,Individual
+ord_1423,C00299,2026-10-03T05:50:25.647Z,Victoria Park Station Hub,Como,11.00,completed,Monday,Dinner,Individual
+ord_1424,C00299,2026-09-29T05:50:25.647Z,Victoria Park Station Hub,Como,12.00,completed,Tuesday,Dinner,Individual
+ord_1425,C00299,2026-09-25T05:50:25.647Z,Victoria Park Station Hub,Como,11.00,completed,Wednesday,Dinner,Individual
+ord_1426,C00299,2026-09-21T05:50:25.647Z,Victoria Park Station Hub,Como,11.00,completed,Thursday,Dinner,Individual
+ord_1427,C00300,2026-10-03T05:50:25.647Z,Curtin Central Bus Station,Bentley,12.00,completed,Monday,Dinner,Individual
+ord_1428,C00300,2026-09-29T05:50:25.647Z,Curtin Central Bus Station,Bentley,11.00,completed,Tuesday,Dinner,Individual

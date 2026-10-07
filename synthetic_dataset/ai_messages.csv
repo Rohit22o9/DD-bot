@@ -1,0 +1,1074 @@
+message_id,conversation_id,sender,message,intent,extracted_constraints,timestamp
+msg_1,conv_1,user,What should I eat tonight?,meal_search,"{""max_price"":10.77}",2026-10-04T06:20:56.353Z
+msg_2,conv_2,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.67,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:49:43.927Z
+msg_3,conv_3,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-10-04T06:40:23.042Z
+msg_4,conv_4,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-09-25T06:43:15.288Z
+msg_5,conv_5,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-09-16T06:03:59.855Z
+msg_6,conv_6,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-09-07T06:40:22.942Z
+msg_7,conv_7,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-08-29T06:26:01.262Z
+msg_8,conv_8,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-08-20T05:57:56.786Z
+msg_9,conv_9,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-08-11T06:01:24.790Z
+msg_10,conv_10,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-08-02T06:03:27.704Z
+msg_11,conv_11,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-07-24T06:35:30.756Z
+msg_12,conv_12,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-07-15T06:18:33.531Z
+msg_13,conv_13,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-07-06T06:43:03.251Z
+msg_14,conv_14,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-06-27T06:32:08.292Z
+msg_15,conv_15,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-06-18T06:31:59.743Z
+msg_16,conv_16,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-06-09T06:30:16.995Z
+msg_17,conv_17,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-05-31T06:42:46.458Z
+msg_18,conv_18,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-05-22T06:17:24.962Z
+msg_19,conv_19,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-05-13T05:55:29.408Z
+msg_20,conv_20,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-05-04T06:45:19.802Z
+msg_21,conv_21,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-04-25T05:50:58.698Z
+msg_22,conv_22,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-04-16T06:12:10.139Z
+msg_23,conv_23,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-04-07T06:39:21.484Z
+msg_24,conv_24,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-03-29T05:57:18.454Z
+msg_25,conv_25,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-03-20T06:24:22.020Z
+msg_26,conv_26,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-03-11T06:45:17.227Z
+msg_27,conv_27,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-03-02T06:32:46.495Z
+msg_28,conv_28,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-02-21T06:30:47.305Z
+msg_29,conv_29,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-02-12T05:53:27.600Z
+msg_30,conv_30,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-02-03T06:03:31.878Z
+msg_31,conv_31,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-01-25T05:59:31.404Z
+msg_32,conv_32,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-01-16T06:00:49.731Z
+msg_33,conv_33,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2026-01-07T06:00:55.244Z
+msg_34,conv_34,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2025-12-29T06:39:10.818Z
+msg_35,conv_35,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2025-12-20T06:38:50.078Z
+msg_36,conv_36,user,What should I eat tonight?,meal_search,"{""max_price"":14.6}",2025-12-11T05:52:45.793Z
+msg_37,conv_37,user,Something spicy under $14,meal_search,"{""max_price"":13.93,""spice"":""spicy""}",2026-10-04T06:17:06.367Z
+msg_38,conv_38,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.97,""dietary"":""vegetarian""}",2026-10-04T05:57:17.675Z
+msg_39,conv_39,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.97,""dietary"":""vegetarian""}",2026-09-25T06:24:13.478Z
+msg_40,conv_40,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.97,""dietary"":""vegetarian""}",2026-09-16T06:06:48.473Z
+msg_41,conv_41,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.97,""dietary"":""vegetarian""}",2026-09-07T06:41:40.092Z
+msg_42,conv_42,user,Something spicy under $15,meal_search,"{""max_price"":14.35,""spice"":""spicy""}",2026-10-04T06:24:26.367Z
+msg_43,conv_43,user,Something spicy under $15,meal_search,"{""max_price"":14.35,""spice"":""spicy""}",2026-09-25T06:25:57.296Z
+msg_44,conv_44,user,What should I eat tonight?,meal_search,"{""max_price"":13.34}",2026-10-04T05:55:05.869Z
+msg_45,conv_45,user,What should I eat tonight?,meal_search,"{""max_price"":13.34}",2026-09-25T06:28:07.396Z
+msg_46,conv_46,user,What should I eat tonight?,meal_search,"{""max_price"":13.34}",2026-09-16T06:46:17.971Z
+msg_47,conv_47,user,What should I eat tonight?,meal_search,"{""max_price"":13.34}",2026-09-07T06:39:41.860Z
+msg_48,conv_48,user,What should I eat tonight?,meal_search,"{""max_price"":13.34}",2026-08-29T05:57:09.306Z
+msg_49,conv_49,user,What should I eat tonight?,meal_search,"{""max_price"":13.34}",2026-08-20T05:54:49.051Z
+msg_50,conv_50,user,What should I eat tonight?,meal_search,"{""max_price"":19.73}",2026-10-04T06:21:53.067Z
+msg_51,conv_51,user,What should I eat tonight?,meal_search,"{""max_price"":19.73}",2026-09-25T06:27:29.781Z
+msg_52,conv_52,user,What should I eat tonight?,meal_search,"{""max_price"":19.73}",2026-09-16T06:17:51.771Z
+msg_53,conv_53,user,What should I eat tonight?,meal_search,"{""max_price"":19.73}",2026-09-07T06:42:21.085Z
+msg_54,conv_54,user,What should I eat tonight?,meal_search,"{""max_price"":10.03}",2026-10-04T06:08:32.462Z
+msg_55,conv_55,user,What should I eat tonight?,meal_search,"{""max_price"":10.03}",2026-09-25T06:38:16.430Z
+msg_56,conv_56,user,What should I eat tonight?,meal_search,"{""max_price"":10.03}",2026-09-16T06:10:38.964Z
+msg_57,conv_57,user,What should I eat tonight?,meal_search,"{""max_price"":10.03}",2026-09-07T06:48:12.306Z
+msg_58,conv_58,user,What should I eat tonight?,meal_search,"{""max_price"":10.03}",2026-08-29T06:07:44.141Z
+msg_59,conv_59,user,What should I eat tonight?,meal_search,"{""max_price"":10.03}",2026-08-20T06:25:45.275Z
+msg_60,conv_60,user,What should I eat tonight?,meal_search,"{""max_price"":12.84}",2026-10-04T06:38:57.682Z
+msg_61,conv_61,user,What should I eat tonight?,meal_search,"{""max_price"":12.84}",2026-09-25T06:21:40.381Z
+msg_62,conv_62,user,What should I eat tonight?,meal_search,"{""max_price"":12.84}",2026-09-16T06:26:57.314Z
+msg_63,conv_63,user,What should I eat tonight?,meal_search,"{""max_price"":11.65}",2026-10-04T06:45:55.347Z
+msg_64,conv_64,user,What should I eat tonight?,meal_search,"{""max_price"":11.65}",2026-09-25T06:29:33.854Z
+msg_65,conv_65,user,Something spicy under $13,meal_search,"{""max_price"":12.45,""spice"":""spicy""}",2026-10-04T06:00:49.980Z
+msg_66,conv_66,user,Something spicy under $13,meal_search,"{""max_price"":12.45,""spice"":""spicy""}",2026-09-25T06:14:41.587Z
+msg_67,conv_67,user,What should I eat tonight?,meal_search,"{""max_price"":14.64}",2026-10-04T06:28:09.036Z
+msg_68,conv_68,user,What should I eat tonight?,meal_search,"{""max_price"":14.64}",2026-09-25T06:35:27.513Z
+msg_69,conv_69,user,What should I eat tonight?,meal_search,"{""max_price"":14.64}",2026-09-16T06:32:38.040Z
+msg_70,conv_70,user,Something spicy under $12,meal_search,"{""max_price"":11.19,""spice"":""spicy""}",2026-10-04T06:15:07.099Z
+msg_71,conv_71,user,Something spicy under $12,meal_search,"{""max_price"":11.19,""spice"":""spicy""}",2026-09-25T06:40:13.383Z
+msg_72,conv_72,user,Something spicy under $12,meal_search,"{""max_price"":11.19,""spice"":""spicy""}",2026-09-16T06:13:48.580Z
+msg_73,conv_73,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.48,""dietary"":""vegetarian""}",2026-10-04T06:43:11.903Z
+msg_74,conv_74,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.48,""dietary"":""vegetarian""}",2026-09-25T06:36:26.771Z
+msg_75,conv_75,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.48,""dietary"":""vegetarian""}",2026-09-16T06:32:17.205Z
+msg_76,conv_76,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.48,""dietary"":""vegetarian""}",2026-09-07T06:24:04.989Z
+msg_77,conv_77,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.48,""dietary"":""vegetarian""}",2026-08-29T06:45:21.093Z
+msg_78,conv_78,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.48,""dietary"":""vegetarian""}",2026-08-20T06:37:17.717Z
+msg_79,conv_79,user,Something spicy under $14,meal_search,"{""max_price"":13.87,""spice"":""spicy""}",2026-10-04T06:08:44.881Z
+msg_80,conv_80,user,What should I eat tonight?,meal_search,"{""max_price"":12.35}",2026-10-04T05:53:14.973Z
+msg_81,conv_81,user,What should I eat tonight?,meal_search,"{""max_price"":12.35}",2026-09-25T06:17:51.318Z
+msg_82,conv_82,user,What should I eat tonight?,meal_search,"{""max_price"":12.35}",2026-09-16T06:35:56.995Z
+msg_83,conv_83,user,What should I eat tonight?,meal_search,"{""max_price"":12.35}",2026-09-07T06:28:40.899Z
+msg_84,conv_84,user,What should I eat tonight?,meal_search,"{""max_price"":18.4}",2026-10-04T05:56:15.623Z
+msg_85,conv_85,user,What should I eat tonight?,meal_search,"{""max_price"":18.4}",2026-09-25T05:57:10.197Z
+msg_86,conv_86,user,What should I eat tonight?,meal_search,"{""max_price"":18.4}",2026-09-16T06:33:29.042Z
+msg_87,conv_87,user,What should I eat tonight?,meal_search,"{""max_price"":18.4}",2026-09-07T05:53:16.326Z
+msg_88,conv_88,user,What should I eat tonight?,meal_search,"{""max_price"":18.4}",2026-08-29T06:13:08.671Z
+msg_89,conv_89,user,What should I eat tonight?,meal_search,"{""max_price"":18.4}",2026-08-20T06:26:33.072Z
+msg_90,conv_90,user,What should I eat tonight?,meal_search,"{""max_price"":11.36}",2026-10-04T06:15:30.191Z
+msg_91,conv_91,user,What should I eat tonight?,meal_search,"{""max_price"":11.36}",2026-09-25T05:58:26.566Z
+msg_92,conv_92,user,What should I eat tonight?,meal_search,"{""max_price"":11.36}",2026-09-16T06:33:11.738Z
+msg_93,conv_93,user,What should I eat tonight?,meal_search,"{""max_price"":14.29}",2026-10-04T06:18:12.123Z
+msg_94,conv_94,user,What should I eat tonight?,meal_search,"{""max_price"":14.29}",2026-09-25T06:27:26.200Z
+msg_95,conv_95,user,What should I eat tonight?,meal_search,"{""max_price"":12.97}",2026-10-04T06:13:55.728Z
+msg_96,conv_96,user,What should I eat tonight?,meal_search,"{""max_price"":12.97}",2026-09-25T06:06:09.013Z
+msg_97,conv_97,user,What should I eat tonight?,meal_search,"{""max_price"":12.97}",2026-09-16T06:11:40.640Z
+msg_98,conv_98,user,What should I eat tonight?,meal_search,"{""max_price"":12.97}",2026-09-07T06:01:22.961Z
+msg_99,conv_99,user,What should I eat tonight?,meal_search,"{""max_price"":12.97}",2026-08-29T06:40:37.450Z
+msg_100,conv_100,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.91,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T05:54:42.212Z
+msg_101,conv_101,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.91,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T05:50:51.979Z
+msg_102,conv_102,user,What should I eat tonight?,meal_search,"{""max_price"":14.75}",2026-10-04T05:53:52.048Z
+msg_103,conv_103,user,What should I eat tonight?,meal_search,"{""max_price"":14.75}",2026-09-25T06:45:01.194Z
+msg_104,conv_104,user,Something spicy under $15,meal_search,"{""max_price"":14.65,""spice"":""spicy""}",2026-10-04T06:10:35.233Z
+msg_105,conv_105,user,Something spicy under $15,meal_search,"{""max_price"":14.65,""spice"":""spicy""}",2026-09-25T06:36:48.378Z
+msg_106,conv_106,user,Something spicy under $15,meal_search,"{""max_price"":14.65,""spice"":""spicy""}",2026-09-16T05:59:00.568Z
+msg_107,conv_107,user,Something spicy under $15,meal_search,"{""max_price"":14.65,""spice"":""spicy""}",2026-09-07T06:50:14.840Z
+msg_108,conv_108,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":13.2,""dietary"":""vegetarian""}",2026-10-04T06:25:13.102Z
+msg_109,conv_109,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":13.2,""dietary"":""vegetarian""}",2026-09-25T06:40:17.957Z
+msg_110,conv_110,user,Something spicy under $18,meal_search,"{""max_price"":17.62,""spice"":""spicy""}",2026-10-04T06:33:57.304Z
+msg_111,conv_111,user,Something spicy under $18,meal_search,"{""max_price"":17.62,""spice"":""spicy""}",2026-09-25T06:19:18.945Z
+msg_112,conv_112,user,Something spicy under $18,meal_search,"{""max_price"":17.62,""spice"":""spicy""}",2026-09-16T06:14:57.866Z
+msg_113,conv_113,user,Something spicy under $18,meal_search,"{""max_price"":17.62,""spice"":""spicy""}",2026-09-07T06:21:06.675Z
+msg_114,conv_114,user,Something spicy under $18,meal_search,"{""max_price"":17.62,""spice"":""spicy""}",2026-08-29T06:31:44.096Z
+msg_115,conv_115,user,What should I eat tonight?,meal_search,"{""max_price"":11.24}",2026-10-04T06:27:24.829Z
+msg_116,conv_116,user,What should I eat tonight?,meal_search,"{""max_price"":11.24}",2026-09-25T06:46:00.648Z
+msg_117,conv_117,user,What should I eat tonight?,meal_search,"{""max_price"":14.68}",2026-10-04T06:26:13.099Z
+msg_118,conv_118,user,What should I eat tonight?,meal_search,"{""max_price"":14.68}",2026-09-25T05:53:21.557Z
+msg_119,conv_119,user,What should I eat tonight?,meal_search,"{""max_price"":14.68}",2026-09-16T06:35:33.748Z
+msg_120,conv_120,user,What should I eat tonight?,meal_search,"{""max_price"":14.68}",2026-09-07T06:41:53.596Z
+msg_121,conv_121,user,What should I eat tonight?,meal_search,"{""max_price"":14.68}",2026-08-29T06:13:30.923Z
+msg_122,conv_122,user,What should I eat tonight?,meal_search,"{""max_price"":14.68}",2026-08-20T06:35:38.994Z
+msg_123,conv_123,user,Something spicy under $12,meal_search,"{""max_price"":11.48,""spice"":""spicy""}",2026-10-04T06:06:18.950Z
+msg_124,conv_124,user,Something spicy under $12,meal_search,"{""max_price"":11.48,""spice"":""spicy""}",2026-09-25T06:34:45.326Z
+msg_125,conv_125,user,Something spicy under $12,meal_search,"{""max_price"":11.48,""spice"":""spicy""}",2026-09-16T06:23:58.209Z
+msg_126,conv_126,user,Something spicy under $12,meal_search,"{""max_price"":11.48,""spice"":""spicy""}",2026-09-07T06:07:41.098Z
+msg_127,conv_127,user,What should I eat tonight?,meal_search,"{""max_price"":14.61}",2026-10-04T05:58:40.030Z
+msg_128,conv_128,user,What should I eat tonight?,meal_search,"{""max_price"":14.61}",2026-09-25T05:58:51.927Z
+msg_129,conv_129,user,What should I eat tonight?,meal_search,"{""max_price"":14.61}",2026-09-16T06:26:09.353Z
+msg_130,conv_130,user,What should I eat tonight?,meal_search,"{""max_price"":14.61}",2026-09-07T05:57:06.220Z
+msg_131,conv_131,user,What should I eat tonight?,meal_search,"{""max_price"":12.36}",2026-10-04T06:14:49.459Z
+msg_132,conv_132,user,What should I eat tonight?,meal_search,"{""max_price"":12.36}",2026-09-25T06:19:40.330Z
+msg_133,conv_133,user,What should I eat tonight?,meal_search,"{""max_price"":12.36}",2026-09-16T06:24:55.864Z
+msg_134,conv_134,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.41,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:45:37.345Z
+msg_135,conv_135,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.41,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T06:16:29.820Z
+msg_136,conv_136,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.41,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:41:57.913Z
+msg_137,conv_137,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.41,""protein"":""chicken"",""health"":""high-protein""}",2026-09-07T06:48:56.809Z
+msg_138,conv_138,user,What should I eat tonight?,meal_search,"{""max_price"":14.54}",2026-10-04T06:28:21.501Z
+msg_139,conv_139,user,What should I eat tonight?,meal_search,"{""max_price"":14.54}",2026-09-25T06:43:31.781Z
+msg_140,conv_140,user,What should I eat tonight?,meal_search,"{""max_price"":14.54}",2026-09-16T06:23:18.558Z
+msg_141,conv_141,user,What should I eat tonight?,meal_search,"{""max_price"":14.54}",2026-09-07T06:03:28.621Z
+msg_142,conv_142,user,What should I eat tonight?,meal_search,"{""max_price"":14.54}",2026-08-29T05:53:04.573Z
+msg_143,conv_143,user,What should I eat tonight?,meal_search,"{""max_price"":14.54}",2026-08-20T06:14:55.029Z
+msg_144,conv_144,user,Something spicy under $14,meal_search,"{""max_price"":13.7,""spice"":""spicy""}",2026-10-04T06:11:07.050Z
+msg_145,conv_145,user,Something spicy under $14,meal_search,"{""max_price"":13.7,""spice"":""spicy""}",2026-09-25T06:18:38.099Z
+msg_146,conv_146,user,Something spicy under $14,meal_search,"{""max_price"":13.7,""spice"":""spicy""}",2026-09-16T06:09:00.797Z
+msg_147,conv_147,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.43,""dietary"":""vegetarian""}",2026-10-04T06:32:09.495Z
+msg_148,conv_148,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.43,""dietary"":""vegetarian""}",2026-09-25T06:28:16.933Z
+msg_149,conv_149,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.43,""dietary"":""vegetarian""}",2026-09-16T05:55:33.127Z
+msg_150,conv_150,user,Something spicy under $14,meal_search,"{""max_price"":13.58,""spice"":""spicy""}",2026-10-04T06:34:18.755Z
+msg_151,conv_151,user,Something spicy under $14,meal_search,"{""max_price"":13.58,""spice"":""spicy""}",2026-09-25T05:54:20.971Z
+msg_152,conv_152,user,Something spicy under $14,meal_search,"{""max_price"":13.58,""spice"":""spicy""}",2026-09-16T06:39:18.844Z
+msg_153,conv_153,user,What should I eat tonight?,meal_search,"{""max_price"":11.31}",2026-10-04T06:08:55.978Z
+msg_154,conv_154,user,What should I eat tonight?,meal_search,"{""max_price"":11.31}",2026-09-25T06:38:20.921Z
+msg_155,conv_155,user,What should I eat tonight?,meal_search,"{""max_price"":11.31}",2026-09-16T06:47:03.011Z
+msg_156,conv_156,user,What should I eat tonight?,meal_search,"{""max_price"":11.31}",2026-09-07T06:32:12.954Z
+msg_157,conv_157,user,What should I eat tonight?,meal_search,"{""max_price"":11.31}",2026-08-29T06:34:31.308Z
+msg_158,conv_158,user,What should I eat tonight?,meal_search,"{""max_price"":11.31}",2026-08-20T06:23:12.729Z
+msg_159,conv_159,user,What should I eat tonight?,meal_search,"{""max_price"":21.53}",2026-10-04T06:25:10.041Z
+msg_160,conv_160,user,What should I eat tonight?,meal_search,"{""max_price"":21.53}",2026-09-25T06:09:50.943Z
+msg_161,conv_161,user,Something spicy under $12,meal_search,"{""max_price"":11.41,""spice"":""spicy""}",2026-10-04T05:56:14.854Z
+msg_162,conv_162,user,Something spicy under $12,meal_search,"{""max_price"":11.41,""spice"":""spicy""}",2026-09-25T06:43:33.180Z
+msg_163,conv_163,user,What should I eat tonight?,meal_search,"{""max_price"":13.21}",2026-10-04T06:21:37.654Z
+msg_164,conv_164,user,What should I eat tonight?,meal_search,"{""max_price"":13.21}",2026-09-25T06:39:06.024Z
+msg_165,conv_165,user,What should I eat tonight?,meal_search,"{""max_price"":12.64}",2026-10-04T06:09:38.254Z
+msg_166,conv_166,user,What should I eat tonight?,meal_search,"{""max_price"":12.64}",2026-09-25T06:06:06.895Z
+msg_167,conv_167,user,What should I eat tonight?,meal_search,"{""max_price"":12.64}",2026-09-16T06:05:47.909Z
+msg_168,conv_168,user,What should I eat tonight?,meal_search,"{""max_price"":12.64}",2026-09-07T06:14:13.819Z
+msg_169,conv_169,user,What should I eat tonight?,meal_search,"{""max_price"":12.64}",2026-08-29T06:37:23.277Z
+msg_170,conv_170,user,What should I eat tonight?,meal_search,"{""max_price"":12.64}",2026-08-20T06:06:07.913Z
+msg_171,conv_171,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.51,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:19:24.843Z
+msg_172,conv_172,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.51,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T06:43:56.046Z
+msg_173,conv_173,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.51,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:36:06.083Z
+msg_174,conv_174,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.51,""protein"":""chicken"",""health"":""high-protein""}",2026-09-07T06:35:21.536Z
+msg_175,conv_175,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.51,""protein"":""chicken"",""health"":""high-protein""}",2026-08-29T06:31:01.624Z
+msg_176,conv_176,user,What should I eat tonight?,meal_search,"{""max_price"":12.58}",2026-10-04T06:05:27.611Z
+msg_177,conv_177,user,What should I eat tonight?,meal_search,"{""max_price"":12.58}",2026-09-25T06:00:44.732Z
+msg_178,conv_178,user,What should I eat tonight?,meal_search,"{""max_price"":12.58}",2026-09-16T06:02:55.917Z
+msg_179,conv_179,user,What should I eat tonight?,meal_search,"{""max_price"":12.58}",2026-09-07T06:10:16.566Z
+msg_180,conv_180,user,What should I eat tonight?,meal_search,"{""max_price"":12.58}",2026-08-29T06:23:41.663Z
+msg_181,conv_181,user,What should I eat tonight?,meal_search,"{""max_price"":12.58}",2026-08-20T06:32:09.364Z
+msg_182,conv_182,user,Something spicy under $16,meal_search,"{""max_price"":15.41,""spice"":""spicy""}",2026-10-04T06:02:39.301Z
+msg_183,conv_183,user,Something spicy under $16,meal_search,"{""max_price"":15.41,""spice"":""spicy""}",2026-09-25T05:56:01.400Z
+msg_184,conv_184,user,Something spicy under $16,meal_search,"{""max_price"":15.41,""spice"":""spicy""}",2026-09-16T06:24:32.819Z
+msg_185,conv_185,user,Something spicy under $16,meal_search,"{""max_price"":15.41,""spice"":""spicy""}",2026-09-07T05:59:51.422Z
+msg_186,conv_186,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.85,""dietary"":""vegetarian""}",2026-10-04T06:46:10.868Z
+msg_187,conv_187,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.85,""dietary"":""vegetarian""}",2026-09-25T06:32:39.052Z
+msg_188,conv_188,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.85,""dietary"":""vegetarian""}",2026-09-16T06:09:00.798Z
+msg_189,conv_189,user,Something spicy under $15,meal_search,"{""max_price"":14.61,""spice"":""spicy""}",2026-10-04T06:07:09.211Z
+msg_190,conv_190,user,Something spicy under $15,meal_search,"{""max_price"":14.61,""spice"":""spicy""}",2026-09-25T06:11:35.439Z
+msg_191,conv_191,user,Something spicy under $15,meal_search,"{""max_price"":14.61,""spice"":""spicy""}",2026-09-16T06:00:26.629Z
+msg_192,conv_192,user,Something spicy under $15,meal_search,"{""max_price"":14.61,""spice"":""spicy""}",2026-09-07T06:42:00.864Z
+msg_193,conv_193,user,What should I eat tonight?,meal_search,"{""max_price"":11.5}",2026-10-04T06:21:10.472Z
+msg_194,conv_194,user,What should I eat tonight?,meal_search,"{""max_price"":11.5}",2026-09-25T06:00:51.714Z
+msg_195,conv_195,user,What should I eat tonight?,meal_search,"{""max_price"":11.5}",2026-09-16T05:57:46.307Z
+msg_196,conv_196,user,What should I eat tonight?,meal_search,"{""max_price"":11.5}",2026-09-07T06:00:00.359Z
+msg_197,conv_197,user,What should I eat tonight?,meal_search,"{""max_price"":11.5}",2026-08-29T06:09:10.142Z
+msg_198,conv_198,user,What should I eat tonight?,meal_search,"{""max_price"":11.5}",2026-08-20T06:06:33.894Z
+msg_199,conv_199,user,What should I eat tonight?,meal_search,"{""max_price"":16.85}",2026-10-04T06:26:56.764Z
+msg_200,conv_200,user,What should I eat tonight?,meal_search,"{""max_price"":16.85}",2026-09-25T06:00:36.601Z
+msg_201,conv_201,user,What should I eat tonight?,meal_search,"{""max_price"":16.85}",2026-09-16T06:02:41.469Z
+msg_202,conv_202,user,What should I eat tonight?,meal_search,"{""max_price"":16.85}",2026-09-07T06:03:20.211Z
+msg_203,conv_203,user,What should I eat tonight?,meal_search,"{""max_price"":16.85}",2026-08-29T05:54:33.439Z
+msg_204,conv_204,user,Something spicy under $11,meal_search,"{""max_price"":10.42,""spice"":""spicy""}",2026-10-04T06:12:45.881Z
+msg_205,conv_205,user,Something spicy under $11,meal_search,"{""max_price"":10.42,""spice"":""spicy""}",2026-09-25T06:39:52.399Z
+msg_206,conv_206,user,Something spicy under $11,meal_search,"{""max_price"":10.42,""spice"":""spicy""}",2026-09-16T06:49:59.123Z
+msg_207,conv_207,user,Something spicy under $11,meal_search,"{""max_price"":10.42,""spice"":""spicy""}",2026-09-07T06:41:50.080Z
+msg_208,conv_208,user,Something spicy under $11,meal_search,"{""max_price"":10.42,""spice"":""spicy""}",2026-08-29T06:02:01.666Z
+msg_209,conv_209,user,Something spicy under $11,meal_search,"{""max_price"":10.42,""spice"":""spicy""}",2026-08-20T06:16:49.558Z
+msg_210,conv_210,user,What should I eat tonight?,meal_search,"{""max_price"":14.08}",2026-10-04T06:27:55.313Z
+msg_211,conv_211,user,What should I eat tonight?,meal_search,"{""max_price"":14.08}",2026-09-25T06:43:01.762Z
+msg_212,conv_212,user,What should I eat tonight?,meal_search,"{""max_price"":14.08}",2026-09-16T06:36:17.193Z
+msg_213,conv_213,user,What should I eat tonight?,meal_search,"{""max_price"":14.08}",2026-09-07T06:05:39.220Z
+msg_214,conv_214,user,What should I eat tonight?,meal_search,"{""max_price"":14.08}",2026-08-29T05:50:46.257Z
+msg_215,conv_215,user,What should I eat tonight?,meal_search,"{""max_price"":10.26}",2026-10-04T06:28:13.831Z
+msg_216,conv_216,user,What should I eat tonight?,meal_search,"{""max_price"":10.26}",2026-09-25T06:32:31.590Z
+msg_217,conv_217,user,What should I eat tonight?,meal_search,"{""max_price"":10.26}",2026-09-16T06:08:32.451Z
+msg_218,conv_218,user,What should I eat tonight?,meal_search,"{""max_price"":10.26}",2026-09-07T06:21:18.773Z
+msg_219,conv_219,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.26,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:40:13.665Z
+msg_220,conv_220,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.26,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T05:57:54.598Z
+msg_221,conv_221,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.26,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:11:23.382Z
+msg_222,conv_222,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.26,""protein"":""chicken"",""health"":""high-protein""}",2026-09-07T06:13:56.173Z
+msg_223,conv_223,user,What should I eat tonight?,meal_search,"{""max_price"":11.53}",2026-10-04T05:51:45.686Z
+msg_224,conv_224,user,What should I eat tonight?,meal_search,"{""max_price"":11.53}",2026-09-25T06:26:47.129Z
+msg_225,conv_225,user,Something spicy under $16,meal_search,"{""max_price"":15.56,""spice"":""spicy""}",2026-10-04T06:18:25.295Z
+msg_226,conv_226,user,Something spicy under $16,meal_search,"{""max_price"":15.56,""spice"":""spicy""}",2026-09-25T06:48:56.421Z
+msg_227,conv_227,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":13.73,""dietary"":""vegetarian""}",2026-10-04T06:07:20.749Z
+msg_228,conv_228,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":13.73,""dietary"":""vegetarian""}",2026-09-25T06:20:36.570Z
+msg_229,conv_229,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":13.73,""dietary"":""vegetarian""}",2026-09-16T06:20:53.851Z
+msg_230,conv_230,user,What should I eat tonight?,meal_search,"{""max_price"":17.22}",2026-10-04T06:04:26.953Z
+msg_231,conv_231,user,What should I eat tonight?,meal_search,"{""max_price"":17.22}",2026-09-25T06:13:53.786Z
+msg_232,conv_232,user,What should I eat tonight?,meal_search,"{""max_price"":17.22}",2026-09-16T06:37:43.846Z
+msg_233,conv_233,user,What should I eat tonight?,meal_search,"{""max_price"":17.22}",2026-09-07T06:05:42.128Z
+msg_234,conv_234,user,What should I eat tonight?,meal_search,"{""max_price"":11.42}",2026-10-04T06:03:36.245Z
+msg_235,conv_235,user,What should I eat tonight?,meal_search,"{""max_price"":11.42}",2026-09-25T06:23:18.817Z
+msg_236,conv_236,user,What should I eat tonight?,meal_search,"{""max_price"":15.73}",2026-10-04T06:04:43.496Z
+msg_237,conv_237,user,What should I eat tonight?,meal_search,"{""max_price"":15.73}",2026-09-25T06:40:12.886Z
+msg_238,conv_238,user,What should I eat tonight?,meal_search,"{""max_price"":15.73}",2026-09-16T05:56:41.060Z
+msg_239,conv_239,user,What should I eat tonight?,meal_search,"{""max_price"":15.73}",2026-09-07T06:02:17.740Z
+msg_240,conv_240,user,Something spicy under $12,meal_search,"{""max_price"":11.48,""spice"":""spicy""}",2026-10-04T06:33:44.945Z
+msg_241,conv_241,user,Something spicy under $12,meal_search,"{""max_price"":11.48,""spice"":""spicy""}",2026-09-25T06:11:24.177Z
+msg_242,conv_242,user,What should I eat tonight?,meal_search,"{""max_price"":13.1}",2026-10-04T05:55:37.934Z
+msg_243,conv_243,user,What should I eat tonight?,meal_search,"{""max_price"":13.1}",2026-09-25T06:40:48.175Z
+msg_244,conv_244,user,What should I eat tonight?,meal_search,"{""max_price"":13.1}",2026-09-16T06:01:12.902Z
+msg_245,conv_245,user,What should I eat tonight?,meal_search,"{""max_price"":13.1}",2026-09-07T06:24:13.044Z
+msg_246,conv_246,user,What should I eat tonight?,meal_search,"{""max_price"":13.1}",2026-08-29T06:28:28.537Z
+msg_247,conv_247,user,What should I eat tonight?,meal_search,"{""max_price"":11.59}",2026-10-04T06:20:32.578Z
+msg_248,conv_248,user,What should I eat tonight?,meal_search,"{""max_price"":11.59}",2026-09-25T06:04:08.353Z
+msg_249,conv_249,user,What should I eat tonight?,meal_search,"{""max_price"":11.59}",2026-09-16T06:27:00.255Z
+msg_250,conv_250,user,What should I eat tonight?,meal_search,"{""max_price"":11.59}",2026-09-07T06:42:40.483Z
+msg_251,conv_251,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.1,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:33:17.012Z
+msg_252,conv_252,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.1,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T06:49:52.548Z
+msg_253,conv_253,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.1,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:34:32.432Z
+msg_254,conv_254,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.1,""protein"":""chicken"",""health"":""high-protein""}",2026-09-07T06:45:59.642Z
+msg_255,conv_255,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.1,""protein"":""chicken"",""health"":""high-protein""}",2026-08-29T06:24:58.575Z
+msg_256,conv_256,user,What should I eat tonight?,meal_search,"{""max_price"":14.2}",2026-10-04T05:54:52.615Z
+msg_257,conv_257,user,What should I eat tonight?,meal_search,"{""max_price"":14.2}",2026-09-25T06:41:32.578Z
+msg_258,conv_258,user,What should I eat tonight?,meal_search,"{""max_price"":14.2}",2026-09-16T05:59:01.247Z
+msg_259,conv_259,user,What should I eat tonight?,meal_search,"{""max_price"":14.2}",2026-09-07T06:20:43.075Z
+msg_260,conv_260,user,Something spicy under $13,meal_search,"{""max_price"":12.88,""spice"":""spicy""}",2026-10-04T06:10:32.945Z
+msg_261,conv_261,user,Something spicy under $13,meal_search,"{""max_price"":12.88,""spice"":""spicy""}",2026-09-25T06:42:19.833Z
+msg_262,conv_262,user,Something spicy under $13,meal_search,"{""max_price"":12.88,""spice"":""spicy""}",2026-09-16T06:32:24.529Z
+msg_263,conv_263,user,Something spicy under $13,meal_search,"{""max_price"":12.88,""spice"":""spicy""}",2026-09-07T06:37:40.727Z
+msg_264,conv_264,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":13.91,""dietary"":""vegetarian""}",2026-10-04T05:51:53.060Z
+msg_265,conv_265,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":13.91,""dietary"":""vegetarian""}",2026-09-25T06:33:04.739Z
+msg_266,conv_266,user,Something spicy under $17,meal_search,"{""max_price"":16.67,""spice"":""spicy""}",2026-10-04T06:32:30.304Z
+msg_267,conv_267,user,Something spicy under $17,meal_search,"{""max_price"":16.67,""spice"":""spicy""}",2026-09-25T06:30:58.757Z
+msg_268,conv_268,user,Something spicy under $17,meal_search,"{""max_price"":16.67,""spice"":""spicy""}",2026-09-16T05:55:52.424Z
+msg_269,conv_269,user,What should I eat tonight?,meal_search,"{""max_price"":11.15}",2026-10-04T06:28:14.517Z
+msg_270,conv_270,user,What should I eat tonight?,meal_search,"{""max_price"":11.15}",2026-09-25T05:52:36.952Z
+msg_271,conv_271,user,What should I eat tonight?,meal_search,"{""max_price"":11.15}",2026-09-16T06:48:14.120Z
+msg_272,conv_272,user,What should I eat tonight?,meal_search,"{""max_price"":11.15}",2026-09-07T05:53:23.376Z
+msg_273,conv_273,user,What should I eat tonight?,meal_search,"{""max_price"":14.09}",2026-10-04T06:48:26.040Z
+msg_274,conv_274,user,What should I eat tonight?,meal_search,"{""max_price"":14.09}",2026-09-25T06:17:33.378Z
+msg_275,conv_275,user,What should I eat tonight?,meal_search,"{""max_price"":14.09}",2026-09-16T06:03:36.358Z
+msg_276,conv_276,user,What should I eat tonight?,meal_search,"{""max_price"":14.09}",2026-09-07T06:13:58.022Z
+msg_277,conv_277,user,What should I eat tonight?,meal_search,"{""max_price"":14.09}",2026-08-29T06:08:13.682Z
+msg_278,conv_278,user,Something spicy under $11,meal_search,"{""max_price"":10.39,""spice"":""spicy""}",2026-10-04T05:51:29.220Z
+msg_279,conv_279,user,Something spicy under $11,meal_search,"{""max_price"":10.39,""spice"":""spicy""}",2026-09-25T06:18:07.804Z
+msg_280,conv_280,user,What should I eat tonight?,meal_search,"{""max_price"":12.72}",2026-10-04T06:20:45.325Z
+msg_281,conv_281,user,What should I eat tonight?,meal_search,"{""max_price"":12.72}",2026-09-25T06:36:48.065Z
+msg_282,conv_282,user,What should I eat tonight?,meal_search,"{""max_price"":12.72}",2026-09-16T06:40:18.532Z
+msg_283,conv_283,user,What should I eat tonight?,meal_search,"{""max_price"":12.72}",2026-09-07T05:54:33.922Z
+msg_284,conv_284,user,What should I eat tonight?,meal_search,"{""max_price"":11.83}",2026-10-04T05:51:49.957Z
+msg_285,conv_285,user,What should I eat tonight?,meal_search,"{""max_price"":11.83}",2026-09-25T06:08:55.627Z
+msg_286,conv_286,user,What should I eat tonight?,meal_search,"{""max_price"":11.83}",2026-09-16T06:22:03.904Z
+msg_287,conv_287,user,What should I eat tonight?,meal_search,"{""max_price"":11.83}",2026-09-07T06:30:24.969Z
+msg_288,conv_288,user,What should I eat tonight?,meal_search,"{""max_price"":11.83}",2026-08-29T06:45:00.946Z
+msg_289,conv_289,user,Something spicy under $14,meal_search,"{""max_price"":13.05,""spice"":""spicy""}",2026-10-04T06:24:15.882Z
+msg_290,conv_290,user,Something spicy under $14,meal_search,"{""max_price"":13.05,""spice"":""spicy""}",2026-09-25T06:49:23.014Z
+msg_291,conv_291,user,Something spicy under $14,meal_search,"{""max_price"":13.05,""spice"":""spicy""}",2026-09-16T05:57:21.357Z
+msg_292,conv_292,user,Something spicy under $14,meal_search,"{""max_price"":13.05,""spice"":""spicy""}",2026-09-07T06:14:50.574Z
+msg_293,conv_293,user,Something spicy under $14,meal_search,"{""max_price"":13.05,""spice"":""spicy""}",2026-08-29T06:42:48.222Z
+msg_294,conv_294,user,Something spicy under $14,meal_search,"{""max_price"":13.05,""spice"":""spicy""}",2026-08-20T06:09:38.212Z
+msg_295,conv_295,user,What should I eat tonight?,meal_search,"{""max_price"":13.93}",2026-10-04T06:00:07.003Z
+msg_296,conv_296,user,What should I eat tonight?,meal_search,"{""max_price"":13.93}",2026-09-25T06:28:02.758Z
+msg_297,conv_297,user,Something spicy under $15,meal_search,"{""max_price"":14.4,""spice"":""spicy""}",2026-10-04T05:57:48.163Z
+msg_298,conv_298,user,Something spicy under $15,meal_search,"{""max_price"":14.4,""spice"":""spicy""}",2026-09-25T06:39:22.756Z
+msg_299,conv_299,user,Something spicy under $15,meal_search,"{""max_price"":14.4,""spice"":""spicy""}",2026-09-16T06:49:58.369Z
+msg_300,conv_300,user,Something spicy under $15,meal_search,"{""max_price"":14.4,""spice"":""spicy""}",2026-09-07T06:29:15.490Z
+msg_301,conv_301,user,Something spicy under $15,meal_search,"{""max_price"":14.4,""spice"":""spicy""}",2026-08-29T06:29:05.631Z
+msg_302,conv_302,user,Something spicy under $15,meal_search,"{""max_price"":14.4,""spice"":""spicy""}",2026-08-20T06:29:16.767Z
+msg_303,conv_303,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.96,""dietary"":""vegetarian""}",2026-10-04T06:01:52.741Z
+msg_304,conv_304,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.96,""dietary"":""vegetarian""}",2026-09-25T06:33:35.925Z
+msg_305,conv_305,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.96,""dietary"":""vegetarian""}",2026-09-16T06:33:32.162Z
+msg_306,conv_306,user,Something spicy under $16,meal_search,"{""max_price"":15.74,""spice"":""spicy""}",2026-10-04T06:30:47.796Z
+msg_307,conv_307,user,Something spicy under $16,meal_search,"{""max_price"":15.74,""spice"":""spicy""}",2026-09-25T06:46:04.771Z
+msg_308,conv_308,user,What should I eat tonight?,meal_search,"{""max_price"":12.35}",2026-10-04T06:05:32.849Z
+msg_309,conv_309,user,What should I eat tonight?,meal_search,"{""max_price"":12.35}",2026-09-25T06:20:59.516Z
+msg_310,conv_310,user,What should I eat tonight?,meal_search,"{""max_price"":12.35}",2026-09-16T06:28:18.938Z
+msg_311,conv_311,user,What should I eat tonight?,meal_search,"{""max_price"":12.35}",2026-09-07T06:48:35.359Z
+msg_312,conv_312,user,What should I eat tonight?,meal_search,"{""max_price"":12.35}",2026-08-29T06:05:02.757Z
+msg_313,conv_313,user,What should I eat tonight?,meal_search,"{""max_price"":14.76}",2026-10-04T06:00:51.476Z
+msg_314,conv_314,user,What should I eat tonight?,meal_search,"{""max_price"":14.76}",2026-09-25T05:56:21.671Z
+msg_315,conv_315,user,What should I eat tonight?,meal_search,"{""max_price"":14.76}",2026-09-16T06:46:29.016Z
+msg_316,conv_316,user,What should I eat tonight?,meal_search,"{""max_price"":14.76}",2026-09-07T06:10:28.897Z
+msg_317,conv_317,user,What should I eat tonight?,meal_search,"{""max_price"":14.76}",2026-08-29T06:47:40.896Z
+msg_318,conv_318,user,What should I eat tonight?,meal_search,"{""max_price"":10.19}",2026-10-04T06:43:51.199Z
+msg_319,conv_319,user,What should I eat tonight?,meal_search,"{""max_price"":10.19}",2026-09-25T06:08:27.080Z
+msg_320,conv_320,user,What should I eat tonight?,meal_search,"{""max_price"":10.19}",2026-09-16T06:05:33.505Z
+msg_321,conv_321,user,What should I eat tonight?,meal_search,"{""max_price"":10.19}",2026-09-07T06:34:23.869Z
+msg_322,conv_322,user,What should I eat tonight?,meal_search,"{""max_price"":13.08}",2026-10-04T06:03:45.428Z
+msg_323,conv_323,user,What should I eat tonight?,meal_search,"{""max_price"":13.08}",2026-09-25T06:42:28.015Z
+msg_324,conv_324,user,What should I eat tonight?,meal_search,"{""max_price"":13.08}",2026-09-16T05:53:06.661Z
+msg_325,conv_325,user,What should I eat tonight?,meal_search,"{""max_price"":13.08}",2026-09-07T06:09:43.705Z
+msg_326,conv_326,user,What should I eat tonight?,meal_search,"{""max_price"":12.3}",2026-10-04T06:27:14.881Z
+msg_327,conv_327,user,What should I eat tonight?,meal_search,"{""max_price"":12.3}",2026-09-25T05:59:53.632Z
+msg_328,conv_328,user,What should I eat tonight?,meal_search,"{""max_price"":12.3}",2026-09-16T06:00:19.711Z
+msg_329,conv_329,user,Something spicy under $16,meal_search,"{""max_price"":15.73,""spice"":""spicy""}",2026-10-04T06:01:48.113Z
+msg_330,conv_330,user,Something spicy under $16,meal_search,"{""max_price"":15.73,""spice"":""spicy""}",2026-09-25T05:53:01.142Z
+msg_331,conv_331,user,Something spicy under $16,meal_search,"{""max_price"":15.73,""spice"":""spicy""}",2026-09-16T06:14:26.636Z
+msg_332,conv_332,user,Something spicy under $16,meal_search,"{""max_price"":15.73,""spice"":""spicy""}",2026-09-07T06:35:40.416Z
+msg_333,conv_333,user,Something spicy under $16,meal_search,"{""max_price"":15.73,""spice"":""spicy""}",2026-08-29T06:40:50.367Z
+msg_334,conv_334,user,What should I eat tonight?,meal_search,"{""max_price"":11.99}",2026-10-04T06:38:58.976Z
+msg_335,conv_335,user,What should I eat tonight?,meal_search,"{""max_price"":11.99}",2026-09-25T05:56:20.324Z
+msg_336,conv_336,user,What should I eat tonight?,meal_search,"{""max_price"":11.99}",2026-09-16T06:39:23.415Z
+msg_337,conv_337,user,Something spicy under $14,meal_search,"{""max_price"":13.38,""spice"":""spicy""}",2026-10-04T06:49:15.111Z
+msg_338,conv_338,user,Something spicy under $14,meal_search,"{""max_price"":13.38,""spice"":""spicy""}",2026-09-25T06:49:42.732Z
+msg_339,conv_339,user,Something spicy under $14,meal_search,"{""max_price"":13.38,""spice"":""spicy""}",2026-09-16T05:54:12.754Z
+msg_340,conv_340,user,Something spicy under $14,meal_search,"{""max_price"":13.38,""spice"":""spicy""}",2026-09-07T06:12:58.979Z
+msg_341,conv_341,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.45,""dietary"":""vegetarian""}",2026-10-04T06:14:33.452Z
+msg_342,conv_342,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.45,""dietary"":""vegetarian""}",2026-09-25T06:28:58.729Z
+msg_343,conv_343,user,Something spicy under $16,meal_search,"{""max_price"":15.82,""spice"":""spicy""}",2026-10-04T06:45:57.796Z
+msg_344,conv_344,user,Something spicy under $16,meal_search,"{""max_price"":15.82,""spice"":""spicy""}",2026-09-25T06:34:54.952Z
+msg_345,conv_345,user,What should I eat tonight?,meal_search,"{""max_price"":12.61}",2026-10-04T06:17:47.918Z
+msg_346,conv_346,user,What should I eat tonight?,meal_search,"{""max_price"":12.61}",2026-09-25T06:23:37.883Z
+msg_347,conv_347,user,What should I eat tonight?,meal_search,"{""max_price"":21.92}",2026-10-04T06:49:23.665Z
+msg_348,conv_348,user,What should I eat tonight?,meal_search,"{""max_price"":21.92}",2026-09-25T06:12:50.378Z
+msg_349,conv_349,user,What should I eat tonight?,meal_search,"{""max_price"":11.02}",2026-10-04T06:37:17.667Z
+msg_350,conv_350,user,What should I eat tonight?,meal_search,"{""max_price"":12.93}",2026-10-04T06:13:43.405Z
+msg_351,conv_351,user,What should I eat tonight?,meal_search,"{""max_price"":12.93}",2026-09-25T06:34:45.811Z
+msg_352,conv_352,user,What should I eat tonight?,meal_search,"{""max_price"":12.93}",2026-09-16T06:05:16.789Z
+msg_353,conv_353,user,What should I eat tonight?,meal_search,"{""max_price"":12.93}",2026-09-07T06:40:26.131Z
+msg_354,conv_354,user,What should I eat tonight?,meal_search,"{""max_price"":10.5}",2026-10-04T05:56:04.755Z
+msg_355,conv_355,user,What should I eat tonight?,meal_search,"{""max_price"":10.5}",2026-09-25T06:25:03.112Z
+msg_356,conv_356,user,What should I eat tonight?,meal_search,"{""max_price"":10.5}",2026-09-16T06:48:54.561Z
+msg_357,conv_357,user,What should I eat tonight?,meal_search,"{""max_price"":10.5}",2026-09-07T06:05:09.144Z
+msg_358,conv_358,user,What should I eat tonight?,meal_search,"{""max_price"":10.5}",2026-08-29T05:51:11.247Z
+msg_359,conv_359,user,Something spicy under $14,meal_search,"{""max_price"":13.78,""spice"":""spicy""}",2026-10-04T06:21:36.738Z
+msg_360,conv_360,user,Something spicy under $14,meal_search,"{""max_price"":13.78,""spice"":""spicy""}",2026-09-25T05:52:14.591Z
+msg_361,conv_361,user,Something spicy under $14,meal_search,"{""max_price"":13.78,""spice"":""spicy""}",2026-09-16T06:32:26.958Z
+msg_362,conv_362,user,Something spicy under $14,meal_search,"{""max_price"":13.78,""spice"":""spicy""}",2026-09-07T06:29:58.216Z
+msg_363,conv_363,user,What should I eat tonight?,meal_search,"{""max_price"":12.59}",2026-10-04T06:25:33.303Z
+msg_364,conv_364,user,What should I eat tonight?,meal_search,"{""max_price"":12.59}",2026-09-25T06:22:48.608Z
+msg_365,conv_365,user,What should I eat tonight?,meal_search,"{""max_price"":12.59}",2026-09-16T06:21:00.626Z
+msg_366,conv_366,user,What should I eat tonight?,meal_search,"{""max_price"":12.59}",2026-09-07T06:07:15.538Z
+msg_367,conv_367,user,What should I eat tonight?,meal_search,"{""max_price"":12.59}",2026-08-29T05:57:39.127Z
+msg_368,conv_368,user,Something spicy under $14,meal_search,"{""max_price"":13.06,""spice"":""spicy""}",2026-10-04T06:32:09.721Z
+msg_369,conv_369,user,Something spicy under $14,meal_search,"{""max_price"":13.06,""spice"":""spicy""}",2026-09-25T06:27:54.572Z
+msg_370,conv_370,user,Something spicy under $14,meal_search,"{""max_price"":13.06,""spice"":""spicy""}",2026-09-16T06:45:26.803Z
+msg_371,conv_371,user,Something spicy under $14,meal_search,"{""max_price"":13.06,""spice"":""spicy""}",2026-09-07T06:40:41.695Z
+msg_372,conv_372,user,Something spicy under $14,meal_search,"{""max_price"":13.06,""spice"":""spicy""}",2026-08-29T05:56:31.350Z
+msg_373,conv_373,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.51,""dietary"":""vegetarian""}",2026-10-04T06:31:24.321Z
+msg_374,conv_374,user,Something spicy under $17,meal_search,"{""max_price"":16.45,""spice"":""spicy""}",2026-10-04T05:57:49.931Z
+msg_375,conv_375,user,Something spicy under $17,meal_search,"{""max_price"":16.45,""spice"":""spicy""}",2026-09-25T06:30:49.965Z
+msg_376,conv_376,user,Something spicy under $17,meal_search,"{""max_price"":16.45,""spice"":""spicy""}",2026-09-16T06:46:22.633Z
+msg_377,conv_377,user,Something spicy under $17,meal_search,"{""max_price"":16.45,""spice"":""spicy""}",2026-09-07T06:05:39.916Z
+msg_378,conv_378,user,Something spicy under $17,meal_search,"{""max_price"":16.45,""spice"":""spicy""}",2026-08-29T06:15:59.588Z
+msg_379,conv_379,user,Something spicy under $17,meal_search,"{""max_price"":16.45,""spice"":""spicy""}",2026-08-20T06:20:00.885Z
+msg_380,conv_380,user,What should I eat tonight?,meal_search,"{""max_price"":11.12}",2026-10-04T06:36:42.276Z
+msg_381,conv_381,user,What should I eat tonight?,meal_search,"{""max_price"":11.12}",2026-09-25T06:29:44.745Z
+msg_382,conv_382,user,What should I eat tonight?,meal_search,"{""max_price"":11.12}",2026-09-16T06:03:22.466Z
+msg_383,conv_383,user,What should I eat tonight?,meal_search,"{""max_price"":11.12}",2026-09-07T06:46:24.136Z
+msg_384,conv_384,user,What should I eat tonight?,meal_search,"{""max_price"":11.12}",2026-08-29T06:16:40.215Z
+msg_385,conv_385,user,What should I eat tonight?,meal_search,"{""max_price"":15.51}",2026-10-04T05:58:27.991Z
+msg_386,conv_386,user,What should I eat tonight?,meal_search,"{""max_price"":15.51}",2026-09-25T06:08:35.611Z
+msg_387,conv_387,user,What should I eat tonight?,meal_search,"{""max_price"":15.51}",2026-09-16T06:01:45.286Z
+msg_388,conv_388,user,What should I eat tonight?,meal_search,"{""max_price"":15.51}",2026-09-07T06:24:26.709Z
+msg_389,conv_389,user,Something spicy under $11,meal_search,"{""max_price"":10.35,""spice"":""spicy""}",2026-10-04T06:44:03.844Z
+msg_390,conv_390,user,Something spicy under $11,meal_search,"{""max_price"":10.35,""spice"":""spicy""}",2026-09-25T06:45:32.288Z
+msg_391,conv_391,user,Something spicy under $11,meal_search,"{""max_price"":10.35,""spice"":""spicy""}",2026-09-16T06:32:06.886Z
+msg_392,conv_392,user,Something spicy under $11,meal_search,"{""max_price"":10.35,""spice"":""spicy""}",2026-09-07T06:04:10.123Z
+msg_393,conv_393,user,What should I eat tonight?,meal_search,"{""max_price"":13.79}",2026-10-04T06:38:58.925Z
+msg_394,conv_394,user,What should I eat tonight?,meal_search,"{""max_price"":13.79}",2026-09-25T06:34:10.050Z
+msg_395,conv_395,user,What should I eat tonight?,meal_search,"{""max_price"":13.79}",2026-09-16T06:18:07.443Z
+msg_396,conv_396,user,What should I eat tonight?,meal_search,"{""max_price"":13.79}",2026-09-07T06:18:00.253Z
+msg_397,conv_397,user,What should I eat tonight?,meal_search,"{""max_price"":13.79}",2026-08-29T06:33:20.743Z
+msg_398,conv_398,user,What should I eat tonight?,meal_search,"{""max_price"":11.27}",2026-10-04T06:15:30.807Z
+msg_399,conv_399,user,What should I eat tonight?,meal_search,"{""max_price"":11.27}",2026-09-25T06:42:34.477Z
+msg_400,conv_400,user,What should I eat tonight?,meal_search,"{""max_price"":11.27}",2026-09-16T05:52:27.676Z
+msg_401,conv_401,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.39,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:04:29.515Z
+msg_402,conv_402,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.39,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T06:24:40.890Z
+msg_403,conv_403,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.39,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:16:58.475Z
+msg_404,conv_404,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.39,""protein"":""chicken"",""health"":""high-protein""}",2026-09-07T05:52:21.354Z
+msg_405,conv_405,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.39,""protein"":""chicken"",""health"":""high-protein""}",2026-08-29T05:52:51.596Z
+msg_406,conv_406,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.39,""protein"":""chicken"",""health"":""high-protein""}",2026-08-20T06:11:43.069Z
+msg_407,conv_407,user,What should I eat tonight?,meal_search,"{""max_price"":12.73}",2026-10-04T06:23:22.031Z
+msg_408,conv_408,user,What should I eat tonight?,meal_search,"{""max_price"":12.73}",2026-09-25T06:28:39.179Z
+msg_409,conv_409,user,Something spicy under $16,meal_search,"{""max_price"":15.22,""spice"":""spicy""}",2026-10-04T06:40:36.823Z
+msg_410,conv_410,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.52,""dietary"":""vegetarian""}",2026-10-04T05:53:01.913Z
+msg_411,conv_411,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.52,""dietary"":""vegetarian""}",2026-09-25T06:44:49.839Z
+msg_412,conv_412,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.52,""dietary"":""vegetarian""}",2026-09-16T06:42:02.558Z
+msg_413,conv_413,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.52,""dietary"":""vegetarian""}",2026-09-07T06:47:35.513Z
+msg_414,conv_414,user,Something spicy under $16,meal_search,"{""max_price"":15.44,""spice"":""spicy""}",2026-10-04T06:04:23.472Z
+msg_415,conv_415,user,Something spicy under $16,meal_search,"{""max_price"":15.44,""spice"":""spicy""}",2026-09-25T06:13:09.431Z
+msg_416,conv_416,user,Something spicy under $16,meal_search,"{""max_price"":15.44,""spice"":""spicy""}",2026-09-16T06:07:10.416Z
+msg_417,conv_417,user,Something spicy under $16,meal_search,"{""max_price"":15.44,""spice"":""spicy""}",2026-09-07T06:18:26.043Z
+msg_418,conv_418,user,What should I eat tonight?,meal_search,"{""max_price"":13.47}",2026-10-04T06:06:58.013Z
+msg_419,conv_419,user,What should I eat tonight?,meal_search,"{""max_price"":14.55}",2026-10-04T06:12:13.697Z
+msg_420,conv_420,user,What should I eat tonight?,meal_search,"{""max_price"":14.55}",2026-09-25T06:27:17.531Z
+msg_421,conv_421,user,What should I eat tonight?,meal_search,"{""max_price"":14.55}",2026-09-16T06:33:32.255Z
+msg_422,conv_422,user,What should I eat tonight?,meal_search,"{""max_price"":14.55}",2026-09-07T06:50:00.946Z
+msg_423,conv_423,user,What should I eat tonight?,meal_search,"{""max_price"":10.67}",2026-10-04T06:24:48.706Z
+msg_424,conv_424,user,What should I eat tonight?,meal_search,"{""max_price"":10.67}",2026-09-25T06:23:14.175Z
+msg_425,conv_425,user,What should I eat tonight?,meal_search,"{""max_price"":10.67}",2026-09-16T05:56:02.708Z
+msg_426,conv_426,user,What should I eat tonight?,meal_search,"{""max_price"":10.67}",2026-09-07T06:48:46.500Z
+msg_427,conv_427,user,What should I eat tonight?,meal_search,"{""max_price"":12.36}",2026-10-04T06:46:00.093Z
+msg_428,conv_428,user,What should I eat tonight?,meal_search,"{""max_price"":12.36}",2026-09-25T06:25:47.368Z
+msg_429,conv_429,user,What should I eat tonight?,meal_search,"{""max_price"":11.88}",2026-10-04T06:15:02.561Z
+msg_430,conv_430,user,What should I eat tonight?,meal_search,"{""max_price"":11.88}",2026-09-25T06:23:59.281Z
+msg_431,conv_431,user,Something spicy under $14,meal_search,"{""max_price"":13.51,""spice"":""spicy""}",2026-10-04T06:08:31.328Z
+msg_432,conv_432,user,Something spicy under $14,meal_search,"{""max_price"":13.51,""spice"":""spicy""}",2026-09-25T06:40:49.167Z
+msg_433,conv_433,user,Something spicy under $14,meal_search,"{""max_price"":13.51,""spice"":""spicy""}",2026-09-16T06:06:07.426Z
+msg_434,conv_434,user,Something spicy under $14,meal_search,"{""max_price"":13.51,""spice"":""spicy""}",2026-09-07T06:02:04.800Z
+msg_435,conv_435,user,What should I eat tonight?,meal_search,"{""max_price"":13.36}",2026-10-04T06:37:21.262Z
+msg_436,conv_436,user,What should I eat tonight?,meal_search,"{""max_price"":13.36}",2026-09-25T06:46:30.368Z
+msg_437,conv_437,user,What should I eat tonight?,meal_search,"{""max_price"":13.36}",2026-09-16T06:06:53.646Z
+msg_438,conv_438,user,What should I eat tonight?,meal_search,"{""max_price"":13.36}",2026-09-07T06:28:05.453Z
+msg_439,conv_439,user,Something spicy under $13,meal_search,"{""max_price"":12.94,""spice"":""spicy""}",2026-10-04T05:53:51.783Z
+msg_440,conv_440,user,Something spicy under $13,meal_search,"{""max_price"":12.94,""spice"":""spicy""}",2026-09-25T06:15:46.004Z
+msg_441,conv_441,user,Something spicy under $13,meal_search,"{""max_price"":12.94,""spice"":""spicy""}",2026-09-16T06:28:00.006Z
+msg_442,conv_442,user,Something spicy under $13,meal_search,"{""max_price"":12.94,""spice"":""spicy""}",2026-09-07T06:31:30.315Z
+msg_443,conv_443,user,Something spicy under $13,meal_search,"{""max_price"":12.94,""spice"":""spicy""}",2026-08-29T05:56:41.678Z
+msg_444,conv_444,user,Something spicy under $13,meal_search,"{""max_price"":12.94,""spice"":""spicy""}",2026-08-20T06:31:02.052Z
+msg_445,conv_445,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.7,""dietary"":""vegetarian""}",2026-10-04T06:08:19.110Z
+msg_446,conv_446,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.7,""dietary"":""vegetarian""}",2026-09-25T06:09:54.467Z
+msg_447,conv_447,user,Something spicy under $13,meal_search,"{""max_price"":12.82,""spice"":""spicy""}",2026-10-04T06:46:07.476Z
+msg_448,conv_448,user,Something spicy under $13,meal_search,"{""max_price"":12.82,""spice"":""spicy""}",2026-09-25T06:49:18.430Z
+msg_449,conv_449,user,Something spicy under $13,meal_search,"{""max_price"":12.82,""spice"":""spicy""}",2026-09-16T06:04:07.255Z
+msg_450,conv_450,user,Something spicy under $13,meal_search,"{""max_price"":12.82,""spice"":""spicy""}",2026-09-07T05:57:09.290Z
+msg_451,conv_451,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-10-04T05:54:07.323Z
+msg_452,conv_452,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-09-25T06:38:53.774Z
+msg_453,conv_453,user,What should I eat tonight?,meal_search,"{""max_price"":20.84}",2026-10-04T06:41:17.086Z
+msg_454,conv_454,user,What should I eat tonight?,meal_search,"{""max_price"":20.84}",2026-09-25T06:12:52.287Z
+msg_455,conv_455,user,What should I eat tonight?,meal_search,"{""max_price"":20.84}",2026-09-16T06:33:18.533Z
+msg_456,conv_456,user,What should I eat tonight?,meal_search,"{""max_price"":20.84}",2026-09-07T05:53:19.438Z
+msg_457,conv_457,user,What should I eat tonight?,meal_search,"{""max_price"":12.09}",2026-10-04T06:29:19.786Z
+msg_458,conv_458,user,What should I eat tonight?,meal_search,"{""max_price"":12.09}",2026-09-25T06:20:51.310Z
+msg_459,conv_459,user,What should I eat tonight?,meal_search,"{""max_price"":12.7}",2026-10-04T05:55:31.510Z
+msg_460,conv_460,user,What should I eat tonight?,meal_search,"{""max_price"":12.7}",2026-09-25T05:52:01.244Z
+msg_461,conv_461,user,What should I eat tonight?,meal_search,"{""max_price"":12.7}",2026-09-16T06:50:17.146Z
+msg_462,conv_462,user,What should I eat tonight?,meal_search,"{""max_price"":12.7}",2026-09-07T06:43:18.832Z
+msg_463,conv_463,user,What should I eat tonight?,meal_search,"{""max_price"":12.7}",2026-08-29T06:19:19.511Z
+msg_464,conv_464,user,What should I eat tonight?,meal_search,"{""max_price"":12.7}",2026-08-20T06:13:10.823Z
+msg_465,conv_465,user,What should I eat tonight?,meal_search,"{""max_price"":12.6}",2026-10-04T06:13:22.949Z
+msg_466,conv_466,user,What should I eat tonight?,meal_search,"{""max_price"":12.6}",2026-09-25T06:41:37.843Z
+msg_467,conv_467,user,What should I eat tonight?,meal_search,"{""max_price"":12.6}",2026-09-16T06:28:41.777Z
+msg_468,conv_468,user,Something spicy under $14,meal_search,"{""max_price"":13.57,""spice"":""spicy""}",2026-10-04T06:17:16.060Z
+msg_469,conv_469,user,Something spicy under $14,meal_search,"{""max_price"":13.57,""spice"":""spicy""}",2026-09-25T06:49:55.267Z
+msg_470,conv_470,user,Something spicy under $14,meal_search,"{""max_price"":13.57,""spice"":""spicy""}",2026-09-16T06:12:59.086Z
+msg_471,conv_471,user,What should I eat tonight?,meal_search,"{""max_price"":12.38}",2026-10-04T06:46:05.071Z
+msg_472,conv_472,user,What should I eat tonight?,meal_search,"{""max_price"":12.38}",2026-09-25T06:39:31.465Z
+msg_473,conv_473,user,Something spicy under $12,meal_search,"{""max_price"":11.78,""spice"":""spicy""}",2026-10-04T06:28:27.571Z
+msg_474,conv_474,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.53,""dietary"":""vegetarian""}",2026-10-04T06:31:15.381Z
+msg_475,conv_475,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.53,""dietary"":""vegetarian""}",2026-09-25T06:13:23.217Z
+msg_476,conv_476,user,Something spicy under $14,meal_search,"{""max_price"":13.48,""spice"":""spicy""}",2026-10-04T06:39:08.118Z
+msg_477,conv_477,user,Something spicy under $14,meal_search,"{""max_price"":13.48,""spice"":""spicy""}",2026-09-25T06:35:20.821Z
+msg_478,conv_478,user,Something spicy under $14,meal_search,"{""max_price"":13.48,""spice"":""spicy""}",2026-09-16T05:54:03.692Z
+msg_479,conv_479,user,Something spicy under $14,meal_search,"{""max_price"":13.48,""spice"":""spicy""}",2026-09-07T06:44:52.520Z
+msg_480,conv_480,user,What should I eat tonight?,meal_search,"{""max_price"":13.9}",2026-10-04T06:12:10.777Z
+msg_481,conv_481,user,What should I eat tonight?,meal_search,"{""max_price"":13.9}",2026-09-25T05:51:22.294Z
+msg_482,conv_482,user,What should I eat tonight?,meal_search,"{""max_price"":13.9}",2026-09-16T06:01:32.539Z
+msg_483,conv_483,user,What should I eat tonight?,meal_search,"{""max_price"":13.9}",2026-09-07T05:58:19.597Z
+msg_484,conv_484,user,What should I eat tonight?,meal_search,"{""max_price"":13.9}",2026-08-29T06:25:48.960Z
+msg_485,conv_485,user,What should I eat tonight?,meal_search,"{""max_price"":17.43}",2026-10-04T06:43:34.519Z
+msg_486,conv_486,user,What should I eat tonight?,meal_search,"{""max_price"":17.43}",2026-09-25T06:13:51.454Z
+msg_487,conv_487,user,What should I eat tonight?,meal_search,"{""max_price"":11.45}",2026-10-04T05:56:47.996Z
+msg_488,conv_488,user,What should I eat tonight?,meal_search,"{""max_price"":11.45}",2026-09-25T06:36:18.756Z
+msg_489,conv_489,user,What should I eat tonight?,meal_search,"{""max_price"":11.45}",2026-09-16T06:13:25.634Z
+msg_490,conv_490,user,What should I eat tonight?,meal_search,"{""max_price"":11.45}",2026-09-07T06:21:44.812Z
+msg_491,conv_491,user,What should I eat tonight?,meal_search,"{""max_price"":11.45}",2026-08-29T06:09:18.157Z
+msg_492,conv_492,user,What should I eat tonight?,meal_search,"{""max_price"":11.45}",2026-08-20T05:57:47.858Z
+msg_493,conv_493,user,What should I eat tonight?,meal_search,"{""max_price"":11.15}",2026-10-04T06:10:35.577Z
+msg_494,conv_494,user,What should I eat tonight?,meal_search,"{""max_price"":11.15}",2026-09-25T06:05:26.126Z
+msg_495,conv_495,user,What should I eat tonight?,meal_search,"{""max_price"":11.15}",2026-09-16T06:42:49.389Z
+msg_496,conv_496,user,What should I eat tonight?,meal_search,"{""max_price"":11.15}",2026-09-07T06:33:58.526Z
+msg_497,conv_497,user,What should I eat tonight?,meal_search,"{""max_price"":10.94}",2026-10-04T05:56:08.378Z
+msg_498,conv_498,user,What should I eat tonight?,meal_search,"{""max_price"":10.94}",2026-09-25T06:35:03.404Z
+msg_499,conv_499,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.56,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:28:23.567Z
+msg_500,conv_500,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.56,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T06:10:03.899Z
+msg_501,conv_501,user,What should I eat tonight?,meal_search,"{""max_price"":12.33}",2026-10-04T06:14:31.081Z
+msg_502,conv_502,user,What should I eat tonight?,meal_search,"{""max_price"":12.33}",2026-09-25T06:20:44.022Z
+msg_503,conv_503,user,Something spicy under $16,meal_search,"{""max_price"":15.31,""spice"":""spicy""}",2026-10-04T06:11:15.663Z
+msg_504,conv_504,user,Something spicy under $16,meal_search,"{""max_price"":15.31,""spice"":""spicy""}",2026-09-25T06:06:26.588Z
+msg_505,conv_505,user,Something spicy under $16,meal_search,"{""max_price"":15.31,""spice"":""spicy""}",2026-09-16T06:49:33.212Z
+msg_506,conv_506,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.2,""dietary"":""vegetarian""}",2026-10-04T06:10:48.221Z
+msg_507,conv_507,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.2,""dietary"":""vegetarian""}",2026-09-25T06:35:21.076Z
+msg_508,conv_508,user,Something spicy under $17,meal_search,"{""max_price"":16.16,""spice"":""spicy""}",2026-10-04T06:35:42.712Z
+msg_509,conv_509,user,Something spicy under $17,meal_search,"{""max_price"":16.16,""spice"":""spicy""}",2026-09-25T06:25:56.122Z
+msg_510,conv_510,user,Something spicy under $17,meal_search,"{""max_price"":16.16,""spice"":""spicy""}",2026-09-16T06:03:14.454Z
+msg_511,conv_511,user,Something spicy under $17,meal_search,"{""max_price"":16.16,""spice"":""spicy""}",2026-09-07T06:47:54.845Z
+msg_512,conv_512,user,Something spicy under $17,meal_search,"{""max_price"":16.16,""spice"":""spicy""}",2026-08-29T06:28:39.719Z
+msg_513,conv_513,user,Something spicy under $17,meal_search,"{""max_price"":16.16,""spice"":""spicy""}",2026-08-20T06:42:01.877Z
+msg_514,conv_514,user,What should I eat tonight?,meal_search,"{""max_price"":13.76}",2026-10-04T06:09:11.052Z
+msg_515,conv_515,user,What should I eat tonight?,meal_search,"{""max_price"":13.76}",2026-09-25T06:20:06.039Z
+msg_516,conv_516,user,What should I eat tonight?,meal_search,"{""max_price"":17.81}",2026-10-04T06:08:01.392Z
+msg_517,conv_517,user,What should I eat tonight?,meal_search,"{""max_price"":17.81}",2026-09-25T06:26:34.225Z
+msg_518,conv_518,user,Something spicy under $11,meal_search,"{""max_price"":10.65,""spice"":""spicy""}",2026-10-04T06:01:12.000Z
+msg_519,conv_519,user,What should I eat tonight?,meal_search,"{""max_price"":14.47}",2026-10-04T06:29:18.582Z
+msg_520,conv_520,user,What should I eat tonight?,meal_search,"{""max_price"":14.47}",2026-09-25T06:36:40.104Z
+msg_521,conv_521,user,What should I eat tonight?,meal_search,"{""max_price"":11.18}",2026-10-04T06:17:41.810Z
+msg_522,conv_522,user,What should I eat tonight?,meal_search,"{""max_price"":11.18}",2026-09-25T06:10:36.169Z
+msg_523,conv_523,user,What should I eat tonight?,meal_search,"{""max_price"":11.18}",2026-09-16T06:16:34.044Z
+msg_524,conv_524,user,What should I eat tonight?,meal_search,"{""max_price"":11.18}",2026-09-07T06:15:45.770Z
+msg_525,conv_525,user,Something spicy under $16,meal_search,"{""max_price"":15.21,""spice"":""spicy""}",2026-10-04T06:28:48.499Z
+msg_526,conv_526,user,Something spicy under $16,meal_search,"{""max_price"":15.21,""spice"":""spicy""}",2026-09-25T06:46:03.060Z
+msg_527,conv_527,user,What should I eat tonight?,meal_search,"{""max_price"":12.2}",2026-10-04T06:12:40.860Z
+msg_528,conv_528,user,What should I eat tonight?,meal_search,"{""max_price"":12.2}",2026-09-25T06:12:30.484Z
+msg_529,conv_529,user,What should I eat tonight?,meal_search,"{""max_price"":12.2}",2026-09-16T06:47:05.916Z
+msg_530,conv_530,user,Something spicy under $12,meal_search,"{""max_price"":11.14,""spice"":""spicy""}",2026-10-04T06:05:52.017Z
+msg_531,conv_531,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.12,""dietary"":""vegetarian""}",2026-10-04T06:13:24.333Z
+msg_532,conv_532,user,Something spicy under $13,meal_search,"{""max_price"":12.38,""spice"":""spicy""}",2026-10-04T06:16:22.135Z
+msg_533,conv_533,user,Something spicy under $13,meal_search,"{""max_price"":12.38,""spice"":""spicy""}",2026-09-25T06:02:24.630Z
+msg_534,conv_534,user,What should I eat tonight?,meal_search,"{""max_price"":11.68}",2026-10-04T06:40:32.359Z
+msg_535,conv_535,user,What should I eat tonight?,meal_search,"{""max_price"":11.68}",2026-09-25T06:25:11.352Z
+msg_536,conv_536,user,What should I eat tonight?,meal_search,"{""max_price"":11.68}",2026-09-16T06:34:10.307Z
+msg_537,conv_537,user,What should I eat tonight?,meal_search,"{""max_price"":11.68}",2026-09-07T06:17:46.047Z
+msg_538,conv_538,user,What should I eat tonight?,meal_search,"{""max_price"":11.68}",2026-08-29T05:58:37.315Z
+msg_539,conv_539,user,What should I eat tonight?,meal_search,"{""max_price"":11.68}",2026-08-20T06:34:42.662Z
+msg_540,conv_540,user,What should I eat tonight?,meal_search,"{""max_price"":14.43}",2026-10-04T06:48:49.076Z
+msg_541,conv_541,user,What should I eat tonight?,meal_search,"{""max_price"":14.43}",2026-09-25T06:16:31.966Z
+msg_542,conv_542,user,What should I eat tonight?,meal_search,"{""max_price"":14.43}",2026-09-16T06:48:41.377Z
+msg_543,conv_543,user,What should I eat tonight?,meal_search,"{""max_price"":14.43}",2026-09-07T06:12:02.197Z
+msg_544,conv_544,user,What should I eat tonight?,meal_search,"{""max_price"":14.43}",2026-08-29T06:27:05.095Z
+msg_545,conv_545,user,What should I eat tonight?,meal_search,"{""max_price"":12.43}",2026-10-04T05:56:48.503Z
+msg_546,conv_546,user,What should I eat tonight?,meal_search,"{""max_price"":13.02}",2026-10-04T05:54:02.038Z
+msg_547,conv_547,user,What should I eat tonight?,meal_search,"{""max_price"":13.02}",2026-09-25T06:08:36.000Z
+msg_548,conv_548,user,What should I eat tonight?,meal_search,"{""max_price"":10.3}",2026-10-04T06:29:35.610Z
+msg_549,conv_549,user,What should I eat tonight?,meal_search,"{""max_price"":10.3}",2026-09-25T06:12:31.651Z
+msg_550,conv_550,user,What should I eat tonight?,meal_search,"{""max_price"":10.3}",2026-09-16T05:58:57.993Z
+msg_551,conv_551,user,What should I eat tonight?,meal_search,"{""max_price"":10.3}",2026-09-07T06:02:41.673Z
+msg_552,conv_552,user,What should I eat tonight?,meal_search,"{""max_price"":10.3}",2026-08-29T06:05:16.563Z
+msg_553,conv_553,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.37,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:15:37.279Z
+msg_554,conv_554,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.37,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T06:17:01.401Z
+msg_555,conv_555,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.37,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:17:54.878Z
+msg_556,conv_556,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.37,""protein"":""chicken"",""health"":""high-protein""}",2026-09-07T06:03:57.803Z
+msg_557,conv_557,user,What should I eat tonight?,meal_search,"{""max_price"":13.05}",2026-10-04T06:45:50.002Z
+msg_558,conv_558,user,What should I eat tonight?,meal_search,"{""max_price"":13.05}",2026-09-25T05:51:59.941Z
+msg_559,conv_559,user,Something spicy under $15,meal_search,"{""max_price"":14.58,""spice"":""spicy""}",2026-10-04T05:57:01.876Z
+msg_560,conv_560,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.92,""dietary"":""vegetarian""}",2026-10-04T06:49:24.628Z
+msg_561,conv_561,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.92,""dietary"":""vegetarian""}",2026-09-25T06:00:52.241Z
+msg_562,conv_562,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.92,""dietary"":""vegetarian""}",2026-09-16T06:23:59.357Z
+msg_563,conv_563,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.92,""dietary"":""vegetarian""}",2026-09-07T06:47:18.269Z
+msg_564,conv_564,user,Something spicy under $14,meal_search,"{""max_price"":13.76,""spice"":""spicy""}",2026-10-04T06:20:37.261Z
+msg_565,conv_565,user,Something spicy under $14,meal_search,"{""max_price"":13.76,""spice"":""spicy""}",2026-09-25T05:57:25.442Z
+msg_566,conv_566,user,What should I eat tonight?,meal_search,"{""max_price"":13.99}",2026-10-04T06:34:24.043Z
+msg_567,conv_567,user,What should I eat tonight?,meal_search,"{""max_price"":13.99}",2026-09-25T06:16:17.067Z
+msg_568,conv_568,user,What should I eat tonight?,meal_search,"{""max_price"":13.99}",2026-09-16T06:26:03.351Z
+msg_569,conv_569,user,What should I eat tonight?,meal_search,"{""max_price"":13.99}",2026-09-07T05:52:07.888Z
+msg_570,conv_570,user,What should I eat tonight?,meal_search,"{""max_price"":13.99}",2026-08-29T06:49:16.576Z
+msg_571,conv_571,user,What should I eat tonight?,meal_search,"{""max_price"":17.96}",2026-10-04T06:02:35.522Z
+msg_572,conv_572,user,What should I eat tonight?,meal_search,"{""max_price"":17.96}",2026-09-25T06:27:36.545Z
+msg_573,conv_573,user,What should I eat tonight?,meal_search,"{""max_price"":17.96}",2026-09-16T06:10:56.888Z
+msg_574,conv_574,user,What should I eat tonight?,meal_search,"{""max_price"":17.96}",2026-09-07T05:51:32.493Z
+msg_575,conv_575,user,Something spicy under $11,meal_search,"{""max_price"":10.91,""spice"":""spicy""}",2026-10-04T06:42:07.467Z
+msg_576,conv_576,user,Something spicy under $11,meal_search,"{""max_price"":10.91,""spice"":""spicy""}",2026-09-25T06:28:41.036Z
+msg_577,conv_577,user,Something spicy under $11,meal_search,"{""max_price"":10.91,""spice"":""spicy""}",2026-09-16T06:00:04.190Z
+msg_578,conv_578,user,Something spicy under $11,meal_search,"{""max_price"":10.91,""spice"":""spicy""}",2026-09-07T06:46:12.353Z
+msg_579,conv_579,user,What should I eat tonight?,meal_search,"{""max_price"":14.46}",2026-10-04T06:49:20.756Z
+msg_580,conv_580,user,What should I eat tonight?,meal_search,"{""max_price"":14.46}",2026-09-25T06:12:41.745Z
+msg_581,conv_581,user,What should I eat tonight?,meal_search,"{""max_price"":14.46}",2026-09-16T06:25:36.239Z
+msg_582,conv_582,user,What should I eat tonight?,meal_search,"{""max_price"":14.46}",2026-09-07T06:06:31.513Z
+msg_583,conv_583,user,What should I eat tonight?,meal_search,"{""max_price"":11.97}",2026-10-04T06:17:26.931Z
+msg_584,conv_584,user,What should I eat tonight?,meal_search,"{""max_price"":11.97}",2026-09-25T06:10:43.007Z
+msg_585,conv_585,user,What should I eat tonight?,meal_search,"{""max_price"":11.97}",2026-09-16T06:12:44.133Z
+msg_586,conv_586,user,What should I eat tonight?,meal_search,"{""max_price"":11.97}",2026-09-07T06:46:46.171Z
+msg_587,conv_587,user,Something spicy under $16,meal_search,"{""max_price"":15.07,""spice"":""spicy""}",2026-10-04T06:49:14.003Z
+msg_588,conv_588,user,Something spicy under $16,meal_search,"{""max_price"":15.07,""spice"":""spicy""}",2026-09-25T06:15:41.342Z
+msg_589,conv_589,user,Something spicy under $16,meal_search,"{""max_price"":15.07,""spice"":""spicy""}",2026-09-16T06:21:54.536Z
+msg_590,conv_590,user,What should I eat tonight?,meal_search,"{""max_price"":14.63}",2026-10-04T06:00:49.927Z
+msg_591,conv_591,user,What should I eat tonight?,meal_search,"{""max_price"":14.63}",2026-09-25T06:11:42.535Z
+msg_592,conv_592,user,Something spicy under $13,meal_search,"{""max_price"":12.79,""spice"":""spicy""}",2026-10-04T06:30:09.697Z
+msg_593,conv_593,user,Something spicy under $13,meal_search,"{""max_price"":12.79,""spice"":""spicy""}",2026-09-25T06:10:41.064Z
+msg_594,conv_594,user,Something spicy under $13,meal_search,"{""max_price"":12.79,""spice"":""spicy""}",2026-09-16T06:06:12.663Z
+msg_595,conv_595,user,Something spicy under $13,meal_search,"{""max_price"":12.79,""spice"":""spicy""}",2026-09-07T06:04:42.476Z
+msg_596,conv_596,user,Something spicy under $13,meal_search,"{""max_price"":12.79,""spice"":""spicy""}",2026-08-29T06:47:11.009Z
+msg_597,conv_597,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.52,""dietary"":""vegetarian""}",2026-10-04T06:11:47.341Z
+msg_598,conv_598,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.52,""dietary"":""vegetarian""}",2026-09-25T05:57:09.244Z
+msg_599,conv_599,user,Something spicy under $13,meal_search,"{""max_price"":12.86,""spice"":""spicy""}",2026-10-04T06:06:40.365Z
+msg_600,conv_600,user,Something spicy under $13,meal_search,"{""max_price"":12.86,""spice"":""spicy""}",2026-09-25T06:29:38.732Z
+msg_601,conv_601,user,Something spicy under $13,meal_search,"{""max_price"":12.86,""spice"":""spicy""}",2026-09-16T06:38:35.535Z
+msg_602,conv_602,user,Something spicy under $13,meal_search,"{""max_price"":12.86,""spice"":""spicy""}",2026-09-07T06:10:58.938Z
+msg_603,conv_603,user,What should I eat tonight?,meal_search,"{""max_price"":11.3}",2026-10-04T06:31:01.146Z
+msg_604,conv_604,user,What should I eat tonight?,meal_search,"{""max_price"":11.3}",2026-09-25T06:04:06.449Z
+msg_605,conv_605,user,What should I eat tonight?,meal_search,"{""max_price"":11.3}",2026-09-16T06:26:16.574Z
+msg_606,conv_606,user,What should I eat tonight?,meal_search,"{""max_price"":11.3}",2026-09-07T06:47:41.258Z
+msg_607,conv_607,user,What should I eat tonight?,meal_search,"{""max_price"":11.3}",2026-08-29T06:40:50.901Z
+msg_608,conv_608,user,What should I eat tonight?,meal_search,"{""max_price"":11.3}",2026-08-20T06:16:48.104Z
+msg_609,conv_609,user,What should I eat tonight?,meal_search,"{""max_price"":17.44}",2026-10-04T06:36:44.656Z
+msg_610,conv_610,user,What should I eat tonight?,meal_search,"{""max_price"":17.44}",2026-09-25T06:19:34.265Z
+msg_611,conv_611,user,What should I eat tonight?,meal_search,"{""max_price"":17.44}",2026-09-16T06:11:30.138Z
+msg_612,conv_612,user,What should I eat tonight?,meal_search,"{""max_price"":17.44}",2026-09-07T06:21:11.611Z
+msg_613,conv_613,user,What should I eat tonight?,meal_search,"{""max_price"":17.44}",2026-08-29T06:33:27.934Z
+msg_614,conv_614,user,What should I eat tonight?,meal_search,"{""max_price"":17.44}",2026-08-20T05:51:41.301Z
+msg_615,conv_615,user,Something spicy under $13,meal_search,"{""max_price"":12.07,""spice"":""spicy""}",2026-10-04T06:18:03.244Z
+msg_616,conv_616,user,Something spicy under $13,meal_search,"{""max_price"":12.07,""spice"":""spicy""}",2026-09-25T06:29:35.918Z
+msg_617,conv_617,user,Something spicy under $13,meal_search,"{""max_price"":12.07,""spice"":""spicy""}",2026-09-16T06:49:49.294Z
+msg_618,conv_618,user,Something spicy under $13,meal_search,"{""max_price"":12.07,""spice"":""spicy""}",2026-09-07T06:04:28.865Z
+msg_619,conv_619,user,What should I eat tonight?,meal_search,"{""max_price"":12.49}",2026-10-04T05:57:12.028Z
+msg_620,conv_620,user,What should I eat tonight?,meal_search,"{""max_price"":12.49}",2026-09-25T06:48:26.822Z
+msg_621,conv_621,user,What should I eat tonight?,meal_search,"{""max_price"":12.49}",2026-09-16T06:32:46.366Z
+msg_622,conv_622,user,What should I eat tonight?,meal_search,"{""max_price"":12.49}",2026-09-07T06:41:44.802Z
+msg_623,conv_623,user,What should I eat tonight?,meal_search,"{""max_price"":12.49}",2026-08-29T06:27:56.667Z
+msg_624,conv_624,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-10-04T06:20:40.752Z
+msg_625,conv_625,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-09-25T06:05:42.834Z
+msg_626,conv_626,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-09-16T06:07:25.297Z
+msg_627,conv_627,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-09-07T06:23:39.199Z
+msg_628,conv_628,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-08-29T06:11:11.474Z
+msg_629,conv_629,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-08-20T06:47:23.657Z
+msg_630,conv_630,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.64,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:06:31.616Z
+msg_631,conv_631,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.64,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T05:59:40.639Z
+msg_632,conv_632,user,What should I eat tonight?,meal_search,"{""max_price"":11.96}",2026-10-04T06:35:17.005Z
+msg_633,conv_633,user,What should I eat tonight?,meal_search,"{""max_price"":11.96}",2026-09-25T05:53:24.750Z
+msg_634,conv_634,user,What should I eat tonight?,meal_search,"{""max_price"":11.96}",2026-09-16T06:31:03.425Z
+msg_635,conv_635,user,What should I eat tonight?,meal_search,"{""max_price"":11.96}",2026-09-07T06:14:50.793Z
+msg_636,conv_636,user,Something spicy under $13,meal_search,"{""max_price"":12.82,""spice"":""spicy""}",2026-10-04T06:23:34.369Z
+msg_637,conv_637,user,Something spicy under $13,meal_search,"{""max_price"":12.82,""spice"":""spicy""}",2026-09-25T05:54:08.695Z
+msg_638,conv_638,user,Something spicy under $13,meal_search,"{""max_price"":12.82,""spice"":""spicy""}",2026-09-16T05:52:40.747Z
+msg_639,conv_639,user,Something spicy under $13,meal_search,"{""max_price"":12.82,""spice"":""spicy""}",2026-09-07T06:46:55.698Z
+msg_640,conv_640,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.72,""dietary"":""vegetarian""}",2026-10-04T06:21:14.320Z
+msg_641,conv_641,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.72,""dietary"":""vegetarian""}",2026-09-25T05:56:11.867Z
+msg_642,conv_642,user,Something spicy under $17,meal_search,"{""max_price"":16.74,""spice"":""spicy""}",2026-10-04T06:19:04.702Z
+msg_643,conv_643,user,Something spicy under $17,meal_search,"{""max_price"":16.74,""spice"":""spicy""}",2026-09-25T06:36:04.858Z
+msg_644,conv_644,user,Something spicy under $17,meal_search,"{""max_price"":16.74,""spice"":""spicy""}",2026-09-16T05:57:05.450Z
+msg_645,conv_645,user,Something spicy under $17,meal_search,"{""max_price"":16.74,""spice"":""spicy""}",2026-09-07T06:31:06.318Z
+msg_646,conv_646,user,What should I eat tonight?,meal_search,"{""max_price"":12.74}",2026-10-04T05:56:23.640Z
+msg_647,conv_647,user,What should I eat tonight?,meal_search,"{""max_price"":12.74}",2026-09-25T05:56:48.850Z
+msg_648,conv_648,user,What should I eat tonight?,meal_search,"{""max_price"":12.74}",2026-09-16T05:55:26.951Z
+msg_649,conv_649,user,What should I eat tonight?,meal_search,"{""max_price"":12.74}",2026-09-07T06:14:47.515Z
+msg_650,conv_650,user,What should I eat tonight?,meal_search,"{""max_price"":16.48}",2026-10-04T06:47:34.223Z
+msg_651,conv_651,user,What should I eat tonight?,meal_search,"{""max_price"":16.48}",2026-09-25T06:20:00.759Z
+msg_652,conv_652,user,What should I eat tonight?,meal_search,"{""max_price"":16.48}",2026-09-16T06:18:05.608Z
+msg_653,conv_653,user,What should I eat tonight?,meal_search,"{""max_price"":16.48}",2026-09-07T05:52:43.558Z
+msg_654,conv_654,user,What should I eat tonight?,meal_search,"{""max_price"":16.48}",2026-08-29T06:24:38.765Z
+msg_655,conv_655,user,What should I eat tonight?,meal_search,"{""max_price"":11.01}",2026-10-04T06:29:06.370Z
+msg_656,conv_656,user,What should I eat tonight?,meal_search,"{""max_price"":11.01}",2026-09-25T06:21:23.763Z
+msg_657,conv_657,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-10-04T06:41:15.668Z
+msg_658,conv_658,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-09-25T06:39:36.633Z
+msg_659,conv_659,user,What should I eat tonight?,meal_search,"{""max_price"":12.92}",2026-09-16T06:12:12.816Z
+msg_660,conv_660,user,What should I eat tonight?,meal_search,"{""max_price"":11.76}",2026-10-04T06:07:49.392Z
+msg_661,conv_661,user,What should I eat tonight?,meal_search,"{""max_price"":11.76}",2026-09-25T06:17:18.674Z
+msg_662,conv_662,user,Something spicy under $16,meal_search,"{""max_price"":15.47,""spice"":""spicy""}",2026-10-04T06:02:37.872Z
+msg_663,conv_663,user,Something spicy under $16,meal_search,"{""max_price"":15.47,""spice"":""spicy""}",2026-09-25T06:07:18.954Z
+msg_664,conv_664,user,Something spicy under $16,meal_search,"{""max_price"":15.47,""spice"":""spicy""}",2026-09-16T06:05:04.870Z
+msg_665,conv_665,user,Something spicy under $16,meal_search,"{""max_price"":15.47,""spice"":""spicy""}",2026-09-07T05:50:46.671Z
+msg_666,conv_666,user,Something spicy under $16,meal_search,"{""max_price"":15.47,""spice"":""spicy""}",2026-08-29T05:57:00.049Z
+msg_667,conv_667,user,Something spicy under $16,meal_search,"{""max_price"":15.47,""spice"":""spicy""}",2026-08-20T06:49:08.808Z
+msg_668,conv_668,user,What should I eat tonight?,meal_search,"{""max_price"":11.63}",2026-10-04T06:43:29.672Z
+msg_669,conv_669,user,What should I eat tonight?,meal_search,"{""max_price"":11.63}",2026-09-25T06:12:38.357Z
+msg_670,conv_670,user,Something spicy under $16,meal_search,"{""max_price"":15.38,""spice"":""spicy""}",2026-10-04T06:08:00.838Z
+msg_671,conv_671,user,Something spicy under $16,meal_search,"{""max_price"":15.38,""spice"":""spicy""}",2026-09-25T06:33:09.782Z
+msg_672,conv_672,user,Something spicy under $16,meal_search,"{""max_price"":15.38,""spice"":""spicy""}",2026-09-16T06:02:07.379Z
+msg_673,conv_673,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.07,""dietary"":""vegetarian""}",2026-10-04T06:38:12.439Z
+msg_674,conv_674,user,Something spicy under $14,meal_search,"{""max_price"":13.93,""spice"":""spicy""}",2026-10-04T06:32:42.451Z
+msg_675,conv_675,user,Something spicy under $14,meal_search,"{""max_price"":13.93,""spice"":""spicy""}",2026-09-25T06:32:37.976Z
+msg_676,conv_676,user,Something spicy under $14,meal_search,"{""max_price"":13.93,""spice"":""spicy""}",2026-09-16T06:15:10.116Z
+msg_677,conv_677,user,Something spicy under $14,meal_search,"{""max_price"":13.93,""spice"":""spicy""}",2026-09-07T05:55:15.348Z
+msg_678,conv_678,user,What should I eat tonight?,meal_search,"{""max_price"":13.32}",2026-10-04T06:46:43.474Z
+msg_679,conv_679,user,What should I eat tonight?,meal_search,"{""max_price"":13.32}",2026-09-25T06:40:45.898Z
+msg_680,conv_680,user,What should I eat tonight?,meal_search,"{""max_price"":13.32}",2026-09-16T06:22:28.128Z
+msg_681,conv_681,user,What should I eat tonight?,meal_search,"{""max_price"":13.32}",2026-09-07T06:32:56.962Z
+msg_682,conv_682,user,What should I eat tonight?,meal_search,"{""max_price"":15.16}",2026-10-04T06:37:05.239Z
+msg_683,conv_683,user,What should I eat tonight?,meal_search,"{""max_price"":15.16}",2026-09-25T06:04:18.856Z
+msg_684,conv_684,user,What should I eat tonight?,meal_search,"{""max_price"":15.16}",2026-09-16T06:01:36.355Z
+msg_685,conv_685,user,What should I eat tonight?,meal_search,"{""max_price"":15.16}",2026-09-07T06:15:02.855Z
+msg_686,conv_686,user,Something spicy under $13,meal_search,"{""max_price"":12.14,""spice"":""spicy""}",2026-10-04T06:22:16.010Z
+msg_687,conv_687,user,Something spicy under $13,meal_search,"{""max_price"":12.14,""spice"":""spicy""}",2026-09-25T06:48:23.032Z
+msg_688,conv_688,user,Something spicy under $13,meal_search,"{""max_price"":12.14,""spice"":""spicy""}",2026-09-16T06:19:03.818Z
+msg_689,conv_689,user,Something spicy under $13,meal_search,"{""max_price"":12.14,""spice"":""spicy""}",2026-09-07T06:22:17.955Z
+msg_690,conv_690,user,What should I eat tonight?,meal_search,"{""max_price"":11.88}",2026-10-04T06:12:12.211Z
+msg_691,conv_691,user,What should I eat tonight?,meal_search,"{""max_price"":10.71}",2026-10-04T06:42:46.393Z
+msg_692,conv_692,user,What should I eat tonight?,meal_search,"{""max_price"":10.71}",2026-09-25T06:50:04.512Z
+msg_693,conv_693,user,What should I eat tonight?,meal_search,"{""max_price"":10.71}",2026-09-16T06:20:55.613Z
+msg_694,conv_694,user,What should I eat tonight?,meal_search,"{""max_price"":10.71}",2026-09-07T05:57:09.411Z
+msg_695,conv_695,user,What should I eat tonight?,meal_search,"{""max_price"":10.71}",2026-08-29T06:48:51.207Z
+msg_696,conv_696,user,Something spicy under $14,meal_search,"{""max_price"":13.34,""spice"":""spicy""}",2026-10-04T06:07:37.126Z
+msg_697,conv_697,user,Something spicy under $14,meal_search,"{""max_price"":13.34,""spice"":""spicy""}",2026-09-25T06:19:13.217Z
+msg_698,conv_698,user,What should I eat tonight?,meal_search,"{""max_price"":14.9}",2026-10-04T06:19:25.265Z
+msg_699,conv_699,user,What should I eat tonight?,meal_search,"{""max_price"":14.9}",2026-09-25T06:33:35.529Z
+msg_700,conv_700,user,What should I eat tonight?,meal_search,"{""max_price"":14.9}",2026-09-16T05:58:04.197Z
+msg_701,conv_701,user,What should I eat tonight?,meal_search,"{""max_price"":14.9}",2026-09-07T06:10:07.216Z
+msg_702,conv_702,user,What should I eat tonight?,meal_search,"{""max_price"":14.9}",2026-08-29T06:49:13.701Z
+msg_703,conv_703,user,Something spicy under $14,meal_search,"{""max_price"":13.81,""spice"":""spicy""}",2026-10-04T06:24:32.496Z
+msg_704,conv_704,user,Something spicy under $14,meal_search,"{""max_price"":13.81,""spice"":""spicy""}",2026-09-25T06:15:43.779Z
+msg_705,conv_705,user,Something spicy under $14,meal_search,"{""max_price"":13.81,""spice"":""spicy""}",2026-09-16T06:20:11.835Z
+msg_706,conv_706,user,Something spicy under $14,meal_search,"{""max_price"":13.81,""spice"":""spicy""}",2026-09-07T06:18:23.940Z
+msg_707,conv_707,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.93,""dietary"":""vegetarian""}",2026-10-04T06:46:47.704Z
+msg_708,conv_708,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.93,""dietary"":""vegetarian""}",2026-09-25T06:17:03.592Z
+msg_709,conv_709,user,Something spicy under $14,meal_search,"{""max_price"":13.66,""spice"":""spicy""}",2026-10-04T06:12:23.987Z
+msg_710,conv_710,user,Something spicy under $14,meal_search,"{""max_price"":13.66,""spice"":""spicy""}",2026-09-25T06:09:42.795Z
+msg_711,conv_711,user,Something spicy under $14,meal_search,"{""max_price"":13.66,""spice"":""spicy""}",2026-09-16T06:44:57.613Z
+msg_712,conv_712,user,Something spicy under $14,meal_search,"{""max_price"":13.66,""spice"":""spicy""}",2026-09-07T06:31:45.759Z
+msg_713,conv_713,user,What should I eat tonight?,meal_search,"{""max_price"":12.24}",2026-10-04T06:39:17.439Z
+msg_714,conv_714,user,What should I eat tonight?,meal_search,"{""max_price"":12.24}",2026-09-25T06:30:56.332Z
+msg_715,conv_715,user,What should I eat tonight?,meal_search,"{""max_price"":12.24}",2026-09-16T06:40:51.931Z
+msg_716,conv_716,user,What should I eat tonight?,meal_search,"{""max_price"":18.01}",2026-10-04T06:28:36.297Z
+msg_717,conv_717,user,What should I eat tonight?,meal_search,"{""max_price"":18.01}",2026-09-25T06:00:02.764Z
+msg_718,conv_718,user,Something spicy under $11,meal_search,"{""max_price"":10.09,""spice"":""spicy""}",2026-10-04T05:54:39.353Z
+msg_719,conv_719,user,Something spicy under $11,meal_search,"{""max_price"":10.09,""spice"":""spicy""}",2026-09-25T06:10:41.362Z
+msg_720,conv_720,user,Something spicy under $11,meal_search,"{""max_price"":10.09,""spice"":""spicy""}",2026-09-16T06:28:20.077Z
+msg_721,conv_721,user,Something spicy under $11,meal_search,"{""max_price"":10.09,""spice"":""spicy""}",2026-09-07T06:06:33.159Z
+msg_722,conv_722,user,What should I eat tonight?,meal_search,"{""max_price"":13.24}",2026-10-04T06:42:18.734Z
+msg_723,conv_723,user,What should I eat tonight?,meal_search,"{""max_price"":12.6}",2026-10-04T06:14:05.502Z
+msg_724,conv_724,user,What should I eat tonight?,meal_search,"{""max_price"":12.6}",2026-09-25T06:15:30.989Z
+msg_725,conv_725,user,What should I eat tonight?,meal_search,"{""max_price"":12.6}",2026-09-16T06:05:26.761Z
+msg_726,conv_726,user,What should I eat tonight?,meal_search,"{""max_price"":12.6}",2026-09-07T06:18:32.747Z
+msg_727,conv_727,user,Something spicy under $16,meal_search,"{""max_price"":15.23,""spice"":""spicy""}",2026-10-04T06:15:51.517Z
+msg_728,conv_728,user,Something spicy under $16,meal_search,"{""max_price"":15.23,""spice"":""spicy""}",2026-09-25T06:42:13.589Z
+msg_729,conv_729,user,What should I eat tonight?,meal_search,"{""max_price"":13.69}",2026-10-04T06:13:50.988Z
+msg_730,conv_730,user,What should I eat tonight?,meal_search,"{""max_price"":13.69}",2026-09-25T06:04:26.305Z
+msg_731,conv_731,user,What should I eat tonight?,meal_search,"{""max_price"":13.69}",2026-09-16T06:15:54.619Z
+msg_732,conv_732,user,What should I eat tonight?,meal_search,"{""max_price"":13.69}",2026-09-07T06:26:58.102Z
+msg_733,conv_733,user,Something spicy under $16,meal_search,"{""max_price"":15.49,""spice"":""spicy""}",2026-10-04T06:02:26.626Z
+msg_734,conv_734,user,Something spicy under $16,meal_search,"{""max_price"":15.49,""spice"":""spicy""}",2026-09-25T06:39:53.130Z
+msg_735,conv_735,user,Something spicy under $16,meal_search,"{""max_price"":15.49,""spice"":""spicy""}",2026-09-16T06:19:31.483Z
+msg_736,conv_736,user,Something spicy under $16,meal_search,"{""max_price"":15.49,""spice"":""spicy""}",2026-09-07T06:18:09.361Z
+msg_737,conv_737,user,Something spicy under $16,meal_search,"{""max_price"":15.49,""spice"":""spicy""}",2026-08-29T06:23:24.977Z
+msg_738,conv_738,user,Something spicy under $16,meal_search,"{""max_price"":15.49,""spice"":""spicy""}",2026-08-20T06:02:28.806Z
+msg_739,conv_739,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.29,""dietary"":""vegetarian""}",2026-10-04T06:25:30.390Z
+msg_740,conv_740,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.29,""dietary"":""vegetarian""}",2026-09-25T06:32:53.993Z
+msg_741,conv_741,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.29,""dietary"":""vegetarian""}",2026-09-16T06:47:16.067Z
+msg_742,conv_742,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.29,""dietary"":""vegetarian""}",2026-09-07T06:28:28.667Z
+msg_743,conv_743,user,Something spicy under $17,meal_search,"{""max_price"":16.69,""spice"":""spicy""}",2026-10-04T06:48:02.520Z
+msg_744,conv_744,user,Something spicy under $17,meal_search,"{""max_price"":16.69,""spice"":""spicy""}",2026-09-25T05:52:01.778Z
+msg_745,conv_745,user,Something spicy under $17,meal_search,"{""max_price"":16.69,""spice"":""spicy""}",2026-09-16T06:29:43.086Z
+msg_746,conv_746,user,Something spicy under $17,meal_search,"{""max_price"":16.69,""spice"":""spicy""}",2026-09-07T06:32:57.683Z
+msg_747,conv_747,user,What should I eat tonight?,meal_search,"{""max_price"":12.09}",2026-10-04T06:48:18.407Z
+msg_748,conv_748,user,What should I eat tonight?,meal_search,"{""max_price"":12.09}",2026-09-25T06:06:54.429Z
+msg_749,conv_749,user,What should I eat tonight?,meal_search,"{""max_price"":14.31}",2026-10-04T06:42:41.100Z
+msg_750,conv_750,user,What should I eat tonight?,meal_search,"{""max_price"":14.31}",2026-09-25T06:38:05.486Z
+msg_751,conv_751,user,What should I eat tonight?,meal_search,"{""max_price"":14.31}",2026-09-16T06:39:18.256Z
+msg_752,conv_752,user,What should I eat tonight?,meal_search,"{""max_price"":14.31}",2026-09-07T06:08:07.964Z
+msg_753,conv_753,user,What should I eat tonight?,meal_search,"{""max_price"":11.36}",2026-10-04T06:39:35.394Z
+msg_754,conv_754,user,What should I eat tonight?,meal_search,"{""max_price"":11.36}",2026-09-25T06:30:02.016Z
+msg_755,conv_755,user,What should I eat tonight?,meal_search,"{""max_price"":11.36}",2026-09-16T06:27:08.984Z
+msg_756,conv_756,user,What should I eat tonight?,meal_search,"{""max_price"":11.36}",2026-09-07T06:08:38.382Z
+msg_757,conv_757,user,What should I eat tonight?,meal_search,"{""max_price"":11.36}",2026-08-29T05:57:13.986Z
+msg_758,conv_758,user,What should I eat tonight?,meal_search,"{""max_price"":11.36}",2026-08-20T06:05:48.346Z
+msg_759,conv_759,user,What should I eat tonight?,meal_search,"{""max_price"":14.08}",2026-10-04T05:56:20.479Z
+msg_760,conv_760,user,What should I eat tonight?,meal_search,"{""max_price"":12.77}",2026-10-04T06:04:15.085Z
+msg_761,conv_761,user,What should I eat tonight?,meal_search,"{""max_price"":12.77}",2026-09-25T06:02:25.594Z
+msg_762,conv_762,user,What should I eat tonight?,meal_search,"{""max_price"":12.77}",2026-09-16T05:52:46.992Z
+msg_763,conv_763,user,What should I eat tonight?,meal_search,"{""max_price"":12.77}",2026-09-07T06:42:48.134Z
+msg_764,conv_764,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.14,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:26:54.168Z
+msg_765,conv_765,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.14,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T06:29:48.104Z
+msg_766,conv_766,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.14,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:27:07.097Z
+msg_767,conv_767,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.14,""protein"":""chicken"",""health"":""high-protein""}",2026-09-07T06:15:34.225Z
+msg_768,conv_768,user,What should I eat tonight?,meal_search,"{""max_price"":12.71}",2026-10-04T06:34:13.701Z
+msg_769,conv_769,user,What should I eat tonight?,meal_search,"{""max_price"":12.71}",2026-09-25T06:37:03.313Z
+msg_770,conv_770,user,What should I eat tonight?,meal_search,"{""max_price"":12.71}",2026-09-16T06:13:37.668Z
+msg_771,conv_771,user,Something spicy under $16,meal_search,"{""max_price"":15.98,""spice"":""spicy""}",2026-10-04T06:11:40.217Z
+msg_772,conv_772,user,Something spicy under $16,meal_search,"{""max_price"":15.98,""spice"":""spicy""}",2026-09-25T05:52:37.831Z
+msg_773,conv_773,user,Something spicy under $16,meal_search,"{""max_price"":15.98,""spice"":""spicy""}",2026-09-16T05:59:52.984Z
+msg_774,conv_774,user,Something spicy under $16,meal_search,"{""max_price"":15.98,""spice"":""spicy""}",2026-09-07T06:44:27.760Z
+msg_775,conv_775,user,Something spicy under $16,meal_search,"{""max_price"":15.98,""spice"":""spicy""}",2026-08-29T06:36:18.623Z
+msg_776,conv_776,user,Something spicy under $16,meal_search,"{""max_price"":15.98,""spice"":""spicy""}",2026-08-20T05:52:45.949Z
+msg_777,conv_777,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.05,""dietary"":""vegetarian""}",2026-10-04T06:22:28.701Z
+msg_778,conv_778,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.05,""dietary"":""vegetarian""}",2026-09-25T06:30:31.159Z
+msg_779,conv_779,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.05,""dietary"":""vegetarian""}",2026-09-16T06:40:30.394Z
+msg_780,conv_780,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.05,""dietary"":""vegetarian""}",2026-09-07T06:02:01.358Z
+msg_781,conv_781,user,What should I eat tonight?,meal_search,"{""max_price"":15.77}",2026-10-04T06:41:43.132Z
+msg_782,conv_782,user,What should I eat tonight?,meal_search,"{""max_price"":15.77}",2026-09-25T06:19:15.405Z
+msg_783,conv_783,user,What should I eat tonight?,meal_search,"{""max_price"":15.77}",2026-09-16T06:21:34.103Z
+msg_784,conv_784,user,What should I eat tonight?,meal_search,"{""max_price"":15.77}",2026-09-07T06:20:36.699Z
+msg_785,conv_785,user,What should I eat tonight?,meal_search,"{""max_price"":11.64}",2026-10-04T06:43:59.080Z
+msg_786,conv_786,user,What should I eat tonight?,meal_search,"{""max_price"":11.64}",2026-09-25T06:18:37.166Z
+msg_787,conv_787,user,What should I eat tonight?,meal_search,"{""max_price"":11.64}",2026-09-16T06:45:14.261Z
+msg_788,conv_788,user,What should I eat tonight?,meal_search,"{""max_price"":11.64}",2026-09-07T06:31:51.239Z
+msg_789,conv_789,user,What should I eat tonight?,meal_search,"{""max_price"":11.64}",2026-08-29T06:25:35.860Z
+msg_790,conv_790,user,What should I eat tonight?,meal_search,"{""max_price"":11.64}",2026-08-20T06:25:24.318Z
+msg_791,conv_791,user,What should I eat tonight?,meal_search,"{""max_price"":15.61}",2026-10-04T05:58:34.242Z
+msg_792,conv_792,user,What should I eat tonight?,meal_search,"{""max_price"":15.61}",2026-09-25T05:56:12.429Z
+msg_793,conv_793,user,What should I eat tonight?,meal_search,"{""max_price"":15.61}",2026-09-16T06:38:39.893Z
+msg_794,conv_794,user,What should I eat tonight?,meal_search,"{""max_price"":15.61}",2026-09-07T06:05:57.678Z
+msg_795,conv_795,user,What should I eat tonight?,meal_search,"{""max_price"":15.61}",2026-08-29T06:35:19.702Z
+msg_796,conv_796,user,What should I eat tonight?,meal_search,"{""max_price"":15.61}",2026-08-20T06:17:14.754Z
+msg_797,conv_797,user,What should I eat tonight?,meal_search,"{""max_price"":11.22}",2026-10-04T06:24:47.432Z
+msg_798,conv_798,user,What should I eat tonight?,meal_search,"{""max_price"":11.22}",2026-09-25T06:44:10.820Z
+msg_799,conv_799,user,What should I eat tonight?,meal_search,"{""max_price"":11.22}",2026-09-16T06:05:24.315Z
+msg_800,conv_800,user,What should I eat tonight?,meal_search,"{""max_price"":11.22}",2026-09-07T06:16:50.321Z
+msg_801,conv_801,user,What should I eat tonight?,meal_search,"{""max_price"":11.22}",2026-08-29T06:06:48.561Z
+msg_802,conv_802,user,What should I eat tonight?,meal_search,"{""max_price"":13.25}",2026-10-04T06:34:27.176Z
+msg_803,conv_803,user,What should I eat tonight?,meal_search,"{""max_price"":13.25}",2026-09-25T06:40:40.320Z
+msg_804,conv_804,user,What should I eat tonight?,meal_search,"{""max_price"":13.25}",2026-09-16T06:12:53.376Z
+msg_805,conv_805,user,What should I eat tonight?,meal_search,"{""max_price"":13.25}",2026-09-07T06:16:48.224Z
+msg_806,conv_806,user,What should I eat tonight?,meal_search,"{""max_price"":13.25}",2026-08-29T06:11:52.231Z
+msg_807,conv_807,user,What should I eat tonight?,meal_search,"{""max_price"":13.25}",2026-08-20T06:47:07.730Z
+msg_808,conv_808,user,What should I eat tonight?,meal_search,"{""max_price"":11.07}",2026-10-04T05:55:49.399Z
+msg_809,conv_809,user,What should I eat tonight?,meal_search,"{""max_price"":11.07}",2026-09-25T06:44:36.046Z
+msg_810,conv_810,user,What should I eat tonight?,meal_search,"{""max_price"":11.07}",2026-09-16T06:00:37.932Z
+msg_811,conv_811,user,What should I eat tonight?,meal_search,"{""max_price"":11.07}",2026-09-07T06:18:17.149Z
+msg_812,conv_812,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.39,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:20:48.359Z
+msg_813,conv_813,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.39,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T06:03:37.571Z
+msg_814,conv_814,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.39,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:49:25.029Z
+msg_815,conv_815,user,High protein chicken dinner under $13,meal_search,"{""max_price"":12.39,""protein"":""chicken"",""health"":""high-protein""}",2026-09-07T06:32:58.291Z
+msg_816,conv_816,user,What should I eat tonight?,meal_search,"{""max_price"":13.45}",2026-10-04T06:21:36.728Z
+msg_817,conv_817,user,What should I eat tonight?,meal_search,"{""max_price"":13.45}",2026-09-25T05:55:56.749Z
+msg_818,conv_818,user,What should I eat tonight?,meal_search,"{""max_price"":13.45}",2026-09-16T06:20:11.417Z
+msg_819,conv_819,user,What should I eat tonight?,meal_search,"{""max_price"":13.45}",2026-09-07T06:07:40.587Z
+msg_820,conv_820,user,Something spicy under $16,meal_search,"{""max_price"":15.96,""spice"":""spicy""}",2026-10-04T06:05:49.961Z
+msg_821,conv_821,user,Something spicy under $16,meal_search,"{""max_price"":15.96,""spice"":""spicy""}",2026-09-25T06:42:25.349Z
+msg_822,conv_822,user,Something spicy under $16,meal_search,"{""max_price"":15.96,""spice"":""spicy""}",2026-09-16T06:11:30.252Z
+msg_823,conv_823,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.49,""dietary"":""vegetarian""}",2026-10-04T06:39:48.722Z
+msg_824,conv_824,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.49,""dietary"":""vegetarian""}",2026-09-25T06:00:50.984Z
+msg_825,conv_825,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.49,""dietary"":""vegetarian""}",2026-09-16T06:28:37.756Z
+msg_826,conv_826,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.49,""dietary"":""vegetarian""}",2026-09-07T05:52:37.291Z
+msg_827,conv_827,user,Something spicy under $13,meal_search,"{""max_price"":12.27,""spice"":""spicy""}",2026-10-04T06:00:40.722Z
+msg_828,conv_828,user,What should I eat tonight?,meal_search,"{""max_price"":11.12}",2026-10-04T06:22:58.491Z
+msg_829,conv_829,user,What should I eat tonight?,meal_search,"{""max_price"":11.12}",2026-09-25T05:57:21.873Z
+msg_830,conv_830,user,What should I eat tonight?,meal_search,"{""max_price"":19.94}",2026-10-04T06:07:13.687Z
+msg_831,conv_831,user,What should I eat tonight?,meal_search,"{""max_price"":19.94}",2026-09-25T06:20:34.908Z
+msg_832,conv_832,user,Something spicy under $13,meal_search,"{""max_price"":12.97,""spice"":""spicy""}",2026-10-04T06:04:04.458Z
+msg_833,conv_833,user,Something spicy under $13,meal_search,"{""max_price"":12.97,""spice"":""spicy""}",2026-09-25T06:32:13.897Z
+msg_834,conv_834,user,Something spicy under $13,meal_search,"{""max_price"":12.97,""spice"":""spicy""}",2026-09-16T05:53:03.532Z
+msg_835,conv_835,user,What should I eat tonight?,meal_search,"{""max_price"":11.43}",2026-10-04T06:08:55.976Z
+msg_836,conv_836,user,What should I eat tonight?,meal_search,"{""max_price"":11.43}",2026-09-25T06:06:07.960Z
+msg_837,conv_837,user,What should I eat tonight?,meal_search,"{""max_price"":12.86}",2026-10-04T06:27:42.407Z
+msg_838,conv_838,user,What should I eat tonight?,meal_search,"{""max_price"":12.86}",2026-09-25T05:52:37.123Z
+msg_839,conv_839,user,What should I eat tonight?,meal_search,"{""max_price"":12.86}",2026-09-16T06:50:17.916Z
+msg_840,conv_840,user,What should I eat tonight?,meal_search,"{""max_price"":12.86}",2026-09-07T06:01:21.899Z
+msg_841,conv_841,user,What should I eat tonight?,meal_search,"{""max_price"":12.86}",2026-08-29T06:36:36.799Z
+msg_842,conv_842,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.79,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:33:36.676Z
+msg_843,conv_843,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.79,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T05:50:31.997Z
+msg_844,conv_844,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.79,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:27:48.464Z
+msg_845,conv_845,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.79,""protein"":""chicken"",""health"":""high-protein""}",2026-09-07T06:43:24.527Z
+msg_846,conv_846,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.79,""protein"":""chicken"",""health"":""high-protein""}",2026-08-29T06:47:23.746Z
+msg_847,conv_847,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.79,""protein"":""chicken"",""health"":""high-protein""}",2026-08-20T06:10:33.778Z
+msg_848,conv_848,user,What should I eat tonight?,meal_search,"{""max_price"":11.73}",2026-10-04T05:58:25.007Z
+msg_849,conv_849,user,What should I eat tonight?,meal_search,"{""max_price"":11.73}",2026-09-25T06:46:06.800Z
+msg_850,conv_850,user,What should I eat tonight?,meal_search,"{""max_price"":11.73}",2026-09-16T05:57:36.512Z
+msg_851,conv_851,user,What should I eat tonight?,meal_search,"{""max_price"":11.73}",2026-09-07T06:04:11.774Z
+msg_852,conv_852,user,What should I eat tonight?,meal_search,"{""max_price"":11.73}",2026-08-29T06:29:43.120Z
+msg_853,conv_853,user,What should I eat tonight?,meal_search,"{""max_price"":11.73}",2026-08-20T06:34:33.971Z
+msg_854,conv_854,user,Something spicy under $15,meal_search,"{""max_price"":14.6,""spice"":""spicy""}",2026-10-04T06:01:48.888Z
+msg_855,conv_855,user,Something spicy under $15,meal_search,"{""max_price"":14.6,""spice"":""spicy""}",2026-09-25T06:46:39.970Z
+msg_856,conv_856,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.18,""dietary"":""vegetarian""}",2026-10-04T05:55:37.268Z
+msg_857,conv_857,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":12.18,""dietary"":""vegetarian""}",2026-09-25T05:58:37.201Z
+msg_858,conv_858,user,Something spicy under $14,meal_search,"{""max_price"":13.65,""spice"":""spicy""}",2026-10-04T05:52:32.257Z
+msg_859,conv_859,user,Something spicy under $14,meal_search,"{""max_price"":13.65,""spice"":""spicy""}",2026-09-25T05:52:52.980Z
+msg_860,conv_860,user,What should I eat tonight?,meal_search,"{""max_price"":13.36}",2026-10-04T06:44:34.854Z
+msg_861,conv_861,user,What should I eat tonight?,meal_search,"{""max_price"":16.78}",2026-10-04T05:57:20.197Z
+msg_862,conv_862,user,What should I eat tonight?,meal_search,"{""max_price"":16.78}",2026-09-25T06:32:50.090Z
+msg_863,conv_863,user,What should I eat tonight?,meal_search,"{""max_price"":16.78}",2026-09-16T06:49:15.288Z
+msg_864,conv_864,user,What should I eat tonight?,meal_search,"{""max_price"":11.49}",2026-10-04T06:15:39.540Z
+msg_865,conv_865,user,What should I eat tonight?,meal_search,"{""max_price"":13.85}",2026-10-04T06:45:44.298Z
+msg_866,conv_866,user,What should I eat tonight?,meal_search,"{""max_price"":13.85}",2026-09-25T06:49:09.700Z
+msg_867,conv_867,user,What should I eat tonight?,meal_search,"{""max_price"":13.85}",2026-09-16T06:08:51.326Z
+msg_868,conv_868,user,What should I eat tonight?,meal_search,"{""max_price"":12.2}",2026-10-04T06:15:51.756Z
+msg_869,conv_869,user,What should I eat tonight?,meal_search,"{""max_price"":12.2}",2026-09-25T06:25:20.827Z
+msg_870,conv_870,user,What should I eat tonight?,meal_search,"{""max_price"":12.2}",2026-09-16T06:46:04.658Z
+msg_871,conv_871,user,Something spicy under $14,meal_search,"{""max_price"":13.49,""spice"":""spicy""}",2026-10-04T06:35:48.057Z
+msg_872,conv_872,user,Something spicy under $14,meal_search,"{""max_price"":13.49,""spice"":""spicy""}",2026-09-25T05:52:36.610Z
+msg_873,conv_873,user,Something spicy under $14,meal_search,"{""max_price"":13.49,""spice"":""spicy""}",2026-09-16T06:31:49.955Z
+msg_874,conv_874,user,What should I eat tonight?,meal_search,"{""max_price"":14.94}",2026-10-04T05:57:48.066Z
+msg_875,conv_875,user,What should I eat tonight?,meal_search,"{""max_price"":14.94}",2026-09-25T06:42:24.120Z
+msg_876,conv_876,user,What should I eat tonight?,meal_search,"{""max_price"":14.94}",2026-09-16T06:27:00.256Z
+msg_877,conv_877,user,What should I eat tonight?,meal_search,"{""max_price"":14.94}",2026-09-07T06:24:27.844Z
+msg_878,conv_878,user,What should I eat tonight?,meal_search,"{""max_price"":14.94}",2026-08-29T06:17:36.020Z
+msg_879,conv_879,user,Something spicy under $13,meal_search,"{""max_price"":12.43,""spice"":""spicy""}",2026-10-04T06:38:11.494Z
+msg_880,conv_880,user,Something spicy under $13,meal_search,"{""max_price"":12.43,""spice"":""spicy""}",2026-09-25T06:36:46.452Z
+msg_881,conv_881,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.36,""dietary"":""vegetarian""}",2026-10-04T06:19:07.850Z
+msg_882,conv_882,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.36,""dietary"":""vegetarian""}",2026-09-25T05:58:17.005Z
+msg_883,conv_883,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.36,""dietary"":""vegetarian""}",2026-09-16T05:54:53.310Z
+msg_884,conv_884,user,Something spicy under $15,meal_search,"{""max_price"":14.3,""spice"":""spicy""}",2026-10-04T06:35:42.521Z
+msg_885,conv_885,user,Something spicy under $15,meal_search,"{""max_price"":14.3,""spice"":""spicy""}",2026-09-25T06:12:59.430Z
+msg_886,conv_886,user,Something spicy under $15,meal_search,"{""max_price"":14.3,""spice"":""spicy""}",2026-09-16T05:57:34.963Z
+msg_887,conv_887,user,Something spicy under $15,meal_search,"{""max_price"":14.3,""spice"":""spicy""}",2026-09-07T06:41:04.825Z
+msg_888,conv_888,user,What should I eat tonight?,meal_search,"{""max_price"":12.73}",2026-10-04T06:05:51.226Z
+msg_889,conv_889,user,What should I eat tonight?,meal_search,"{""max_price"":12.73}",2026-09-25T06:27:00.072Z
+msg_890,conv_890,user,What should I eat tonight?,meal_search,"{""max_price"":12.73}",2026-09-16T06:21:24.298Z
+msg_891,conv_891,user,What should I eat tonight?,meal_search,"{""max_price"":12.73}",2026-09-07T06:19:44.927Z
+msg_892,conv_892,user,What should I eat tonight?,meal_search,"{""max_price"":14.14}",2026-10-04T06:00:30.402Z
+msg_893,conv_893,user,What should I eat tonight?,meal_search,"{""max_price"":14.14}",2026-09-25T06:48:40.386Z
+msg_894,conv_894,user,What should I eat tonight?,meal_search,"{""max_price"":14.14}",2026-09-16T06:00:44.575Z
+msg_895,conv_895,user,What should I eat tonight?,meal_search,"{""max_price"":14.14}",2026-09-07T06:38:21.655Z
+msg_896,conv_896,user,What should I eat tonight?,meal_search,"{""max_price"":14.14}",2026-08-29T06:43:56.988Z
+msg_897,conv_897,user,What should I eat tonight?,meal_search,"{""max_price"":14.14}",2026-08-20T06:38:11.296Z
+msg_898,conv_898,user,Something spicy under $12,meal_search,"{""max_price"":11.67,""spice"":""spicy""}",2026-10-04T06:37:58.578Z
+msg_899,conv_899,user,Something spicy under $12,meal_search,"{""max_price"":11.67,""spice"":""spicy""}",2026-09-25T06:14:31.812Z
+msg_900,conv_900,user,Something spicy under $12,meal_search,"{""max_price"":11.67,""spice"":""spicy""}",2026-09-16T06:44:19.471Z
+msg_901,conv_901,user,What should I eat tonight?,meal_search,"{""max_price"":11.27}",2026-10-04T06:47:49.305Z
+msg_902,conv_902,user,What should I eat tonight?,meal_search,"{""max_price"":11.27}",2026-09-25T06:39:23.863Z
+msg_903,conv_903,user,What should I eat tonight?,meal_search,"{""max_price"":11.27}",2026-09-16T06:10:18.697Z
+msg_904,conv_904,user,What should I eat tonight?,meal_search,"{""max_price"":11.27}",2026-09-07T06:47:12.486Z
+msg_905,conv_905,user,What should I eat tonight?,meal_search,"{""max_price"":10.97}",2026-10-04T06:33:01.276Z
+msg_906,conv_906,user,Something spicy under $13,meal_search,"{""max_price"":12.65,""spice"":""spicy""}",2026-10-04T06:24:49.850Z
+msg_907,conv_907,user,Something spicy under $13,meal_search,"{""max_price"":12.65,""spice"":""spicy""}",2026-09-25T06:17:59.537Z
+msg_908,conv_908,user,Something spicy under $13,meal_search,"{""max_price"":12.65,""spice"":""spicy""}",2026-09-16T06:39:39.209Z
+msg_909,conv_909,user,Something spicy under $13,meal_search,"{""max_price"":12.65,""spice"":""spicy""}",2026-09-07T05:59:57.270Z
+msg_910,conv_910,user,What should I eat tonight?,meal_search,"{""max_price"":13.39}",2026-10-04T05:56:20.194Z
+msg_911,conv_911,user,What should I eat tonight?,meal_search,"{""max_price"":13.39}",2026-09-25T06:36:50.159Z
+msg_912,conv_912,user,What should I eat tonight?,meal_search,"{""max_price"":13.39}",2026-09-16T06:49:42.632Z
+msg_913,conv_913,user,What should I eat tonight?,meal_search,"{""max_price"":13.39}",2026-09-07T05:59:04.570Z
+msg_914,conv_914,user,Something spicy under $15,meal_search,"{""max_price"":14.51,""spice"":""spicy""}",2026-10-04T06:33:59.458Z
+msg_915,conv_915,user,Something spicy under $15,meal_search,"{""max_price"":14.51,""spice"":""spicy""}",2026-09-25T06:03:38.096Z
+msg_916,conv_916,user,Something spicy under $15,meal_search,"{""max_price"":14.51,""spice"":""spicy""}",2026-09-16T06:14:57.785Z
+msg_917,conv_917,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.17,""dietary"":""vegetarian""}",2026-10-04T05:59:21.126Z
+msg_918,conv_918,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.17,""dietary"":""vegetarian""}",2026-09-25T05:54:02.652Z
+msg_919,conv_919,user,Something spicy under $16,meal_search,"{""max_price"":15.91,""spice"":""spicy""}",2026-10-04T05:56:13.061Z
+msg_920,conv_920,user,Something spicy under $16,meal_search,"{""max_price"":15.91,""spice"":""spicy""}",2026-09-25T06:44:25.382Z
+msg_921,conv_921,user,Something spicy under $16,meal_search,"{""max_price"":15.91,""spice"":""spicy""}",2026-09-16T06:07:01.660Z
+msg_922,conv_922,user,Something spicy under $16,meal_search,"{""max_price"":15.91,""spice"":""spicy""}",2026-09-07T05:50:49.299Z
+msg_923,conv_923,user,What should I eat tonight?,meal_search,"{""max_price"":11.03}",2026-10-04T05:59:06.308Z
+msg_924,conv_924,user,What should I eat tonight?,meal_search,"{""max_price"":11.03}",2026-09-25T06:09:27.866Z
+msg_925,conv_925,user,What should I eat tonight?,meal_search,"{""max_price"":11.03}",2026-09-16T06:38:52.576Z
+msg_926,conv_926,user,What should I eat tonight?,meal_search,"{""max_price"":11.03}",2026-09-07T06:12:39.625Z
+msg_927,conv_927,user,What should I eat tonight?,meal_search,"{""max_price"":11.03}",2026-08-29T06:28:43.503Z
+msg_928,conv_928,user,What should I eat tonight?,meal_search,"{""max_price"":11.03}",2026-08-20T06:43:34.797Z
+msg_929,conv_929,user,What should I eat tonight?,meal_search,"{""max_price"":21.21}",2026-10-04T06:03:01.970Z
+msg_930,conv_930,user,What should I eat tonight?,meal_search,"{""max_price"":21.21}",2026-09-25T06:29:15.133Z
+msg_931,conv_931,user,What should I eat tonight?,meal_search,"{""max_price"":21.21}",2026-09-16T06:34:21.475Z
+msg_932,conv_932,user,What should I eat tonight?,meal_search,"{""max_price"":21.21}",2026-09-07T05:54:58.350Z
+msg_933,conv_933,user,Something spicy under $12,meal_search,"{""max_price"":11.02,""spice"":""spicy""}",2026-10-04T05:55:28.291Z
+msg_934,conv_934,user,Something spicy under $12,meal_search,"{""max_price"":11.02,""spice"":""spicy""}",2026-09-25T06:28:32.559Z
+msg_935,conv_935,user,Something spicy under $12,meal_search,"{""max_price"":11.02,""spice"":""spicy""}",2026-09-16T05:57:05.806Z
+msg_936,conv_936,user,Something spicy under $12,meal_search,"{""max_price"":11.02,""spice"":""spicy""}",2026-09-07T05:54:35.495Z
+msg_937,conv_937,user,Something spicy under $12,meal_search,"{""max_price"":11.02,""spice"":""spicy""}",2026-08-29T06:47:59.155Z
+msg_938,conv_938,user,What should I eat tonight?,meal_search,"{""max_price"":13.84}",2026-10-04T06:18:39.227Z
+msg_939,conv_939,user,What should I eat tonight?,meal_search,"{""max_price"":13.84}",2026-09-25T06:07:18.478Z
+msg_940,conv_940,user,What should I eat tonight?,meal_search,"{""max_price"":13.84}",2026-09-16T06:26:36.310Z
+msg_941,conv_941,user,What should I eat tonight?,meal_search,"{""max_price"":13.84}",2026-09-07T06:27:17.999Z
+msg_942,conv_942,user,What should I eat tonight?,meal_search,"{""max_price"":13.84}",2026-08-29T06:02:25.431Z
+msg_943,conv_943,user,What should I eat tonight?,meal_search,"{""max_price"":12.97}",2026-10-04T06:41:04.078Z
+msg_944,conv_944,user,What should I eat tonight?,meal_search,"{""max_price"":12.97}",2026-09-25T06:00:56.653Z
+msg_945,conv_945,user,What should I eat tonight?,meal_search,"{""max_price"":12.97}",2026-09-16T05:51:29.757Z
+msg_946,conv_946,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.73,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:17:45.402Z
+msg_947,conv_947,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.73,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T05:53:30.327Z
+msg_948,conv_948,user,High protein chicken dinner under $15,meal_search,"{""max_price"":14.73,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:08:49.698Z
+msg_949,conv_949,user,What should I eat tonight?,meal_search,"{""max_price"":13.23}",2026-10-04T06:46:33.051Z
+msg_950,conv_950,user,What should I eat tonight?,meal_search,"{""max_price"":13.23}",2026-09-25T06:14:36.324Z
+msg_951,conv_951,user,What should I eat tonight?,meal_search,"{""max_price"":13.23}",2026-09-16T06:12:00.319Z
+msg_952,conv_952,user,What should I eat tonight?,meal_search,"{""max_price"":13.23}",2026-09-07T06:04:29.262Z
+msg_953,conv_953,user,Something spicy under $12,meal_search,"{""max_price"":11.58,""spice"":""spicy""}",2026-10-04T06:14:34.886Z
+msg_954,conv_954,user,Something spicy under $12,meal_search,"{""max_price"":11.58,""spice"":""spicy""}",2026-09-25T05:58:22.667Z
+msg_955,conv_955,user,Something spicy under $12,meal_search,"{""max_price"":11.58,""spice"":""spicy""}",2026-09-16T06:21:10.363Z
+msg_956,conv_956,user,Something spicy under $12,meal_search,"{""max_price"":11.58,""spice"":""spicy""}",2026-09-07T06:27:46.973Z
+msg_957,conv_957,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.42,""dietary"":""vegetarian""}",2026-10-04T06:41:53.071Z
+msg_958,conv_958,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.42,""dietary"":""vegetarian""}",2026-09-25T06:41:23.589Z
+msg_959,conv_959,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.42,""dietary"":""vegetarian""}",2026-09-16T06:14:29.713Z
+msg_960,conv_960,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.42,""dietary"":""vegetarian""}",2026-09-07T06:38:45.233Z
+msg_961,conv_961,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.42,""dietary"":""vegetarian""}",2026-08-29T06:08:59.783Z
+msg_962,conv_962,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":10.42,""dietary"":""vegetarian""}",2026-08-20T06:18:06.760Z
+msg_963,conv_963,user,Something spicy under $18,meal_search,"{""max_price"":17.72,""spice"":""spicy""}",2026-10-04T06:38:35.493Z
+msg_964,conv_964,user,Something spicy under $18,meal_search,"{""max_price"":17.72,""spice"":""spicy""}",2026-09-25T05:51:09.236Z
+msg_965,conv_965,user,Something spicy under $18,meal_search,"{""max_price"":17.72,""spice"":""spicy""}",2026-09-16T06:05:43.060Z
+msg_966,conv_966,user,Something spicy under $18,meal_search,"{""max_price"":17.72,""spice"":""spicy""}",2026-09-07T06:49:15.898Z
+msg_967,conv_967,user,What should I eat tonight?,meal_search,"{""max_price"":11.94}",2026-10-04T06:45:56.243Z
+msg_968,conv_968,user,What should I eat tonight?,meal_search,"{""max_price"":11.94}",2026-09-25T06:35:39.417Z
+msg_969,conv_969,user,What should I eat tonight?,meal_search,"{""max_price"":17.1}",2026-10-04T06:09:47.400Z
+msg_970,conv_970,user,What should I eat tonight?,meal_search,"{""max_price"":17.1}",2026-09-25T06:30:37.421Z
+msg_971,conv_971,user,What should I eat tonight?,meal_search,"{""max_price"":17.1}",2026-09-16T06:39:27.883Z
+msg_972,conv_972,user,What should I eat tonight?,meal_search,"{""max_price"":17.1}",2026-09-07T06:47:42.110Z
+msg_973,conv_973,user,Something spicy under $11,meal_search,"{""max_price"":10.11,""spice"":""spicy""}",2026-10-04T06:26:16.058Z
+msg_974,conv_974,user,Something spicy under $11,meal_search,"{""max_price"":10.11,""spice"":""spicy""}",2026-09-25T06:24:02.688Z
+msg_975,conv_975,user,Something spicy under $11,meal_search,"{""max_price"":10.11,""spice"":""spicy""}",2026-09-16T06:33:54.871Z
+msg_976,conv_976,user,What should I eat tonight?,meal_search,"{""max_price"":12.24}",2026-10-04T06:03:45.381Z
+msg_977,conv_977,user,What should I eat tonight?,meal_search,"{""max_price"":12.24}",2026-09-25T06:40:46.120Z
+msg_978,conv_978,user,What should I eat tonight?,meal_search,"{""max_price"":12.24}",2026-09-16T05:52:53.597Z
+msg_979,conv_979,user,What should I eat tonight?,meal_search,"{""max_price"":12.24}",2026-09-07T06:28:52.318Z
+msg_980,conv_980,user,What should I eat tonight?,meal_search,"{""max_price"":12.57}",2026-10-04T05:55:27.016Z
+msg_981,conv_981,user,What should I eat tonight?,meal_search,"{""max_price"":12.57}",2026-09-25T06:12:38.815Z
+msg_982,conv_982,user,Something spicy under $16,meal_search,"{""max_price"":15.45,""spice"":""spicy""}",2026-10-04T05:52:19.548Z
+msg_983,conv_983,user,Something spicy under $16,meal_search,"{""max_price"":15.45,""spice"":""spicy""}",2026-09-25T06:42:13.453Z
+msg_984,conv_984,user,Something spicy under $16,meal_search,"{""max_price"":15.45,""spice"":""spicy""}",2026-09-16T06:28:43.671Z
+msg_985,conv_985,user,What should I eat tonight?,meal_search,"{""max_price"":13.9}",2026-10-04T06:39:51.749Z
+msg_986,conv_986,user,What should I eat tonight?,meal_search,"{""max_price"":13.9}",2026-09-25T06:10:29.347Z
+msg_987,conv_987,user,What should I eat tonight?,meal_search,"{""max_price"":13.9}",2026-09-16T05:57:06.111Z
+msg_988,conv_988,user,What should I eat tonight?,meal_search,"{""max_price"":13.9}",2026-09-07T06:15:29.239Z
+msg_989,conv_989,user,Something spicy under $16,meal_search,"{""max_price"":15.81,""spice"":""spicy""}",2026-10-04T06:45:21.871Z
+msg_990,conv_990,user,Something spicy under $16,meal_search,"{""max_price"":15.81,""spice"":""spicy""}",2026-09-25T06:42:59.026Z
+msg_991,conv_991,user,Something spicy under $16,meal_search,"{""max_price"":15.81,""spice"":""spicy""}",2026-09-16T06:24:36.594Z
+msg_992,conv_992,user,Something spicy under $16,meal_search,"{""max_price"":15.81,""spice"":""spicy""}",2026-09-07T06:26:28.497Z
+msg_993,conv_993,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.26,""dietary"":""vegetarian""}",2026-10-04T06:40:15.025Z
+msg_994,conv_994,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.26,""dietary"":""vegetarian""}",2026-09-25T05:59:19.464Z
+msg_995,conv_995,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.26,""dietary"":""vegetarian""}",2026-09-16T06:39:35.263Z
+msg_996,conv_996,user,What should I eat tonight?,meal_search,"{""max_price"":12.74}",2026-10-04T06:12:30.124Z
+msg_997,conv_997,user,What should I eat tonight?,meal_search,"{""max_price"":12.74}",2026-09-25T06:01:43.561Z
+msg_998,conv_998,user,What should I eat tonight?,meal_search,"{""max_price"":12.12}",2026-10-04T06:36:32.000Z
+msg_999,conv_999,user,What should I eat tonight?,meal_search,"{""max_price"":12.12}",2026-09-25T06:24:57.135Z
+msg_1000,conv_1000,user,What should I eat tonight?,meal_search,"{""max_price"":12.12}",2026-09-16T06:09:35.181Z
+msg_1001,conv_1001,user,What should I eat tonight?,meal_search,"{""max_price"":12.12}",2026-09-07T05:52:56.815Z
+msg_1002,conv_1002,user,What should I eat tonight?,meal_search,"{""max_price"":18.79}",2026-10-04T06:34:28.821Z
+msg_1003,conv_1003,user,What should I eat tonight?,meal_search,"{""max_price"":18.79}",2026-09-25T06:33:07.956Z
+msg_1004,conv_1004,user,What should I eat tonight?,meal_search,"{""max_price"":18.79}",2026-09-16T06:09:39.443Z
+msg_1005,conv_1005,user,What should I eat tonight?,meal_search,"{""max_price"":18.79}",2026-09-07T05:57:43.813Z
+msg_1006,conv_1006,user,What should I eat tonight?,meal_search,"{""max_price"":11.86}",2026-10-04T06:24:16.698Z
+msg_1007,conv_1007,user,What should I eat tonight?,meal_search,"{""max_price"":11.86}",2026-09-25T06:35:05.604Z
+msg_1008,conv_1008,user,What should I eat tonight?,meal_search,"{""max_price"":14.84}",2026-10-04T06:14:34.440Z
+msg_1009,conv_1009,user,What should I eat tonight?,meal_search,"{""max_price"":14.84}",2026-09-25T06:28:58.057Z
+msg_1010,conv_1010,user,What should I eat tonight?,meal_search,"{""max_price"":14.84}",2026-09-16T06:18:54.678Z
+msg_1011,conv_1011,user,What should I eat tonight?,meal_search,"{""max_price"":12.37}",2026-10-04T06:06:51.383Z
+msg_1012,conv_1012,user,What should I eat tonight?,meal_search,"{""max_price"":12.37}",2026-09-25T06:15:08.197Z
+msg_1013,conv_1013,user,What should I eat tonight?,meal_search,"{""max_price"":12.37}",2026-09-16T06:39:25.149Z
+msg_1014,conv_1014,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.71,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:02:20.266Z
+msg_1015,conv_1015,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.71,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T06:18:21.088Z
+msg_1016,conv_1016,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.71,""protein"":""chicken"",""health"":""high-protein""}",2026-09-16T06:08:24.949Z
+msg_1017,conv_1017,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.71,""protein"":""chicken"",""health"":""high-protein""}",2026-09-07T06:48:20.826Z
+msg_1018,conv_1018,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.71,""protein"":""chicken"",""health"":""high-protein""}",2026-08-29T06:38:15.078Z
+msg_1019,conv_1019,user,High protein chicken dinner under $16,meal_search,"{""max_price"":15.71,""protein"":""chicken"",""health"":""high-protein""}",2026-08-20T06:16:16.723Z
+msg_1020,conv_1020,user,What should I eat tonight?,meal_search,"{""max_price"":14.26}",2026-10-04T06:31:32.651Z
+msg_1021,conv_1021,user,Something spicy under $13,meal_search,"{""max_price"":12.37,""spice"":""spicy""}",2026-10-04T06:30:56.523Z
+msg_1022,conv_1022,user,Something spicy under $13,meal_search,"{""max_price"":12.37,""spice"":""spicy""}",2026-09-25T06:40:30.390Z
+msg_1023,conv_1023,user,Something spicy under $13,meal_search,"{""max_price"":12.37,""spice"":""spicy""}",2026-09-16T06:12:41.837Z
+msg_1024,conv_1024,user,Something spicy under $13,meal_search,"{""max_price"":12.37,""spice"":""spicy""}",2026-09-07T06:18:07.252Z
+msg_1025,conv_1025,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.41,""dietary"":""vegetarian""}",2026-10-04T06:13:57.146Z
+msg_1026,conv_1026,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.41,""dietary"":""vegetarian""}",2026-09-25T06:34:29.419Z
+msg_1027,conv_1027,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.41,""dietary"":""vegetarian""}",2026-09-16T05:56:19.508Z
+msg_1028,conv_1028,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.41,""dietary"":""vegetarian""}",2026-09-07T06:40:44.621Z
+msg_1029,conv_1029,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.41,""dietary"":""vegetarian""}",2026-08-29T06:48:45.677Z
+msg_1030,conv_1030,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.41,""dietary"":""vegetarian""}",2026-08-20T05:51:45.830Z
+msg_1031,conv_1031,user,Something spicy under $16,meal_search,"{""max_price"":15.11,""spice"":""spicy""}",2026-10-04T06:04:42.567Z
+msg_1032,conv_1032,user,Something spicy under $16,meal_search,"{""max_price"":15.11,""spice"":""spicy""}",2026-09-25T06:43:49.388Z
+msg_1033,conv_1033,user,What should I eat tonight?,meal_search,"{""max_price"":13.89}",2026-10-04T06:50:14.150Z
+msg_1034,conv_1034,user,What should I eat tonight?,meal_search,"{""max_price"":21.85}",2026-10-04T06:14:00.475Z
+msg_1035,conv_1035,user,What should I eat tonight?,meal_search,"{""max_price"":21.85}",2026-09-25T06:06:08.669Z
+msg_1036,conv_1036,user,What should I eat tonight?,meal_search,"{""max_price"":21.85}",2026-09-16T06:29:22.798Z
+msg_1037,conv_1037,user,What should I eat tonight?,meal_search,"{""max_price"":21.85}",2026-09-07T06:36:29.026Z
+msg_1038,conv_1038,user,What should I eat tonight?,meal_search,"{""max_price"":21.85}",2026-08-29T06:30:33.998Z
+msg_1039,conv_1039,user,What should I eat tonight?,meal_search,"{""max_price"":21.85}",2026-08-20T06:39:43.862Z
+msg_1040,conv_1040,user,Something spicy under $12,meal_search,"{""max_price"":11.99,""spice"":""spicy""}",2026-10-04T06:01:50.699Z
+msg_1041,conv_1041,user,Something spicy under $12,meal_search,"{""max_price"":11.99,""spice"":""spicy""}",2026-09-25T06:16:54.396Z
+msg_1042,conv_1042,user,Something spicy under $12,meal_search,"{""max_price"":11.99,""spice"":""spicy""}",2026-09-16T05:51:24.635Z
+msg_1043,conv_1043,user,Something spicy under $12,meal_search,"{""max_price"":11.99,""spice"":""spicy""}",2026-09-07T06:15:00.672Z
+msg_1044,conv_1044,user,Something spicy under $12,meal_search,"{""max_price"":11.99,""spice"":""spicy""}",2026-08-29T06:21:28.272Z
+msg_1045,conv_1045,user,What should I eat tonight?,meal_search,"{""max_price"":14.41}",2026-10-04T06:01:14.259Z
+msg_1046,conv_1046,user,What should I eat tonight?,meal_search,"{""max_price"":10.09}",2026-10-04T06:38:01.007Z
+msg_1047,conv_1047,user,What should I eat tonight?,meal_search,"{""max_price"":10.09}",2026-09-25T05:57:15.200Z
+msg_1048,conv_1048,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.17,""protein"":""chicken"",""health"":""high-protein""}",2026-10-04T06:29:43.388Z
+msg_1049,conv_1049,user,High protein chicken dinner under $14,meal_search,"{""max_price"":13.17,""protein"":""chicken"",""health"":""high-protein""}",2026-09-25T06:44:15.726Z
+msg_1050,conv_1050,user,What should I eat tonight?,meal_search,"{""max_price"":14.13}",2026-10-04T05:55:10.015Z
+msg_1051,conv_1051,user,What should I eat tonight?,meal_search,"{""max_price"":14.13}",2026-09-25T06:12:59.623Z
+msg_1052,conv_1052,user,Something spicy under $14,meal_search,"{""max_price"":13.89,""spice"":""spicy""}",2026-10-04T06:21:52.760Z
+msg_1053,conv_1053,user,Something spicy under $14,meal_search,"{""max_price"":13.89,""spice"":""spicy""}",2026-09-25T06:49:02.135Z
+msg_1054,conv_1054,user,Healthy vegetarian dinner for tonight,meal_search,"{""max_price"":11.48,""dietary"":""vegetarian""}",2026-10-04T06:00:54.113Z
+msg_1055,conv_1055,user,Something spicy under $17,meal_search,"{""max_price"":16.11,""spice"":""spicy""}",2026-10-04T05:53:49.418Z
+msg_1056,conv_1056,user,Something spicy under $17,meal_search,"{""max_price"":16.11,""spice"":""spicy""}",2026-09-25T06:02:53.667Z
+msg_1057,conv_1057,user,Something spicy under $17,meal_search,"{""max_price"":16.11,""spice"":""spicy""}",2026-09-16T06:00:07.860Z
+msg_1058,conv_1058,user,Something spicy under $17,meal_search,"{""max_price"":16.11,""spice"":""spicy""}",2026-09-07T06:09:55.873Z
+msg_1059,conv_1059,user,Something spicy under $17,meal_search,"{""max_price"":16.11,""spice"":""spicy""}",2026-08-29T06:21:00.496Z
+msg_1060,conv_1060,user,Something spicy under $17,meal_search,"{""max_price"":16.11,""spice"":""spicy""}",2026-08-20T06:32:45.267Z
+msg_1061,conv_1061,user,What should I eat tonight?,meal_search,"{""max_price"":13.93}",2026-10-04T06:38:58.284Z
+msg_1062,conv_1062,user,What should I eat tonight?,meal_search,"{""max_price"":13.93}",2026-09-25T05:50:38.028Z
+msg_1063,conv_1063,user,What should I eat tonight?,meal_search,"{""max_price"":13.93}",2026-09-16T06:27:56.703Z
+msg_1064,conv_1064,user,What should I eat tonight?,meal_search,"{""max_price"":13.93}",2026-09-07T06:23:47.607Z
+msg_1065,conv_1065,user,What should I eat tonight?,meal_search,"{""max_price"":13.93}",2026-08-29T06:32:18.879Z
+msg_1066,conv_1066,user,What should I eat tonight?,meal_search,"{""max_price"":13.93}",2026-08-20T06:20:21.689Z
+msg_1067,conv_1067,user,What should I eat tonight?,meal_search,"{""max_price"":17.97}",2026-10-04T06:45:33.849Z
+msg_1068,conv_1068,user,What should I eat tonight?,meal_search,"{""max_price"":17.97}",2026-09-25T05:53:34.484Z
+msg_1069,conv_1069,user,Something spicy under $12,meal_search,"{""max_price"":11.46,""spice"":""spicy""}",2026-10-04T06:24:54.037Z
+msg_1070,conv_1070,user,Something spicy under $12,meal_search,"{""max_price"":11.46,""spice"":""spicy""}",2026-09-25T06:11:41.710Z
+msg_1071,conv_1071,user,Something spicy under $12,meal_search,"{""max_price"":11.46,""spice"":""spicy""}",2026-09-16T06:24:23.176Z
+msg_1072,conv_1072,user,What should I eat tonight?,meal_search,"{""max_price"":12.34}",2026-10-04T06:06:18.358Z
+msg_1073,conv_1073,user,What should I eat tonight?,meal_search,"{""max_price"":12.34}",2026-09-25T06:48:37.598Z

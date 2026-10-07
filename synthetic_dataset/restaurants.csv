@@ -1,0 +1,31 @@
+id,name,cuisine,suburb,rating,active
+rest_01,Thai Orchid Street,Thai,Bentley,4.8,true
+rest_02,Tokyo Bento Co.,Japanese,Curtin,4.9,true
+rest_03,Verde Kitchen & Bowls,Mediterranean,Curtin,4.7,true
+rest_04,El Fuego Taqueria,Mexican,Victoria Park,4.6,true
+rest_05,Roma Cucina,Italian,Victoria Park,4.7,true
+rest_06,Seoul Street Box,Korean,Bentley,4.8,true
+rest_07,Gulati's Indian Kitchen,Indian,Curtin,4.8,true
+rest_08,Suya King African Kitchen,African,Bentley,4.9,true
+rest_09,Saigon Express Pho,Vietnamese,Victoria Park,4.7,true
+rest_10,Dragon Wok Box,Chinese,Curtin,4.5,true
+rest_11,Beirut Mezze Grill,Middle Eastern,Bentley,4.8,true
+rest_12,Kopitiam Nanyang Flavours,Malaysian,Curtin,4.8,true
+rest_13,Aussie Smash Burgers,Western,Victoria Park,4.6,true
+rest_14,Pure Greens Salad Bar,Salads,Curtin,4.7,true
+rest_15,Kyoto Ramen Lab,Japanese,Bentley,4.9,true
+rest_16,Taj Mahal Express,Indian,Victoria Park,4.7,true
+rest_17,Jollof & Spice Safari,African,Curtin,4.8,true
+rest_18,Pasta Fresca Craft,Italian,Bentley,4.6,true
+rest_19,Bangkok Night Market,Thai,Curtin,4.7,true
+rest_20,Ocho Rios Jerk & Grill,Caribbean,Victoria Park,4.7,true
+rest_21,Anatolia Kebabs & Bowls,Turkish,Bentley,4.5,true
+rest_22,Dim Sum Garden,Chinese,Curtin,4.7,true
+rest_23,Zen Tofu & Veggie Kitchen,Vegan,Curtin,4.9,true
+rest_24,Manila Sunset BBQ,Filipino,Bentley,4.6,true
+rest_25,The Healthy Bowl Project,Healthy,Victoria Park,4.8,true
+rest_26,Mumbai Chaat & Thali,Indian,Bentley,4.6,true
+rest_27,Hanoi Baguette & Noodle,Vietnamese,Curtin,4.8,true
+rest_28,Little Athens Souvlaki,Greek,Victoria Park,4.7,true
+rest_29,Seoul Fried Chicken Co.,Korean,Curtin,4.9,true
+rest_30,Curry Leaf Canteen,Sri Lankan,Bentley,4.8,true
