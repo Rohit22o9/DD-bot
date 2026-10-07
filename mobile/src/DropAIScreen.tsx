@@ -38,7 +38,7 @@ export interface DropAIScreenProps {
 }
 
 export const DropAIScreen: React.FC<DropAIScreenProps> = ({
-  apiBaseUrl = 'http://10.86.31.27:5000', // Host machine IP for physical Expo Go / emulator
+  apiBaseUrl = 'https://dd-bot-hx7u.onrender.com', // Live Render Cloud Backend
   initialUserId = 'user_alex',
   activePrompt,
   onClearActivePrompt,

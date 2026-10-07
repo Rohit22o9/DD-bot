@@ -17,7 +17,7 @@ export interface DailyDropAppProps {
 }
 
 export const DailyDropApp: React.FC<DailyDropAppProps> = ({
-  apiBaseUrl = 'http://10.86.31.27:5000',
+  apiBaseUrl = 'https://dd-bot-hx7u.onrender.com',
   initialUserId = 'user_alex',
 }) => {
   const [activeTab, setActiveTab] = useState<MobileTab>('chat');
