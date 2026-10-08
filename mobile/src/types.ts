@@ -1,3 +1,25 @@
+export interface MealNutrition {
+  calories: number;
+  proteinGrams: number;
+  fibreGrams?: number;
+  sodiumMg?: number;
+  saturatedFatGrams?: number;
+  carbsGrams?: number;
+  sugarGrams?: number;
+}
+
+export interface MealHealthFlags {
+  heartHealthy?: boolean;
+  diabetesFriendly?: boolean;
+  highProtein?: boolean;
+  lowCarb?: boolean;
+  lowSodium?: boolean;
+  antiInflammatory?: boolean;
+  weightManagement?: boolean;
+  glutenFree?: boolean;
+  dairyFree?: boolean;
+}
+
 export interface Meal {
   id: string;
   name: string;
@@ -17,6 +39,11 @@ export interface Meal {
   calories?: number;
   proteinGrams?: number;
   portion?: string;
+  // Tier 1 Internal Qualification Attributes
+  nutrition?: MealNutrition;
+  healthFlags?: MealHealthFlags;
+  // Customer-facing display badges (clean UI badges, e.g. "❤️ Heart Healthy", "💪 38g Protein")
+  displayBadges?: string[];
 }
 
 export interface Recommendation {
@@ -179,6 +206,10 @@ export interface ChatMessage {
     meal: Meal;
     quantity: number;
   };
+  addedCartItems?: {
+    meal: Meal;
+    quantity: number;
+  }[];
   quickOptions?: string[];
   usualOrder?: Order;
   budgetBasket?: BudgetBasket;

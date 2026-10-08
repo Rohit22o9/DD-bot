@@ -23,3 +23,4 @@ export * from './components/MobileDropForMeWidget';
 export * from './components/MobileThinkingBubble';
 export * from './components/MobileOrderModal';
 export * from './components/MobileMealImage';
+export * from './components/MobileMealDetailModal';

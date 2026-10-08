@@ -2,6 +2,28 @@ export type MealSlot = 'lunch' | 'dinner';
 export type DayOfWeek = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
 export type MealCategory = 'main' | 'side' | 'drink' | 'dessert';
 
+export interface MealNutrition {
+  calories: number;
+  proteinGrams: number;
+  fibreGrams?: number;
+  sodiumMg?: number;
+  saturatedFatGrams?: number;
+  carbsGrams?: number;
+  sugarGrams?: number;
+}
+
+export interface MealHealthFlags {
+  heartHealthy?: boolean;
+  diabetesFriendly?: boolean;
+  highProtein?: boolean;
+  lowCarb?: boolean;
+  lowSodium?: boolean;
+  antiInflammatory?: boolean;
+  weightManagement?: boolean;
+  glutenFree?: boolean;
+  dairyFree?: boolean;
+}
+
 export interface Meal {
   id: string;
   name: string;
@@ -20,6 +42,11 @@ export interface Meal {
   active: boolean;
   calories?: number;
   proteinGrams?: number;
+  // Tier 1 Internal Qualification Attributes
+  nutrition?: MealNutrition;
+  healthFlags?: MealHealthFlags;
+  // Customer-facing display badges
+  displayBadges?: string[];
 }
 
 export interface Restaurant {

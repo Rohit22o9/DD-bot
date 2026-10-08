@@ -9,12 +9,14 @@ import {
   Animated,
 } from 'react-native';
 import { Recommendation, Meal } from '../types';
+import { MobileMealDetailModal } from './MobileMealDetailModal';
 
 export interface MobileMealCardProps {
   recommendation?: Recommendation;
   meal?: Meal;
-  onAddToCart: (mealId: string) => Promise<void> | void;
+  onAddToCart: (mealId: string, quantity?: number) => Promise<void> | void;
   onRemove?: (meal: Meal) => void;
+  onPressMeal?: (meal: Meal) => void;
   width?: number;
   index?: number;
 }
@@ -24,12 +26,14 @@ export const MobileMealCard: React.FC<MobileMealCardProps> = ({
   meal: directMeal,
   onAddToCart,
   onRemove,
+  onPressMeal,
   width = 190,
   index = 0,
 }) => {
   const currentMeal = recommendation?.meal || directMeal;
   if (!currentMeal) return null;
 
+  const [showDetail, setShowDetail] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -83,9 +87,13 @@ export const MobileMealCard: React.FC<MobileMealCardProps> = ({
     if (isAdding) return;
     try {
       setIsAdding(true);
-      await onAddToCart(currentMeal.id);
+      // Give user a smooth 600ms loading transition so they clearly register the action
+      await Promise.all([
+        Promise.resolve(onAddToCart(currentMeal.id)),
+        new Promise((resolve) => setTimeout(resolve, 600)),
+      ]);
       setIsAdded(true);
-      setTimeout(() => setIsAdded(false), 2000);
+      setTimeout(() => setIsAdded(false), 2200);
     } finally {
       setIsAdding(false);
     }
@@ -94,7 +102,10 @@ export const MobileMealCard: React.FC<MobileMealCardProps> = ({
   const fallbackImg =
     'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80';
 
-  const displayTags = (currentMeal.dietaryTags || ['Healthy']).slice(0, 2);
+  const displayBadges =
+    currentMeal.displayBadges && currentMeal.displayBadges.length > 0
+      ? currentMeal.displayBadges.slice(0, 2)
+      : (currentMeal.dietaryTags || ['Healthy']).slice(0, 2);
 
   return (
     <Animated.View
@@ -107,8 +118,18 @@ export const MobileMealCard: React.FC<MobileMealCardProps> = ({
         },
       ]}
     >
-      {/* Food Photo Container */}
-      <View style={styles.imgWrapper}>
+      {/* Food Photo Container - Tap to view meal details */}
+      <TouchableOpacity
+        style={styles.imgWrapper}
+        activeOpacity={0.9}
+        onPress={() => {
+          if (onPressMeal) {
+            onPressMeal(currentMeal);
+          } else {
+            setShowDetail(true);
+          }
+        }}
+      >
         {/* Shimmering Skeleton Loader while image downloads */}
         {!isLoaded && !imgError && (
           <Animated.View style={[styles.skeletonBox, { opacity: shimmerAnim }]}>
@@ -153,23 +174,32 @@ export const MobileMealCard: React.FC<MobileMealCardProps> = ({
             <Text style={styles.dismissText}>✕</Text>
           </TouchableOpacity>
         )}
-      </View>
+      </TouchableOpacity>
 
       {/* Card Details */}
       <View style={styles.body}>
-        <Text style={styles.title} numberOfLines={2}>
-          {currentMeal.name}
-        </Text>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => {
+            if (onPressMeal) {
+              onPressMeal(currentMeal);
+            } else {
+              setShowDetail(true);
+            }
+          }}
+        >
+          <Text style={styles.title} numberOfLines={2}>
+            {currentMeal.name}
+          </Text>
+        </TouchableOpacity>
 
         <Text style={styles.price}>${currentMeal.price.toFixed(2)}</Text>
 
-        {/* Dietary Tag Badges */}
+        {/* Clean Customer-Facing Badges */}
         <View style={styles.tagRow}>
-          {displayTags.map((tag, idx) => (
+          {displayBadges.map((badge, idx) => (
             <View key={idx} style={styles.tagPill}>
-              <Text style={styles.tagText}>
-                {tag.charAt(0).toUpperCase() + tag.slice(1)}
-              </Text>
+              <Text style={styles.tagText}>{badge}</Text>
             </View>
           ))}
         </View>
@@ -188,6 +218,14 @@ export const MobileMealCard: React.FC<MobileMealCardProps> = ({
           )}
         </TouchableOpacity>
       </View>
+
+      {/* Full Meal Details Card Modal */}
+      <MobileMealDetailModal
+        visible={showDetail}
+        meal={currentMeal}
+        onClose={() => setShowDetail(false)}
+        onAddToCart={onAddToCart}
+      />
     </Animated.View>
   );
 };
@@ -294,15 +332,17 @@ const styles = StyleSheet.create({
     minHeight: 22,
   },
   tagPill: {
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#EBF7EE',
     borderRadius: 6,
     paddingHorizontal: 7,
     paddingVertical: 3,
+    borderWidth: 0.5,
+    borderColor: 'rgba(13, 120, 68, 0.2)',
   },
   tagText: {
     fontSize: 10,
-    fontWeight: '600',
-    color: '#4B5563',
+    fontWeight: '700',
+    color: '#0D7844',
   },
   addBtn: {
     backgroundColor: '#0D7844',

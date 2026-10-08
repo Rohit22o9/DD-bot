@@ -46,7 +46,7 @@ export class RecommendationEngine {
         reasons.push(`✓ Under $${effectiveBudget} ($${meal.price.toFixed(2)})`);
       } else {
         score += 15;
-        reasons.push(`✓ Fits $${effectiveBudget} budget`);
+        reasons.push(`✓ Under $${effectiveBudget} (Fits budget)`);
       }
     } else {
       score -= 25; // Exceeds budget penalty
@@ -121,35 +121,76 @@ export class RecommendationEngine {
       reasons.push(`✓ From favorite spot (${meal.restaurantName})`);
     }
 
-    // 7. Wellness / Healthy Preference (up to +25 points)
+    // 7. Wellness / Health Category Qualification & Ranking (up to +30 points)
     if (queryCriteria?.wellnessCategory) {
-      const wc = queryCriteria.wellnessCategory;
-      if (wc === 'high-protein') {
-        if (meal.dietaryTags.includes('high-protein') || (meal.proteinGrams && meal.proteinGrams >= 35)) {
-          score += 25;
-          reasons.unshift(`✓ High protein (${meal.proteinGrams || 38}g)`);
+      const wc = queryCriteria.wellnessCategory.toLowerCase().replace(/_/g, '-');
+      if (wc === 'heart-healthy') {
+        const isQualified =
+          meal.healthFlags?.heartHealthy ??
+          ((meal.nutrition?.saturatedFatGrams ?? 0) <= 3.5 && (meal.nutrition?.sodiumMg ?? 999) <= 650);
+        if (isQualified || meal.dietaryTags.some((t) => t.toLowerCase().includes('heart'))) {
+          score += 30;
+          reasons.unshift('✓ Heart-healthy qualified');
+        } else {
+          score -= 20;
+        }
+      } else if (wc === 'diabetes-friendly') {
+        const isQualified =
+          meal.healthFlags?.diabetesFriendly ??
+          ((meal.nutrition?.sugarGrams ?? 0) <= 5 && (meal.nutrition?.fibreGrams ?? 0) >= 6);
+        if (isQualified || meal.dietaryTags.some((t) => t.toLowerCase().includes('diabetes'))) {
+          score += 30;
+          reasons.unshift('✓ Balanced carbs & high fibre');
+        } else {
+          score -= 20;
+        }
+      } else if (wc === 'high-protein') {
+        const isQualified =
+          meal.healthFlags?.highProtein ??
+          ((meal.proteinGrams && meal.proteinGrams >= 30) || (meal.nutrition?.proteinGrams && meal.nutrition.proteinGrams >= 30));
+        if (isQualified || meal.dietaryTags.some((t) => t.toLowerCase().includes('protein'))) {
+          score += 30;
+          reasons.unshift(`✓ High protein (${meal.proteinGrams || meal.nutrition?.proteinGrams || 35}g)`);
+        } else {
+          score -= 20;
+        }
+      } else if (wc === 'low-carb' || wc === 'keto') {
+        const isQualified =
+          meal.healthFlags?.lowCarb ??
+          ((meal.nutrition?.carbsGrams && meal.nutrition.carbsGrams <= 25) || meal.dietaryTags.some((t) => t.toLowerCase().includes('low carb')));
+        if (isQualified) {
+          score += 30;
+          reasons.unshift('✓ Low carb & nutrient rich');
+        } else {
+          score -= 20;
+        }
+      } else if (wc === 'low-sodium') {
+        const isQualified =
+          meal.healthFlags?.lowSodium ??
+          ((meal.nutrition?.sodiumMg && meal.nutrition.sodiumMg <= 450) || meal.dietaryTags.some((t) => t.toLowerCase().includes('sodium')));
+        if (isQualified) {
+          score += 30;
+          reasons.unshift(`✓ Under 450mg sodium (${meal.nutrition?.sodiumMg || 380}mg)`);
+        } else {
+          score -= 20;
+        }
+      } else if (wc === 'anti-inflammatory') {
+        const isQualified =
+          meal.healthFlags?.antiInflammatory ??
+          meal.dietaryTags.some((t) => t.toLowerCase().includes('anti-inflammatory') || t.toLowerCase().includes('omega-3'));
+        if (isQualified) {
+          score += 30;
+          reasons.unshift('✓ Rich in Omega-3 & antioxidants');
         } else {
           score -= 20;
         }
       } else if (wc === 'weight-management') {
-        if (meal.dietaryTags.includes('weight-management') || (meal.calories && meal.calories <= 550)) {
-          score += 25;
-          reasons.unshift(`✓ Weight management (${meal.calories || 480} kcal)`);
-        } else {
-          score -= 20;
-        }
-      } else if (wc === 'high-fibre') {
-        if (
-          meal.dietaryTags.includes('high-fibre') ||
-          meal.dietaryTags.includes('gut-friendly') ||
-          meal.ingredients.some((ing) =>
-            ['quinoa', 'lentil', 'beets', 'spinach', 'edamame', 'chickpea', 'chia', 'beans'].some((w) =>
-              ing.toLowerCase().includes(w)
-            )
-          )
-        ) {
-          score += 25;
-          reasons.unshift('✓ High fibre & gut friendly');
+        const isQualified =
+          meal.healthFlags?.weightManagement ??
+          ((meal.calories && meal.calories <= 520) || (meal.nutrition?.calories && meal.nutrition.calories <= 520));
+        if (isQualified || meal.dietaryTags.some((t) => t.toLowerCase().includes('weight-management'))) {
+          score += 30;
+          reasons.unshift(`✓ Calorie-conscious (${meal.calories || meal.nutrition?.calories || 450} kcal)`);
         } else {
           score -= 20;
         }

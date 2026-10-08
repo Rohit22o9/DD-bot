@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { DropForMeResult, DropForMeMode } from '../types';
 import { MobileMealImage } from './MobileMealImage';
 
@@ -43,7 +43,12 @@ export const MobileDropForMeWidget: React.FC<MobileDropForMeWidgetProps> = ({
       </View>
 
       {/* Mode Selector Tabs */}
-      <View style={styles.modeRow}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.modeScroll}
+        contentContainerStyle={styles.modeRow}
+      >
         {modes.map((m) => {
           const isActive = selectedMode === m.mode;
           return (
@@ -55,15 +60,19 @@ export const MobileDropForMeWidget: React.FC<MobileDropForMeWidgetProps> = ({
                 if (onSwitchMode) onSwitchMode(m.mode);
                 if (onActionPrompt) onActionPrompt(`Drop for me in ${m.label} mode`);
               }}
+              activeOpacity={0.7}
             >
               <Text style={styles.modeIcon}>{m.icon}</Text>
-              <Text style={[styles.modeLabel, isActive && styles.modeLabelActive]}>
+              <Text
+                style={[styles.modeLabel, isActive && styles.modeLabelActive]}
+                numberOfLines={1}
+              >
                 {m.label}
               </Text>
             </TouchableOpacity>
           );
         })}
-      </View>
+      </ScrollView>
 
       {/* Main Meal Item */}
       <View style={styles.mainMealBox}>
@@ -179,21 +188,24 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '700',
   },
-  modeRow: {
-    flexDirection: 'row',
-    gap: 6,
+  modeScroll: {
     marginBottom: 14,
   },
+  modeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    paddingVertical: 2,
+  },
   modeTab: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 7,
-    paddingHorizontal: 4,
-    borderRadius: 10,
+    paddingHorizontal: 12,
+    borderRadius: 18,
     backgroundColor: '#F3F4F6',
-    gap: 4,
+    gap: 5,
   },
   modeTabActive: {
     backgroundColor: '#0D7844',
@@ -202,7 +214,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   modeLabel: {
-    fontSize: 11,
+    fontSize: 11.5,
     fontWeight: '600',
     color: '#4B5563',
   },

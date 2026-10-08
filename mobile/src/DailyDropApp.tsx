@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, StatusBar, Keyboard, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { DropAIScreen } from './DropAIScreen';
 import { MobileOrdersView } from './components/MobileOrdersView';
@@ -27,6 +27,20 @@ export const DailyDropApp: React.FC<DailyDropAppProps> = ({
   const [activePrompt, setActivePrompt] = useState<string>('');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isTasteModalOpen, setIsTasteModalOpen] = useState(false);
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const showEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
+    const hideEvent = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
+
+    const showSub = Keyboard.addListener(showEvent, () => setIsKeyboardVisible(true));
+    const hideSub = Keyboard.addListener(hideEvent, () => setIsKeyboardVisible(false));
+
+    return () => {
+      showSub.remove();
+      hideSub.remove();
+    };
+  }, []);
 
   const cartItemCount = cart?.items.reduce((s, i) => s + i.quantity, 0) || 0;
 
@@ -53,6 +67,7 @@ export const DailyDropApp: React.FC<DailyDropAppProps> = ({
   };
 
   const handleUpdateCartQuantity = async (mealId: string, quantity: number) => {
+    // 1. Try server
     try {
       const res = await fetch(`${apiBaseUrl}/api/cart/${userId}/update`, {
         method: 'POST',
@@ -61,14 +76,34 @@ export const DailyDropApp: React.FC<DailyDropAppProps> = ({
       });
       if (res.ok) {
         const data = await res.json();
-        setCart(data.cart);
+        setCart(data.cart || data);
+        return;
       }
     } catch (e) {
-      console.warn('Failed to update cart quantity:', e);
+      console.warn('Failed to update cart quantity on server:', e);
     }
+
+    // 2. Local fallback
+    setCart((prev) => {
+      const existing = prev?.items || [];
+      const updatedItems = existing
+        .map((it) => (it.mealId === mealId ? { ...it, quantity } : it))
+        .filter((it) => it.quantity > 0);
+      const subtotal = Math.round(updatedItems.reduce((s, i) => s + i.meal.price * i.quantity, 0) * 100) / 100;
+      const deliveryFee = updatedItems.length > 0 ? 2.5 : 0;
+      return {
+        items: updatedItems,
+        subtotal,
+        deliveryFee,
+        estimatedTax: 0,
+        total: Math.round((subtotal + deliveryFee) * 100) / 100,
+        currency: 'USD',
+      };
+    });
   };
 
   const handleRemoveFromCart = async (mealId: string) => {
+    // 1. Try server
     try {
       const res = await fetch(`${apiBaseUrl}/api/cart/${userId}/remove`, {
         method: 'POST',
@@ -77,25 +112,54 @@ export const DailyDropApp: React.FC<DailyDropAppProps> = ({
       });
       if (res.ok) {
         const data = await res.json();
-        setCart(data.cart);
+        setCart(data.cart || data);
+        return;
       }
     } catch (e) {
-      console.warn('Failed to remove item from cart:', e);
+      console.warn('Failed to remove item from cart on server:', e);
     }
+
+    // 2. Local fallback
+    setCart((prev) => {
+      const existing = prev?.items || [];
+      const updatedItems = existing.filter((it) => it.mealId !== mealId);
+      const subtotal = Math.round(updatedItems.reduce((s, i) => s + i.meal.price * i.quantity, 0) * 100) / 100;
+      const deliveryFee = updatedItems.length > 0 ? 2.5 : 0;
+      return {
+        items: updatedItems,
+        subtotal,
+        deliveryFee,
+        estimatedTax: 0,
+        total: Math.round((subtotal + deliveryFee) * 100) / 100,
+        currency: 'USD',
+      };
+    });
   };
 
   const handleClearCart = async () => {
+    // 1. Try server
     try {
       const res = await fetch(`${apiBaseUrl}/api/cart/${userId}/clear`, {
         method: 'POST',
       });
       if (res.ok) {
         const data = await res.json();
-        setCart(data.cart);
+        setCart(data.cart || data);
+        return;
       }
     } catch (e) {
-      console.warn('Failed to clear cart:', e);
+      console.warn('Failed to clear cart on server:', e);
     }
+
+    // 2. Local fallback
+    setCart({
+      items: [],
+      subtotal: 0,
+      deliveryFee: 0,
+      estimatedTax: 0,
+      total: 0,
+      currency: 'USD',
+    });
   };
 
   return (
@@ -150,12 +214,14 @@ export const DailyDropApp: React.FC<DailyDropAppProps> = ({
         )}
       </View>
 
-      {/* Global Bottom Tab Navigation Bar */}
-      <MobileBottomNavBar
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        cartCount={cartItemCount}
-      />
+      {/* Global Bottom Tab Navigation Bar (hidden when keyboard is open) */}
+      {!isKeyboardVisible && (
+        <MobileBottomNavBar
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          cartCount={cartItemCount}
+        />
+      )}
 
       {/* Slide-Up Cart Drawer */}
       <MobileCartDrawer

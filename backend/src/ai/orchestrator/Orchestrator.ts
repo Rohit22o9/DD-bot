@@ -12,6 +12,7 @@ import {
   HealthGoalOption,
 } from '../../types';
 import { AIProvider } from '../providers/AIProvider';
+import { GeminiProvider } from '../providers/GeminiProvider';
 import { OpenAIProvider } from '../providers/OpenAIProvider';
 import { HybridRuleProvider } from '../providers/HybridRuleProvider';
 import { toolRegistry, ToolRegistry } from '../tools/ToolRegistry';
@@ -85,9 +86,19 @@ export class DropAIOrchestrator {
   private sessionShownMeals: Map<string, string[]> = new Map();
 
   constructor(options?: OrchestratorOptions) {
-    // Choose OpenAI provider if key exists, otherwise fallback seamlessly to HybridRuleProvider
-    const openAI = new OpenAIProvider();
-    this.aiProvider = options?.aiProvider || (openAI.isAvailable() ? openAI : new HybridRuleProvider());
+    if (options?.aiProvider) {
+      this.aiProvider = options.aiProvider;
+    } else {
+      const gemini = new GeminiProvider();
+      const openAI = new OpenAIProvider();
+      if (gemini.isAvailable()) {
+        this.aiProvider = gemini;
+      } else if (openAI.isAvailable()) {
+        this.aiProvider = openAI;
+      } else {
+        this.aiProvider = new HybridRuleProvider();
+      }
+    }
     this.tools = options?.tools || toolRegistry;
     this.recommender = options?.recommender || recommendationEngine;
     this.safety = options?.safety || safetyValidator;
@@ -286,6 +297,7 @@ export class DropAIOrchestrator {
     }
 
     // =========================================================================
+    // =========================================================================
     // FLOW 1 — “HELP ME CHOOSE” (Default Discovery Flow)
     // =========================================================================
     const isHelpMeChoose =
@@ -298,24 +310,34 @@ export class DropAIOrchestrator {
       lower.includes('what are you in the mood for');
 
     if (isHelpMeChoose) {
+      const allMains = await this.tools.searchMeals({ category: 'main' });
+      const safe = this.safety.filterSafeMeals(allMains, preferences);
+      const picked = safe.slice(0, 4);
+      let replyMsg = "Here are tonight's top chef-crafted picks from our kitchen, curated for great flavor and balanced nutrition:";
+      if (this.aiProvider instanceof GeminiProvider) {
+        const aiMsg = await this.aiProvider.generateConversationalReply(rawInput, picked, {
+          userName: userProfile?.name,
+          dietPreferences: preferences?.dietaryPreferences,
+          allergies: preferences?.allergies,
+        });
+        if (aiMsg) replyMsg = aiMsg;
+      }
       return {
-        message: 'What are you in the mood for?',
-        job: 'CHOOSE',
-        quickOptions: [
-          '🍛 Comfort food',
-          '🥗 Healthy & light',
-          '🌶️ Something spicy',
-          '🍚 Filling meal',
-          '✨ Something different',
-          '🤷 Not sure',
-        ],
+        message: replyMsg,
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 98 - idx * 2,
+          reasons: ['✓ Chef recommendation', '✓ Freshly prepped for dinner'],
+        })),
+        quickOptions: ['💰 Under $15', '🌶️ Spicy', '🥗 Healthy', '✨ Surprise me'],
       };
     }
 
-    const isComfortFood = lower.includes('comfort food');
-    const isHealthyLight = lower.includes('healthy & light') || lower.includes('healthy and light');
-    const isSomethingSpicy = lower.includes('something spicy');
-    const isFillingMeal = lower.includes('filling meal');
+    const isComfortFood = lower === 'comfort food' || lower === '🍛 comfort food';
+    const isHealthyLight = lower === 'healthy & light' || lower === 'healthy and light' || lower === '🥗 healthy & light';
+    const isSomethingSpicy = (lower === 'something spicy' || lower === '🌶️ something spicy') && !lower.includes('under');
+    const isFillingMeal = lower === 'filling meal' || lower === '🍚 filling meal';
 
     if (isComfortFood || isHealthyLight || isSomethingSpicy || isFillingMeal) {
       let searchOpts: any = { category: 'main' };
@@ -371,10 +393,19 @@ export class DropAIOrchestrator {
       lower === '🤷 not sure';
 
     if (isIDontKnow) {
+      const history = await this.tools.getOrderHistory(userId, 5);
+      const hasRecentChicken = history.some((o) =>
+        o.items.some((i) => i.mealName.toLowerCase().includes('chicken'))
+      );
+
+      const intro = hasRecentChicken
+        ? "You've been having a lot of chicken and rice lately. Want something different?"
+        : "Looking for inspiration tonight? Let's narrow it down quickly.";
+
       return {
-        message: 'Easy. What sounds better right now?',
+        message: intro,
         job: 'CHOOSE',
-        quickOptions: ['🥗 Light & fresh', '🍛 Rich & comforting', '🌶️ Big flavours', '🤷 You decide'],
+        quickOptions: ['Something different', 'Healthy', 'Spicy', 'Surprise me'],
       };
     }
 
@@ -434,41 +465,22 @@ export class DropAIOrchestrator {
     // FLOW 3 — HEALTHY / NUTRITION GOAL
     // =========================================================================
     const isHealthyEntry =
-      lower === 'i want something healthy' ||
+      !intent.wellnessCategory &&
+      (lower === 'i want something healthy' ||
       lower === 'eat healthier' ||
       lower === 'something healthy' ||
-      lower === 'healthy';
-
-    if (isHealthyEntry) {
-      return {
-        message: 'What matters most to you?',
-        job: 'CHOOSE',
-        healthGoals: HEALTH_GOAL_OPTIONS,
-        dismissGoalPrompt: 'Not sure, just show me healthy options',
-        quickOptions: [
-          '❤️ Heart Healthy',
-          '📉 Diabetes Friendly',
-          '💪 High Protein',
-          '⚖️ Weight Management',
-          '🌾 High Fibre',
-          '🧂 Low Sodium',
-          '🌿 Gluten Free',
-        ],
-      };
-    }
+      lower === 'healthy');
 
     const isHealthGoalSelected =
-      lower.includes('heart healthy') ||
+      !intent.wellnessCategory &&
+      (lower.includes('heart healthy') ||
       lower.includes('diabetes friendly') ||
-      lower.includes('high protein') ||
-      lower.includes('weight management') ||
-      lower.includes('high fibre') ||
       lower.includes('low sodium') ||
       lower.includes('gluten free') ||
       lower.includes('not sure, just show me healthy options') ||
-      lower.includes('just show me healthy options');
+      lower.includes('just show me healthy options'));
 
-    if (isHealthGoalSelected) {
+    if (isHealthyEntry || isHealthGoalSelected) {
       const qBowl = (await this.tools.getMeal('meal_grilled_chicken_quinoa_bowl')) || (await this.tools.searchMeals({ keyword: 'Quinoa' }))[0];
       const salmon = (await this.tools.getMeal('meal_salmon_brown_rice')) || (await this.tools.searchMeals({ keyword: 'Salmon' }))[0];
       const beetroot = (await this.tools.getMeal('meal_beetroot_tofu_salad')) || (await this.tools.searchMeals({ keyword: 'Beetroot' }))[0];
@@ -476,8 +488,18 @@ export class DropAIOrchestrator {
 
       const safeMeals = [qBowl, salmon, beetroot, thaiChicken].filter(Boolean) as Meal[];
 
+      let replyMsg = 'Here are some healthy options for you. These meals are nutritious, fresh and full of flavour. ✨';
+      if (this.aiProvider instanceof GeminiProvider) {
+        const aiMsg = await this.aiProvider.generateConversationalReply(rawInput, safeMeals, {
+          userName: userProfile?.name,
+          dietPreferences: preferences?.dietaryPreferences,
+          allergies: preferences?.allergies,
+        });
+        if (aiMsg) replyMsg = aiMsg;
+      }
+
       return {
-        message: 'Here are some healthy options for you. These meals are nutritious, fresh and full of flavour. ✨',
+        message: replyMsg,
         job: 'FIND',
         recommendations: [
           {
@@ -515,40 +537,44 @@ export class DropAIOrchestrator {
     // FLOW 4 — BUDGET MEAL
     // =========================================================================
     const isBudgetEntry =
-      lower === 'budget meal' ||
+      (lower === 'budget meal' ||
       lower === 'budget friendly' ||
       lower === 'i want something cheap' ||
       lower === 'cheap' ||
       lower === 'something cheap' ||
-      lower === 'what price works for you';
+      lower === 'what price works for you') &&
+      !intent.protein &&
+      !intent.spicyFilter;
 
-    if (isBudgetEntry) {
-      return {
-        message: 'What price works for you?',
-        job: 'CHOOSE',
-        quickOptions: ['Under $10', 'Under $12', 'Under $15', 'Best value'],
-      };
-    }
-
-    const isUnder10 = lower.includes('under $10') || lower === 'under 10';
-    const isUnder12 = lower.includes('under $12') || lower === 'under 12';
+    const isUnder10 = (lower === 'under $10' || lower === 'under 10') && !intent.protein && !intent.spicyFilter;
+    const isUnder12 = (lower === 'under $12' || lower === 'under 12') && !intent.protein && !intent.spicyFilter;
     const isUnder15 =
-      (lower.includes('under $15') || lower === 'under 15' || lower === '💰 under $15') &&
-      !lower.includes('another') &&
-      !lower.includes('healthy') &&
-      !lower.includes('combo');
-    const isBestValue = lower === 'best value' || lower.includes('best value');
+      (lower === 'under $15' || lower === 'under 15' || lower === '💰 under $15') &&
+      !intent.protein &&
+      !intent.spicyFilter &&
+      !intent.cuisine &&
+      !intent.targetDate;
+    const isBestValue = (lower === 'best value' || lower.includes('best value')) && !intent.protein && !intent.spicyFilter;
 
-    if (isUnder10 || isUnder12 || isUnder15 || isBestValue) {
+    if (isBudgetEntry || isUnder10 || isUnder12 || isUnder15 || isBestValue) {
       const cap = isUnder10 ? 10.5 : isUnder12 ? 12.5 : isUnder15 ? 15 : 14;
       const allMains = await this.tools.searchMeals({ category: 'main' });
       const safe = this.safety.filterSafeMeals(allMains, preferences);
       const budgetMeals = safe.filter((m) => m.price <= cap);
       const picked = (budgetMeals.length > 0 ? budgetMeals : safe).slice(0, 4);
 
-      const title = isBestValue
+      let title = isBestValue
         ? 'Here are our best value meals today! Generous portions, high protein, and exceptional ratings:'
         : `Here are great options ${isUnder10 ? 'under $10' : isUnder12 ? 'under $12' : 'under $15'}:`;
+
+      if (this.aiProvider instanceof GeminiProvider) {
+        const aiMsg = await this.aiProvider.generateConversationalReply(rawInput, picked, {
+          userName: userProfile?.name,
+          dietPreferences: preferences?.dietaryPreferences,
+          allergies: preferences?.allergies,
+        });
+        if (aiMsg) title = aiMsg;
+      }
 
       return {
         message: title,
@@ -687,6 +713,13 @@ export class DropAIOrchestrator {
 
     if (
       isProteinChoice &&
+      intent.budgetCap === undefined &&
+      intent.targetDate === undefined &&
+      !lower.includes('under') &&
+      !lower.includes('tomorrow') &&
+      !lower.includes('tonight') &&
+      !lower.includes('dinner') &&
+      !lower.includes('lunch') &&
       !lower.includes('add') &&
       !lower.includes('usual') &&
       !lower.includes('combo') &&
@@ -830,33 +863,32 @@ export class DropAIOrchestrator {
     const isAdventurousInquiry =
       lower === 'something different' ||
       lower === '✨ something different' ||
-      lower === 'how adventurous are we feeling?' ||
-      lower === 'how adventurous' ||
+      lower.includes('adventurous') ||
       lower === 'adventure' ||
-      lower === 'try something new';
-
-    if (isAdventurousInquiry) {
-      return {
-        message: 'How adventurous are we feeling? 😄',
-        job: 'CHOOSE',
-        quickOptions: ['🙂 A little different', '🌍 Take me somewhere new', '🔥 Bold flavours', '🎲 Completely surprise me'],
-      };
-    }
-
-    const isAdventureChoice =
+      lower === 'try something new' ||
       lower.includes('a little different') ||
       lower.includes('take me somewhere new') ||
       lower.includes('bold flavours') ||
       lower.includes('completely surprise me');
 
-    if (isAdventureChoice) {
+    if (isAdventurousInquiry) {
       const diffCuisines = ['Indonesian', 'African', 'Thai', 'Indian'];
       const allMeals = await this.tools.searchMeals({});
       const adventurousMeals = allMeals.filter((m) => diffCuisines.includes(m.cuisine));
       const picked = (adventurousMeals.length > 0 ? adventurousMeals : allMeals).slice(0, 3);
 
+      let replyMsg = 'Here are exciting, authentic dishes outside your usual routine:';
+      if (this.aiProvider instanceof GeminiProvider) {
+        const aiMsg = await this.aiProvider.generateConversationalReply(rawInput, picked, {
+          userName: userProfile?.name,
+          dietPreferences: preferences?.dietaryPreferences,
+          allergies: preferences?.allergies,
+        });
+        if (aiMsg) replyMsg = aiMsg;
+      }
+
       return {
-        message: 'Here are exciting, authentic dishes outside your usual routine:',
+        message: replyMsg,
         job: 'FIND',
         recommendations: picked.map((m, idx) => ({
           meal: m,
@@ -907,6 +939,30 @@ export class DropAIOrchestrator {
     // =========================================================================
     // FLOW 10 — REORDER
     // =========================================================================
+    const isReorderPrevious =
+      lower.includes('reorder previous') ||
+      lower.includes('reorder previous dinner') ||
+      lower.includes('previous dinner');
+
+    if (isReorderPrevious) {
+      const usual = await this.tools.getOrderHistory(userId, 1);
+      const usualOrder = usual[0];
+      if (usualOrder) {
+        return {
+          message: `Your previous order #${usualOrder.id.slice(-6).toUpperCase()} is ready to reorder.\nTotal: $${usualOrder.total.toFixed(2)}. Ready to draft to your cart?`,
+          job: 'ORDER',
+          usualOrder,
+          quickOptions: ['🛒 Add to cart', '✏️ Edit items'],
+          confirmationRequired: true,
+          confirmationDetails: {
+            action: 'PLACE_ORDER',
+            total: usualOrder.total,
+            summary: usualOrder.items.map((i) => `${i.quantity}x ${i.mealName}`).join(', '),
+          },
+        };
+      }
+    }
+
     const isReorderPast =
       lower.includes('last tuesday') ||
       lower.includes('what i had last') ||
@@ -962,10 +1018,23 @@ export class DropAIOrchestrator {
       lower === 'plan meals';
 
     if (isPlanWeekInitial) {
+      const plan = await this.tools.buildMealPlan(userId, {
+        targetBudget: 65,
+        isVegetarianFriday: false,
+        excludeKeywords: [],
+      });
+      this.activeMealPlans.set(userId, plan);
+
       return {
-        message: 'How many meals should I plan?',
-        job: 'CHOOSE',
-        quickOptions: ['3 meals', '5 meals', '7 meals'],
+        message: `I've prepared a curated Monday–Friday dinner plan keeping your meals balanced, diverse, and under $65.00! Total: $${plan.actualTotal.toFixed(2)}. 📅✨`,
+        job: 'BUILD',
+        weeklyPlan: plan,
+        quickOptions: [
+          'Change Wednesday',
+          'Make Friday vegetarian',
+          'Remove salads',
+          'Keep everything under $60',
+        ],
       };
     }
 
@@ -1000,11 +1069,13 @@ export class DropAIOrchestrator {
     // FLOW 12 — “WHAT CAN I GET TOMORROW?”
     // =========================================================================
     const isWhatCanIGetTomorrow =
-      lower.includes('what can i get tomorrow') ||
+      !intent.protein &&
+      !intent.budgetCap &&
+      (lower.includes('what can i get tomorrow') ||
       lower.includes('available tomorrow') ||
-      lower.includes('tomorrow dinner') ||
-      lower.includes("tomorrow's dinner") ||
-      lower.includes('tomorrow menu');
+      lower === 'tomorrow dinner' ||
+      lower === "tomorrow's dinner" ||
+      lower === 'tomorrow menu');
 
     if (isWhatCanIGetTomorrow) {
       const allMeals = await this.tools.searchMeals({ slot: 'dinner' });
@@ -1914,13 +1985,26 @@ export class DropAIOrchestrator {
     }
 
     // Search meals matching criteria
-    const rawMeals = await this.tools.searchMeals({
+    let rawMeals = await this.tools.searchMeals({
       maxPrice,
       cuisine: targetCuisine,
       slot,
       day: targetDay,
-      spicyLevel: intent.spicyFilter ? 2 : undefined,
     });
+
+    if (intent.spicyFilter) {
+      const spicyOnly = rawMeals.filter((m) => m.spicyLevel > 0);
+      if (spicyOnly.length > 0) rawMeals = spicyOnly;
+    }
+
+    if (targetProtein) {
+      const p = targetProtein.toLowerCase();
+      const proteinOnly = rawMeals.filter((m) =>
+        m.ingredients.some((ing) => ing.toLowerCase().includes(p)) ||
+        m.name.toLowerCase().includes(p)
+      );
+      if (proteinOnly.length > 0) rawMeals = proteinOnly;
+    }
 
     // Enforce SAFETY: Exclude explicit medical allergies and user disliked ingredients
     const safeMeals = this.safety.filterSafeMeals(rawMeals, preferences);
@@ -1983,6 +2067,23 @@ export class DropAIOrchestrator {
       responseMsg = `Explored something fresh outside your routine!\nHere are authentic ${targetCuisine} dishes tailored for you:`;
     } else if (intent.isAlternativeRequest) {
       responseMsg = 'Here are fresh alternative options for you.\nHandpicked to match your dietary preferences:';
+    } else if (this.aiProvider instanceof GeminiProvider) {
+      try {
+        const dynamicReply = await this.aiProvider.generateConversationalReply(
+          rawInput,
+          recommendations.map((r) => r.meal),
+          {
+            userName: userProfile?.name,
+            dietPreferences: preferences?.dietaryPreferences,
+            allergies: preferences?.allergies,
+          }
+        );
+        if (dynamicReply && dynamicReply.trim().length > 10) {
+          responseMsg = dynamicReply;
+        }
+      } catch (err) {
+        console.warn('Gemini dynamic reply error:', err);
+      }
     }
 
     return {

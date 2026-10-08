@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
+  Keyboard,
   Platform,
   StyleSheet,
   ActivityIndicator,
@@ -55,6 +56,9 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     userProfile,
     sendMessage,
     addToCart,
+    updateCartQuantity,
+    removeFromCart,
+    clearCart,
     confirmOrder,
     refreshCart,
     refreshProfile,
@@ -76,6 +80,34 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
   useEffect(() => {
     onProfileUpdated?.(userProfile);
   }, [userProfile]);
+
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+
+  // Track keyboard height directly and scroll to bottom so input bar is always above the keyboard
+  useEffect(() => {
+    const onKeyboardShow = (e: any) => {
+      const h = e?.endCoordinates?.height || 0;
+      setKeyboardHeight(h);
+      setTimeout(() => {
+        scrollRef.current?.scrollToEnd({ animated: true });
+      }, 100);
+    };
+
+    const onKeyboardHide = () => {
+      setKeyboardHeight(0);
+    };
+
+    const showEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
+    const hideEvent = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
+
+    const showSub = Keyboard.addListener(showEvent, onKeyboardShow);
+    const hideSub = Keyboard.addListener(hideEvent, onKeyboardHide);
+
+    return () => {
+      showSub.remove();
+      hideSub.remove();
+    };
+  }, []);
 
   const [input, setInput] = useState('');
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -127,38 +159,15 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
   };
 
   const handleClearCart = async () => {
-    try {
-      await fetch(`${activeBaseUrl}/api/cart/${userId}/clear`, { method: 'POST' });
-      await refreshCart();
-    } catch (e) {
-      console.warn('Failed to clear cart:', e);
-    }
+    await clearCart();
   };
 
   const handleUpdateCartQuantity = async (mealId: string, quantity: number) => {
-    try {
-      await fetch(`${activeBaseUrl}/api/cart/${userId}/update`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mealId, quantity }),
-      });
-      await refreshCart();
-    } catch (e) {
-      console.warn('Failed to update cart quantity:', e);
-    }
+    await updateCartQuantity(mealId, quantity);
   };
 
   const handleRemoveFromCart = async (mealId: string) => {
-    try {
-      await fetch(`${activeBaseUrl}/api/cart/${userId}/remove`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mealId }),
-      });
-      await refreshCart();
-    } catch (e) {
-      console.warn('Failed to remove item:', e);
-    }
+    await removeFromCart(mealId);
   };
 
   const activeFilterCount = [
@@ -266,7 +275,10 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
 
       {/* Keyboard Avoiding Container */}
       <KeyboardAvoidingView
-        style={styles.keyboardContainer}
+        style={[
+          styles.keyboardContainer,
+          Platform.OS === 'android' && { paddingBottom: keyboardHeight },
+        ]}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 88 : 0}
       >
@@ -285,7 +297,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
             /* PANEL 1: LAUNCH SCREEN */
             <MobileChatLaunchScreen onSelectPrompt={(p) => handleSend(p)} />
           ) : (
-            messages.map((msg) => {
+            messages.map((msg, idx) => {
               const isUser = msg.sender === 'user';
               const isAddToCartFlow =
                 Boolean(msg.addedCartItem) ||
@@ -298,7 +310,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
 
               if (isAssistantThinking) {
                 return (
-                  <View key={msg.id} style={[styles.msgRow, styles.msgAssistant]}>
+                  <View key={`thinking-${msg.id || idx}-${idx}`} style={[styles.msgRow, styles.msgAssistant]}>
                     <MobileThinkingBubble statusText={msg.statusText} />
                   </View>
                 );
@@ -306,7 +318,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
 
               return (
                 <View
-                  key={msg.id}
+                  key={`msg-${msg.id || idx}-${idx}`}
                   style={[
                     styles.msgRow,
                     isUser ? styles.msgUser : styles.msgAssistant,
@@ -355,10 +367,9 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                       <MobileAddedCard
                         meal={msg.addedCartItem?.meal}
                         quantity={msg.addedCartItem?.quantity}
-                        onUpdateQuantity={(q) => {
-                          if (msg.addedCartItem?.meal) {
-                            handleUpdateCartQuantity(msg.addedCartItem.meal.id, q);
-                          }
+                        items={msg.addedCartItems}
+                        onUpdateQuantity={(mealId, q) => {
+                          handleUpdateCartQuantity(mealId, q);
                         }}
                         onSelectOption={(opt) => handleSend(opt)}
                       />
@@ -381,7 +392,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                         >
                           {msg.recommendations.map((rec, index) => (
                             <MobileMealCard
-                              key={rec.meal.id}
+                              key={`rec-${rec.meal.id}-${index}`}
                               recommendation={rec}
                               index={index}
                               onAddToCart={addToCart}
@@ -425,7 +436,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                           Your ${msg.budgetBasket.budgetCap || 20} Drop
                         </Text>
                         {msg.budgetBasket.items.map((it, idx) => (
-                          <View key={idx} style={styles.bundleRow}>
+                          <View key={`basket-${it.mealId || it.name}-${idx}`} style={styles.bundleRow}>
                             <Text style={styles.bundleItemName}>{it.name}</Text>
                             <Text style={styles.bundleItemPrice}>
                               ${it.price.toFixed(0)}
@@ -498,7 +509,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                         <View style={styles.chipsRow}>
                           {msg.quickOptions.map((opt, i) => (
                             <TouchableOpacity
-                              key={i}
+                              key={`opt-${opt}-${i}`}
                               style={styles.chip}
                               onPress={() => handleSend(opt)}
                             >

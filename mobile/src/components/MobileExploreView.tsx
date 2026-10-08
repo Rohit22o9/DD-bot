@@ -8,10 +8,13 @@ import {
   Image,
   StyleSheet,
 } from 'react-native';
+import { Meal } from '../types';
+import { MOCK_MOBILE_MEALS } from '../mockData';
+import { MobileMealDetailModal } from './MobileMealDetailModal';
 
 interface MobileExploreViewProps {
   onStartChat: (prompt: string) => void;
-  onAddToCart: (mealId: string) => void;
+  onAddToCart: (mealId: string, quantity?: number) => void;
 }
 
 const CATEGORIES = ['All', 'Under $15', 'Spicy 🌶️', 'High-Protein', 'Vegetarian'];
@@ -86,6 +89,35 @@ export const MobileExploreView: React.FC<MobileExploreViewProps> = ({
   const [selectedCat, setSelectedCat] = useState('All');
   const [search, setSearch] = useState('');
   const [addedIds, setAddedIds] = useState<Record<string, boolean>>({});
+  const [selectedMeal, setSelectedMeal] = useState<Meal | null>(null);
+
+  const handleOpenMealDetail = (itemId: string, itemFallback: any) => {
+    const found = MOCK_MOBILE_MEALS.find((m) => m.id === itemId);
+    if (found) {
+      setSelectedMeal(found);
+    } else {
+      setSelectedMeal({
+        id: itemId,
+        name: itemFallback.name,
+        description: `Freshly prepared ${itemFallback.name} from ${itemFallback.restaurant}, crafted with premium local ingredients.`,
+        restaurantId: 'rest_partner',
+        restaurantName: itemFallback.restaurant,
+        price: itemFallback.price,
+        imageUrl: itemFallback.img,
+        cuisine: 'International',
+        category: 'main',
+        dietaryTags: [itemFallback.tag],
+        ingredients: ['Fresh seasonal produce', 'Chef herbs', 'Quality protein'],
+        spicyLevel: itemFallback.tag.includes('Spicy') ? 2 : 0,
+        availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        availableSlots: ['lunch', 'dinner'],
+        active: true,
+        calories: 490,
+        proteinGrams: 35,
+        displayBadges: [itemFallback.tag, '⭐ Top Rated'],
+      });
+    }
+  };
 
   const handleAdd = (id: string) => {
     onAddToCart(id);
@@ -160,13 +192,24 @@ export const MobileExploreView: React.FC<MobileExploreViewProps> = ({
           const isAdded = addedIds[item.id];
           return (
             <View key={item.id} style={styles.mealCard}>
-              <Image source={{ uri: item.img }} style={styles.mealImg} />
+              <TouchableOpacity
+                activeOpacity={0.88}
+                onPress={() => handleOpenMealDetail(item.id, item)}
+              >
+                <Image source={{ uri: item.img }} style={styles.mealImg} />
+              </TouchableOpacity>
+
               <View style={styles.mealBody}>
                 <View style={styles.mealHeaderRow}>
                   <Text style={styles.tagText}>{item.tag}</Text>
                   <Text style={styles.scoreText}>{item.score}% Match</Text>
                 </View>
-                <Text style={styles.mealTitle}>{item.name}</Text>
+                <TouchableOpacity
+                  activeOpacity={0.85}
+                  onPress={() => handleOpenMealDetail(item.id, item)}
+                >
+                  <Text style={styles.mealTitle}>{item.name}</Text>
+                </TouchableOpacity>
                 <Text style={styles.restaurantText}>{item.restaurant}</Text>
 
                 <View style={styles.mealFooterRow}>
@@ -185,6 +228,17 @@ export const MobileExploreView: React.FC<MobileExploreViewProps> = ({
           );
         })}
       </View>
+
+      {/* Detail Modal */}
+      <MobileMealDetailModal
+        visible={!!selectedMeal}
+        meal={selectedMeal}
+        onClose={() => setSelectedMeal(null)}
+        onAddToCart={(id, q) => {
+          onAddToCart(id, q);
+          setSelectedMeal(null);
+        }}
+      />
     </ScrollView>
   );
 };
