@@ -8,6 +8,7 @@ import {
 import { Meal } from '../../types';
 import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
+import { MobileCelebrationModal } from '../MobileCelebrationModal';
 
 interface MobileGuessDishWidgetProps {
   onAddToCart: (mealId: string) => void;
@@ -85,6 +86,7 @@ export const MobileGuessDishWidget: React.FC<MobileGuessDishWidgetProps> = ({
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [hasAttempted, setHasAttempted] = useState(false);
   const [sessionCompleted, setSessionCompleted] = useState(false);
+  const [showCelebrationModal, setShowCelebrationModal] = useState(false);
 
   const isCorrect = selectedAnswer === challenge.correctAnswer;
   const meal = challenge.targetMeal;
@@ -96,6 +98,11 @@ export const MobileGuessDishWidget: React.FC<MobileGuessDishWidgetProps> = ({
     setSelectedAnswer(opt);
     setHasAttempted(true);
     setSessionCompleted(true);
+
+    if (opt === challenge.correctAnswer) {
+      // Pop up the animated celebration modal with confetti bars and meal photo!
+      setShowCelebrationModal(true);
+    }
   };
 
   return (
@@ -239,6 +246,19 @@ export const MobileGuessDishWidget: React.FC<MobileGuessDishWidgetProps> = ({
           </TouchableOpacity>
         </View>
       )}
+
+      {/* 🎉 Celebratory Pop-up Modal with Animated Confetti Bars */}
+      <MobileCelebrationModal
+        visible={showCelebrationModal}
+        meal={meal}
+        onClose={() => setShowCelebrationModal(false)}
+        onAddToCart={(mealId) => {
+          setShowCelebrationModal(false);
+          onAddToCart(mealId);
+        }}
+        title="CORRECT ANSWER! 🎉"
+        subtitle={`You unlocked ${meal.name}! +50 Foodie XP`}
+      />
     </View>
   );
 };
