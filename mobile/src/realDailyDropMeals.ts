@@ -8373,5 +8373,400 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
       "🌱 Vegetarian",
       "💰 Under $15"
     ]
+  },
+{
+    "id": "meal_indo_veg_manchurian",
+    "name": "Veg Manchurian with Fried Rice",
+    "description": "Crispy vegetable dumplings simmered in rich tangy garlic soya gravy, served alongside seasoned wok-tossed fried rice.",
+    "restaurantId": "rest_dragon_wok",
+    "restaurantName": "Dragon Wok Box",
+    "price": 13.0,
+    "imageUrl": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=600&q=80",
+    "cuisine": "Indo-Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Vegan",
+      "Indo-Chinese",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Cabbage",
+      "Carrot",
+      "Manchurian Balls",
+      "Rice",
+      "Soy Sauce",
+      "Ginger-Garlic"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 470,
+    "proteinGrams": 14,
+    "nutrition": {
+      "calories": 470,
+      "proteinGrams": 14,
+      "fibreGrams": 6,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 2.1,
+      "carbsGrams": 68,
+      "sugarGrams": 4
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": false,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": true,
+      "halal": false
+    },
+    "displayBadges": [
+      "\ud83c\udf31 Vegetarian",
+      "\ud83c\udf72 Tangy & Spicy",
+      "\ud83d\udcb0 Under $15"
+    ]
+  },
+  {
+    "id": "meal_indo_veg_hakka_noodles",
+    "name": "Veg Hakka Noodles",
+    "description": "Classic wok-tossed noodles with finely shredded cabbage, bell peppers, carrots, scallions, and light white pepper seasoning.",
+    "restaurantId": "rest_dragon_wok",
+    "restaurantName": "Dragon Wok Box",
+    "price": 12.5,
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
+    "cuisine": "Indo-Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Vegan",
+      "Indo-Chinese",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Noodles",
+      "Cabbage",
+      "Carrots",
+      "Capsicum",
+      "Spring Onions",
+      "Soy Sauce"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 440,
+    "proteinGrams": 12,
+    "nutrition": {
+      "calories": 440,
+      "proteinGrams": 12,
+      "fibreGrams": 5,
+      "sodiumMg": 510,
+      "saturatedFatGrams": 1.8,
+      "carbsGrams": 64,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": false,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": true,
+      "halal": false
+    },
+    "displayBadges": [
+      "\ud83c\udf31 Vegetarian",
+      "\ud83e\udd62 Wok Tossed",
+      "\ud83d\udcb0 Under $15"
+    ]
+  },
+  {
+    "id": "meal_indo_schezwan_chicken_rice",
+    "name": "Chicken Schezwan Fried Rice",
+    "description": "Spicy wok-fried basmati rice tossed with shredded chicken, scrambled eggs, and authentic fiery Sichuan pepper paste.",
+    "restaurantId": "rest_dragon_wok",
+    "restaurantName": "Dragon Wok Box",
+    "price": 13.5,
+    "imageUrl": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80",
+    "cuisine": "Indo-Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Halal",
+      "High Protein",
+      "Spicy",
+      "Indo-Chinese",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "Schezwan Sauce",
+      "Garlic",
+      "Egg",
+      "Spring Onion"
+    ],
+    "spicyLevel": 3,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 550,
+    "proteinGrams": 34,
+    "nutrition": {
+      "calories": 550,
+      "proteinGrams": 34,
+      "fibreGrams": 4,
+      "sodiumMg": 690,
+      "saturatedFatGrams": 3.5,
+      "carbsGrams": 58,
+      "sugarGrams": 2
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": false,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": true,
+      "halal": true
+    },
+    "displayBadges": [
+      "\ud83d\udcaa 34g Protein",
+      "\ud83d\udd25 Fiery Schezwan",
+      "\ud83d\udcb0 Under $15"
+    ]
+  },
+  {
+    "id": "meal_indo_chilli_paneer",
+    "name": "Chilli Paneer with Fried Rice",
+    "description": "Golden fried cottage cheese cubes tossed in spicy soy-garlic sauce with bell peppers and spring onions over fried rice.",
+    "restaurantId": "rest_dragon_wok",
+    "restaurantName": "Dragon Wok Box",
+    "price": 13.5,
+    "imageUrl": "https://images.unsplash.com/photo-1567337710282-00832b415979?auto=format&fit=crop&w=600&q=80",
+    "cuisine": "Indo-Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Indo-Chinese",
+      "Spicy",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Paneer",
+      "Fried Rice",
+      "Capsicum",
+      "Soy Sauce",
+      "Green Chillies",
+      "Garlic"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 540,
+    "proteinGrams": 22,
+    "nutrition": {
+      "calories": 540,
+      "proteinGrams": 22,
+      "fibreGrams": 5,
+      "sodiumMg": 610,
+      "saturatedFatGrams": 4.8,
+      "carbsGrams": 56,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": false,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false,
+      "halal": false
+    },
+    "displayBadges": [
+      "\ud83e\uddc0 Rich Paneer",
+      "\ud83c\udf36\ufe0f Medium Spicy",
+      "\ud83d\udcb0 Under $15"
+    ]
+  },
+  {
+    "id": "meal_indo_chilli_chicken",
+    "name": "Chilli Chicken Gravy with Fried Rice",
+    "description": "Crispy chicken chunks tossed in spicy dark soya garlic gravy with diced bell peppers and green chillies, served with fried rice.",
+    "restaurantId": "rest_dragon_wok",
+    "restaurantName": "Dragon Wok Box",
+    "price": 13.5,
+    "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+    "cuisine": "Indo-Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Halal",
+      "High Protein",
+      "Spicy",
+      "Indo-Chinese",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "Soy Sauce",
+      "Capsicum",
+      "Green Chillies",
+      "Garlic"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 520,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 520,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 670,
+      "saturatedFatGrams": 3.2,
+      "carbsGrams": 52,
+      "sugarGrams": 2
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": false,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": true,
+      "halal": true
+    },
+    "displayBadges": [
+      "\ud83c\udf57 Halal Chicken",
+      "\ud83c\udf36\ufe0f Spicy Kick",
+      "\ud83d\udcb0 Under $15"
+    ]
+  },
+  {
+    "id": "meal_indo_chicken_hakka_noodles",
+    "name": "Chicken Hakka Noodles",
+    "description": "Wok-tossed noodles with shredded chicken, crunchy carrots, cabbage, scallions, and light white pepper soya seasoning.",
+    "restaurantId": "rest_dragon_wok",
+    "restaurantName": "Dragon Wok Box",
+    "price": 13.0,
+    "imageUrl": "https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=600&q=80",
+    "cuisine": "Indo-Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Halal",
+      "High Protein",
+      "Indo-Chinese",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Noodles",
+      "Chicken",
+      "Cabbage",
+      "Carrots",
+      "Capsicum",
+      "Soy Sauce"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 480,
+    "proteinGrams": 28,
+    "nutrition": {
+      "calories": 480,
+      "proteinGrams": 28,
+      "fibreGrams": 4,
+      "sodiumMg": 590,
+      "saturatedFatGrams": 2.4,
+      "carbsGrams": 62,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": false,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": true,
+      "halal": true
+    },
+    "displayBadges": [
+      "\ud83c\udf57 Lean Chicken",
+      "\ud83e\udd62 Wok Tossed",
+      "\ud83d\udcb0 Under $15"
+    ]
   }
 ];

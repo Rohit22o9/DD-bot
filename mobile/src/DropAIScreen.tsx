@@ -690,6 +690,10 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                             return false;
                           }
                           return true;
+                        }).map((opt) => {
+                          const t = opt.trim().replace(/\uFE0F/g, '');
+                          if (t === '🌶' || t.toLowerCase() === 'chilli' || t.toLowerCase() === 'chili') return '🌶️ Spicy';
+                          return opt;
                         });
 
                         if (filteredOpts.length === 0) return null;

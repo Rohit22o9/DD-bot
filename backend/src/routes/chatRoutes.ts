@@ -3,6 +3,17 @@ import { dropAIOrchestrator } from '../ai/orchestrator/Orchestrator';
 
 const router = Router();
 
+const sanitizePayload = (p: any) => {
+  if (p && p.quickOptions && Array.isArray(p.quickOptions)) {
+    p.quickOptions = p.quickOptions.map((o: string) => {
+      if (typeof o !== 'string') return o;
+      const t = o.trim().replace(/\uFE0F/g, '');
+      return t === '🌶' || t.toLowerCase() === 'chilli' || t.toLowerCase() === 'chili' ? '🌶️ Spicy' : o;
+    });
+  }
+  return p;
+};
+
 /**
  * Classic request/response endpoint (kept for backwards compatibility and
  * for clients that cannot consume streams, e.g. older React Native fetch).
@@ -15,7 +26,7 @@ router.post('/chat', async (req: Request, res: Response) => {
       return;
     }
 
-    const payload = await dropAIOrchestrator.processMessage(userId, message, sessionState);
+    const payload = sanitizePayload(await dropAIOrchestrator.processMessage(userId, message, sessionState));
     res.json(payload);
   } catch (err: any) {
     console.error('Chat error:', err);
@@ -88,7 +99,7 @@ router.post('/chat/stream', async (req: Request, res: Response) => {
       }
     }, 450);
 
-    const payload = await dropAIOrchestrator.processMessage(userId, message, sessionState);
+    const payload = sanitizePayload(await dropAIOrchestrator.processMessage(userId, message, sessionState));
     clearInterval(ticker);
 
     if (clientDisconnected || res.writableEnded) return;

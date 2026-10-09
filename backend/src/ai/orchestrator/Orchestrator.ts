@@ -843,10 +843,13 @@ export class DropAIOrchestrator {
         ? 'Mediterranean'
         : 'Mexican';
 
-      let meals = await this.tools.searchMeals({ cuisine: cuisineTarget });
-      if (meals.length === 0 && isIndoChinese) {
-        meals = await this.tools.searchMeals({ keyword: 'Chicken' });
-      }
+      let meals = isIndoChinese
+        ? (await this.tools.searchMeals({})).filter(
+            (m) =>
+              m.cuisine.toLowerCase().includes('indo-chinese') ||
+              /manchurian|hakka|schezwan|chilli paneer|chilli chicken/i.test(m.name)
+          )
+        : await this.tools.searchMeals({ cuisine: cuisineTarget });
 
       if (lower.includes('veg') || lower.includes('vegetarian') || lower.includes('plant')) {
         meals = meals.filter(

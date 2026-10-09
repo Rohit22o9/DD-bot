@@ -201,6 +201,13 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
       // Natural pause before smoothly revealing cards & interactive widgets
       await new Promise((r) => setTimeout(r, 250));
 
+      const cleanOptions = payload.quickOptions
+        ? payload.quickOptions.map((o: string) => {
+            const t = o.trim().replace(/\uFE0F/g, '');
+            return t === '🌶' || t.toLowerCase() === 'chilli' || t.toLowerCase() === 'chili' ? '🌶️ Spicy' : o;
+          })
+        : undefined;
+
       patchAi({
         text: fullText,
         isStreaming: false,
@@ -210,7 +217,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
         healthGoals: payload.healthGoals,
         dismissGoalPrompt: payload.dismissGoalPrompt,
         addedCartItem: payload.addedCartItem,
-        quickOptions: payload.quickOptions,
+        quickOptions: cleanOptions,
         usualOrder: payload.usualOrder,
         budgetBasket: payload.budgetBasket,
         dropForMe: payload.dropForMe,
