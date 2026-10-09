@@ -138,6 +138,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
       dropForMe?: any;
       weeklyPlan?: any;
       gamePayload?: any;
+      inChatCart?: any;
     }) => {
       // 1. Guarantee the thinking animation with pulsing robot & bouncing dots is displayed
       // for at least 850ms so user has clear, delightful feedback on any input
@@ -208,6 +209,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
         dropForMe: payload.dropForMe,
         weeklyPlan: payload.weeklyPlan,
         gamePayload: payload.gamePayload,
+        inChatCart: payload.inChatCart,
       });
       setIsLoading(false);
     };
@@ -424,6 +426,92 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           message: 'Here are 4 chef-crafted options matching your mood:',
           recommendations: recs,
           quickOptions: ['💰 Under $15', '🌶️ More spicy', '🍗 Chicken', '🌱 Vegetarian', '🔄 Show me more'],
+        });
+      }
+      // FLOW 1B — STRICT DIETARY: VEGETARIAN (100% Zero Meat Guarantee)
+      else if (
+        q === '🌱 vegetarian' ||
+        q === 'vegetarian' ||
+        q === 'veg' ||
+        q === 'pure veg' ||
+        q === 'vegetarian meals' ||
+        q.includes('vegetarian') ||
+        q.includes('meatless') ||
+        q.includes('no meat')
+      ) {
+        const vegRecs = getMockRecommendations('vegetarian', Array.from(shownMealIdsRef.current));
+        vegRecs.forEach((r) => shownMealIdsRef.current.add(r.meal.id));
+        await streamAssistantReply({
+          message: "Here are 100% vegetarian, plant-powered meals on today's menu 🌱 (strictly zero meat or seafood):",
+          recommendations: vegRecs,
+          quickOptions: ['💰 Under $12', '🥟 Veg sides', '🥤 Cold drinks', '🍰 Desserts', '🔄 More veg'],
+        });
+      }
+      // FLOW 1C — STRICT DIETARY: VEGAN (100% Plant-Based)
+      else if (
+        q === '🌿 vegan' ||
+        q === 'vegan' ||
+        q.includes('vegan') ||
+        q.includes('plant-based') ||
+        q.includes('plant based')
+      ) {
+        const veganRecs = getMockRecommendations('vegan', Array.from(shownMealIdsRef.current));
+        veganRecs.forEach((r) => shownMealIdsRef.current.add(r.meal.id));
+        await streamAssistantReply({
+          message: "Here are 100% plant-based, vegan dishes crafted without any animal products or dairy 🌿:",
+          recommendations: veganRecs,
+          quickOptions: ['💰 Under $12', '🥟 Sides', '🥤 Drinks', '🍰 Desserts'],
+        });
+      }
+      // FLOW 1D — STRICT PROTEIN: CHICKEN
+      else if (
+        q === '🍗 chicken' ||
+        q === 'chicken' ||
+        q === 'more chicken' ||
+        q.includes('chicken dishes') ||
+        q.includes('chicken options')
+      ) {
+        const chickenRecs = getMockRecommendations('chicken', Array.from(shownMealIdsRef.current));
+        chickenRecs.forEach((r) => shownMealIdsRef.current.add(r.meal.id));
+        await streamAssistantReply({
+          message: "Here are our top chef-crafted chicken dishes on the menu today 🍗:",
+          recommendations: chickenRecs,
+          quickOptions: ['💰 Under $14', '🌶️ Spicy', '🥟 Add a side', '🥤 Add a drink'],
+        });
+      }
+      // FLOW 1E — STRICT PROTEIN: SEAFOOD / FISH
+      else if (
+        q === '🐟 seafood' ||
+        q === 'seafood' ||
+        q === 'salmon' ||
+        q.includes('seafood') ||
+        q.includes('fish')
+      ) {
+        const seaRecs = getMockRecommendations('seafood', Array.from(shownMealIdsRef.current));
+        seaRecs.forEach((r) => shownMealIdsRef.current.add(r.meal.id));
+        await streamAssistantReply({
+          message: "Here are our fresh wild-caught and glazed seafood dishes today 🐟:",
+          recommendations: seaRecs,
+          quickOptions: ['💰 Under $15', '🥟 Add a side', '🥤 Add a drink'],
+        });
+      }
+      // FLOW 1F — STRICT BUDGET: UNDER $12 / $15
+      else if (
+        q === '💰 under $15' ||
+        q === 'under $15' ||
+        q === 'under 15' ||
+        q === 'under $12' ||
+        q === '💰 under $12' ||
+        q === 'budget' ||
+        q === 'cheap'
+      ) {
+        const cap = q.includes('12') ? 12 : 15;
+        const budgetRecs = getMockRecommendations(`under $${cap}`, Array.from(shownMealIdsRef.current));
+        budgetRecs.forEach((r) => shownMealIdsRef.current.add(r.meal.id));
+        await streamAssistantReply({
+          message: `Here are great chef-crafted meals under $${cap} today 💰:`,
+          recommendations: budgetRecs,
+          quickOptions: ['🍗 Chicken', '🌱 Vegetarian', '🌶️ Spicy', '🥟 Add a side'],
         });
       }
       // FLOW 2 — “I DON'T KNOW WHAT I WANT” / "YOU DECIDE"
@@ -655,7 +743,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
         await streamAssistantReply({
           message: 'Here are hearty beef & lamb options:',
           recommendations: recs,
-          quickOptions: ['🥑 Lowest carb', '🌱 Vegetarian', '💰 Under $15', '🛍️ View bag'],
+          quickOptions: ['🥑 Lowest carb', '🌱 Vegetarian', '💰 Under $15', '🛒 View cart'],
         });
       }
       // REFINEMENTS: SEAFOOD
@@ -669,7 +757,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
         await streamAssistantReply({
           message: 'Here are fresh seafood picks:',
           recommendations: recs,
-          quickOptions: ['💰 Under $15', '🧂 Lower sodium', '💪 High protein', '🛍️ View bag'],
+          quickOptions: ['💰 Under $15', '🧂 Lower sodium', '💪 High protein', '🛒 View cart'],
         });
       }
       // REFINEMENTS: PLANT BASED / HIGH FIBRE
@@ -683,7 +771,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
         await streamAssistantReply({
           message: 'Here are nutrient-dense plant-based and high-fibre meals:',
           recommendations: recs,
-          quickOptions: ['🔥 Under 500 cal', '💰 Under $15', '🥟 Add a side', '🛍️ View bag'],
+          quickOptions: ['🔥 Under 500 cal', '💰 Under $15', '🥟 Add a side', '🛒 View cart'],
         });
       }
       // REFINEMENTS: LOW-CARB SIDE
@@ -696,7 +784,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
             score: 98 - idx * 2,
             reasons: ['✓ Low carb', '✓ Fresh & light'],
           })),
-          quickOptions: ['🥤 Drinks', '🍽️ Another meal', '🛍️ View bag', "✓ I'm done"],
+          quickOptions: ['🥤 Drinks', '🍽️ Another meal', '🛒 View cart', "✓ I'm done"],
         });
       }
       // FLOW 4 — BUDGET MEAL
@@ -771,7 +859,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
         await streamAssistantReply({
           message: `Here are more fresh options under $${cap.toFixed(2)} (no repeated dishes) 🍽️:`,
           recommendations: recs,
-          quickOptions: ['🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert', '🔄 More', '🛍️ View bag'],
+          quickOptions: ['🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert', '🔄 More', '🛒 View cart'],
         });
       }
       // FLOW 5 — CUISINE DISCOVERY
@@ -786,20 +874,52 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           quickOptions: ['🇮🇳 Indian', '🌏 Asian', '🌍 African', '🥙 Middle Eastern', '🍝 Western', '✨ Something different'],
         });
       } else if (
-        (q.includes('thai') || q.includes('indonesian') || q.includes('chinese') || q.includes('japanese') || q.includes('indian') || q.includes('african')) &&
+        (q.includes('chinese') || q.includes('korean') || q.includes('italian') || q.includes('thai') || q.includes('indonesian') || q.includes('japanese') || q.includes('indian') || q.includes('punjabi') || q.includes('african') || q.includes('malaysian')) &&
         !q.includes('combo') && !q.includes('side')
       ) {
-        const cTarget = q.includes('thai') ? 'Thai' : q.includes('indonesian') ? 'Indonesian' : q.includes('african') ? 'African' : 'Indian';
-        const cMeals = MOCK_MOBILE_MEALS.filter((m) => m.cuisine.toLowerCase() === cTarget.toLowerCase());
-        const recs: Recommendation[] = (cMeals.length > 0 ? cMeals : MOCK_MOBILE_MEALS).slice(0, 3).map((meal, idx) => ({
+        const cTarget = q.includes('chinese')
+          ? 'Chinese'
+          : q.includes('korean')
+          ? 'Korean'
+          : q.includes('italian')
+          ? 'Italian'
+          : q.includes('japanese')
+          ? 'Japanese'
+          : q.includes('thai')
+          ? 'Thai'
+          : q.includes('malaysian')
+          ? 'Malaysian'
+          : q.includes('indonesian')
+          ? 'Indonesian'
+          : q.includes('african')
+          ? 'African'
+          : 'Indian';
+        let cMeals = MOCK_MOBILE_MEALS.filter((m) =>
+          m.cuisine.toLowerCase().includes(cTarget.toLowerCase())
+        );
+        if (q.includes('veg') || q.includes('vegetarian') || q.includes('plant')) {
+          cMeals = cMeals.filter(
+            (m) =>
+              m.healthFlags?.vegetarian ||
+              m.dietaryTags.some((t) => /veg/i.test(t)) ||
+              (!m.ingredients.some((i) => /chicken|beef|meat|fish|prawn|pork|lamb/i.test(i)) &&
+                !/chicken|beef|meat|fish|prawn|pork|lamb/i.test(m.name))
+          );
+        }
+        const priceMatch = q.match(/under\s*\$?(\d+)/i);
+        if (priceMatch) {
+          const cap = parseFloat(priceMatch[1]);
+          cMeals = cMeals.filter((m) => m.price <= cap);
+        }
+        const recs: Recommendation[] = (cMeals.length > 0 ? cMeals : MOCK_MOBILE_MEALS.filter((m) => m.cuisine.toLowerCase().includes(cTarget.toLowerCase()))).slice(0, 4).map((meal, idx) => ({
           meal,
           score: 97 - idx * 2,
-          reasons: [`✓ Authentic ${cTarget}`, '✓ Fresh ingredients'],
+          reasons: [`✓ Authentic ${meal.cuisine}`, '✓ Fresh daily drop'],
         }));
         await streamAssistantReply({
-          message: `Here are popular ${cTarget} meals ready for order:`,
+          message: `Here are popular ${cTarget} dishes ready for order:`,
           recommendations: recs,
-          quickOptions: ['💰 Under $15', '🌶️ Spicy', '🍗 Chicken', '🌱 Vegetarian'],
+          quickOptions: ['💰 Under $15', '🌶️ Spicy', '🍗 Chicken', '🌱 Vegetarian', '🛒 View cart'],
         });
       }
       // FLOW 6 — PROTEIN-FIRST CUSTOMER
@@ -1090,8 +1210,8 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
 
         const planSum = Math.round(mealsToAdd.reduce((s, m) => s + m.price, 0) * 100) / 100;
         await streamAssistantReply({
-          message: `Added all ${mealsToAdd.length} curated dinners to your bag! 🛒 Subtotal: $${planSum.toFixed(2)}. Ready to checkout or add sides & drinks?`,
-          quickOptions: ['Confirm order', 'View bag', '🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert'],
+          message: `Added all ${mealsToAdd.length} curated dinners to your cart! 🛒 Subtotal: $${planSum.toFixed(2)}. Ready to checkout or add sides & drinks?`,
+          quickOptions: ['Confirm order', '🛒 View cart', '🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert'],
         });
       }
       // FLOW 11C — ADD SIDE (Solves feedback points 3 & 9)
@@ -1104,7 +1224,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
             score: 98 - idx * 2,
             reasons: ['✓ Perfect meal pairing', '✓ Freshly prepared'],
           })),
-          quickOptions: ['🥤 Add a drink', '🍰 Add a dessert', '🛍️ View bag', "✅ I'm done"],
+          quickOptions: ['🥤 Add a drink', '🍰 Add a dessert', '🛒 View cart', "✅ I'm done"],
         });
       }
       // FLOW 11D — ADD DRINK (Solves feedback points 3 & 9)
@@ -1117,7 +1237,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
             score: 99 - idx * 2,
             reasons: ['✓ Cold & refreshing', '✓ Customer favourite'],
           })),
-          quickOptions: ['🥟 Add a side', '🍰 Add a dessert', '🛍️ View bag', "✅ I'm done"],
+          quickOptions: ['🥟 Add a side', '🍰 Add a dessert', '🛒 View cart', "✅ I'm done"],
         });
       }
       // FLOW 11E — ADD DESSERT (Solves feedback points 3 & 9)
@@ -1138,7 +1258,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
             score: 97 - idx * 2,
             reasons: ['✓ Handcrafted dessert', '✓ Perfectly sweet'],
           })),
-          quickOptions: ['🥤 Add a drink', '🥟 Add a side', '🛍️ View bag', "✅ I'm done"],
+          quickOptions: ['🥤 Add a drink', '🥟 Add a side', '🛒 View cart', "✅ I'm done"],
         });
       }
       // FLOW 11F — ADD SOUP
@@ -1151,7 +1271,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
             score: 98 - idx * 2,
             reasons: ['✓ Warm & soothing', '✓ Authentic broth'],
           })),
-          quickOptions: ['🥟 Add a side', '🥤 Add a drink', '🛍️ View bag'],
+          quickOptions: ['🥟 Add a side', '🥤 Add a drink', '🛒 View cart'],
         });
       }
       // FLOW 11G — ADD SALAD
@@ -1164,7 +1284,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
             score: 98 - idx * 2,
             reasons: ['✓ Crisp & wholesome', '✓ Fresh vinaigrette'],
           })),
-          quickOptions: ['🥤 Add a drink', '🍰 Add a dessert', '🛍️ View bag'],
+          quickOptions: ['🥤 Add a drink', '🍰 Add a dessert', '🛒 View cart'],
         });
       }
       // FLOW 12 — “WHAT CAN I GET TOMORROW?”
@@ -1231,42 +1351,50 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
         await streamAssistantReply({
           message: 'Here are distinct, flavourful dishes to surprise you (no repeated meals) 🎲✨:',
           recommendations: recs,
-          quickOptions: ['🛒 Add to bag', '🎲 Surprise again', '🥟 Add a side', '🛍️ View bag'],
+          quickOptions: ['🛒 Add to cart', '🎲 Surprise again', '🥟 Add a side', '🛒 View cart'],
         });
       }
-      // FLOW 14C — VIEW CART / VIEW BAG (Solves feedback points 5 & 7)
+      // FLOW 14C — VIEW CART / VIEW CARD (Solves feedback points 5 & 7 + colorful cart card)
       else if (
         q === 'view cart' ||
+        q === 'view card' ||
         q === 'view bag' ||
         q === 'cart' ||
+        q === 'card' ||
         q === 'bag' ||
+        q === '🛒 view cart' ||
         q === '🛍️ view bag' ||
+        q === 'cart card' ||
         q.includes('view cart') ||
+        q.includes('view card') ||
         q.includes('view bag') ||
         q.includes('show cart') ||
-        q.includes('show bag')
+        q.includes('show card') ||
+        q.includes('show bag') ||
+        q.includes('my cart') ||
+        q.includes('open cart')
       ) {
         const count = cart?.items.reduce((s, i) => s + i.quantity, 0) || 0;
         if (count === 0) {
           await streamAssistantReply({
-            message: 'Your bag is currently empty 🛍️. What would you like to eat today?',
+            message: 'Your cart is currently empty 🛒. What would you like to eat today?',
+            inChatCart: cart || { items: [], subtotal: 0, deliveryFee: 0, estimatedTax: 0, total: 0, currency: 'USD' },
             quickOptions: ['Under $12', '🍗 Chicken', '🌱 Vegetarian', '✨ Surprise me'],
           });
         } else {
-          const list = cart!.items
-            .map((i) => `${i.quantity}x ${i.meal.name} ($${(i.meal.price * i.quantity).toFixed(2)})`)
-            .join('\n• ');
           await streamAssistantReply({
-            message: `Here is your current bag (${count} item${count > 1 ? 's' : ''}):\n• ${list}\n\nSubtotal: $${cart!.subtotal.toFixed(2)}\nDelivery Fee: $${cart!.deliveryFee.toFixed(2)}\nTotal: $${cart!.total.toFixed(2)}`,
-            quickOptions: ['Confirm order', '🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert', 'Clear bag'],
+            message: `Here is your current cart (${count} item${count > 1 ? 's' : ''}) 🛒✨:`,
+            inChatCart: cart,
+            quickOptions: ['Confirm order', '🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert', '🗑️ Clear cart'],
           });
         }
       }
       // FLOW 14D — CLEAR CART (Solves feedback point 5)
-      else if (q.includes('clear bag') || q.includes('clear cart') || q === 'clear') {
+      else if (q.includes('clear bag') || q.includes('clear cart') || q === 'clear' || q === '🗑️ clear cart') {
         await clearCart();
         await streamAssistantReply({
-          message: 'Cleared your bag! 🗑️ What can I find for you instead?',
+          message: 'Cleared your cart! 🗑️ What can I find for you instead?',
+          inChatCart: { items: [], subtotal: 0, deliveryFee: 0, estimatedTax: 0, total: 0, currency: 'USD' },
           quickOptions: ['Under $12', 'Curated meals', 'Plan my week', 'Explore cuisines'],
         });
       }
@@ -1445,8 +1573,8 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
     const item = currentCart.items.find((i) => i.mealId === mealId);
     if (!item) return;
 
-    let addedHeadline = `Added ${item.meal.name} ($${item.meal.price.toFixed(2)}) to your bag 🛍️`;
-    let nextSuggestions = ['🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert', '🛍️ View bag'];
+    let addedHeadline = `Added ${item.meal.name} ($${item.meal.price.toFixed(2)}) to your cart 🛒`;
+    let nextSuggestions = ['🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert', '🛒 View cart'];
 
     if (activeHealthCategoryRef.current === 'heart_healthy') {
       addedHeadline = 'Added! ❤️ Want anything else?';
@@ -1489,7 +1617,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
 
         const updatedLastMsg: ChatMessage = {
           ...lastMsg,
-          text: `Added to your bag 🛍️ (${updatedList.length} items):`,
+          text: `Added to your cart 🛒 (${updatedList.length} items):`,
           addedCartItem: undefined,
           addedCartItems: updatedList,
           quickOptions: nextSuggestions,

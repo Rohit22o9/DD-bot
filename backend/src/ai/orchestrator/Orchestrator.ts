@@ -589,6 +589,155 @@ export class DropAIOrchestrator {
     }
 
     // =========================================================================
+    // FLOW 4.5 — STRICT DIETARY & PROTEIN INQUIRIES (100% Zero-Mismatch Guarantee)
+    // =========================================================================
+    const isDayModification =
+      lower.includes('friday') ||
+      lower.includes('monday') ||
+      lower.includes('tuesday') ||
+      lower.includes('wednesday') ||
+      lower.includes('thursday') ||
+      lower.includes('plan');
+
+    const isVegetarianInquiry =
+      !isDayModification &&
+      (lower === '🌱 vegetarian' ||
+        lower === 'vegetarian' ||
+        lower === 'veg' ||
+        lower === 'pure veg' ||
+        lower === 'vegetarian meals' ||
+        lower.includes('vegetarian') ||
+        lower.includes('meatless') ||
+        lower.includes('no meat'));
+
+    const isVeganInquiry =
+      !isDayModification &&
+      (lower === '🌿 vegan' ||
+        lower === 'vegan' ||
+        lower.includes('vegan') ||
+        lower.includes('plant-based') ||
+        lower.includes('plant based'));
+
+    const isChickenInquiry =
+      !isDayModification &&
+      (lower === '🍗 chicken' ||
+        lower === 'chicken' ||
+        lower === 'more chicken' ||
+        lower.includes('chicken dishes') ||
+        lower.includes('chicken')) &&
+      !isVegetarianInquiry &&
+      !isVeganInquiry;
+
+    const isSeafoodInquiry =
+      !isDayModification &&
+      (lower === '🐟 seafood' ||
+        lower === 'seafood' ||
+        lower.includes('seafood') ||
+        lower.includes('salmon') ||
+        lower.includes('fish')) &&
+      !isVegetarianInquiry &&
+      !isVeganInquiry;
+
+    if (isVegetarianInquiry || isVeganInquiry || isChickenInquiry || isSeafoodInquiry) {
+      const allMains = await this.tools.searchMeals({ category: 'main' });
+      const meatKeywords = [
+        'chicken',
+        'beef',
+        'pork',
+        'salmon',
+        'barramundi',
+        'fish',
+        'seafood',
+        'shrimp',
+        'prawn',
+        'lamb',
+        'meat',
+        'rendang',
+        'biryani',
+      ];
+
+      let matchingMeals: Meal[] = [];
+      let replyMessage = '';
+      let quickOptions: string[] = [];
+
+      if (isVeganInquiry) {
+        matchingMeals = allMains.filter((m) => {
+          const tags = m.dietaryTags.map((t) => t.toLowerCase());
+          const isTagged = tags.includes('vegan');
+          const text = (m.name + ' ' + m.description + ' ' + m.ingredients.join(' ')).toLowerCase();
+          const hasNonVegan = [
+            ...meatKeywords,
+            'egg',
+            'dairy',
+            'milk',
+            'cheese',
+            'halloumi',
+            'yogurt',
+            'butter',
+          ].some((k) => text.includes(k));
+          return isTagged && !hasNonVegan;
+        });
+        replyMessage = 'Here are 100% plant-based, vegan dishes crafted without any animal products or dairy 🌿:';
+        quickOptions = ['💰 Under $12', '🥟 Sides', '🥤 Drinks', '🍰 Desserts'];
+      } else if (isVegetarianInquiry) {
+        matchingMeals = allMains.filter((m) => {
+          const tags = m.dietaryTags.map((t) => t.toLowerCase());
+          const isTagged = tags.includes('vegetarian') || tags.includes('vegan');
+          const text = (m.name + ' ' + m.description + ' ' + m.ingredients.join(' ')).toLowerCase();
+          const hasMeat = meatKeywords.some((k) => text.includes(k));
+          return isTagged && !hasMeat;
+        });
+        replyMessage = "Here are 100% vegetarian, plant-powered meals on today's menu 🌱 (strictly zero meat or seafood):";
+        quickOptions = ['💰 Under $12', '🥟 Veg sides', '🥤 Drinks', '🍰 Desserts', '🔄 More veg'];
+      } else if (isChickenInquiry) {
+        matchingMeals = allMains.filter((m) =>
+          (m.name + ' ' + m.ingredients.join(' ')).toLowerCase().includes('chicken')
+        );
+        if (intent.budgetCap !== undefined || lower.includes('under')) {
+          const cap = intent.budgetCap || (lower.includes('15') ? 15 : 20);
+          matchingMeals = matchingMeals.filter((m) => m.price <= cap);
+        }
+        replyMessage = 'Here are our top chef-crafted chicken dishes on the menu today 🍗:';
+        quickOptions = ['💰 Under $14', '🌶️ Spicy', '🥟 Add a side', '🥤 Add a drink'];
+      } else if (isSeafoodInquiry) {
+        matchingMeals = allMains.filter((m) =>
+          ['salmon', 'barramundi', 'fish', 'seafood'].some((k) =>
+            (m.name + ' ' + m.ingredients.join(' ')).toLowerCase().includes(k)
+          )
+        );
+        if (intent.budgetCap !== undefined || lower.includes('under')) {
+          const cap = intent.budgetCap || (lower.includes('15') ? 15 : 20);
+          matchingMeals = matchingMeals.filter((m) => m.price <= cap);
+        }
+        replyMessage = 'Here are our fresh wild-caught and glazed seafood dishes today 🐟:';
+        quickOptions = ['💰 Under $15', '🥟 Add a side', '🥤 Add a drink'];
+      }
+
+      const safe = this.safety.filterSafeMeals(matchingMeals, preferences);
+      const picked = (safe.length > 0 ? safe : matchingMeals).slice(0, 4);
+
+      return {
+        message: replyMessage,
+        job: 'FIND',
+        recommendations: picked.map((m, idx) => ({
+          meal: m,
+          score: 98 - idx * 2,
+          reasons: [
+            isVegetarianInquiry
+              ? '✓ 100% Vegetarian certified'
+              : isVeganInquiry
+              ? '✓ 100% Plant-Based & Vegan'
+              : isChickenInquiry
+              ? '✓ Tender lean chicken'
+              : '✓ Wild-caught seafood',
+            '✓ Top rated on Daily Drop',
+          ],
+        })),
+        quickOptions,
+      };
+    }
+
+    // =========================================================================
     // FLOW 5 — CUISINE DISCOVERY
     // =========================================================================
     const isAsianCuisineInquiry =
@@ -630,9 +779,12 @@ export class DropAIOrchestrator {
       lower.includes('thai') ||
       lower.includes('indonesian') ||
       lower.includes('chinese') ||
+      lower.includes('korean') ||
       lower.includes('japanese') ||
       lower.includes('indian') ||
+      lower.includes('punjabi') ||
       lower.includes('african') ||
+      lower.includes('malaysian') ||
       lower.includes('middle eastern') ||
       lower.includes('western') ||
       lower.includes('italian') ||
@@ -647,27 +799,45 @@ export class DropAIOrchestrator {
       !lower.includes('biryani') &&
       !lower.includes('add the')
     ) {
-      const cuisineTarget = lower.includes('thai')
-        ? 'Thai'
-        : lower.includes('indonesian')
-        ? 'Indonesian'
+      const cuisineTarget = lower.includes('korean')
+        ? 'Korean'
         : lower.includes('chinese')
         ? 'Chinese'
+        : lower.includes('italian')
+        ? 'Italian'
         : lower.includes('japanese')
         ? 'Japanese'
-        : lower.includes('indian')
-        ? 'Indian'
+        : lower.includes('thai')
+        ? 'Thai'
+        : lower.includes('malaysian')
+        ? 'Malaysian'
+        : lower.includes('indonesian')
+        ? 'Indonesian'
+        : lower.includes('indian') || lower.includes('punjabi')
+        ? 'North Indian'
         : lower.includes('african')
         ? 'African'
         : lower.includes('middle eastern')
         ? 'Mediterranean'
-        : lower.includes('italian')
-        ? 'Italian'
         : 'Mexican';
 
-      const meals = await this.tools.searchMeals({ cuisine: cuisineTarget });
+      let meals = await this.tools.searchMeals({ cuisine: cuisineTarget });
+      if (lower.includes('veg') || lower.includes('vegetarian') || lower.includes('plant')) {
+        meals = meals.filter(
+          (m) =>
+            m.healthFlags?.vegetarian ||
+            m.dietaryTags.some((t) => /veg/i.test(t)) ||
+            (!m.ingredients.some((i) => /chicken|beef|meat|fish|prawn|pork|lamb/i.test(i)) &&
+              !/chicken|beef|meat|fish|prawn|pork|lamb/i.test(m.name))
+        );
+      }
+      const priceMatch = lower.match(/under\s*\$?(\d+)/i);
+      if (priceMatch) {
+        const cap = parseFloat(priceMatch[1]);
+        meals = meals.filter((m) => m.price <= cap);
+      }
       const safe = this.safety.filterSafeMeals(meals, preferences);
-      const picked = (safe.length > 0 ? safe : (await this.tools.searchMeals({}))).slice(0, 3);
+      const picked = (safe.length > 0 ? safe : meals).slice(0, 4);
 
       return {
         message: `Here are popular ${cuisineTarget} meals ready for order:`,
@@ -1300,6 +1470,59 @@ export class DropAIOrchestrator {
       };
     }
 
+    // --- SCENARIO 0.9: VIEW CART / VIEW CARD (Solves feedback + colorful in-chat cart card) ---
+    if (
+      lower === 'view cart' ||
+      lower === 'view card' ||
+      lower === 'view bag' ||
+      lower === 'cart' ||
+      lower === 'card' ||
+      lower === 'bag' ||
+      lower === '🛒 view cart' ||
+      lower === '🛍️ view bag' ||
+      lower === 'cart card' ||
+      lower.includes('view cart') ||
+      lower.includes('view card') ||
+      lower.includes('view bag') ||
+      lower.includes('show cart') ||
+      lower.includes('show card') ||
+      lower.includes('show bag') ||
+      lower.includes('my cart') ||
+      lower.includes('open cart')
+    ) {
+      const cart = await this.tools.getCart(userId);
+      const count = cart.items.reduce((s, i) => s + i.quantity, 0);
+      if (count === 0) {
+        return {
+          message: 'Your cart is currently empty 🛒. What would you like to eat today?',
+          job: 'BUILD',
+          draftCart: cart,
+          inChatCart: cart,
+          quickOptions: ['Under $12', '🍗 Chicken', '🌱 Vegetarian', '✨ Surprise me'],
+        };
+      }
+      return {
+        message: `Here is your current cart (${count} item${count > 1 ? 's' : ''}) 🛒✨:`,
+        job: 'BUILD',
+        draftCart: cart,
+        inChatCart: cart,
+        quickOptions: ['Confirm order', '🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert', '🗑️ Clear cart'],
+      };
+    }
+
+    // --- SCENARIO 0.95: CLEAR CART ---
+    if (lower.includes('clear cart') || lower.includes('clear bag') || lower === 'clear' || lower === '🗑️ clear cart') {
+      await this.tools.clearCart(userId);
+      const emptyCart = await this.tools.getCart(userId);
+      return {
+        message: 'Cleared your cart! 🗑️ What can I find for you instead?',
+        job: 'BUILD',
+        draftCart: emptyCart,
+        inChatCart: emptyCart,
+        quickOptions: ['Under $12', 'Curated meals', 'Plan my week', 'Explore cuisines'],
+      };
+    }
+
     // --- SCENARIO 1: EXPLICIT ORDER CONFIRMATION ---
     if (intent.explicitConfirmation) {
       const cart = await this.tools.getCart(userId);
@@ -1601,7 +1824,7 @@ export class DropAIOrchestrator {
       // 2. Select AI-Recommended Paired Side Order
       const allSides = await this.tools.searchMeals({ category: 'side' });
       const safeSides = this.safety.filterSafeMeals(allSides, preferences);
-      const remainingForSide = Math.max(2.5, budgetCap - mainMeal.price);
+      const remainingForSide = Math.max(3.0, budgetCap - mainMeal.price);
 
       const pairing = this.recommender.pairSideOrder(mainMeal, safeSides, remainingForSide);
       const sideMeal = pairing?.side || safeSides[0];

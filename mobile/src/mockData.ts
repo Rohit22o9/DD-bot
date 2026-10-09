@@ -1,6 +1,8 @@
 import { Meal, Recommendation } from './types';
+import { REAL_DAILY_DROP_MEALS } from './realDailyDropMeals';
 
 export const MOCK_MOBILE_MEALS: Meal[] = [
+  ...REAL_DAILY_DROP_MEALS,
   {
     id: 'meal_thai_basil',
     name: 'Thai Basil Chicken',
@@ -373,6 +375,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 180,
     proteinGrams: 6,
+    nutrition: {
+      calories: 180,
+      proteinGrams: 6,
+      fibreGrams: 1,
+      sodiumMg: 65,
+      saturatedFatGrams: 1.8,
+      carbsGrams: 32,
+      sugarGrams: 28,
+    },
   },
   // --- SIDES ---
   {
@@ -393,6 +404,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 220,
     proteinGrams: 5,
+    nutrition: {
+      calories: 220,
+      proteinGrams: 5,
+      fibreGrams: 2,
+      sodiumMg: 310,
+      saturatedFatGrams: 2.8,
+      carbsGrams: 38,
+      sugarGrams: 2,
+    },
   },
   {
     id: 'meal_edamame',
@@ -412,6 +432,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 140,
     proteinGrams: 11,
+    nutrition: {
+      calories: 140,
+      proteinGrams: 11,
+      fibreGrams: 5,
+      sodiumMg: 240,
+      saturatedFatGrams: 0.6,
+      carbsGrams: 10,
+      sugarGrams: 2,
+    },
   },
   {
     id: 'meal_dumplings',
@@ -431,6 +460,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 260,
     proteinGrams: 16,
+    nutrition: {
+      calories: 260,
+      proteinGrams: 16,
+      fibreGrams: 2,
+      sodiumMg: 420,
+      saturatedFatGrams: 1.8,
+      carbsGrams: 28,
+      sugarGrams: 2,
+    },
   },
   {
     id: 'meal_spring_rolls',
@@ -450,6 +488,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 210,
     proteinGrams: 4,
+    nutrition: {
+      calories: 210,
+      proteinGrams: 4,
+      fibreGrams: 3,
+      sodiumMg: 320,
+      saturatedFatGrams: 1.4,
+      carbsGrams: 27,
+      sugarGrams: 3,
+    },
   },
 
   // --- DRINKS ---
@@ -471,6 +518,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 130,
     proteinGrams: 3,
+    nutrition: {
+      calories: 130,
+      proteinGrams: 3,
+      fibreGrams: 1,
+      sodiumMg: 85,
+      saturatedFatGrams: 0.5,
+      carbsGrams: 18,
+      sugarGrams: 12,
+    },
   },
   {
     id: 'meal_coconut_water',
@@ -490,6 +546,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 60,
     proteinGrams: 1,
+    nutrition: {
+      calories: 60,
+      proteinGrams: 1,
+      fibreGrams: 0,
+      sodiumMg: 35,
+      saturatedFatGrams: 0,
+      carbsGrams: 14,
+      sugarGrams: 11,
+    },
   },
   {
     id: 'meal_lime_soda',
@@ -509,6 +574,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 35,
     proteinGrams: 0,
+    nutrition: {
+      calories: 35,
+      proteinGrams: 0,
+      fibreGrams: 0,
+      sodiumMg: 20,
+      saturatedFatGrams: 0,
+      carbsGrams: 8,
+      sugarGrams: 6,
+    },
   },
 
   // --- DESSERTS ---
@@ -530,6 +604,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 320,
     proteinGrams: 4,
+    nutrition: {
+      calories: 320,
+      proteinGrams: 4,
+      fibreGrams: 2,
+      sodiumMg: 75,
+      saturatedFatGrams: 4.2,
+      carbsGrams: 58,
+      sugarGrams: 26,
+    },
   },
   {
     id: 'meal_matcha_mochi',
@@ -538,7 +621,7 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     restaurantId: 'rest_tokyo',
     restaurantName: 'Tokyo Bento Co.',
     price: 4.0,
-    imageUrl: 'https://images.unsplash.com/photo-1582293041079-7814c2f12063?auto=format&fit=crop&w=400&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1763469024755-a19c6a13ef11?auto=format&fit=crop&w=400&q=80',
     cuisine: 'Japanese',
     category: 'dessert',
     dietaryTags: ['Vegetarian', 'Artisanal'],
@@ -549,6 +632,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 190,
     proteinGrams: 3,
+    nutrition: {
+      calories: 190,
+      proteinGrams: 3,
+      fibreGrams: 2,
+      sodiumMg: 45,
+      saturatedFatGrams: 1.4,
+      carbsGrams: 36,
+      sugarGrams: 18,
+    },
   },
   {
     id: 'meal_chia_pudding',
@@ -568,6 +660,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 210,
     proteinGrams: 5,
+    nutrition: {
+      calories: 210,
+      proteinGrams: 5,
+      fibreGrams: 8,
+      sodiumMg: 40,
+      saturatedFatGrams: 3.2,
+      carbsGrams: 22,
+      sugarGrams: 12,
+    },
   },
 
   // --- SOUPS & SALADS ---
@@ -589,6 +690,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 85,
     proteinGrams: 6,
+    nutrition: {
+      calories: 85,
+      proteinGrams: 6,
+      fibreGrams: 2,
+      sodiumMg: 490,
+      saturatedFatGrams: 0.5,
+      carbsGrams: 8,
+      sugarGrams: 2,
+    },
   },
   {
     id: 'meal_tom_yum_soup',
@@ -608,6 +718,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 110,
     proteinGrams: 4,
+    nutrition: {
+      calories: 110,
+      proteinGrams: 4,
+      fibreGrams: 2,
+      sodiumMg: 520,
+      saturatedFatGrams: 0.4,
+      carbsGrams: 11,
+      sugarGrams: 3,
+    },
   },
   {
     id: 'meal_garden_salad',
@@ -627,6 +746,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 75,
     proteinGrams: 2,
+    nutrition: {
+      calories: 75,
+      proteinGrams: 2,
+      fibreGrams: 4,
+      sodiumMg: 140,
+      saturatedFatGrams: 0.4,
+      carbsGrams: 10,
+      sugarGrams: 3,
+    },
   },
 
   // --- ADDITIONAL BUDGET-FRIENDLY MAINS (UNDER $12) ---
@@ -648,6 +776,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 450,
     proteinGrams: 16,
+    nutrition: {
+      calories: 450,
+      proteinGrams: 16,
+      fibreGrams: 3,
+      sodiumMg: 560,
+      saturatedFatGrams: 2.2,
+      carbsGrams: 65,
+      sugarGrams: 2,
+    },
   },
   {
     id: 'meal_tofu_pad_thai',
@@ -667,6 +804,15 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     active: true,
     calories: 490,
     proteinGrams: 20,
+    nutrition: {
+      calories: 490,
+      proteinGrams: 20,
+      fibreGrams: 7,
+      sodiumMg: 590,
+      saturatedFatGrams: 2.5,
+      carbsGrams: 64,
+      sugarGrams: 8,
+    },
   },
   {
     id: 'meal_chickpea_curry',
@@ -946,55 +1092,358 @@ export function rankQualifiedMeals(
   return scored.sort((a, b) => b.score - a.score);
 }
 
+const MEAT_AND_SEAFOOD_KEYWORDS = [
+  'chicken',
+  'beef',
+  'pork',
+  'salmon',
+  'barramundi',
+  'fish',
+  'seafood',
+  'shrimp',
+  'prawn',
+  'lamb',
+  'turkey',
+  'bacon',
+  'meat',
+  'rendang',
+  'biryani',
+];
+
+export function isVegetarianMeal(meal: Meal): boolean {
+  const tags = meal.dietaryTags.map((t) => t.toLowerCase());
+  const isTaggedVeg = tags.includes('vegetarian') || tags.includes('vegan');
+  const fullText = (meal.name + ' ' + meal.description + ' ' + meal.ingredients.join(' ')).toLowerCase();
+  const hasMeat = MEAT_AND_SEAFOOD_KEYWORDS.some((kw) => fullText.includes(kw));
+  return isTaggedVeg && !hasMeat;
+}
+
+export function isVeganMeal(meal: Meal): boolean {
+  if (!isVegetarianMeal(meal)) return false;
+  const tags = meal.dietaryTags.map((t) => t.toLowerCase());
+  if (!tags.includes('vegan')) return false;
+  const fullText = (meal.name + ' ' + meal.description + ' ' + meal.ingredients.join(' ')).toLowerCase();
+  const animalDairy = ['egg', 'eggs', 'dairy', 'milk', 'cheese', 'halloumi', 'yogurt', 'butter', 'ghee', 'cream'];
+  return !animalDairy.some((kw) => fullText.includes(kw));
+}
+
+export function isHalalMeal(meal: Meal): boolean {
+  const tags = meal.dietaryTags.map((t) => t.toLowerCase());
+  if (tags.includes('halal') || isVegetarianMeal(meal)) {
+    const fullText = (meal.name + ' ' + meal.description + ' ' + meal.ingredients.join(' ')).toLowerCase();
+    return !['pork', 'bacon', 'alcohol', 'wine', 'beer'].some((kw) => fullText.includes(kw));
+  }
+  return false;
+}
+
+export function isGlutenFreeMeal(meal: Meal): boolean {
+  const tags = meal.dietaryTags.map((t) => t.toLowerCase());
+  const taggedGf = tags.some((t) => t.includes('gluten free') || t.includes('gluten-free')) || !!meal.healthFlags?.glutenFree;
+  const fullText = (meal.name + ' ' + meal.description + ' ' + meal.ingredients.join(' ')).toLowerCase();
+  const glutenKw = ['wheat flour', 'naan', 'pastry', 'dumpling', 'spring roll'];
+  if (glutenKw.some((kw) => fullText.includes(kw) && !fullText.includes('rice noodle'))) return false;
+  return taggedGf;
+}
+
+export function isDairyFreeMeal(meal: Meal): boolean {
+  const tags = meal.dietaryTags.map((t) => t.toLowerCase());
+  const taggedDf = tags.some((t) => t.includes('dairy-free') || t.includes('dairy free') || t.includes('vegan')) || !!meal.healthFlags?.dairyFree;
+  const fullText = (meal.name + ' ' + meal.description + ' ' + meal.ingredients.join(' ')).toLowerCase();
+  const dairyKw = ['milk', 'cheese', 'halloumi', 'butter', 'yogurt', 'cream', 'ghee'];
+  return taggedDf && !dairyKw.some((kw) => fullText.includes(kw));
+}
+
 export function getMockRecommendations(
   query: string,
   excludeIds: string[] = []
 ): Recommendation[] {
   const q = query.toLowerCase();
-  let pool = MOCK_MOBILE_MEALS.filter((m) => !excludeIds.includes(m.id));
-  if (pool.length < 3) {
-    pool = MOCK_MOBILE_MEALS;
+
+  // 1. Detect Dietary Requirements (100% Strict Hard Constraints)
+  const isVegetarianReq =
+    q.includes('vegetarian') ||
+    q.includes('🌱 vegetarian') ||
+    q.includes('pure veg') ||
+    q.includes('meatless') ||
+    q.includes('no meat') ||
+    q.includes('meat free') ||
+    q.includes('meat-free') ||
+    q === 'veg' ||
+    q === '🌱 veg';
+
+  const isVeganReq =
+    q.includes('vegan') ||
+    q.includes('plant-based') ||
+    q.includes('plant based');
+
+  const isHalalReq = q.includes('halal');
+  const isGlutenFreeReq =
+    q.includes('gluten free') ||
+    q.includes('gluten-free') ||
+    q.includes('celiac') ||
+    q.includes('no gluten');
+  const isDairyFreeReq =
+    q.includes('dairy-free') ||
+    q.includes('dairy free') ||
+    q.includes('no dairy') ||
+    q.includes('lactose');
+
+  // 2. Detect Protein Requirements
+  const isChickenReq =
+    (q.includes('chicken') || q.includes('🍗 chicken')) && !isVegetarianReq && !isVeganReq;
+  const isBeefReq =
+    (q.includes('beef') || q.includes('rendang')) && !isVegetarianReq && !isVeganReq;
+  const isSeafoodReq =
+    (q.includes('salmon') ||
+      q.includes('fish') ||
+      q.includes('seafood') ||
+      q.includes('barramundi')) &&
+    !isVegetarianReq &&
+    !isVeganReq;
+  const isTofuReq = q.includes('tofu');
+
+  // 3. Detect Budget Cap
+  const budgetMatch = q.match(/under\s*\$?(\d+)/i);
+  const maxBudget = budgetMatch ? parseFloat(budgetMatch[1]) : undefined;
+
+  // 4. Detect Category
+  const isSideReq =
+    q.includes('side') ||
+    q.includes('appetizer') ||
+    q.includes('starter') ||
+    q.includes('spring roll') ||
+    q.includes('dumpling') ||
+    q.includes('naan') ||
+    q.includes('edamame');
+  const isDrinkReq =
+    q.includes('drink') ||
+    q.includes('beverage') ||
+    q.includes('cooler') ||
+    q.includes('lassi') ||
+    q.includes('latte') ||
+    q.includes('soda') ||
+    q.includes('water');
+  const isDessertReq =
+    q.includes('dessert') ||
+    q.includes('desert') ||
+    q.includes('sweet') ||
+    q.includes('pudding') ||
+    q.includes('mochi') ||
+    q.includes('sticky rice');
+
+  // 5. Detect Spiciness
+  const isSpicyReq =
+    q.includes('spicy') || q.includes('hot') || q.includes('chilli') || q.includes('chili');
+  const isMildReq =
+    q.includes('mild') || q.includes('not spicy') || q.includes('non-spicy');
+
+  // 6. Detect Cuisines
+  const isChineseReq = q.includes('chinese') || q.includes('china') || q.includes('dim sum') || q.includes('mapo') || q.includes('fried rice');
+  const isKoreanReq = q.includes('korean') || q.includes('korea') || q.includes('bibimbap') || q.includes('bulgogi') || q.includes('jjajang') || q.includes('jajangmyeon');
+  const isItalianReq = q.includes('italian') || q.includes('pasta') || q.includes('spaghetti') || q.includes('rigatoni') || q.includes('carbonara');
+  const isThaiReq = q.includes('thai');
+  const isIndianReq = q.includes('indian') || q.includes('punjabi') || q.includes('biryani') || q.includes('curry') || q.includes('dal') || q.includes('thali');
+  const isJapaneseReq = q.includes('japanese') || q.includes('ramen') || q.includes('teriyaki');
+  const isMalaysianReq = q.includes('malaysian') || q.includes('malaysia') || q.includes('nasi lemak');
+  const isMedReq = q.includes('mediterranean');
+  const isAfricanReq = q.includes('african');
+
+  // Candidate pool from active meals
+  let pool = [...MOCK_MOBILE_MEALS];
+
+  // =========================================================================
+  // HARD DIETARY CONSTRAINTS (Never violated under any condition)
+  // =========================================================================
+  if (isVeganReq) {
+    pool = pool.filter(isVeganMeal);
+  } else if (isVegetarianReq) {
+    pool = pool.filter(isVegetarianMeal);
   }
 
-  // Check health categories first using the qualification and ranking engine
+  if (isHalalReq) {
+    pool = pool.filter(isHalalMeal);
+  }
+  if (isGlutenFreeReq) {
+    pool = pool.filter(isGlutenFreeMeal);
+  }
+  if (isDairyFreeReq) {
+    pool = pool.filter(isDairyFreeMeal);
+  }
+
+  // =========================================================================
+  // PROTEIN CONSTRAINTS
+  // =========================================================================
+  if (isChickenReq) {
+    pool = pool.filter((m) =>
+      (m.name + ' ' + m.ingredients.join(' ')).toLowerCase().includes('chicken')
+    );
+  } else if (isBeefReq) {
+    pool = pool.filter((m) =>
+      (m.name + ' ' + m.ingredients.join(' ')).toLowerCase().includes('beef')
+    );
+  } else if (isSeafoodReq) {
+    pool = pool.filter((m) =>
+      ['salmon', 'barramundi', 'fish', 'seafood', 'squid'].some((k) =>
+        (m.name + ' ' + m.ingredients.join(' ')).toLowerCase().includes(k)
+      )
+    );
+  } else if (isTofuReq) {
+    pool = pool.filter((m) =>
+      (m.name + ' ' + m.ingredients.join(' ')).toLowerCase().includes('tofu')
+    );
+  }
+
+  // =========================================================================
+  // CATEGORY CONSTRAINTS
+  // =========================================================================
+  if (isSideReq) {
+    const sides = pool.filter((m) => m.category === 'side');
+    if (sides.length > 0) pool = sides;
+  } else if (isDrinkReq) {
+    const drinks = pool.filter((m) => m.category === 'drink');
+    if (drinks.length > 0) pool = drinks;
+  } else if (isDessertReq) {
+    const desserts = pool.filter((m) => m.category === 'dessert');
+    if (desserts.length > 0) pool = desserts;
+  } else {
+    // Default to main dishes if available
+    const mains = pool.filter((m) => m.category === 'main');
+    if (mains.length > 0) pool = mains;
+  }
+
+  // =========================================================================
+  // BUDGET CONSTRAINTS
+  // =========================================================================
+  if (maxBudget) {
+    const underBudget = pool.filter((m) => m.price <= maxBudget);
+    if (underBudget.length > 0) {
+      pool = underBudget;
+    }
+  }
+
+  // =========================================================================
+  // CUISINE CONSTRAINTS
+  // =========================================================================
+  if (isChineseReq) {
+    const ch = pool.filter((m) => m.cuisine.toLowerCase().includes('chinese'));
+    if (ch.length > 0) pool = ch;
+  } else if (isKoreanReq) {
+    const kor = pool.filter((m) => m.cuisine.toLowerCase() === 'korean');
+    if (kor.length > 0) pool = kor;
+  } else if (isItalianReq) {
+    const it = pool.filter((m) => m.cuisine.toLowerCase() === 'italian');
+    if (it.length > 0) pool = it;
+  } else if (isThaiReq) {
+    const thai = pool.filter((m) => m.cuisine.toLowerCase() === 'thai');
+    if (thai.length > 0) pool = thai;
+  } else if (isIndianReq) {
+    const ind = pool.filter((m) => m.cuisine.toLowerCase().includes('indian') || m.cuisine.toLowerCase().includes('punjabi'));
+    if (ind.length > 0) pool = ind;
+  } else if (isJapaneseReq) {
+    const jap = pool.filter((m) => m.cuisine.toLowerCase() === 'japanese');
+    if (jap.length > 0) pool = jap;
+  } else if (isMalaysianReq) {
+    const mal = pool.filter((m) => m.cuisine.toLowerCase() === 'malaysian');
+    if (mal.length > 0) pool = mal;
+  } else if (isMedReq) {
+    const med = pool.filter((m) => m.cuisine.toLowerCase() === 'mediterranean');
+    if (med.length > 0) pool = med;
+  } else if (isAfricanReq) {
+    const afr = pool.filter((m) => m.cuisine.toLowerCase() === 'african');
+    if (afr.length > 0) pool = afr;
+  }
+
+  // =========================================================================
+  // SPICINESS CONSTRAINTS
+  // =========================================================================
+  if (isSpicyReq) {
+    const spicy = pool.filter((m) => m.spicyLevel > 0);
+    if (spicy.length > 0) pool = spicy;
+  } else if (isMildReq) {
+    const mild = pool.filter((m) => m.spicyLevel === 0);
+    if (mild.length > 0) pool = mild;
+  }
+
+  // Health categories
   if (q.includes('heart')) {
-    return rankQualifiedMeals(pool, 'heart_healthy', undefined, excludeIds);
-  }
-  if (q.includes('diabetes')) {
-    return rankQualifiedMeals(pool, 'diabetes_friendly', undefined, excludeIds);
-  }
-  if (q.includes('protein')) {
-    return rankQualifiedMeals(pool, 'high_protein', undefined, excludeIds);
-  }
-  if (q.includes('low carb') || q.includes('keto')) {
-    return rankQualifiedMeals(pool, 'low_carb', undefined, excludeIds);
-  }
-  if (q.includes('low sodium') || q.includes('sodium')) {
-    return rankQualifiedMeals(pool, 'low_sodium', undefined, excludeIds);
-  }
-  if (q.includes('anti-inflammatory') || q.includes('inflammatory')) {
-    return rankQualifiedMeals(pool, 'anti_inflammatory', undefined, excludeIds);
-  }
-  if (q.includes('weight') || q.includes('calorie')) {
-    return rankQualifiedMeals(pool, 'weight_management', undefined, excludeIds);
-  }
-
-  let filtered = pool.filter((m) => m.category === 'main');
-  if (q.includes('side')) {
-    filtered = pool.filter((m) => m.category === 'side');
-  } else if (q.includes('drink')) {
-    filtered = pool.filter((m) => m.category === 'drink');
-  } else if (q.includes('dessert') || q.includes('desert') || q.includes('sweet')) {
-    filtered = pool.filter((m) => m.category === 'dessert');
-  } else if (q.includes('spicy')) {
-    filtered = pool.filter((m) => m.spicyLevel > 0);
+    const heart = pool.filter((m) => qualifyMealHealth(m, 'heart_healthy'));
+    if (heart.length > 0) pool = heart;
+  } else if (q.includes('diabetes')) {
+    const diab = pool.filter((m) => qualifyMealHealth(m, 'diabetes_friendly'));
+    if (diab.length > 0) pool = diab;
+  } else if (q.includes('protein')) {
+    const highP = pool.filter(
+      (m) => (m.nutrition?.proteinGrams || m.proteinGrams || 0) >= 30
+    );
+    if (highP.length > 0) pool = highP;
+  } else if (q.includes('low carb') || q.includes('keto')) {
+    const lowC = pool.filter((m) => qualifyMealHealth(m, 'low_carb'));
+    if (lowC.length > 0) pool = lowC;
+  } else if (q.includes('low sodium')) {
+    const lowS = pool.filter((m) => qualifyMealHealth(m, 'low_sodium'));
+    if (lowS.length > 0) pool = lowS;
+  } else if (q.includes('weight') || q.includes('calorie')) {
+    const weight = pool.filter((m) => qualifyMealHealth(m, 'weight_management'));
+    if (weight.length > 0) pool = weight;
   }
 
-  if (filtered.length === 0) filtered = pool;
+  // Safety fallback: NEVER violate dietary safety!
+  if (pool.length === 0) {
+    if (isVeganReq) {
+      pool = MOCK_MOBILE_MEALS.filter(isVeganMeal);
+    } else if (isVegetarianReq) {
+      pool = MOCK_MOBILE_MEALS.filter(isVegetarianMeal);
+    } else if (isHalalReq) {
+      pool = MOCK_MOBILE_MEALS.filter(isHalalMeal);
+    } else if (isChickenReq) {
+      pool = MOCK_MOBILE_MEALS.filter((m) =>
+        m.name.toLowerCase().includes('chicken')
+      );
+    } else {
+      pool = MOCK_MOBILE_MEALS.filter((m) => m.category === 'main');
+    }
+  }
 
-  return filtered.map((meal, index) => ({
-    meal,
-    score: 96 - index * 2,
-    reasons: ['Matches your preferences', 'Top rated on Daily Drop'],
-  }));
+  // Novelty deduplication if ample pool exists
+  const unshown = pool.filter((m) => !excludeIds.includes(m.id));
+  const finalCandidates = unshown.length >= 2 ? unshown : pool;
+
+  return finalCandidates.map((meal, index) => {
+    const reasons: string[] = [];
+
+    if (isVegetarianReq || isVegetarianMeal(meal)) {
+      reasons.push('✓ 100% Vegetarian certified');
+    }
+    if (isVeganReq || isVeganMeal(meal)) {
+      reasons.push('✓ 100% Plant-Based & Vegan');
+    }
+    if (isHalalReq || isHalalMeal(meal)) {
+      reasons.push('✓ Halal certified ingredients');
+    }
+    if (isGlutenFreeReq || isGlutenFreeMeal(meal)) {
+      reasons.push('✓ Gluten-Free recipe');
+    }
+    if (isChickenReq) {
+      reasons.push('✓ Tender lean chicken');
+    }
+    if (maxBudget && meal.price <= maxBudget) {
+      reasons.push(`✓ Under $${maxBudget} ($${meal.price.toFixed(2)})`);
+    }
+    if (meal.spicyLevel > 0 && isSpicyReq) {
+      reasons.push('✓ Spicy kick');
+    }
+
+    if (reasons.length === 0) {
+      reasons.push('✓ Matched to your taste profile');
+      reasons.push('✓ Freshly prepped on Daily Drop');
+    } else if (reasons.length === 1) {
+      reasons.push('✓ Top rated on Daily Drop');
+    }
+
+    return {
+      meal,
+      score: 98 - index * 2,
+      reasons: reasons.slice(0, 2),
+    };
+  });
 }

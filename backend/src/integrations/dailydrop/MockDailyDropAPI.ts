@@ -73,7 +73,12 @@ export class MockDailyDropAPI
 
     if (filters.cuisine) {
       const c = filters.cuisine.toLowerCase();
-      result = result.filter((m) => m.cuisine.toLowerCase() === c);
+      result = result.filter(
+        (m) =>
+          m.cuisine.toLowerCase() === c ||
+          m.cuisine.toLowerCase().includes(c) ||
+          (c.includes('indian') && m.cuisine.toLowerCase().includes('indian'))
+      );
     }
 
     if (filters.category) {

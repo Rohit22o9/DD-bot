@@ -19,6 +19,7 @@ import { MobileMealCard } from './components/MobileMealCard';
 import { MobileAddedCard } from './components/MobileAddedCard';
 import { MobileFloatingCartBar } from './components/MobileFloatingCartBar';
 import { MobileCartDrawer } from './components/MobileCartDrawer';
+import { MobileInChatCartCard } from './components/MobileInChatCartCard';
 import { MobileFilterModal } from './components/MobileFilterModal';
 import { MobileTasteProfileModal } from './components/MobileTasteProfileModal';
 import { MobileOrderConfirmModal } from './components/MobileOrderConfirmModal';
@@ -372,6 +373,32 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                           handleUpdateCartQuantity(mealId, q);
                         }}
                         onSelectOption={(opt) => handleSend(opt)}
+                      />
+                    )}
+
+                    {/* IN-CHAT CART CARD WIDGET */}
+                    {!msg.isStreaming && msg.inChatCart && (
+                      <MobileInChatCartCard
+                        cart={cart}
+                        onUpdateQuantity={(mealId, q) => {
+                          handleUpdateCartQuantity(mealId, q);
+                        }}
+                        onRemoveItem={(mealId) => {
+                          removeFromCart(mealId);
+                        }}
+                        onClearCart={() => {
+                          clearCart();
+                        }}
+                        onCheckout={() => {
+                          if (cart && cart.items.length > 0) {
+                            setConfirmModal({
+                              visible: true,
+                              total: cartTotal,
+                              summary: cart.items.map((i) => `${i.quantity}x ${i.meal.name}`).join(', '),
+                            });
+                          }
+                        }}
+                        onOpenCartDrawer={() => setIsCartOpen(true)}
                       />
                     )}
 
@@ -1012,6 +1039,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 12,
     paddingVertical: 7,
+    flexShrink: 0,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.03,

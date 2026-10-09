@@ -6,8 +6,9 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  Platform,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Cart } from '../types';
 import { MobileMealImage } from './MobileMealImage';
 
@@ -30,6 +31,12 @@ export const MobileCartDrawer: React.FC<MobileCartDrawerProps> = ({
   onClearCart,
   onCheckout,
 }) => {
+  const insets = useSafeAreaInsets();
+  const bottomPadding = Math.max(
+    insets.bottom + 12,
+    Platform.OS === 'android' ? 36 : 16
+  );
+
   const items = cart?.items || [];
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -47,12 +54,12 @@ export const MobileCartDrawer: React.FC<MobileCartDrawerProps> = ({
           onPress={onClose}
         />
 
-        <View style={styles.sheet}>
+        <View style={[styles.sheet, { paddingBottom: bottomPadding }]}>
           <SafeAreaView style={styles.safeArea}>
             {/* Header */}
             <View style={styles.header}>
               <View style={styles.headerLeft}>
-                <Text style={styles.headerTitle}>Your Bag</Text>
+                <Text style={styles.headerTitle}>Your Cart</Text>
                 <View style={styles.countBadge}>
                   <Text style={styles.countText}>{itemCount}</Text>
                 </View>
@@ -65,8 +72,8 @@ export const MobileCartDrawer: React.FC<MobileCartDrawerProps> = ({
 
             {items.length === 0 ? (
               <View style={styles.emptyContainer}>
-                <Text style={styles.emptyEmoji}>🛍️</Text>
-                <Text style={styles.emptyTitle}>Your bag is empty</Text>
+                <Text style={styles.emptyEmoji}>🛒</Text>
+                <Text style={styles.emptyTitle}>Your cart is empty</Text>
                 <Text style={styles.emptySubtitle}>
                   Ask Drop AI for recommendations to add delicious meals!
                 </Text>

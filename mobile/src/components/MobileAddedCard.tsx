@@ -36,7 +36,7 @@ export const MobileAddedCard: React.FC<MobileAddedCardProps> = ({
     { label: '🍰 Add a dessert', prompt: 'Add a dessert' },
     { label: '🍲 Add soup', prompt: 'Add soup' },
     { label: '🥗 Add salad', prompt: 'Add salad' },
-    { label: '🛍️ View bag', prompt: 'View cart' },
+    { label: '🛒 View cart', prompt: 'View cart' },
   ];
 
   if (activeItems.length === 0) return null;
@@ -84,7 +84,7 @@ export const MobileAddedCard: React.FC<MobileAddedCardProps> = ({
       ) : (
         /* Multi-item compact list (as requested: one line per dish) */
         <View style={styles.multiCard}>
-          <Text style={styles.multiCardHeader}>Added to your bag:</Text>
+          <Text style={styles.multiCardHeader}>Added to your cart:</Text>
           {activeItems.map((item, idx) => (
             <View key={item.meal.id || idx} style={styles.compactRow}>
               <Text style={styles.compactDot}>•</Text>
@@ -215,6 +215,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderWidth: 1,
     borderColor: '#E5E7EB',
+    flexShrink: 0,
   },
   chipText: {
     fontSize: 12,

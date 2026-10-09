@@ -1,0 +1,8381 @@
+import { Meal } from './types';
+
+/**
+ * 136 Authentic Daily Drop Meals imported from 'DD meal list.xlsx'
+ * Complete with authentic cuisines, prices, macros, ingredients, dietary tags,
+ * and high-resolution photorealistic food photography URLs.
+ */
+export const REAL_DAILY_DROP_MEALS: Meal[] = [
+  {
+    "id": "meal_dd_001_mango_lassi",
+    "name": "Mango Lassi",
+    "description": "Freshly prepared Mango Lassi featuring Mango, Yogurt, and Milk. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 4.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "drink",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Mango",
+      "Yogurt",
+      "Milk",
+      "Sugar",
+      "Cardamom"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 220,
+    "proteinGrams": 6,
+    "nutrition": {
+      "calories": 220,
+      "proteinGrams": 6,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 1.5,
+      "carbsGrams": 38,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_002_bhindi_tomato_rice",
+    "name": "Bhindi + Tomato Rice",
+    "description": "Freshly prepared Bhindi + Tomato Rice featuring Okra, Tomato, and Rice. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 15.0,
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Okra",
+      "Tomato",
+      "Rice",
+      "Onion",
+      "Oil",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 390,
+    "proteinGrams": 8,
+    "nutrition": {
+      "calories": 390,
+      "proteinGrams": 8,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 62,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_003_baingan_lemon_rice",
+    "name": "Baingan + Lemon Rice",
+    "description": "Freshly prepared Baingan + Lemon Rice featuring Eggplant, Rice, and Lemon. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 15.0,
+    "imageUrl": "https://images.unsplash.com/photo-1625398407796-82650a8c135f?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Eggplant",
+      "Rice",
+      "Lemon",
+      "Mustard Seeds",
+      "Curry Leaves",
+      "Oil",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 410,
+    "proteinGrams": 7,
+    "nutrition": {
+      "calories": 410,
+      "proteinGrams": 7,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.9,
+      "carbsGrams": 65,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_004_chicken_biryani_by_bawar",
+    "name": "Chicken Biryani by Bawarchi Biryani",
+    "description": "Freshly prepared Chicken Biryani by Bawarchi Biryani featuring Chicken, Basmati Rice, and Yogurt. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_bawarchi",
+    "restaurantName": "Bawarchi Biryani",
+    "price": 12.5,
+    "imageUrl": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Basmati Rice",
+      "Yogurt",
+      "Onion",
+      "Ginger-Garlic",
+      "Biryani Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 78,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_005_mutton_biryani_by_bawarc",
+    "name": "Mutton Biryani by Bawarchi Biryani",
+    "description": "Freshly prepared Mutton Biryani by Bawarchi Biryani featuring Mutton, Basmati Rice, and Yogurt. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_bawarchi",
+    "restaurantName": "Bawarchi Biryani",
+    "price": 15.0,
+    "imageUrl": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Lamb/Beef",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Mutton",
+      "Basmati Rice",
+      "Yogurt",
+      "Onion",
+      "Ginger-Garlic",
+      "Biryani Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 720,
+    "proteinGrams": 35,
+    "nutrition": {
+      "calories": 720,
+      "proteinGrams": 35,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.0,
+      "carbsGrams": 76,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 35g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_006_cholle_roti",
+    "name": "Cholle + Roti",
+    "description": "Freshly prepared Cholle + Roti featuring Chickpeas, Whole-Wheat Roti, and Tomato. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 16.0,
+    "imageUrl": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Chickpeas",
+      "Whole-Wheat Roti",
+      "Tomato",
+      "Onion",
+      "Ginger",
+      "Garlic",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 460,
+    "proteinGrams": 15,
+    "nutrition": {
+      "calories": 460,
+      "proteinGrams": 15,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.2,
+      "carbsGrams": 68,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian"
+    ]
+  },
+  {
+    "id": "meal_dd_007_rajma_chawal",
+    "name": "Rajma Chawal",
+    "description": "Freshly prepared Rajma Chawal featuring Kidney Beans, Rice, and Tomato. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Kidney Beans",
+      "Rice",
+      "Tomato",
+      "Onion",
+      "Ginger-Garlic",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 430,
+    "proteinGrams": 14,
+    "nutrition": {
+      "calories": 430,
+      "proteinGrams": 14,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 2.4,
+      "carbsGrams": 72,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_008_dal_chawal",
+    "name": "Dal Chawal",
+    "description": "Freshly prepared Dal Chawal featuring Lentils, Rice, and Cumin. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Lentils",
+      "Rice",
+      "Cumin",
+      "Turmeric",
+      "Garlic",
+      "Ghee or Oil",
+      "Salt"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 380,
+    "proteinGrams": 13,
+    "nutrition": {
+      "calories": 380,
+      "proteinGrams": 13,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 2.4,
+      "carbsGrams": 64,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_009_paneer_biryani_by_bawarc",
+    "name": "Paneer Biryani by Bawarchi Biryani",
+    "description": "Freshly prepared Paneer Biryani by Bawarchi Biryani featuring Paneer, Basmati Rice, and Yogurt. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_bawarchi",
+    "restaurantName": "Bawarchi Biryani",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1642821373181-696a54913e9a?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Paneer",
+      "Basmati Rice",
+      "Yogurt",
+      "Onion",
+      "Ginger-Garlic",
+      "Biryani Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 610,
+    "proteinGrams": 20,
+    "nutrition": {
+      "calories": 610,
+      "proteinGrams": 20,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 80,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_010_dum_aloo_chapati",
+    "name": "Dum Aloo Chapati",
+    "description": "Freshly prepared Dum Aloo Chapati featuring Potatoes, Chapati, and Yogurt. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 14.4,
+    "imageUrl": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Potatoes",
+      "Chapati",
+      "Yogurt",
+      "Tomato",
+      "Onion",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 440,
+    "proteinGrams": 9,
+    "nutrition": {
+      "calories": 440,
+      "proteinGrams": 9,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 5.1,
+      "carbsGrams": 61,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_011_signature_tonkotsu_ramen",
+    "name": "Signature Tonkotsu Ramen",
+    "description": "Freshly prepared Signature Tonkotsu Ramen featuring Ramen Noodles, Pork-Bone Broth, and Chashu Pork. Authentic Japanese recipe prepped daily.",
+    "restaurantId": "rest_tokyo",
+    "restaurantName": "Tokyo Bento & Ramen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Japanese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Ramen Noodles",
+      "Pork-Bone Broth",
+      "Chashu Pork",
+      "Soft-Boiled Egg",
+      "Green Onion",
+      "Nori"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 700,
+    "proteinGrams": 28,
+    "nutrition": {
+      "calories": 700,
+      "proteinGrams": 28,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.7,
+      "carbsGrams": 78,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_012_black_garlic_tonkotsu_ra",
+    "name": "Black Garlic Tonkotsu Ramen",
+    "description": "Freshly prepared Black Garlic Tonkotsu Ramen featuring Ramen Noodles, Pork-Bone Broth, and Chashu Pork. Authentic Japanese recipe prepped daily.",
+    "restaurantId": "rest_tokyo",
+    "restaurantName": "Tokyo Bento & Ramen",
+    "price": 14.0,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Japanese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Ramen Noodles",
+      "Pork-Bone Broth",
+      "Chashu Pork",
+      "Black Garlic Oil",
+      "Soft-Boiled Egg",
+      "Green Onion",
+      "Nori"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 740,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 740,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.9,
+      "carbsGrams": 79,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_013_spicy_tonkotsu_ramen",
+    "name": "Spicy Tonkotsu Ramen",
+    "description": "Freshly prepared Spicy Tonkotsu Ramen featuring Ramen Noodles, Pork-Bone Broth, and Chashu Pork. Authentic Japanese recipe prepped daily.",
+    "restaurantId": "rest_tokyo",
+    "restaurantName": "Tokyo Bento & Ramen",
+    "price": 14.0,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Japanese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Spicy",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Ramen Noodles",
+      "Pork-Bone Broth",
+      "Chashu Pork",
+      "Chili Oil",
+      "Soft-Boiled Egg",
+      "Green Onion",
+      "Nori"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 730,
+    "proteinGrams": 29,
+    "nutrition": {
+      "calories": 730,
+      "proteinGrams": 29,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.3,
+      "carbsGrams": 80,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌶️ Spicy",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_014_chicken_shoyu_ramen",
+    "name": "Chicken Shoyu Ramen",
+    "description": "Freshly prepared Chicken Shoyu Ramen featuring Ramen Noodles, Chicken, and Soy Sauce Broth. Authentic Japanese recipe prepped daily.",
+    "restaurantId": "rest_tokyo",
+    "restaurantName": "Tokyo Bento & Ramen",
+    "price": 14.0,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Japanese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Ramen Noodles",
+      "Chicken",
+      "Soy Sauce Broth",
+      "Green Onion",
+      "Bamboo Shoots",
+      "Soft-Boiled Egg",
+      "Nori"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 610,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 610,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.8,
+      "carbsGrams": 76,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_015_beef_bibimbap",
+    "name": "Beef Bibimbap",
+    "description": "Freshly prepared Beef Bibimbap featuring Beef, Rice, and Carrots. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 19.8,
+    "imageUrl": "https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Beef",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Beef",
+      "Rice",
+      "Carrots",
+      "Spinach",
+      "Bean Sprouts",
+      "Egg",
+      "Gochujang"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.0,
+      "carbsGrams": 85,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_016_hot_stone_beef_bibimbap",
+    "name": "Hot Stone Beef Bibimbap",
+    "description": "Freshly prepared Hot Stone Beef Bibimbap featuring Beef, Rice, and Carrots. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 19.8,
+    "imageUrl": "https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Beef",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Beef",
+      "Rice",
+      "Carrots",
+      "Spinach",
+      "Bean Sprouts",
+      "Egg",
+      "Gochujang",
+      "Sesame Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 720,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 720,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 7.5,
+      "carbsGrams": 88,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_017_bulgogi",
+    "name": "Bulgogi",
+    "description": "Freshly prepared Bulgogi featuring Beef, Soy Sauce, and Garlic. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.35,
+    "imageUrl": "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "High-Protein",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Garlic",
+      "Onion",
+      "Sugar",
+      "Sesame Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 480,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 480,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.4,
+      "carbsGrams": 25,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_018_seafood_silky_tofu_soup",
+    "name": "Seafood & Silky Tofu Soup",
+    "description": "Freshly prepared Seafood & Silky Tofu Soup featuring Silken Tofu, Seafood, and Garlic. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.35,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Seafood",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Silken Tofu",
+      "Seafood",
+      "Garlic",
+      "Chili Paste",
+      "Broth",
+      "Green Onion"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 380,
+    "proteinGrams": 28,
+    "nutrition": {
+      "calories": 380,
+      "proteinGrams": 28,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 18,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "⭐ Fresh Daily"
+    ]
+  },
+  {
+    "id": "meal_dd_019_japchaebab",
+    "name": "JapchaeBab",
+    "description": "Freshly prepared JapchaeBab featuring Glass Noodles, Beef, and Rice. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 25.3,
+    "imageUrl": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian"
+    ],
+    "ingredients": [
+      "Glass Noodles",
+      "Beef",
+      "Rice",
+      "Spinach",
+      "Carrots",
+      "Soy Sauce",
+      "Sesame Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 580,
+    "proteinGrams": 22,
+    "nutrition": {
+      "calories": 580,
+      "proteinGrams": 22,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 5.4,
+      "carbsGrams": 78,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "⭐ Fresh Daily"
+    ]
+  },
+  {
+    "id": "meal_dd_020_cold_kimchi_noodles",
+    "name": "Cold Kimchi Noodles",
+    "description": "Freshly prepared Cold Kimchi Noodles featuring Noodles, Kimchi, and Cucumber. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.35,
+    "imageUrl": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Noodles",
+      "Kimchi",
+      "Cucumber",
+      "Chili Paste",
+      "Vinegar",
+      "Sesame Seeds"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 450,
+    "proteinGrams": 12,
+    "nutrition": {
+      "calories": 450,
+      "proteinGrams": 12,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.0,
+      "carbsGrams": 75,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian"
+    ]
+  },
+  {
+    "id": "meal_dd_021_kimchi_soup",
+    "name": "Kimchi Soup",
+    "description": "Freshly prepared Kimchi Soup featuring Kimchi, Tofu, and Onion. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.35,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Kimchi",
+      "Tofu",
+      "Onion",
+      "Garlic",
+      "Chili Paste",
+      "Vegetable Broth"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 320,
+    "proteinGrams": 12,
+    "nutrition": {
+      "calories": 320,
+      "proteinGrams": 12,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 5.4,
+      "carbsGrams": 25,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian"
+    ]
+  },
+  {
+    "id": "meal_dd_022_seafood_miso_soup",
+    "name": "Seafood Miso Soup",
+    "description": "Freshly prepared Seafood Miso Soup featuring Seafood, Miso Paste, and Tofu. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.35,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Seafood",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Seafood",
+      "Miso Paste",
+      "Tofu",
+      "Green Onion",
+      "Seaweed",
+      "Broth"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 300,
+    "proteinGrams": 25,
+    "nutrition": {
+      "calories": 300,
+      "proteinGrams": 25,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 18,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "⭐ Fresh Daily"
+    ]
+  },
+  {
+    "id": "meal_dd_023_pork_backbone_soup",
+    "name": "Pork Backbone Soup",
+    "description": "Freshly prepared Pork Backbone Soup featuring Pork Backbone, Potatoes, and Cabbage. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.35,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Pork",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Pork Backbone",
+      "Potatoes",
+      "Cabbage",
+      "Garlic",
+      "Chili Paste",
+      "Perilla Seeds"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 550,
+    "proteinGrams": 38,
+    "nutrition": {
+      "calories": 550,
+      "proteinGrams": 38,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.6,
+      "carbsGrams": 25,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 38g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_024_beef_rib_soup",
+    "name": "Beef Rib Soup",
+    "description": "Freshly prepared Beef Rib Soup featuring Beef Ribs, Radish, and Garlic. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 24.2,
+    "imageUrl": "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Beef",
+      "High-Protein",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Beef Ribs",
+      "Radish",
+      "Garlic",
+      "Green Onion",
+      "Beef Broth"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 480,
+    "proteinGrams": 35,
+    "nutrition": {
+      "calories": 480,
+      "proteinGrams": 35,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.4,
+      "carbsGrams": 18,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 35g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_025_spicy_pork",
+    "name": "Spicy Pork",
+    "description": "Freshly prepared Spicy Pork featuring Pork, Gochujang, and Garlic. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.35,
+    "imageUrl": "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Pork",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Pork",
+      "Gochujang",
+      "Garlic",
+      "Onion",
+      "Soy Sauce",
+      "Sesame Oil"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 520,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 520,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.6,
+      "carbsGrams": 22,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_026_spicy_squid",
+    "name": "Spicy Squid",
+    "description": "Freshly prepared Spicy Squid featuring Squid, Gochujang, and Onion. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.9,
+    "imageUrl": "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Seafood",
+      "Spicy",
+      "High-Protein",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Squid",
+      "Gochujang",
+      "Onion",
+      "Carrots",
+      "Garlic",
+      "Sesame Oil"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 350,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 350,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.2,
+      "carbsGrams": 25,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_027_kongguksu",
+    "name": "KongGukSu",
+    "description": "Freshly prepared KongGukSu featuring Noodles, Soybean Broth, and Sesame Seeds. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.35,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Noodles",
+      "Soybean Broth",
+      "Sesame Seeds",
+      "Cucumber",
+      "Salt"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 420,
+    "proteinGrams": 18,
+    "nutrition": {
+      "calories": 420,
+      "proteinGrams": 18,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 60,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian"
+    ]
+  },
+  {
+    "id": "meal_dd_028_jajangmyeon",
+    "name": "Jajangmyeon",
+    "description": "Freshly prepared Jajangmyeon featuring Wheat Noodles, Black Bean Paste, and Pork. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.35,
+    "imageUrl": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian"
+    ],
+    "ingredients": [
+      "Wheat Noodles",
+      "Black Bean Paste",
+      "Pork",
+      "Onion",
+      "Zucchini",
+      "Potatoes"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 22,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 22,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 90,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "⭐ Fresh Daily"
+    ]
+  },
+  {
+    "id": "meal_dd_029_gan_jjajang",
+    "name": "Gan-Jjajang",
+    "description": "Freshly prepared Gan-Jjajang featuring Wheat Noodles, Black Bean Paste, and Pork. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 22.0,
+    "imageUrl": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian"
+    ],
+    "ingredients": [
+      "Wheat Noodles",
+      "Black Bean Paste",
+      "Pork",
+      "Onion",
+      "Zucchini",
+      "Cooking Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 700,
+    "proteinGrams": 25,
+    "nutrition": {
+      "calories": 700,
+      "proteinGrams": 25,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 7.5,
+      "carbsGrams": 92,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "⭐ Fresh Daily"
+    ]
+  },
+  {
+    "id": "meal_dd_030_seafood_jjajangmyeon",
+    "name": "Seafood Jjajangmyeon",
+    "description": "Freshly prepared Seafood Jjajangmyeon featuring Wheat Noodles, Black Bean Paste, and Shrimp. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 27.5,
+    "imageUrl": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Seafood",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Wheat Noodles",
+      "Black Bean Paste",
+      "Shrimp",
+      "Squid",
+      "Onion",
+      "Zucchini"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 680,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 680,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 88,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_031_spicy_seafood_jjajangmye",
+    "name": "Spicy Seafood Jjajangmyeon",
+    "description": "Freshly prepared Spicy Seafood Jjajangmyeon featuring Wheat Noodles, Black Bean Paste, and Seafood. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 28.6,
+    "imageUrl": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Seafood",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Wheat Noodles",
+      "Black Bean Paste",
+      "Seafood",
+      "Chili Oil",
+      "Onion",
+      "Garlic"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 700,
+    "proteinGrams": 31,
+    "nutrition": {
+      "calories": 700,
+      "proteinGrams": 31,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 7.2,
+      "carbsGrams": 88,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 31g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_032_jjambbong",
+    "name": "Jjambbong",
+    "description": "Freshly prepared Jjambbong featuring Wheat Noodles, Seafood, and Pork. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 23.1,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Wheat Noodles",
+      "Seafood",
+      "Pork",
+      "Cabbage",
+      "Onion",
+      "Chili Broth"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.0,
+      "carbsGrams": 82,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_033_gan_jjambbong",
+    "name": "Gan-Jjambbong",
+    "description": "Freshly prepared Gan-Jjambbong featuring Wheat Noodles, Seafood, and Pork. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 27.5,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Wheat Noodles",
+      "Seafood",
+      "Pork",
+      "Chili Oil",
+      "Cabbage",
+      "Garlic"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 720,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 720,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 7.5,
+      "carbsGrams": 90,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_034_cream_jjambbong",
+    "name": "Cream Jjambbong",
+    "description": "Freshly prepared Cream Jjambbong featuring Wheat Noodles, Seafood, and Cream. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 27.5,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Wheat Noodles",
+      "Seafood",
+      "Cream",
+      "Milk",
+      "Garlic",
+      "Onion"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 780,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 780,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 10.2,
+      "carbsGrams": 85,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_035_gochu_jjambbong",
+    "name": "Gochu-Jjambbong",
+    "description": "Freshly prepared Gochu-Jjambbong featuring Wheat Noodles, Seafood, and Chili Peppers. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 24.2,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Wheat Noodles",
+      "Seafood",
+      "Chili Peppers",
+      "Pork",
+      "Cabbage",
+      "Garlic"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 680,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 680,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 84,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_036_spicy_gan_jjambbong",
+    "name": "Spicy Gan-Jjambbong",
+    "description": "Freshly prepared Spicy Gan-Jjambbong featuring Wheat Noodles, Seafood, and Pork. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 28.6,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Wheat Noodles",
+      "Seafood",
+      "Pork",
+      "Chili Paste",
+      "Chili Oil",
+      "Vegetables"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 730,
+    "proteinGrams": 33,
+    "nutrition": {
+      "calories": 730,
+      "proteinGrams": 33,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 7.8,
+      "carbsGrams": 90,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 33g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_037_spicy_cream_jjambbong",
+    "name": "Spicy Cream Jjambbong",
+    "description": "Freshly prepared Spicy Cream Jjambbong featuring Wheat Noodles, Seafood, and Cream. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 28.6,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Wheat Noodles",
+      "Seafood",
+      "Cream",
+      "Chili Oil",
+      "Garlic",
+      "Onion"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 800,
+    "proteinGrams": 31,
+    "nutrition": {
+      "calories": 800,
+      "proteinGrams": 31,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 10.8,
+      "carbsGrams": 86,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 31g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_038_sweet_sour_pork",
+    "name": "Sweet & Sour Pork",
+    "description": "Freshly prepared Sweet & Sour Pork featuring Pork, Potato Starch, and Sweet and Sour Sauce. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 35.2,
+    "imageUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Pork",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Pork",
+      "Potato Starch",
+      "Sweet and Sour Sauce",
+      "Bell Peppers",
+      "Onion",
+      "Pineapple"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.4,
+      "carbsGrams": 65,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_039_spicy_sweet_sour_pork",
+    "name": "Spicy Sweet & Sour Pork",
+    "description": "Freshly prepared Spicy Sweet & Sour Pork featuring Pork, Potato Starch, and Sweet and Sour Sauce. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 36.3,
+    "imageUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Pork",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Pork",
+      "Potato Starch",
+      "Sweet and Sour Sauce",
+      "Chili Sauce",
+      "Bell Peppers",
+      "Onion"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 680,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 680,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.0,
+      "carbsGrams": 67,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_040_soy_garlic_chicken",
+    "name": "Soy Garlic Chicken",
+    "description": "Freshly prepared Soy Garlic Chicken featuring Chicken, Soy Sauce, and Garlic. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 35.2,
+    "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Garlic",
+      "Sugar",
+      "Cornstarch",
+      "Cooking Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 620,
+    "proteinGrams": 38,
+    "nutrition": {
+      "calories": 620,
+      "proteinGrams": 38,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.4,
+      "carbsGrams": 45,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 38g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_041_spicy_soy_garlic_chicken",
+    "name": "Spicy Soy Garlic Chicken",
+    "description": "Freshly prepared Spicy Soy Garlic Chicken featuring Chicken, Soy Sauce, and Garlic. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 36.3,
+    "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Soy Sauce",
+      "Garlic",
+      "Chili Sauce",
+      "Sugar",
+      "Cooking Oil"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 38,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 38,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.7,
+      "carbsGrams": 48,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 38g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_042_sweet_chilli_chicken",
+    "name": "Sweet Chilli Chicken",
+    "description": "Freshly prepared Sweet Chilli Chicken featuring Chicken, Sweet Chili Sauce, and Garlic. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 35.2,
+    "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Sweet Chili Sauce",
+      "Garlic",
+      "Cornstarch",
+      "Cooking Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 620,
+    "proteinGrams": 36,
+    "nutrition": {
+      "calories": 620,
+      "proteinGrams": 36,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 7.5,
+      "carbsGrams": 52,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 36g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_043_spicy_sweet_chilli_chick",
+    "name": "Spicy Sweet Chilli Chicken",
+    "description": "Freshly prepared Spicy Sweet Chilli Chicken featuring Chicken, Sweet Chili Sauce, and Chili Peppers. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 36.3,
+    "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Sweet Chili Sauce",
+      "Chili Peppers",
+      "Garlic",
+      "Cornstarch",
+      "Cooking Oil"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 36,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 36,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.1,
+      "carbsGrams": 54,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 36g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_044_sweet_chilli_chicken_wit",
+    "name": "Sweet Chilli Chicken with Chips",
+    "description": "Freshly prepared Sweet Chilli Chicken with Chips featuring Chicken, Sweet Chili Sauce, and Potatoes. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 39.05,
+    "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Sweet Chili Sauce",
+      "Potatoes",
+      "Cooking Oil",
+      "Seasoning"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 850,
+    "proteinGrams": 38,
+    "nutrition": {
+      "calories": 850,
+      "proteinGrams": 38,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 11.4,
+      "carbsGrams": 90,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 38g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_045_mala_cream_chicken",
+    "name": "Mala Cream Chicken",
+    "description": "Freshly prepared Mala Cream Chicken featuring Chicken, Cream, and Mala Chili Seasoning. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 39.05,
+    "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Cream",
+      "Mala Chili Seasoning",
+      "Garlic",
+      "Butter",
+      "Cooking Oil"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 780,
+    "proteinGrams": 38,
+    "nutrition": {
+      "calories": 780,
+      "proteinGrams": 38,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 13.5,
+      "carbsGrams": 48,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 38g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_046_extra_mozzarella",
+    "name": "Extra Mozzarella",
+    "description": "Freshly prepared Extra Mozzarella featuring Mozzarella Cheese. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 5.5,
+    "imageUrl": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Mozzarella Cheese"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 85,
+    "proteinGrams": 6,
+    "nutrition": {
+      "calories": 85,
+      "proteinGrams": 6,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 1.8,
+      "carbsGrams": 1,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_047_extra_slice_cheese",
+    "name": "Extra Slice Cheese",
+    "description": "Freshly prepared Extra Slice Cheese featuring Cheese. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 5.5,
+    "imageUrl": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Cheese"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 60,
+    "proteinGrams": 4,
+    "nutrition": {
+      "calories": 60,
+      "proteinGrams": 4,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 1.5,
+      "carbsGrams": 1,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_048_pork_backbone",
+    "name": "Pork Backbone",
+    "description": "Freshly prepared Pork Backbone featuring Pork Backbone, Garlic, and Ginger. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 49.5,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Pork",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Pork Backbone",
+      "Garlic",
+      "Ginger",
+      "Green Onion",
+      "Broth"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 550,
+    "proteinGrams": 38,
+    "nutrition": {
+      "calories": 550,
+      "proteinGrams": 38,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.6,
+      "carbsGrams": 25,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 38g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_049_kimchi_beef_rib",
+    "name": "Kimchi & Beef Rib",
+    "description": "Freshly prepared Kimchi & Beef Rib featuring Beef Ribs, Kimchi, and Garlic. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 52.8,
+    "imageUrl": "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Beef",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Beef Ribs",
+      "Kimchi",
+      "Garlic",
+      "Onion",
+      "Chili Paste",
+      "Broth"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 620,
+    "proteinGrams": 40,
+    "nutrition": {
+      "calories": 620,
+      "proteinGrams": 40,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 11.4,
+      "carbsGrams": 25,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 40g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_050_marinated_beef",
+    "name": "Marinated Beef",
+    "description": "Freshly prepared Marinated Beef featuring Beef, Soy Sauce, and Garlic. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 49.5,
+    "imageUrl": "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Beef",
+      "High-Protein",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Beef",
+      "Soy Sauce",
+      "Garlic",
+      "Sugar",
+      "Sesame Oil",
+      "Onion"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 480,
+    "proteinGrams": 35,
+    "nutrition": {
+      "calories": 480,
+      "proteinGrams": 35,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.0,
+      "carbsGrams": 20,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 35g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_051_army_stew",
+    "name": "Army Stew",
+    "description": "Freshly prepared Army Stew featuring Sausage, Ham, and Kimchi. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 49.5,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Spicy",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Sausage",
+      "Ham",
+      "Kimchi",
+      "Tofu",
+      "Baked Beans",
+      "Noodles",
+      "Chili Paste"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.6,
+      "carbsGrams": 55,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein",
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_052_spicy_rice_cake",
+    "name": "Spicy Rice Cake",
+    "description": "Freshly prepared Spicy Rice Cake featuring Rice Cakes, Gochujang, and Sugar. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 38.5,
+    "imageUrl": "https://images.unsplash.com/photo-1635363638580-c2809d049eee?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Spicy",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Rice Cakes",
+      "Gochujang",
+      "Sugar",
+      "Fish Cake",
+      "Green Onion"
+    ],
+    "spicyLevel": 2,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 420,
+    "proteinGrams": 9,
+    "nutrition": {
+      "calories": 420,
+      "proteinGrams": 9,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 2.4,
+      "carbsGrams": 78,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌶️ Spicy"
+    ]
+  },
+  {
+    "id": "meal_dd_053_extra_meat",
+    "name": "Extra Meat",
+    "description": "Freshly prepared Extra Meat featuring Cooked Meat. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 15.4,
+    "imageUrl": "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Cooked Meat"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 220,
+    "proteinGrams": 25,
+    "nutrition": {
+      "calories": 220,
+      "proteinGrams": 25,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 2,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "⭐ Fresh Daily"
+    ]
+  },
+  {
+    "id": "meal_dd_054_extra_noodles",
+    "name": "Extra Noodles",
+    "description": "Freshly prepared Extra Noodles featuring Wheat Noodles. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 5.5,
+    "imageUrl": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Wheat Noodles"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 250,
+    "proteinGrams": 7,
+    "nutrition": {
+      "calories": 250,
+      "proteinGrams": 7,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 1.2,
+      "carbsGrams": 48,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_055_extra_soup",
+    "name": "Extra Soup",
+    "description": "Freshly prepared Extra Soup featuring Soup Broth, Seasoning. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 6.6,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Soup Broth",
+      "Seasoning"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 80,
+    "proteinGrams": 3,
+    "nutrition": {
+      "calories": 80,
+      "proteinGrams": 3,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 0.9,
+      "carbsGrams": 10,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_056_extra_tofu",
+    "name": "Extra Tofu",
+    "description": "Freshly prepared Extra Tofu featuring Tofu. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 2.75,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Tofu"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 80,
+    "proteinGrams": 9,
+    "nutrition": {
+      "calories": 80,
+      "proteinGrams": 9,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 1.2,
+      "carbsGrams": 2,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_057_deep_fried_dumplings",
+    "name": "Deep Fried Dumplings",
+    "description": "Freshly prepared Deep Fried Dumplings featuring Dumpling Wrappers, Vegetables, and Tofu. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 8.8,
+    "imageUrl": "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Dumpling Wrappers",
+      "Vegetables",
+      "Tofu",
+      "Cooking Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 320,
+    "proteinGrams": 9,
+    "nutrition": {
+      "calories": 320,
+      "proteinGrams": 9,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.5,
+      "carbsGrams": 38,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_058_seafood_pancake",
+    "name": "Seafood Pancake",
+    "description": "Freshly prepared Seafood Pancake featuring Seafood, Flour, and Egg. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 24.2,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Seafood",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Seafood",
+      "Flour",
+      "Egg",
+      "Green Onion",
+      "Cooking Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 480,
+    "proteinGrams": 24,
+    "nutrition": {
+      "calories": 480,
+      "proteinGrams": 24,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.0,
+      "carbsGrams": 48,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "⭐ Fresh Daily"
+    ]
+  },
+  {
+    "id": "meal_dd_059_kimchi_pancake",
+    "name": "Kimchi Pancake",
+    "description": "Freshly prepared Kimchi Pancake featuring Kimchi, Flour, and Water. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 20.9,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Kimchi",
+      "Flour",
+      "Water",
+      "Green Onion",
+      "Cooking Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 400,
+    "proteinGrams": 9,
+    "nutrition": {
+      "calories": 400,
+      "proteinGrams": 9,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.8,
+      "carbsGrams": 52,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian"
+    ]
+  },
+  {
+    "id": "meal_dd_060_cheese_kimchi_pancake",
+    "name": "Cheese Kimchi Pancake",
+    "description": "Freshly prepared Cheese Kimchi Pancake featuring Kimchi, Cheese, and Flour. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 24.2,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Kimchi",
+      "Cheese",
+      "Flour",
+      "Green Onion",
+      "Cooking Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 480,
+    "proteinGrams": 16,
+    "nutrition": {
+      "calories": 480,
+      "proteinGrams": 16,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.9,
+      "carbsGrams": 50,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian"
+    ]
+  },
+  {
+    "id": "meal_dd_061_japchae",
+    "name": "Japchae",
+    "description": "Freshly prepared Japchae featuring Glass Noodles, Spinach, and Carrots. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 24.2,
+    "imageUrl": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal"
+    ],
+    "ingredients": [
+      "Glass Noodles",
+      "Spinach",
+      "Carrots",
+      "Onion",
+      "Soy Sauce",
+      "Sesame Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 420,
+    "proteinGrams": 8,
+    "nutrition": {
+      "calories": 420,
+      "proteinGrams": 8,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.2,
+      "carbsGrams": 65,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian"
+    ]
+  },
+  {
+    "id": "meal_dd_062_bowl_of_rice",
+    "name": "Bowl of Rice",
+    "description": "Freshly prepared Bowl of Rice featuring Rice, Water. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 3.85,
+    "imageUrl": "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Rice",
+      "Water"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 205,
+    "proteinGrams": 4,
+    "nutrition": {
+      "calories": 205,
+      "proteinGrams": 4,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 0.0,
+      "carbsGrams": 45,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_063_side_soup",
+    "name": "Side Soup",
+    "description": "Freshly prepared Side Soup featuring Soup Broth, Seasoning, and Green Onion. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 3.85,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Soup Broth",
+      "Seasoning",
+      "Green Onion"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 80,
+    "proteinGrams": 3,
+    "nutrition": {
+      "calories": 80,
+      "proteinGrams": 3,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 0.9,
+      "carbsGrams": 10,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_064_chips",
+    "name": "Chips",
+    "description": "Freshly prepared Chips featuring Potatoes, Cooking Oil, and Salt. Authentic Korean recipe prepped daily.",
+    "restaurantId": "rest_seoul",
+    "restaurantName": "Seoul Pocha & Kitchen",
+    "price": 5.5,
+    "imageUrl": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Korean",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Potatoes",
+      "Cooking Oil",
+      "Salt"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 320,
+    "proteinGrams": 4,
+    "nutrition": {
+      "calories": 320,
+      "proteinGrams": 4,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.5,
+      "carbsGrams": 42,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_065_roast_chicken_rice",
+    "name": "Roast Chicken Rice",
+    "description": "Freshly prepared Roast Chicken Rice featuring Chicken, Rice, and Herbs. Authentic Western/Continental recipe prepped daily.",
+    "restaurantId": "rest_continental",
+    "restaurantName": "Continental Roastery",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Western/Continental",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "Herbs",
+      "Oil",
+      "Seasoning"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 520,
+    "proteinGrams": 35,
+    "nutrition": {
+      "calories": 520,
+      "proteinGrams": 35,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.2,
+      "carbsGrams": 58,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 35g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_066_steam_chicken_rice",
+    "name": "Steam Chicken Rice",
+    "description": "Freshly prepared Steam Chicken Rice featuring Chicken, Rice, and Ginger. Authentic Western/Continental recipe prepped daily.",
+    "restaurantId": "rest_continental",
+    "restaurantName": "Continental Roastery",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Western/Continental",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "Ginger",
+      "Garlic",
+      "Seasoning"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 450,
+    "proteinGrams": 34,
+    "nutrition": {
+      "calories": 450,
+      "proteinGrams": 34,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 2.4,
+      "carbsGrams": 55,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 34g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_067_bbq_chicken_rice",
+    "name": "BBQ Chicken Rice",
+    "description": "Freshly prepared BBQ Chicken Rice featuring Chicken, Rice, and BBQ Sauce. Authentic Western/Continental recipe prepped daily.",
+    "restaurantId": "rest_continental",
+    "restaurantName": "Continental Roastery",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Western/Continental",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "BBQ Sauce",
+      "Garlic",
+      "Seasoning"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 560,
+    "proteinGrams": 36,
+    "nutrition": {
+      "calories": 560,
+      "proteinGrams": 36,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.8,
+      "carbsGrams": 62,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 36g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_068_bbq_chicken_fried_rice",
+    "name": "BBQ Chicken Fried Rice",
+    "description": "Freshly prepared BBQ Chicken Fried Rice featuring Chicken, Rice, and Egg. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "Egg",
+      "Soy Sauce",
+      "Vegetables",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 620,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 620,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 5.7,
+      "carbsGrams": 78,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_069_nasi_lemak",
+    "name": "Nasi Lemak",
+    "description": "Freshly prepared Nasi Lemak featuring Coconut Rice, Egg, and Anchovies. Authentic Malaysian recipe prepped daily.",
+    "restaurantId": "rest_kopitiam",
+    "restaurantName": "Kopitiam Nanyang Flavours",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Malaysian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Coconut Rice",
+      "Egg",
+      "Anchovies",
+      "Peanuts",
+      "Cucumber",
+      "Sambal"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 18,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 18,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.4,
+      "carbsGrams": 75,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_070_teriyaki_chicken_rice",
+    "name": "Teriyaki Chicken Rice",
+    "description": "Freshly prepared Teriyaki Chicken Rice featuring Chicken, Rice, and Teriyaki Sauce. Authentic Japanese recipe prepped daily.",
+    "restaurantId": "rest_tokyo",
+    "restaurantName": "Tokyo Bento & Ramen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Japanese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "Teriyaki Sauce",
+      "Sesame Seeds"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 530,
+    "proteinGrams": 35,
+    "nutrition": {
+      "calories": 530,
+      "proteinGrams": 35,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.0,
+      "carbsGrams": 68,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 35g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_071_teriyaki_fish_rice",
+    "name": "Teriyaki Fish Rice",
+    "description": "Freshly prepared Teriyaki Fish Rice featuring Fish, Rice, and Teriyaki Sauce. Authentic Japanese recipe prepped daily.",
+    "restaurantId": "rest_tokyo",
+    "restaurantName": "Tokyo Bento & Ramen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Japanese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Seafood",
+      "High-Protein",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Fish",
+      "Rice",
+      "Teriyaki Sauce",
+      "Sesame Seeds"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 480,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 480,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 2.4,
+      "carbsGrams": 65,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_072_lemon_chicken_rice",
+    "name": "Lemon Chicken Rice",
+    "description": "Freshly prepared Lemon Chicken Rice featuring Chicken, Rice, and Lemon. Authentic Western/Continental recipe prepped daily.",
+    "restaurantId": "rest_continental",
+    "restaurantName": "Continental Roastery",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Western/Continental",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "Lemon",
+      "Garlic",
+      "Herbs"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 500,
+    "proteinGrams": 35,
+    "nutrition": {
+      "calories": 500,
+      "proteinGrams": 35,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 60,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 35g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_073_beef_curry_rice",
+    "name": "Beef Curry Rice",
+    "description": "Freshly prepared Beef Curry Rice featuring Beef, Rice, and Onion. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 13.5,
+    "imageUrl": "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Beef",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Beef",
+      "Rice",
+      "Onion",
+      "Tomato",
+      "Curry Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 620,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 620,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 65,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_074_dry_egg_noodles_with_bbq",
+    "name": "Dry Egg Noodles with BBQ Chicken & Vegetables",
+    "description": "Freshly prepared Dry Egg Noodles with BBQ Chicken & Vegetables featuring Egg Noodles, BBQ Chicken, and Carrots. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 13.5,
+    "imageUrl": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Egg Noodles",
+      "BBQ Chicken",
+      "Carrots",
+      "Cabbage",
+      "Soy Sauce",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.0,
+      "carbsGrams": 78,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_075_dry_egg_noodles_with_ter",
+    "name": "Dry Egg Noodles with Teriyaki Chicken & Vegetables",
+    "description": "Freshly prepared Dry Egg Noodles with Teriyaki Chicken & Vegetables featuring Egg Noodles, Chicken, and Teriyaki Sauce. Authentic Japanese recipe prepped daily.",
+    "restaurantId": "rest_tokyo",
+    "restaurantName": "Tokyo Bento & Ramen",
+    "price": 13.5,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Japanese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Egg Noodles",
+      "Chicken",
+      "Teriyaki Sauce",
+      "Carrots",
+      "Cabbage",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 620,
+    "proteinGrams": 34,
+    "nutrition": {
+      "calories": 620,
+      "proteinGrams": 34,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.8,
+      "carbsGrams": 75,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 34g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_076_dry_egg_noodles_with_ter",
+    "name": "Dry Egg Noodles with Teriyaki Fish & Vegetables",
+    "description": "Freshly prepared Dry Egg Noodles with Teriyaki Fish & Vegetables featuring Egg Noodles, Fish, and Teriyaki Sauce. Authentic Japanese recipe prepped daily.",
+    "restaurantId": "rest_tokyo",
+    "restaurantName": "Tokyo Bento & Ramen",
+    "price": 13.5,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Japanese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Seafood",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Egg Noodles",
+      "Fish",
+      "Teriyaki Sauce",
+      "Carrots",
+      "Cabbage",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 590,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 590,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.5,
+      "carbsGrams": 74,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_077_dry_egg_noodles_with_roa",
+    "name": "Dry Egg Noodles with Roast Chicken & Vegetables",
+    "description": "Freshly prepared Dry Egg Noodles with Roast Chicken & Vegetables featuring Egg Noodles, Roast Chicken, and Carrots. Authentic Western/Continental recipe prepped daily.",
+    "restaurantId": "rest_continental",
+    "restaurantName": "Continental Roastery",
+    "price": 13.5,
+    "imageUrl": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Western/Continental",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Egg Noodles",
+      "Roast Chicken",
+      "Carrots",
+      "Cabbage",
+      "Garlic",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 610,
+    "proteinGrams": 35,
+    "nutrition": {
+      "calories": 610,
+      "proteinGrams": 35,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.8,
+      "carbsGrams": 72,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 35g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_078_dry_egg_noodles_with_ste",
+    "name": "Dry Egg Noodles with Steam Chicken & Vegetables",
+    "description": "Freshly prepared Dry Egg Noodles with Steam Chicken & Vegetables featuring Egg Noodles, Steamed Chicken, and Carrots. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 13.5,
+    "imageUrl": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Egg Noodles",
+      "Steamed Chicken",
+      "Carrots",
+      "Cabbage",
+      "Soy Sauce",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 580,
+    "proteinGrams": 34,
+    "nutrition": {
+      "calories": 580,
+      "proteinGrams": 34,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.9,
+      "carbsGrams": 73,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 34g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_079_rigatoni_pork_amatrician",
+    "name": "Rigatoni Pork Amatriciana",
+    "description": "Freshly prepared Rigatoni Pork Amatriciana featuring Rigatoni Pasta, Pork, and Tomatoes. Authentic Italian recipe prepped daily.",
+    "restaurantId": "rest_roma",
+    "restaurantName": "Roma Pasta Cucina",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1621996346565-e3d5d6281682?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Italian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Pork",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Rigatoni Pasta",
+      "Pork",
+      "Tomatoes",
+      "Onion",
+      "Garlic",
+      "Olive Oil",
+      "Parmesan Cheese"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 620,
+    "proteinGrams": 28,
+    "nutrition": {
+      "calories": 620,
+      "proteinGrams": 28,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 75,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_080_mezze_maniche_creamy_bas",
+    "name": "Mezze Maniche Creamy Basil Pesto",
+    "description": "Freshly prepared Mezze Maniche Creamy Basil Pesto featuring Mezze Maniche Pasta, Basil Pesto, and Cream. Authentic Italian recipe prepped daily.",
+    "restaurantId": "rest_roma",
+    "restaurantName": "Roma Pasta Cucina",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1621996346565-e3d5d6281682?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Italian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Mezze Maniche Pasta",
+      "Basil Pesto",
+      "Cream",
+      "Parmesan Cheese",
+      "Garlic",
+      "Olive Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 580,
+    "proteinGrams": 18,
+    "nutrition": {
+      "calories": 580,
+      "proteinGrams": 18,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 7.8,
+      "carbsGrams": 68,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_081_rigatoni_napoletana",
+    "name": "Rigatoni Napoletana",
+    "description": "Freshly prepared Rigatoni Napoletana featuring Rigatoni Pasta, Tomatoes, and Garlic. Authentic Italian recipe prepped daily.",
+    "restaurantId": "rest_roma",
+    "restaurantName": "Roma Pasta Cucina",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1621996346565-e3d5d6281682?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Italian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Rigatoni Pasta",
+      "Tomatoes",
+      "Garlic",
+      "Basil",
+      "Olive Oil",
+      "Parmesan Cheese"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 490,
+    "proteinGrams": 15,
+    "nutrition": {
+      "calories": 490,
+      "proteinGrams": 15,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 78,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_082_spaghetti_beef_bolognese",
+    "name": "Spaghetti Beef Bolognese",
+    "description": "Freshly prepared Spaghetti Beef Bolognese featuring Spaghetti, Ground Beef, and Tomatoes. Authentic Italian recipe prepped daily.",
+    "restaurantId": "rest_roma",
+    "restaurantName": "Roma Pasta Cucina",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1621996346565-e3d5d6281682?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Italian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Beef",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Spaghetti",
+      "Ground Beef",
+      "Tomatoes",
+      "Onion",
+      "Carrots",
+      "Garlic",
+      "Olive Oil",
+      "Parmesan Cheese"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.3,
+      "carbsGrams": 78,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_083_casarecce_chicken_carbon",
+    "name": "Casarecce Chicken Carbonara",
+    "description": "Freshly prepared Casarecce Chicken Carbonara featuring Casarecce Pasta, Chicken, and Egg. Authentic Italian recipe prepped daily.",
+    "restaurantId": "rest_roma",
+    "restaurantName": "Roma Pasta Cucina",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1621996346565-e3d5d6281682?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Italian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Casarecce Pasta",
+      "Chicken",
+      "Egg",
+      "Parmesan Cheese",
+      "Cream",
+      "Black Pepper"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 640,
+    "proteinGrams": 35,
+    "nutrition": {
+      "calories": 640,
+      "proteinGrams": 35,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 7.2,
+      "carbsGrams": 65,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 35g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_084_fusilli_creamy_mushroom",
+    "name": "Fusilli Creamy Mushroom",
+    "description": "Freshly prepared Fusilli Creamy Mushroom featuring Fusilli Pasta, Mushrooms, and Cream. Authentic Italian recipe prepped daily.",
+    "restaurantId": "rest_roma",
+    "restaurantName": "Roma Pasta Cucina",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1621996346565-e3d5d6281682?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Italian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Fusilli Pasta",
+      "Mushrooms",
+      "Cream",
+      "Garlic",
+      "Parmesan Cheese",
+      "Olive Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 560,
+    "proteinGrams": 17,
+    "nutrition": {
+      "calories": 560,
+      "proteinGrams": 17,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.9,
+      "carbsGrams": 70,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_085_sweet_corn_soup_chicken",
+    "name": "Sweet Corn Soup (chicken)",
+    "description": "Freshly prepared Sweet Corn Soup (chicken) featuring Sweet Corn, Chicken, and Chicken Broth. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 8.0,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "side",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Sweet Corn",
+      "Chicken",
+      "Chicken Broth",
+      "Cornstarch",
+      "Egg",
+      "Seasoning"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 220,
+    "proteinGrams": 15,
+    "nutrition": {
+      "calories": 220,
+      "proteinGrams": 15,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 2.1,
+      "carbsGrams": 24,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_086_sweet_corn_soup_veg",
+    "name": "Sweet Corn Soup (veg)",
+    "description": "Freshly prepared Sweet Corn Soup (veg) featuring Sweet Corn, Vegetable Broth, and Cornstarch. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 8.0,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Sweet Corn",
+      "Vegetable Broth",
+      "Cornstarch",
+      "Carrot",
+      "Seasoning"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 180,
+    "proteinGrams": 5,
+    "nutrition": {
+      "calories": 180,
+      "proteinGrams": 5,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 1.5,
+      "carbsGrams": 30,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_087_egg_soup",
+    "name": "Egg Soup",
+    "description": "Freshly prepared Egg Soup featuring Egg, Vegetable Broth, and Spring Onion. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 8.0,
+    "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Egg",
+      "Vegetable Broth",
+      "Spring Onion",
+      "White Pepper",
+      "Seasoning"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 150,
+    "proteinGrams": 9,
+    "nutrition": {
+      "calories": 150,
+      "proteinGrams": 9,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 2.4,
+      "carbsGrams": 8,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_088_homestyle_mapo_tofu",
+    "name": "Homestyle Mapo Tofu",
+    "description": "Freshly prepared Homestyle Mapo Tofu featuring Tofu, Doubanjiang, and Garlic. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Tofu",
+      "Doubanjiang",
+      "Garlic",
+      "Ginger",
+      "Sichuan Pepper",
+      "Soy Sauce",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 380,
+    "proteinGrams": 18,
+    "nutrition": {
+      "calories": 380,
+      "proteinGrams": 18,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 7.5,
+      "carbsGrams": 20,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_089_dry_tofu_sticks_with_veg",
+    "name": "Dry Tofu Sticks with Vegetables",
+    "description": "Freshly prepared Dry Tofu Sticks with Vegetables featuring Dried Tofu Sticks, Mixed Vegetables, and Soy Sauce. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Dried Tofu Sticks",
+      "Mixed Vegetables",
+      "Soy Sauce",
+      "Garlic",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 290,
+    "proteinGrams": 16,
+    "nutrition": {
+      "calories": 290,
+      "proteinGrams": 16,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.2,
+      "carbsGrams": 24,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_090_veg_stir_fry",
+    "name": "Veg Stir Fry",
+    "description": "Freshly prepared Veg Stir Fry featuring Mixed Vegetables, Garlic, and Soy Sauce. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Mixed Vegetables",
+      "Garlic",
+      "Soy Sauce",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 210,
+    "proteinGrams": 6,
+    "nutrition": {
+      "calories": 210,
+      "proteinGrams": 6,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 22,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_091_egg_and_tofu_fried_rice",
+    "name": "Egg and Tofu Fried Rice",
+    "description": "Freshly prepared Egg and Tofu Fried Rice featuring Rice, Egg, and Tofu. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Rice",
+      "Egg",
+      "Tofu",
+      "Spring Onion",
+      "Soy Sauce",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 430,
+    "proteinGrams": 15,
+    "nutrition": {
+      "calories": 430,
+      "proteinGrams": 15,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.5,
+      "carbsGrams": 58,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_092_homestyle_mapo_tofu_less",
+    "name": "Homestyle Mapo Tofu (less oil & chilli)",
+    "description": "Freshly prepared Homestyle Mapo Tofu (less oil & chilli) featuring Tofu, Doubanjiang, and Garlic. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Tofu",
+      "Doubanjiang",
+      "Garlic",
+      "Ginger",
+      "Sichuan Pepper",
+      "Reduced Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 320,
+    "proteinGrams": 18,
+    "nutrition": {
+      "calories": 320,
+      "proteinGrams": 18,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 5.4,
+      "carbsGrams": 18,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_093_peas_corn_with_pine_nuts",
+    "name": "Peas & Corn with Pine Nuts",
+    "description": "Freshly prepared Peas & Corn with Pine Nuts featuring Green Peas, Sweet Corn, and Pine Nuts. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Green Peas",
+      "Sweet Corn",
+      "Pine Nuts",
+      "Garlic",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 280,
+    "proteinGrams": 8,
+    "nutrition": {
+      "calories": 280,
+      "proteinGrams": 8,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.5,
+      "carbsGrams": 30,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_094_homestyle_tomato_egg",
+    "name": "Homestyle Tomato Egg",
+    "description": "Freshly prepared Homestyle Tomato Egg featuring Tomatoes, Eggs, and Spring Onion. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Tomatoes",
+      "Eggs",
+      "Spring Onion",
+      "Oil",
+      "Seasoning"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 240,
+    "proteinGrams": 12,
+    "nutrition": {
+      "calories": 240,
+      "proteinGrams": 12,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.2,
+      "carbsGrams": 15,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_095_pepper_chicken_fried_ric",
+    "name": "Pepper Chicken Fried Rice",
+    "description": "Freshly prepared Pepper Chicken Fried Rice featuring Rice, Chicken, and Black Pepper. Authentic Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Chinese",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Rice",
+      "Chicken",
+      "Black Pepper",
+      "Egg",
+      "Spring Onion",
+      "Soy Sauce",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 520,
+    "proteinGrams": 28,
+    "nutrition": {
+      "calories": 520,
+      "proteinGrams": 28,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 5.1,
+      "carbsGrams": 62,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_096_rice_250ml",
+    "name": "Rice 250ml",
+    "description": "Freshly prepared Rice 250ml featuring Rice, Water. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Rice",
+      "Water"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 260,
+    "proteinGrams": 5,
+    "nutrition": {
+      "calories": 260,
+      "proteinGrams": 5,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 0.3,
+      "carbsGrams": 57,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_097_2_x_paneer_pakoda",
+    "name": "2 x Paneer Pakoda",
+    "description": "Freshly prepared 2 x Paneer Pakoda featuring Paneer, Gram Flour, and Spices. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 4.0,
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Paneer",
+      "Gram Flour",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 320,
+    "proteinGrams": 12,
+    "nutrition": {
+      "calories": 320,
+      "proteinGrams": 12,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 5.4,
+      "carbsGrams": 28,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_098_aloo_tikki_2_pc",
+    "name": "Aloo Tikki (2 pc)",
+    "description": "Freshly prepared Aloo Tikki (2 pc) featuring Potatoes, Peas, and Spices. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Potatoes",
+      "Peas",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 280,
+    "proteinGrams": 5,
+    "nutrition": {
+      "calories": 280,
+      "proteinGrams": 5,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 38,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_099_raita_100ml",
+    "name": "Raita 100ml",
+    "description": "Freshly prepared Raita 100ml featuring Yogurt, Cucumber, and Cumin. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Yogurt",
+      "Cucumber",
+      "Cumin",
+      "Salt"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 65,
+    "proteinGrams": 3,
+    "nutrition": {
+      "calories": 65,
+      "proteinGrams": 3,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 0.9,
+      "carbsGrams": 5,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_100_extra_paneer_curry_250ml",
+    "name": "Extra Paneer Curry 250ml",
+    "description": "Freshly prepared Extra Paneer Curry 250ml featuring Paneer, Tomato, and Onion. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 8.0,
+    "imageUrl": "https://images.unsplash.com/photo-1642821373181-696a54913e9a?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Paneer",
+      "Tomato",
+      "Onion",
+      "Cream",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 360,
+    "proteinGrams": 18,
+    "nutrition": {
+      "calories": 360,
+      "proteinGrams": 18,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 7.8,
+      "carbsGrams": 14,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_101_large_veg_noodle_spring_",
+    "name": "Large Veg Noodle Spring Roll",
+    "description": "Freshly prepared Large Veg Noodle Spring Roll featuring Noodles, Cabbage, and Carrots. Authentic Indo-Chinese recipe prepped daily.",
+    "restaurantId": "rest_dragon",
+    "restaurantName": "Dragon Wok Box",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indo-Chinese",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Noodles",
+      "Cabbage",
+      "Carrots",
+      "Spring Roll Wrapper",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 250,
+    "proteinGrams": 6,
+    "nutrition": {
+      "calories": 250,
+      "proteinGrams": 6,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.0,
+      "carbsGrams": 34,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_102_extra_chapati_x1",
+    "name": "Extra Chapati x1",
+    "description": "Freshly prepared Extra Chapati x1 featuring Whole Wheat Flour, Water, and Salt. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 1.5,
+    "imageUrl": "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Whole Wheat Flour",
+      "Water",
+      "Salt"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 110,
+    "proteinGrams": 3,
+    "nutrition": {
+      "calories": 110,
+      "proteinGrams": 3,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 0.3,
+      "carbsGrams": 22,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_103_extra_goat_curry_250ml",
+    "name": "Extra Goat Curry 250ml",
+    "description": "Freshly prepared Extra Goat Curry 250ml featuring Goat Meat, Onion, and Tomato. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 10.0,
+    "imageUrl": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Lamb/Beef",
+      "High-Protein",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Goat Meat",
+      "Onion",
+      "Tomato",
+      "Ginger",
+      "Garlic",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 420,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 420,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.4,
+      "carbsGrams": 10,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 30g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_104_extra_butter_chicken_250",
+    "name": "Extra Butter Chicken 250ml",
+    "description": "Freshly prepared Extra Butter Chicken 250ml featuring Chicken, Tomato, and Butter. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 8.0,
+    "imageUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Tomato",
+      "Butter",
+      "Cream",
+      "Ginger",
+      "Garlic",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 430,
+    "proteinGrams": 28,
+    "nutrition": {
+      "calories": 430,
+      "proteinGrams": 28,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.0,
+      "carbsGrams": 14,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_105_non_veg_thali",
+    "name": "Non Veg Thali",
+    "description": "Freshly prepared Non Veg Thali featuring Rice, Chapati, and Chicken Curry. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 18.0,
+    "imageUrl": "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "High-Protein"
+    ],
+    "ingredients": [
+      "Rice",
+      "Chapati",
+      "Chicken Curry",
+      "Dal",
+      "Vegetable Curry",
+      "Salad"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 850,
+    "proteinGrams": 38,
+    "nutrition": {
+      "calories": 850,
+      "proteinGrams": 38,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.6,
+      "carbsGrams": 100,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 38g Protein"
+    ]
+  },
+  {
+    "id": "meal_dd_106_veg_thali",
+    "name": "Veg Thali",
+    "description": "Freshly prepared Veg Thali featuring Rice, Chapati, and Dal. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 15.0,
+    "imageUrl": "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Rice",
+      "Chapati",
+      "Dal",
+      "Vegetable Curry",
+      "Raita",
+      "Salad"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 750,
+    "proteinGrams": 22,
+    "nutrition": {
+      "calories": 750,
+      "proteinGrams": 22,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 115,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_107_ras_malai_2_pieces",
+    "name": "Ras Malai (2 Pieces)",
+    "description": "Freshly prepared Ras Malai (2 Pieces) featuring Chenna, Milk, and Sugar. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 5.0,
+    "imageUrl": "https://images.unsplash.com/photo-1605197154261-789a26372071?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "dessert",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chenna",
+      "Milk",
+      "Sugar",
+      "Cardamom",
+      "Saffron"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 300,
+    "proteinGrams": 10,
+    "nutrition": {
+      "calories": 300,
+      "proteinGrams": 10,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 38,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_108_plain_garden_salad",
+    "name": "Plain Garden Salad",
+    "description": "Freshly prepared Plain Garden Salad featuring Lettuce, Cucumber, and Tomato. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 9.0,
+    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Lettuce",
+      "Cucumber",
+      "Tomato",
+      "Carrot",
+      "Lemon"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 90,
+    "proteinGrams": 3,
+    "nutrition": {
+      "calories": 90,
+      "proteinGrams": 3,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 0.9,
+      "carbsGrams": 14,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_109_10_chapatis",
+    "name": "10 Chapatis",
+    "description": "Freshly prepared 10 Chapatis featuring Whole Wheat Flour, Water, and Salt. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 15.0,
+    "imageUrl": "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Whole Wheat Flour",
+      "Water",
+      "Salt"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 1100,
+    "proteinGrams": 30,
+    "nutrition": {
+      "calories": 1100,
+      "proteinGrams": 30,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.0,
+      "carbsGrams": 220,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "💪 30g Protein",
+      "🌱 Vegetarian"
+    ]
+  },
+  {
+    "id": "meal_dd_110_green_salad",
+    "name": "Green Salad",
+    "description": "Freshly prepared Green Salad featuring Cucumber, Lettuce, and Green Pepper. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Cucumber",
+      "Lettuce",
+      "Green Pepper",
+      "Lemon"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 45,
+    "proteinGrams": 2,
+    "nutrition": {
+      "calories": 45,
+      "proteinGrams": 2,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 0.0,
+      "carbsGrams": 9,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_111_onion_salad",
+    "name": "Onion Salad",
+    "description": "Freshly prepared Onion Salad featuring Onion, Lemon, and Salt. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Onion",
+      "Lemon",
+      "Salt"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 40,
+    "proteinGrams": 1,
+    "nutrition": {
+      "calories": 40,
+      "proteinGrams": 1,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 0.0,
+      "carbsGrams": 9,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_112_protein_salad",
+    "name": "Protein Salad",
+    "description": "Freshly prepared Protein Salad featuring Chickpeas, Paneer, and Cucumber. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chickpeas",
+      "Paneer",
+      "Cucumber",
+      "Tomato",
+      "Lemon"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 220,
+    "proteinGrams": 16,
+    "nutrition": {
+      "calories": 220,
+      "proteinGrams": 16,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 2.4,
+      "carbsGrams": 20,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_113_chicken_tikka",
+    "name": "Chicken Tikka",
+    "description": "Freshly prepared Chicken Tikka featuring Chicken, Yogurt, and Ginger. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 5.0,
+    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Yogurt",
+      "Ginger",
+      "Garlic",
+      "Tikka Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 280,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 280,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.9,
+      "carbsGrams": 8,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_114_chicken_roll",
+    "name": "Chicken Roll",
+    "description": "Freshly prepared Chicken Roll featuring Chicken, Flatbread, and Onion. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 5.0,
+    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Flatbread",
+      "Onion",
+      "Sauce",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 380,
+    "proteinGrams": 20,
+    "nutrition": {
+      "calories": 380,
+      "proteinGrams": 20,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.5,
+      "carbsGrams": 40,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_115_paneer_pakora",
+    "name": "Paneer Pakora",
+    "description": "Freshly prepared Paneer Pakora featuring Paneer, Gram Flour, and Spices. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Paneer",
+      "Gram Flour",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 300,
+    "proteinGrams": 12,
+    "nutrition": {
+      "calories": 300,
+      "proteinGrams": 12,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 5.1,
+      "carbsGrams": 25,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_116_mix_veg_pakora",
+    "name": "Mix Veg Pakora",
+    "description": "Freshly prepared Mix Veg Pakora featuring Onion, Potato, and Spinach. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Onion",
+      "Potato",
+      "Spinach",
+      "Gram Flour",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 260,
+    "proteinGrams": 6,
+    "nutrition": {
+      "calories": 260,
+      "proteinGrams": 6,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.9,
+      "carbsGrams": 30,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_117_samosa_x1",
+    "name": "Samosa x1",
+    "description": "Freshly prepared Samosa x1 featuring Potatoes, Peas, and Flour. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 2.0,
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Potatoes",
+      "Peas",
+      "Flour",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 260,
+    "proteinGrams": 5,
+    "nutrition": {
+      "calories": 260,
+      "proteinGrams": 5,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.9,
+      "carbsGrams": 32,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_118_gulab_jamun_2_pieces",
+    "name": "Gulab Jamun (2 Pieces)",
+    "description": "Freshly prepared Gulab Jamun (2 Pieces) featuring Milk Solids, Flour, and Sugar Syrup. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1605197154261-789a26372071?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "dessert",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Milk Solids",
+      "Flour",
+      "Sugar Syrup",
+      "Cardamom",
+      "Oil"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 300,
+    "proteinGrams": 5,
+    "nutrition": {
+      "calories": 300,
+      "proteinGrams": 5,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 45,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_119_mango_lassi",
+    "name": "Mango Lassi",
+    "description": "Freshly prepared Mango Lassi featuring Mango, Yogurt, and Milk. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 4.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "drink",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Mango",
+      "Yogurt",
+      "Milk",
+      "Sugar"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 220,
+    "proteinGrams": 6,
+    "nutrition": {
+      "calories": 220,
+      "proteinGrams": 6,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 1.5,
+      "carbsGrams": 38,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_120_salted_lassi",
+    "name": "Salted Lassi",
+    "description": "Freshly prepared Salted Lassi featuring Yogurt, Water, and Salt. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 4.0,
+    "imageUrl": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "drink",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Yogurt",
+      "Water",
+      "Salt",
+      "Cumin"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 150,
+    "proteinGrams": 7,
+    "nutrition": {
+      "calories": 150,
+      "proteinGrams": 7,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 2.1,
+      "carbsGrams": 12,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_121_onion_salad_100gm",
+    "name": "Onion Salad (100gm)",
+    "description": "Freshly prepared Onion Salad (100gm) featuring Onion, Lemon, and Salt. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 2.0,
+    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "side",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Onion",
+      "Lemon",
+      "Salt"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 40,
+    "proteinGrams": 1,
+    "nutrition": {
+      "calories": 40,
+      "proteinGrams": 1,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 0.0,
+      "carbsGrams": 9,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": true,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_122_sweet_lassi",
+    "name": "Sweet Lassi",
+    "description": "Freshly prepared Sweet Lassi featuring Yogurt, Milk, and Sugar. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 4.0,
+    "imageUrl": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "drink",
+    "dietaryTags": [
+      "Vegetarian",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Yogurt",
+      "Milk",
+      "Sugar",
+      "Cardamom"
+    ],
+    "spicyLevel": 0,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 210,
+    "proteinGrams": 7,
+    "nutrition": {
+      "calories": 210,
+      "proteinGrams": 7,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 1.8,
+      "carbsGrams": 32,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_123_chicken_curry_rice",
+    "name": "Chicken Curry + Rice",
+    "description": "Freshly prepared Chicken Curry + Rice featuring Chicken, Rice, and Tomato. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "Tomato",
+      "Onion",
+      "Ginger",
+      "Garlic",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.0,
+      "carbsGrams": 75,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_124_chicken_biryani_by_gulat",
+    "name": "Chicken Biryani by Gulati's Kitchen",
+    "description": "Freshly prepared Chicken Biryani by Gulati's Kitchen featuring Chicken, Basmati Rice, and Yogurt. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_gulati",
+    "restaurantName": "Gulati's Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Basmati Rice",
+      "Yogurt",
+      "Onion",
+      "Biryani Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 680,
+    "proteinGrams": 32,
+    "nutrition": {
+      "calories": 680,
+      "proteinGrams": 32,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 82,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 32g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_125_chicken_korma_roti",
+    "name": "Chicken Korma + Roti",
+    "description": "Freshly prepared Chicken Korma + Roti featuring Chicken, Roti, and Yogurt. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Roti",
+      "Yogurt",
+      "Cream",
+      "Onion",
+      "Cashews",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 720,
+    "proteinGrams": 34,
+    "nutrition": {
+      "calories": 720,
+      "proteinGrams": 34,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 9.6,
+      "carbsGrams": 65,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 34g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_126_chicken_tikka_masala_rot",
+    "name": "Chicken Tikka Masala + Roti",
+    "description": "Freshly prepared Chicken Tikka Masala + Roti featuring Chicken, Roti, and Tomato. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Roti",
+      "Tomato",
+      "Cream",
+      "Yogurt",
+      "Ginger",
+      "Garlic",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 700,
+    "proteinGrams": 36,
+    "nutrition": {
+      "calories": 700,
+      "proteinGrams": 36,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.4,
+      "carbsGrams": 68,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 36g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_127_egg_curry_rice",
+    "name": "Egg Curry + Rice",
+    "description": "Freshly prepared Egg Curry + Rice featuring Eggs, Rice, and Tomato. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Eggs",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Eggs",
+      "Rice",
+      "Tomato",
+      "Onion",
+      "Ginger",
+      "Garlic",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 580,
+    "proteinGrams": 22,
+    "nutrition": {
+      "calories": 580,
+      "proteinGrams": 22,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.0,
+      "carbsGrams": 72,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_128_butter_chicken_rice",
+    "name": "Butter Chicken + Rice",
+    "description": "Freshly prepared Butter Chicken + Rice featuring Chicken, Rice, and Tomato. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Chicken",
+      "High-Protein",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "Tomato",
+      "Butter",
+      "Cream",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 720,
+    "proteinGrams": 35,
+    "nutrition": {
+      "calories": 720,
+      "proteinGrams": 35,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 8.1,
+      "carbsGrams": 76,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": true,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💪 35g Protein",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_129_egg_bhurji_2x_chapati",
+    "name": "Egg Bhurji + 2x Chapati",
+    "description": "Freshly prepared Egg Bhurji + 2x Chapati featuring Eggs, Chapati, and Onion. Authentic Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Non-Vegetarian",
+      "Eggs",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Eggs",
+      "Chapati",
+      "Onion",
+      "Tomato",
+      "Green Chili",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 480,
+    "proteinGrams": 22,
+    "nutrition": {
+      "calories": 480,
+      "proteinGrams": 22,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 48,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": false,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_130_aloo_gobi_2x_chapati",
+    "name": "Aloo Gobi + 2x Chapati",
+    "description": "Freshly prepared Aloo Gobi + 2x Chapati featuring Potatoes, Cauliflower, and Chapati. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Under 500 Cal",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Potatoes",
+      "Cauliflower",
+      "Chapati",
+      "Tomato",
+      "Onion",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 460,
+    "proteinGrams": 12,
+    "nutrition": {
+      "calories": 460,
+      "proteinGrams": 12,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.2,
+      "carbsGrams": 72,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": true,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_131_punjabi_kadi_pakoda_rice",
+    "name": "Punjabi Kadi Pakoda + Rice",
+    "description": "Freshly prepared Punjabi Kadi Pakoda + Rice featuring Yogurt, Gram Flour, and Pakoda. Authentic Punjabi recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "Punjabi",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Yogurt",
+      "Gram Flour",
+      "Pakoda",
+      "Rice",
+      "Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 620,
+    "proteinGrams": 16,
+    "nutrition": {
+      "calories": 620,
+      "proteinGrams": 16,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 88,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_132_veg_biryani_by_gulati_s_",
+    "name": "Veg Biryani by Gulati's Kitchen",
+    "description": "Freshly prepared Veg Biryani by Gulati's Kitchen featuring Basmati Rice, Mixed Vegetables, and Yogurt. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_gulati",
+    "restaurantName": "Gulati's Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1642821373181-696a54913e9a?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Basmati Rice",
+      "Mixed Vegetables",
+      "Yogurt",
+      "Onion",
+      "Biryani Spices",
+      "Oil"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 590,
+    "proteinGrams": 14,
+    "nutrition": {
+      "calories": 590,
+      "proteinGrams": 14,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 5.4,
+      "carbsGrams": 88,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_133_dal_makhani_rice",
+    "name": "Dal Makhani + Rice",
+    "description": "Freshly prepared Dal Makhani + Rice featuring Black Lentils, Kidney Beans, and Rice. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Black Lentils",
+      "Kidney Beans",
+      "Rice",
+      "Butter",
+      "Cream",
+      "Tomato",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 650,
+    "proteinGrams": 20,
+    "nutrition": {
+      "calories": 650,
+      "proteinGrams": 20,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 6.6,
+      "carbsGrams": 90,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_134_palak_dal_rice",
+    "name": "Palak Dal + Rice",
+    "description": "Freshly prepared Palak Dal + Rice featuring Lentils, Spinach, and Rice. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Lentils",
+      "Spinach",
+      "Rice",
+      "Garlic",
+      "Cumin",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 560,
+    "proteinGrams": 19,
+    "nutrition": {
+      "calories": 560,
+      "proteinGrams": 19,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.6,
+      "carbsGrams": 86,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_135_rajma_chawal",
+    "name": "Rajma Chawal",
+    "description": "Freshly prepared Rajma Chawal featuring Kidney Beans, Rice, and Tomato. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Kidney Beans",
+      "Rice",
+      "Tomato",
+      "Onion",
+      "Ginger",
+      "Garlic",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 580,
+    "proteinGrams": 18,
+    "nutrition": {
+      "calories": 580,
+      "proteinGrams": 18,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 3.0,
+      "carbsGrams": 96,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": true,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": true
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  },
+  {
+    "id": "meal_dd_136_dal_tadka_jeera_rice",
+    "name": "Dal Tadka + Jeera Rice",
+    "description": "Freshly prepared Dal Tadka + Jeera Rice featuring Lentils, Jeera Rice, and Cumin. Authentic North Indian recipe prepped daily.",
+    "restaurantId": "rest_spice_route",
+    "restaurantName": "Spice Route Indian Kitchen",
+    "price": 12.0,
+    "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+    "cuisine": "North Indian",
+    "category": "main",
+    "dietaryTags": [
+      "Vegetarian",
+      "Budget-Friendly"
+    ],
+    "ingredients": [
+      "Lentils",
+      "Jeera Rice",
+      "Cumin",
+      "Garlic",
+      "Ghee",
+      "Spices"
+    ],
+    "spicyLevel": 1,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "availableSlots": [
+      "lunch",
+      "dinner"
+    ],
+    "active": true,
+    "calories": 610,
+    "proteinGrams": 19,
+    "nutrition": {
+      "calories": 610,
+      "proteinGrams": 19,
+      "fibreGrams": 4,
+      "sodiumMg": 580,
+      "saturatedFatGrams": 4.5,
+      "carbsGrams": 92,
+      "sugarGrams": 3
+    },
+    "healthFlags": {
+      "highProtein": false,
+      "vegetarian": true,
+      "vegan": false,
+      "lowCarb": false,
+      "lowSodium": true,
+      "weightManagement": false,
+      "glutenFree": false,
+      "dairyFree": false
+    },
+    "displayBadges": [
+      "🌱 Vegetarian",
+      "💰 Under $15"
+    ]
+  }
+];

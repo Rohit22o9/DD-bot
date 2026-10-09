@@ -9,7 +9,9 @@ import {
   StyleSheet,
   ActivityIndicator,
   Dimensions,
+  Platform,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Meal } from '../types';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -68,6 +70,13 @@ export const MobileMealDetailModal: React.FC<MobileMealDetailModalProps> = ({
       ? meal.displayBadges
       : meal.dietaryTags || ['Fresh Daily'];
 
+  const insets = useSafeAreaInsets();
+  // Ensure the bottom action bar clears both Android navigation bar (3-button nav is ~48dp) and iOS home indicator
+  const bottomPadding = Math.max(
+    insets.bottom + 14,
+    Platform.OS === 'android' ? 44 : 16
+  );
+
   return (
     <Modal
       visible={visible}
@@ -80,7 +89,11 @@ export const MobileMealDetailModal: React.FC<MobileMealDetailModalProps> = ({
           {/* Header Drag Handle */}
           <View style={styles.dragHandle} />
 
-          <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
+          <ScrollView
+            style={styles.scrollView}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.scrollContent}
+          >
             {/* Meal Hero Image */}
             <View style={styles.imgContainer}>
               <Image
@@ -181,7 +194,7 @@ export const MobileMealDetailModal: React.FC<MobileMealDetailModalProps> = ({
           </ScrollView>
 
           {/* Bottom Fixed Action Bar */}
-          <View style={styles.actionBar}>
+          <View style={[styles.actionBar, { paddingBottom: bottomPadding }]}>
             {/* Quantity Selector */}
             <View style={styles.qtyContainer}>
               <TouchableOpacity
@@ -405,11 +418,15 @@ const styles = StyleSheet.create({
     lineHeight: 17,
     fontWeight: '500',
   },
+  scrollView: {
+    flexShrink: 1,
+  },
   actionBar: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 18,
-    paddingVertical: 14,
+    paddingTop: 14,
+    paddingBottom: 14,
     borderTopWidth: 1,
     borderTopColor: '#E5E7EB',
     backgroundColor: '#FFFFFF',

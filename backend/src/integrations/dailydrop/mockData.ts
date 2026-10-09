@@ -1,6 +1,62 @@
 import { Meal, Restaurant, UserProfile, Order } from '../../types';
+import { REAL_DAILY_DROP_MEALS } from './realDailyDropMeals';
 
 export const MOCK_RESTAURANTS: Restaurant[] = [
+  {
+    id: 'rest_bawarchi',
+    name: 'Bawarchi Biryani Point',
+    cuisine: 'North Indian',
+    rating: 4.9,
+    deliveryTimeMinutes: 25,
+    deliveryFee: 2.50,
+    minimumOrder: 10,
+    active: true,
+    address: 'Bentley Commercial Centre',
+  },
+  {
+    id: 'rest_gulati',
+    name: "Gulati's Kitchen",
+    cuisine: 'North Indian',
+    rating: 4.8,
+    deliveryTimeMinutes: 25,
+    deliveryFee: 2.50,
+    minimumOrder: 10,
+    active: true,
+    address: 'Cannington Plaza Shop 4',
+  },
+  {
+    id: 'rest_seoul',
+    name: 'Seoul Pocha & Kitchen',
+    cuisine: 'Korean',
+    rating: 4.9,
+    deliveryTimeMinutes: 20,
+    deliveryFee: 2.50,
+    minimumOrder: 10,
+    active: true,
+    address: 'Karawara Shopping Centre',
+  },
+  {
+    id: 'rest_spice_route',
+    name: 'Spice Route Indian Kitchen',
+    cuisine: 'North Indian',
+    rating: 4.8,
+    deliveryTimeMinutes: 25,
+    deliveryFee: 2.50,
+    minimumOrder: 10,
+    active: true,
+    address: 'Curtin Central Commercial Hub',
+  },
+  {
+    id: 'rest_continental',
+    name: 'Continental Roastery',
+    cuisine: 'Western/Continental',
+    rating: 4.7,
+    deliveryTimeMinutes: 25,
+    deliveryFee: 2.50,
+    minimumOrder: 10,
+    active: true,
+    address: 'Victoria Park Broadway 102',
+  },
   {
     id: 'rest_thai',
     name: 'Thai Orchid Street',
@@ -114,6 +170,7 @@ export const MOCK_RESTAURANTS: Restaurant[] = [
 ];
 
 export const MOCK_MEALS: Meal[] = [
+  ...REAL_DAILY_DROP_MEALS,
   // Signature Healthy Reference Meals (from Drop AI Reference Mockup Panels 3 & 4)
   {
     id: 'meal_grilled_chicken_quinoa_bowl',

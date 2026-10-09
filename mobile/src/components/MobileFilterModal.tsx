@@ -6,8 +6,9 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  Platform,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { QuickSearchFilters } from '../types';
 
 interface MobileFilterModalProps {
@@ -23,6 +24,12 @@ export const MobileFilterModal: React.FC<MobileFilterModalProps> = ({
   filters,
   onApply,
 }) => {
+  const insets = useSafeAreaInsets();
+  const bottomPadding = Math.max(
+    insets.bottom + 12,
+    Platform.OS === 'android' ? 36 : 16
+  );
+
   const [draft, setDraft] = useState<QuickSearchFilters>(filters);
 
   // Sync on open
@@ -86,7 +93,7 @@ export const MobileFilterModal: React.FC<MobileFilterModalProps> = ({
       <View style={styles.backdrop}>
         <TouchableOpacity style={styles.backdropTouch} onPress={onClose} />
 
-        <View style={styles.sheet}>
+        <View style={[styles.sheet, { paddingBottom: bottomPadding }]}>
           <SafeAreaView style={styles.safeArea}>
             <View style={styles.header}>
               <Text style={styles.headerTitle}>Filter Options</Text>

@@ -18,6 +18,8 @@ export interface MealHealthFlags {
   weightManagement?: boolean;
   glutenFree?: boolean;
   dairyFree?: boolean;
+  vegan?: boolean;
+  vegetarian?: boolean;
 }
 
 export interface Meal {
@@ -216,6 +218,7 @@ export interface ChatMessage {
   dropForMe?: DropForMeResult;
   weeklyPlan?: WeeklyMealPlan;
   gamePayload?: GamePayload;
+  inChatCart?: Cart | null;
   confirmationRequired?: boolean;
   confirmationDetails?: {
     action: 'PLACE_ORDER' | 'CLEAR_CART' | 'CONFIRM_PLAN';

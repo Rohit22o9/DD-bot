@@ -38,6 +38,31 @@ export class RecommendationEngine {
     const spicyPref = preferences?.spicyPreference || 'any';
     const frequentMeals = queryCriteria?.frequentlyOrderedMealIds || [];
 
+    // 0. Hard Dietary Filter (100% Zero-Mismatch Constraint)
+    const isVegetarianReq = preferences?.dietaryPreferences?.some((dp) => dp.toLowerCase() === 'vegetarian');
+    const isVeganReq = preferences?.dietaryPreferences?.some((dp) => dp.toLowerCase() === 'vegan');
+    const meatKeywords = ['chicken', 'beef', 'pork', 'salmon', 'barramundi', 'fish', 'seafood', 'shrimp', 'prawn', 'lamb', 'meat', 'rendang', 'biryani'];
+    const text = (meal.name + ' ' + meal.description + ' ' + meal.ingredients.join(' ')).toLowerCase();
+
+    if (isVegetarianReq) {
+      const hasMeat = meatKeywords.some((k) => text.includes(k));
+      if (hasMeat) {
+        score -= 200; // Complete disqualification penalty
+      } else if (meal.dietaryTags.some((t) => t.toLowerCase() === 'vegetarian' || t.toLowerCase() === 'vegan')) {
+        score += 25;
+        reasons.unshift('✓ 100% Vegetarian certified');
+      }
+    }
+    if (isVeganReq) {
+      const hasAnimal = [...meatKeywords, 'egg', 'dairy', 'milk', 'cheese', 'halloumi', 'yogurt', 'butter'].some((k) => text.includes(k));
+      if (hasAnimal) {
+        score -= 200;
+      } else if (meal.dietaryTags.some((t) => t.toLowerCase() === 'vegan')) {
+        score += 25;
+        reasons.unshift('✓ 100% Plant-Based & Vegan');
+      }
+    }
+
     // 1. Budget Match (up to +20 points)
     if (meal.price <= effectiveBudget) {
       const savings = effectiveBudget - meal.price;
@@ -218,8 +243,8 @@ export class RecommendationEngine {
       }
     }
 
-    // Clamp score between 65 and 98 to keep it realistic and trustworthy
-    const clampedScore = Math.min(98, Math.max(65, score));
+    // Clamp score between 65 and 98 for valid meals; keep 0 for disqualified meals
+    const clampedScore = score <= 0 ? 0 : Math.min(98, Math.max(65, score));
 
     return {
       meal,
@@ -252,8 +277,9 @@ export class RecommendationEngine {
       this.scoreMeal(m, preferences, queryCriteria)
     );
 
-    // If excludeMealIds provided, prioritize fresh unshown dishes
-    let pool = scored;
+    // Filter out strictly disqualified meals (score <= 0)
+    const validScored = scored.filter((s) => s.score > 0);
+    let pool = validScored.length > 0 ? validScored : scored;
     if (queryCriteria?.excludeMealIds && queryCriteria.excludeMealIds.length > 0) {
       const fresh = scored.filter((s) => !queryCriteria.excludeMealIds!.includes(s.meal.id));
       if (fresh.length >= limit) {

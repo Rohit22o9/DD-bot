@@ -6,8 +6,9 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  Platform,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { UserProfile } from '../types';
 
 interface MobileTasteProfileModalProps {
@@ -34,6 +35,12 @@ export const MobileTasteProfileModal: React.FC<MobileTasteProfileModalProps> = (
   onSwitchUser,
   userProfile,
 }) => {
+  const insets = useSafeAreaInsets();
+  const bottomPadding = Math.max(
+    insets.bottom + 12,
+    Platform.OS === 'android' ? 36 : 16
+  );
+
   return (
     <Modal
       visible={visible}
@@ -44,7 +51,7 @@ export const MobileTasteProfileModal: React.FC<MobileTasteProfileModalProps> = (
       <View style={styles.backdrop}>
         <TouchableOpacity style={styles.backdropTouch} onPress={onClose} />
 
-        <View style={styles.sheet}>
+        <View style={[styles.sheet, { paddingBottom: bottomPadding }]}>
           <SafeAreaView style={styles.safeArea}>
             <View style={styles.header}>
               <Text style={styles.headerTitle}>Taste Profile</Text>
