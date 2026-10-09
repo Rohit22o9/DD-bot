@@ -359,10 +359,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
 
       {/* Keyboard Avoiding Container */}
       <KeyboardAvoidingView
-        style={[
-          styles.keyboardContainer,
-          Platform.OS === 'android' && { paddingBottom: keyboardHeight },
-        ]}
+        style={styles.keyboardContainer}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 88 : 0}
       >
@@ -576,36 +573,44 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                       </View>
                     )}
 
-                    {/* BUNDLE BASKET ($20 DROP) */}
+                    {/* BUNDLE BASKET / FAMILY FEAST CART CARD */}
                     {!msg.isStreaming && msg.budgetBasket && (
                       <View style={styles.bundleCard}>
-                        <Text style={styles.bundleTitle}>
-                          Your ${msg.budgetBasket.budgetCap || 20} Drop
-                        </Text>
+                        <View style={styles.bundleHeaderRow}>
+                          <Text style={styles.bundleTitle}>
+                            {msg.budgetBasket.title || `Family Feast: Dinner for 4`}
+                          </Text>
+                          <View style={styles.bundleTag}>
+                            <Text style={styles.bundleTagText}>🛒 BUNDLE CART</Text>
+                          </View>
+                        </View>
                         {msg.budgetBasket.items.map((it, idx) => (
                           <View key={`basket-${it.mealId || it.name}-${idx}`} style={styles.bundleRow}>
-                            <Text style={styles.bundleItemName}>{it.name}</Text>
+                            <Text style={styles.bundleItemName}>• {it.name}</Text>
                             <Text style={styles.bundleItemPrice}>
-                              ${it.price.toFixed(0)}
+                              ${it.price.toFixed(2)}
                             </Text>
                           </View>
                         ))}
                         <View style={styles.bundleTotalRow}>
-                          <Text style={styles.bundleTotalLabel}>Total</Text>
+                          <Text style={styles.bundleTotalLabel}>Bundle Total</Text>
                           <Text style={styles.bundleTotalVal}>
-                            ${msg.budgetBasket.total.toFixed(0)}
+                            ${msg.budgetBasket.total.toFixed(2)}
                           </Text>
                         </View>
                         <TouchableOpacity
                           style={styles.bundleBtn}
+                          activeOpacity={0.85}
                           onPress={() => {
                             msg.budgetBasket!.items.forEach((it) =>
-                              handleAddToCart(it.mealId)
+                              handleAddToCart(it.mealId, (it as any).quantity || 1)
                             );
                             setIsCartOpen(true);
                           }}
                         >
-                          <Text style={styles.bundleBtnText}>Order Now ➔</Text>
+                          <Text style={styles.bundleBtnText}>
+                            🛒 Add Entire Feast to Cart — ${msg.budgetBasket.total.toFixed(2)}
+                          </Text>
                         </TouchableOpacity>
                       </View>
                     )}
@@ -1117,11 +1122,30 @@ const styles = StyleSheet.create({
     borderColor: '#E5E7EB',
     marginTop: 10,
   },
+  bundleHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  bundleTag: {
+    backgroundColor: '#ECFDF5',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#A7F3D0',
+  },
+  bundleTagText: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: '#065F46',
+  },
   bundleTitle: {
     fontSize: 15,
     fontWeight: '800',
     color: '#111827',
-    marginBottom: 8,
+    flex: 1,
   },
   bundleRow: {
     flexDirection: 'row',

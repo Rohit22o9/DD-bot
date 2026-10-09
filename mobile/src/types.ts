@@ -113,6 +113,7 @@ export interface WeeklyMealPlan {
 }
 
 export interface BudgetBasket {
+  title?: string;
   main: Meal;
   side: Meal;
   drink: Meal;

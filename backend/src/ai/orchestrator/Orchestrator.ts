@@ -18,6 +18,7 @@ import { HybridRuleProvider } from '../providers/HybridRuleProvider';
 import { toolRegistry, ToolRegistry } from '../tools/ToolRegistry';
 import { recommendationEngine, RecommendationEngine } from './RecommendationEngine';
 import { safetyValidator, SafetyValidator } from './SafetyValidator';
+import { correctFoodTypos } from '../foodTypoCorrector';
 
 export const HEALTH_GOAL_OPTIONS: HealthGoalOption[] = [
   {
@@ -113,7 +114,9 @@ export class DropAIOrchestrator {
     userInput: string,
     sessionState?: any
   ): Promise<ChatResponsePayload> {
-    const rawInput = userInput.trim();
+    const typoResult = correctFoodTypos(userInput);
+    const correctedInput = typoResult.hasCorrection ? typoResult.correctedText : userInput;
+    const rawInput = correctedInput.trim();
     const lower = rawInput.toLowerCase();
 
     // 1. Fetch user profile & explicit preferences
@@ -1293,12 +1296,19 @@ export class DropAIOrchestrator {
       };
     }
 
+    const isDinnerFor4Cuisine =
+      lower.includes('italian dinner for 4') ||
+      lower.includes('asian dinner for 4') ||
+      lower.includes('mexican dinner for 4') ||
+      lower.includes('indian dinner for 4');
+
     const isFamilyPreferenceChoice =
       lower.includes('kid friendly') ||
       lower.includes('different spice') ||
       lower === 'yes' ||
       lower === '👍 yes' ||
-      lower === 'nothing';
+      lower === 'nothing' ||
+      isDinnerFor4Cuisine;
 
     if (isFamilyPreferenceChoice) {
       const biryani =
@@ -1314,17 +1324,60 @@ export class DropAIOrchestrator {
         (await this.tools.getMeal('meal_salmon_brown_rice')) ||
         (await this.tools.searchMeals({ keyword: 'Salmon' }))[0];
 
+      let feastTitle = 'Family Feast: Dinner for 4';
+      let feastMsg =
+        'Dinner for 4 — $52.00\nCurated with 2x Chicken Biryani, 1x Veg Lentil Curry, 1x Teriyaki Salmon + Garlic Naan sides for the whole family.\n\nWould you like to try a different cuisine for your family dinner?';
+      let dishes = [biryani!, lentil!, salmon!, quinoa!].filter(Boolean);
+
+      if (lower.includes('italian')) {
+        feastTitle = 'Italian Family Feast (Dinner for 4)';
+        feastMsg =
+          'Italian Dinner for 4 — $54.00\nCurated with 2x Truffle Tagliatelle, 1x Margherita Sourdough, 1x Chicken Parmesan + Rosemary Focaccia.\n\nWould you like to try a different cuisine for your family dinner?';
+      } else if (lower.includes('asian')) {
+        feastTitle = 'Pan-Asian Family Feast (Dinner for 4)';
+        feastMsg =
+          'Pan-Asian Dinner for 4 — $50.00\nCurated with 2x Teriyaki Salmon, 1x Thai Basil Chicken, 1x Tonkotsu Ramen + Steamed Edamame.\n\nWould you like to try a different cuisine for your family dinner?';
+      } else if (lower.includes('mexican')) {
+        feastTitle = 'Fiesta Mexican Dinner for 4';
+        feastMsg =
+          'Mexican Dinner for 4 — $48.00\nCurated with 2x Chipotle Burrito Bowls, 1x Grilled Chicken Fajitas, 1x Veggie Enchiladas + Guac & Chips.\n\nWould you like to try a different cuisine for your family dinner?';
+      }
+
+      const basket: BudgetBasket = {
+        title: feastTitle,
+        main: dishes[0] || biryani!,
+        side: dishes[1] || lentil!,
+        drink: dishes[2] || salmon!,
+        total: 52.0,
+        budgetCap: 60.0,
+        currency: 'USD',
+        items: [
+          { category: 'Meal', name: '2x Chicken Biryani', price: 26.0, mealId: biryani?.id || 'm1' },
+          { category: 'Meal', name: '1x Veg Lentil Curry', price: 12.0, mealId: lentil?.id || 'm2' },
+          { category: 'Meal', name: '1x Teriyaki Salmon', price: 14.0, mealId: salmon?.id || 'm3' },
+          { category: 'Side', name: 'Garlic Naan (Basket of 4)', price: 0.0, mealId: 'side_naan' },
+        ],
+      };
+
       return {
         message:
-          'Dinner for 4 — $52.00\nCurated with 2x Chicken Biryani, 1x Veg Lentil Curry, 1x Teriyaki Salmon + Garlic Naan sides for the whole family.',
+          (typoResult.hasCorrection
+            ? `Recognized: "${typoResult.correctedTerms.map((c) => c.to).join(', ')}" ✨\n\n`
+            : '') + feastMsg,
         job: 'BUILD',
-        recommendations: [
-          { meal: biryani!, score: 98, reasons: ['✓ Crowd favourite main'] },
-          { meal: quinoa!, score: 95, reasons: ['✓ Kid friendly & mild'] },
-          { meal: lentil!, score: 93, reasons: ['✓ 100% Vegetarian option'] },
-          { meal: salmon!, score: 92, reasons: ['✓ Heart healthy & omega-3'] },
+        budgetBasket: basket,
+        recommendations: dishes.map((m, idx) => ({
+          meal: m,
+          score: 98 - idx * 2,
+          reasons: ['✓ Family Feast component', '✓ Serves 4 generously'],
+        })),
+        quickOptions: [
+          '🛒 Add Dinner for 4 to cart',
+          '🍝 Italian Dinner for 4',
+          '🥢 Asian Dinner for 4',
+          '🌮 Mexican Dinner for 4',
+          '🍛 Indian Dinner for 4',
         ],
-        quickOptions: ['🛒 Add selection', '🔄 Try another combination'],
       };
     }
 

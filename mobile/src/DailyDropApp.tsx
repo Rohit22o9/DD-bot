@@ -30,15 +30,20 @@ export const DailyDropApp: React.FC<DailyDropAppProps> = ({
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
   useEffect(() => {
-    const showEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
-    const hideEvent = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
-
-    const showSub = Keyboard.addListener(showEvent, () => setIsKeyboardVisible(true));
-    const hideSub = Keyboard.addListener(hideEvent, () => setIsKeyboardVisible(false));
+    const showSub1 = Keyboard.addListener('keyboardDidShow', () => setIsKeyboardVisible(true));
+    const hideSub1 = Keyboard.addListener('keyboardDidHide', () => setIsKeyboardVisible(false));
+    let showSub2: any;
+    let hideSub2: any;
+    if (Platform.OS === 'ios') {
+      showSub2 = Keyboard.addListener('keyboardWillShow', () => setIsKeyboardVisible(true));
+      hideSub2 = Keyboard.addListener('keyboardWillHide', () => setIsKeyboardVisible(false));
+    }
 
     return () => {
-      showSub.remove();
-      hideSub.remove();
+      showSub1.remove();
+      hideSub1.remove();
+      showSub2?.remove();
+      hideSub2?.remove();
     };
   }, []);
 

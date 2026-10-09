@@ -1,5 +1,6 @@
 import { Meal, Recommendation } from './types';
 import { REAL_DAILY_DROP_MEALS } from './realDailyDropMeals';
+import { correctFoodTypos } from './foodTypoCorrector';
 
 export const MOCK_MOBILE_MEALS: Meal[] = [
   ...REAL_DAILY_DROP_MEALS,
@@ -497,6 +498,84 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
       carbsGrams: 27,
       sugarGrams: 3,
     },
+  },
+
+  // --- SOUPS & BROTHS ---
+  {
+    id: 'meal_sweetcorn_chicken_soup',
+    name: 'Classic Chicken Sweetcorn Soup',
+    description: 'Fresh simmered chicken broth with sweet corn, shredded chicken, egg drops, and cracked black pepper.',
+    restaurantId: 'rest_chinese',
+    restaurantName: 'Golden Dragon Kitchen',
+    price: 8.5,
+    imageUrl: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80',
+    cuisine: 'Chinese',
+    category: 'main',
+    dietaryTags: ['High Protein', 'Comfort Food', 'Warm & Soothing'],
+    ingredients: ['Chicken', 'Sweetcorn', 'Egg', 'Chicken Broth', 'Pepper'],
+    spicyLevel: 0,
+    availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    availableSlots: ['lunch', 'dinner'],
+    active: true,
+    calories: 320,
+    proteinGrams: 28,
+  },
+  {
+    id: 'meal_tom_yum_soup',
+    name: 'Spicy Tom Yum Soup',
+    description: 'Fragrant Thai hot and sour soup with lemongrass, kaffir lime, galangal, straw mushrooms, and chili.',
+    restaurantId: 'rest_thai',
+    restaurantName: 'Thai Orchid Street',
+    price: 9.0,
+    imageUrl: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80',
+    cuisine: 'Thai',
+    category: 'main',
+    dietaryTags: ['Spicy', 'Dairy-Free', 'Immunity Boost'],
+    ingredients: ['Lemongrass', 'Lime', 'Mushrooms', 'Chili', 'Galangal'],
+    spicyLevel: 2,
+    availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    availableSlots: ['lunch', 'dinner'],
+    active: true,
+    calories: 280,
+    proteinGrams: 22,
+  },
+  {
+    id: 'meal_veg_manchow_soup',
+    name: 'Veg Manchow Soup with Crispy Noodles',
+    description: 'Hearty Indo-Chinese spiced vegetable broth loaded with mushrooms, carrots, garlic, and crispy fried noodles.',
+    restaurantId: 'rest_spice',
+    restaurantName: 'Spice Route Indian Kitchen',
+    price: 7.5,
+    imageUrl: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80',
+    cuisine: 'North Indian',
+    category: 'main',
+    dietaryTags: ['Vegetarian', 'Spicy', 'Warm & Savory'],
+    ingredients: ['Carrot', 'Mushroom', 'Garlic', 'Soy', 'Crispy Noodles'],
+    spicyLevel: 1,
+    availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    availableSlots: ['lunch', 'dinner'],
+    active: true,
+    calories: 260,
+    proteinGrams: 14,
+  },
+  {
+    id: 'meal_tonkotsu_ramen_soup',
+    name: 'Tokyo Pork & Noodle Broth Ramen',
+    description: 'Rich 12-hour simmered broth with springy noodles, soft-boiled egg, scallions, nori, and bamboo shoots.',
+    restaurantId: 'rest_tokyo',
+    restaurantName: 'Tokyo Bento Co.',
+    price: 13.5,
+    imageUrl: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80',
+    cuisine: 'Japanese',
+    category: 'main',
+    dietaryTags: ['High Protein', 'Rich Broth', 'Hearty'],
+    ingredients: ['Broth', 'Ramen Noodles', 'Egg', 'Nori', 'Bamboo Shoots'],
+    spicyLevel: 0,
+    availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    availableSlots: ['lunch', 'dinner'],
+    active: true,
+    calories: 580,
+    proteinGrams: 32,
   },
 
   // --- DRINKS ---
@@ -1157,7 +1236,8 @@ export function getMockRecommendations(
   query: string,
   excludeIds: string[] = []
 ): Recommendation[] {
-  const q = query.toLowerCase();
+  const typoFixed = correctFoodTypos(query);
+  const q = typoFixed.correctedText.toLowerCase();
 
   // 1. Detect Dietary Requirements (100% Strict Hard Constraints)
   const isVegetarianReq =
@@ -1231,6 +1311,12 @@ export function getMockRecommendations(
     q.includes('mochi') ||
     q.includes('sticky rice');
 
+  const isSoupReq =
+    q.includes('soup') ||
+    q.includes('broth') ||
+    q.includes('ramen') ||
+    q.includes('chowder');
+
   // 5. Detect Spiciness
   const isSpicyReq =
     q.includes('spicy') || q.includes('hot') || q.includes('chilli') || q.includes('chili');
@@ -1296,7 +1382,12 @@ export function getMockRecommendations(
   // =========================================================================
   // CATEGORY CONSTRAINTS
   // =========================================================================
-  if (isSideReq) {
+  if (isSoupReq) {
+    const soups = pool.filter((m) =>
+      /soup|broth|ramen|tom yum|manchow/i.test(m.name + ' ' + m.description)
+    );
+    if (soups.length > 0) pool = soups;
+  } else if (isSideReq) {
     const sides = pool.filter((m) => m.category === 'side');
     if (sides.length > 0) pool = sides;
   } else if (isDrinkReq) {
