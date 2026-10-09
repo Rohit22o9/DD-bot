@@ -88,6 +88,7 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
   onSpinAgain,
 }) => {
   const [isSpinning, setIsSpinning] = useState(false);
+  const [isSlicePopped, setIsSlicePopped] = useState(false);
   const [hasLanded, setHasLanded] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<RouletteCategory>(CATEGORIES[0]);
   const [matchedMeals, setMatchedMeals] = useState<Meal[]>([]);
@@ -97,17 +98,22 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
   const wheelRotationAnim = useRef(new Animated.Value(0)).current;
   const currentAngleRef = useRef(0);
 
-  // Winning option pop-up scale animation
-  const popAnim = useRef(new Animated.Value(0)).current;
+  // Pop-up animation for the winning slice of the wheel
+  const slicePopAnim = useRef(new Animated.Value(0)).current;
 
   // Pointer tick wobble animation
   const pointerAnim = useRef(new Animated.Value(0)).current;
 
+  // Meals fade-in animation
+  const mealsFadeAnim = useRef(new Animated.Value(0)).current;
+
   const handleSpin = () => {
     if (isSpinning) return;
     setIsSpinning(true);
+    setIsSlicePopped(false);
     setHasLanded(false);
-    popAnim.setValue(0);
+    slicePopAnim.setValue(0);
+    mealsFadeAnim.setValue(0);
 
     // Pick a random destination category
     const targetIdx = Math.floor(Math.random() * CATEGORIES.length);
@@ -144,10 +150,10 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
       { iterations: 14 }
     ).start();
 
-    // Spin wheel with smooth deceleration (easing cubic out)
+    // 1. Spin the wheel smoothly with deceleration
     Animated.timing(wheelRotationAnim, {
       toValue: nextTotalAngle,
-      duration: 3600,
+      duration: 3500,
       easing: Easing.out(Easing.cubic),
       useNativeDriver: true,
     }).start(() => {
@@ -166,27 +172,34 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
         : [REAL_DAILY_DROP_MEALS[0]];
       setMatchedMeals(pickedDishes);
 
-      // Trigger pop-up bounce animation on the selected option!
+      // 2. POP UP that specific part of the wheel that was selected!
+      setIsSlicePopped(true);
       Animated.sequence([
-        Animated.spring(popAnim, {
-          toValue: 1.16,
+        Animated.spring(slicePopAnim, {
+          toValue: 1.25,
           friction: 4,
           tension: 110,
           useNativeDriver: true,
         }),
-        Animated.spring(popAnim, {
-          toValue: 1.0,
+        Animated.spring(slicePopAnim, {
+          toValue: 1.12,
           friction: 6,
           tension: 90,
           useNativeDriver: true,
         }),
       ]).start(() => {
-        // After pop animation settles, reveal the chef-picked dishes
+        // 3. AND THEN open/reveal the meals accordingly!
         setTimeout(() => {
           setHasLanded(true);
-          setShowCelebration(true);
-          onSpinAgain?.();
-        }, 350);
+          Animated.timing(mealsFadeAnim, {
+            toValue: 1,
+            duration: 350,
+            useNativeDriver: true,
+          }).start(() => {
+            setShowCelebration(true);
+            onSpinAgain?.();
+          });
+        }, 500);
       });
     });
   };
@@ -273,37 +286,59 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
               </View>
             </View>
           </Animated.View>
+
+          {/* THE SELECTED SLICE OF THE WHEEL POPS UP HERE! */}
+          {isSlicePopped && (
+            <Animated.View
+              style={[
+                styles.poppedSliceContainer,
+                {
+                  transform: [
+                    {
+                      scale: slicePopAnim.interpolate({
+                        inputRange: [0, 1, 1.25],
+                        outputRange: [1, 1.12, 1.25],
+                      }),
+                    },
+                    {
+                      translateY: slicePopAnim.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, -10],
+                      }),
+                    },
+                  ],
+                },
+              ]}
+              pointerEvents="none"
+            >
+              {/* Outer Golden Glow Triangle */}
+              <View
+                style={[
+                  styles.poppedSliceGlow,
+                  { borderTopColor: '#F59E0B' },
+                ]}
+              />
+
+              {/* Popped Slice Triangle Wedge */}
+              <View
+                style={[
+                  styles.poppedSliceTriangle,
+                  { borderTopColor: selectedCategory.color },
+                ]}
+              />
+
+              {/* Popped Slice Badge Content */}
+              <View style={styles.poppedSliceContent}>
+                <Text style={styles.poppedSliceEmoji}>{selectedCategory.emoji}</Text>
+                <Text style={styles.poppedSliceLabel}>{selectedCategory.shortLabel}</Text>
+                <View style={styles.poppedWinnerPill}>
+                  <Text style={styles.poppedWinnerPillText}>🎯 SELECTED</Text>
+                </View>
+              </View>
+            </Animated.View>
+          )}
         </View>
       </View>
-
-      {/* Winning Selection Pop-Up Animation */}
-      <Animated.View
-        style={[
-          styles.popHighlightContainer,
-          {
-            transform: [{ scale: popAnim }],
-            opacity: popAnim.interpolate({
-              inputRange: [0, 0.1, 1],
-              outputRange: [0, 1, 1],
-            }),
-          },
-        ]}
-      >
-        <View style={styles.popHighlightCard}>
-          <Text style={styles.popHighlightEmoji}>{selectedCategory.emoji}</Text>
-          <View style={styles.popHighlightTextCol}>
-            <View style={styles.popTagRow}>
-              <Text style={styles.popBadge}>🎯 LANDED ON ARROW</Text>
-            </View>
-            <Text style={styles.popHighlightTitle}>
-              {selectedCategory.label.toUpperCase()}
-            </Text>
-            <Text style={styles.popHighlightSub}>
-              Cuisine unlocked! Curating dishes...
-            </Text>
-          </View>
-        </View>
-      </Animated.View>
 
       {/* Spin Button */}
       {!hasLanded && (
@@ -319,9 +354,24 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
         </TouchableOpacity>
       )}
 
-      {/* Landed Outcome (Dishes revealed after pop animation) */}
+      {/* Landed Outcome (Opens smoothly AFTER the wheel slice pops up) */}
       {hasLanded && (
-        <View style={styles.landedSection}>
+        <Animated.View
+          style={[
+            styles.landedSection,
+            {
+              opacity: mealsFadeAnim,
+              transform: [
+                {
+                  translateY: mealsFadeAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [12, 0],
+                  }),
+                },
+              ],
+            },
+          ]}
+        >
           <View style={styles.congratsBanner}>
             <Text style={styles.congratsEmoji}>🎉</Text>
             <View style={{ flex: 1 }}>
@@ -351,12 +401,15 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
                   <Text style={styles.dishRest} numberOfLines={1}>
                     {meal.restaurantName} · {meal.cuisine}
                   </Text>
+
+                  {/* Roomy, Prominent Add to Cart Button */}
                   <TouchableOpacity
-                    style={styles.addMiniBtn}
+                    style={styles.addCartBtn}
                     activeOpacity={0.8}
                     onPress={() => onAddToCart(meal.id)}
                   >
-                    <Text style={styles.addMiniBtnText}>+ Add to cart</Text>
+                    <Text style={styles.addCartBtnIcon}>🛒</Text>
+                    <Text style={styles.addCartBtnText}>Add to cart</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -370,7 +423,7 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
           >
             <Text style={styles.spinAgainText}>🎲 Spin again</Text>
           </TouchableOpacity>
-        </View>
+        </Animated.View>
       )}
 
       {/* Celebratory Pop-up with Falling Confetti Bars */}
@@ -447,7 +500,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 12,
     position: 'relative',
-    height: WHEEL_DIAMETER + 20,
+    height: WHEEL_DIAMETER + 24,
   },
   pointerContainer: {
     position: 'absolute',
@@ -569,54 +622,73 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
-  // Pop-Up Highlight Animation Card
-  popHighlightContainer: {
-    marginVertical: 8,
-  },
-  popHighlightCard: {
-    flexDirection: 'row',
+  // Popped Selected Slice of the Wheel Animation
+  poppedSliceContainer: {
+    position: 'absolute',
+    top: 7, // aligns with top 12 o'clock sector of the wheel
+    left: 7,
+    width: WHEEL_DIAMETER,
+    height: WHEEL_DIAMETER,
     alignItems: 'center',
-    backgroundColor: '#F5F3FF',
-    borderRadius: 16,
-    padding: 12,
-    borderWidth: 2,
-    borderColor: '#7C3AED',
-    shadowColor: '#7C3AED',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 4,
+    zIndex: 80,
   },
-  popHighlightEmoji: {
-    fontSize: 34,
-    marginRight: 12,
+  poppedSliceGlow: {
+    position: 'absolute',
+    top: -4,
+    width: 0,
+    height: 0,
+    borderLeftWidth: 76,
+    borderRightWidth: 76,
+    borderTopWidth: WHEEL_RADIUS + 8,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    elevation: 10,
   },
-  popHighlightTextCol: {
-    flex: 1,
+  poppedSliceTriangle: {
+    width: 0,
+    height: 0,
+    borderLeftWidth: 72,
+    borderRightWidth: 72,
+    borderTopWidth: WHEEL_RADIUS + 4,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
   },
-  popTagRow: {
-    flexDirection: 'row',
+  poppedSliceContent: {
+    position: 'absolute',
+    top: 12,
+    alignItems: 'center',
+    width: 80,
+  },
+  poppedSliceEmoji: {
+    fontSize: 26,
     marginBottom: 2,
   },
-  popBadge: {
+  poppedSliceLabel: {
     fontSize: 10,
-    fontWeight: '800',
-    color: '#7C3AED',
-    backgroundColor: '#EDE9FE',
+    fontWeight: '900',
+    color: '#FFFFFF',
+    letterSpacing: 0.5,
+    textShadowColor: 'rgba(0, 0, 0, 0.9)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 3,
+  },
+  poppedWinnerPill: {
+    backgroundColor: '#FEF3C7',
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 6,
+    marginTop: 3,
+    borderWidth: 1,
+    borderColor: '#F59E0B',
   },
-  popHighlightTitle: {
-    fontSize: 14,
+  poppedWinnerPillText: {
+    fontSize: 9,
     fontWeight: '900',
-    color: '#4C1D95',
-    letterSpacing: 0.3,
-  },
-  popHighlightSub: {
-    fontSize: 11,
-    color: '#6B7280',
-    marginTop: 1,
+    color: '#B45309',
   },
 
   spinBtn: {
@@ -669,24 +741,26 @@ const styles = StyleSheet.create({
     color: '#4B5563',
   },
   dishesList: {
-    gap: 8,
+    gap: 10,
     marginBottom: 10,
   },
   dishCard: {
     flexDirection: 'row',
     backgroundColor: '#F9FAFB',
-    borderRadius: 12,
+    borderRadius: 14,
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: '#E5E7EB',
+    padding: 8,
+    gap: 10,
   },
   dishImage: {
-    width: 80,
-    height: 80,
+    width: 88,
+    height: 88,
+    borderRadius: 10,
   },
   dishContent: {
     flex: 1,
-    padding: 8,
     justifyContent: 'space-between',
   },
   dishRow: {
@@ -701,7 +775,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   dishPrice: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: '800',
     color: '#0D7844',
     marginLeft: 6,
@@ -711,20 +785,36 @@ const styles = StyleSheet.create({
     color: '#6B7280',
     marginBottom: 4,
   },
-  addMiniBtn: {
+
+  // Substantial, prominent Add to Cart button
+  addCartBtn: {
     backgroundColor: '#0D7844',
-    paddingVertical: 4,
-    paddingHorizontal: 10,
-    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 10,
     alignSelf: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: 4,
+    shadowColor: '#0D7844',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
+    elevation: 2,
   },
-  addMiniBtnText: {
-    fontSize: 11,
+  addCartBtnIcon: {
+    fontSize: 13,
+  },
+  addCartBtnText: {
+    fontSize: 12,
     fontWeight: '800',
     color: '#FFFFFF',
+    letterSpacing: 0.2,
   },
+
   spinAgainBtn: {
-    paddingVertical: 6,
+    paddingVertical: 8,
     alignItems: 'center',
   },
   spinAgainText: {
