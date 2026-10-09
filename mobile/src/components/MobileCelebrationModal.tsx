@@ -45,16 +45,16 @@ interface ParticleConfig {
   emoji?: string;
 }
 
-// Generate 24 diverse celebration bars and streamer particles
-const PARTICLES: ParticleConfig[] = Array.from({ length: 24 }).map((_, i) => ({
+// Generate 36 diverse celebration bars, ribbons, and party poppers
+const PARTICLES: ParticleConfig[] = Array.from({ length: 36 }).map((_, i) => ({
   x: Math.random() * (SCREEN_WIDTH - 20),
   width: i % 4 === 0 ? 14 : i % 3 === 0 ? 8 : 12,
-  height: i % 4 === 0 ? 14 : i % 3 === 0 ? 22 : 10,
+  height: i % 4 === 0 ? 14 : i % 3 === 0 ? 24 : 10,
   color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
-  delay: Math.floor(Math.random() * 400),
-  duration: 1800 + Math.floor(Math.random() * 1000),
+  delay: Math.floor(Math.random() * 500),
+  duration: 1700 + Math.floor(Math.random() * 900),
   rotation: Math.floor(Math.random() * 360),
-  emoji: i % 6 === 0 ? '🎉' : i % 7 === 0 ? '✨' : i % 8 === 0 ? '⭐' : undefined,
+  emoji: i % 5 === 0 ? '🎉' : i % 7 === 0 ? '✨' : i % 9 === 0 ? '⭐' : undefined,
 }));
 
 export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
@@ -124,46 +124,6 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
       onRequestClose={onClose}
     >
       <View style={styles.overlay}>
-        {/* Animated Celebration Confetti Bars */}
-        <View style={StyleSheet.absoluteFill} pointerEvents="none">
-          {PARTICLES.map((p, idx) => {
-            const translateY = particleAnims[idx].interpolate({
-              inputRange: [0, 1],
-              outputRange: [-60, SCREEN_HEIGHT + 60],
-            });
-
-            const rotate = particleAnims[idx].interpolate({
-              inputRange: [0, 1],
-              outputRange: [`${p.rotation}deg`, `${p.rotation + 360}deg`],
-            });
-
-            const opacity = particleAnims[idx].interpolate({
-              inputRange: [0, 0.1, 0.85, 1],
-              outputRange: [0, 1, 1, 0],
-            });
-
-            return (
-              <Animated.View
-                key={idx}
-                style={[
-                  styles.particle,
-                  {
-                    left: p.x,
-                    width: p.width,
-                    height: p.height,
-                    backgroundColor: p.emoji ? 'transparent' : p.color,
-                    borderRadius: p.height > 15 ? 4 : 2,
-                    transform: [{ translateY }, { rotate }],
-                    opacity,
-                  },
-                ]}
-              >
-                {p.emoji ? <Text style={styles.particleEmoji}>{p.emoji}</Text> : null}
-              </Animated.View>
-            );
-          })}
-        </View>
-
         {/* Central Glowing Card Container */}
         <Animated.View
           style={[
@@ -227,7 +187,7 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
                 onPress={() => onAddToCart(meal.id)}
               >
                 <Text style={styles.orderBtnText}>
-                  🛒 Add to card — ${meal.price.toFixed(2)}
+                  🛒 Add to cart — ${meal.price.toFixed(2)}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -239,9 +199,49 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
             activeOpacity={0.7}
             onPress={onClose}
           >
-            <Text style={styles.continueBtnText}>Continue to Trivia</Text>
+            <Text style={styles.continueBtnText}>Continue</Text>
           </TouchableOpacity>
         </Animated.View>
+
+        {/* Animated Celebration Confetti Bars — Placed AFTER card so they rain down directly ON TOP OF the card */}
+        <View style={styles.confettiOverlay} pointerEvents="none">
+          {PARTICLES.map((p, idx) => {
+            const translateY = particleAnims[idx].interpolate({
+              inputRange: [0, 1],
+              outputRange: [-60, SCREEN_HEIGHT + 60],
+            });
+
+            const rotate = particleAnims[idx].interpolate({
+              inputRange: [0, 1],
+              outputRange: [`${p.rotation}deg`, `${p.rotation + 360}deg`],
+            });
+
+            const opacity = particleAnims[idx].interpolate({
+              inputRange: [0, 0.08, 0.88, 1],
+              outputRange: [0, 1, 1, 0],
+            });
+
+            return (
+              <Animated.View
+                key={idx}
+                style={[
+                  styles.particle,
+                  {
+                    left: p.x,
+                    width: p.width,
+                    height: p.height,
+                    backgroundColor: p.emoji ? 'transparent' : p.color,
+                    borderRadius: p.height > 15 ? 4 : 2,
+                    transform: [{ translateY }, { rotate }],
+                    opacity,
+                  },
+                ]}
+              >
+                {p.emoji ? <Text style={styles.particleEmoji}>{p.emoji}</Text> : null}
+              </Animated.View>
+            );
+          })}
+        </View>
       </View>
     </Modal>
   );
@@ -255,14 +255,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 20,
   },
+  confettiOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 99999,
+    elevation: 30,
+  },
   particle: {
     position: 'absolute',
     top: 0,
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 99999,
   },
   particleEmoji: {
-    fontSize: 16,
+    fontSize: 18,
   },
   cardContainer: {
     width: '100%',

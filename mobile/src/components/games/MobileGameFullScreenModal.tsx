@@ -119,7 +119,7 @@ export const MobileGameFullScreenModal: React.FC<MobileGameFullScreenModalProps>
       onRequestClose={onClose}
     >
       <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
-        <StatusBar barStyle="light-content" backgroundColor="#0F172A" />
+        <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
 
         {/* Dedicated Game Header */}
         <View style={styles.header}>
@@ -207,7 +207,7 @@ export const MobileGameFullScreenModal: React.FC<MobileGameFullScreenModalProps>
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0F172A', // Deep modern slate gaming backdrop
+    backgroundColor: '#F8FAFC', // Consistent clean background matching the app
   },
   header: {
     flexDirection: 'row',
@@ -216,28 +216,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#1E293B',
-    backgroundColor: '#0F172A',
+    borderBottomColor: '#E2E8F0',
+    backgroundColor: '#FFFFFF',
   },
   backBtn: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#1E293B',
+    backgroundColor: '#F1F5F9',
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: '#334155',
+    borderColor: '#E2E8F0',
   },
   backBtnArrow: {
     fontSize: 14,
-    color: '#94A3B8',
+    color: '#475569',
     marginRight: 4,
     fontWeight: '700',
   },
   backBtnText: {
     fontSize: 12,
-    color: '#F1F5F9',
+    color: '#0F172A',
     fontWeight: '600',
   },
   titleContainer: {
@@ -256,25 +256,25 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0F172A',
     letterSpacing: 0.3,
   },
   subtitleText: {
     fontSize: 11,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 2,
     textAlign: 'center',
   },
   cartPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#1E293B',
+    backgroundColor: '#F1F5F9',
     width: 38,
     height: 38,
     borderRadius: 19,
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: '#334155',
+    borderColor: '#E2E8F0',
   },
   cartPillIcon: {
     fontSize: 16,
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 4,
     borderWidth: 1.5,
-    borderColor: '#0F172A',
+    borderColor: '#FFFFFF',
   },
   cartBadgeText: {
     color: '#FFFFFF',
@@ -310,14 +310,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#1E293B',
+    backgroundColor: '#ECFDF5',
     paddingVertical: 6,
     paddingHorizontal: 14,
     borderRadius: 20,
     alignSelf: 'center',
     marginBottom: 14,
     borderWidth: 1,
-    borderColor: '#334155',
+    borderColor: '#A7F3D0',
   },
   modeDot: {
     width: 6,
@@ -329,17 +329,17 @@ const styles = StyleSheet.create({
   modeBannerText: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#94A3B8',
+    color: '#065F46',
     letterSpacing: 0.6,
   },
   widgetWrapper: {
     borderRadius: 20,
     overflow: 'hidden',
     shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.3,
-    shadowRadius: 16,
-    elevation: 8,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+    elevation: 3,
   },
   footerNote: {
     marginTop: 20,
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
   },
   footerNoteText: {
     fontSize: 11,
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
     lineHeight: 16,
   },

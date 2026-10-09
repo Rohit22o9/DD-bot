@@ -12,7 +12,7 @@ const GAME_INFO: Record<
   { title: string; subtitle: string; icon: string; themeColor: string; bgBadge: string; ctaText: string }
 > = {
   meal_battle: {
-    title: 'Meal Battle Arena',
+    title: 'Meal Battle',
     subtitle: 'Vote round-by-round to crown tonight’s champion ⚔️',
     icon: '⚔️',
     themeColor: '#D97706',
@@ -20,7 +20,7 @@ const GAME_INFO: Record<
     ctaText: '⚔️ Enter Meal Battle',
   },
   food_tinder: {
-    title: 'Food Tinder (Swipe & Pick)',
+    title: 'Food Tinder',
     subtitle: 'Swipe dishes to train AI on your exact cravings 🔥',
     icon: '🔥',
     themeColor: '#DC2626',
@@ -36,7 +36,7 @@ const GAME_INFO: Record<
     ctaText: '🤔 Play This or That',
   },
   meal_roulette: {
-    title: 'Meal Roulette Wheel',
+    title: 'Meal Roulette',
     subtitle: 'Spin the wheel for delicious global daily drops 🎲',
     icon: '🎲',
     themeColor: '#7C3AED',
@@ -44,7 +44,7 @@ const GAME_INFO: Record<
     ctaText: '🎲 Spin the Wheel',
   },
   mystery_meal: {
-    title: 'Mystery Box Challenge',
+    title: 'Mystery Meal',
     subtitle: 'Pick a mystery box to reveal a special daily drop 🎁',
     icon: '🎁',
     themeColor: '#2563EB',
@@ -52,7 +52,7 @@ const GAME_INFO: Record<
     ctaText: '🎁 Open Mystery Box',
   },
   food_passport: {
-    title: 'Food Passport Journey',
+    title: 'Food Passport',
     subtitle: 'Collect stamps across world cuisines & unlock rewards 🌍',
     icon: '🌍',
     themeColor: '#0D7844',
@@ -60,7 +60,7 @@ const GAME_INFO: Record<
     ctaText: '🌍 Open Passport',
   },
   guess_dish: {
-    title: 'Guess the Dish Trivia',
+    title: 'Guess the Dish',
     subtitle: 'Crack 3 chef clues to reveal and order the dish 🕵️',
     icon: '🕵️',
     themeColor: '#B45309',
@@ -68,7 +68,7 @@ const GAME_INFO: Record<
     ctaText: '🕵️ Start Guessing',
   },
   build_meal: {
-    title: 'Build a Bowl Arena',
+    title: 'Build a Bowl',
     subtitle: 'Customize base, protein, veggies, and sauce 🥗',
     icon: '🥗',
     themeColor: '#059669',
@@ -98,14 +98,18 @@ export const MobileInChatGameCard: React.FC<MobileInChatGameCardProps> = ({
         </View>
         <View style={styles.textCol}>
           <View style={styles.titleRow}>
-            <Text style={styles.title}>{info.title}</Text>
+            <Text style={styles.title} numberOfLines={1}>
+              {info.title}
+            </Text>
             <View style={[styles.badge, { backgroundColor: info.bgBadge }]}>
               <Text style={[styles.badgeText, { color: info.themeColor }]}>
                 FULL SCREEN
               </Text>
             </View>
           </View>
-          <Text style={styles.subtitle}>{info.subtitle}</Text>
+          <Text style={styles.subtitle} numberOfLines={2}>
+            {info.subtitle}
+          </Text>
         </View>
       </View>
 
@@ -162,22 +166,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 3,
+    gap: 8,
+    marginBottom: 4,
   },
   title: {
+    flex: 1,
     fontSize: 14,
     fontWeight: '800',
     color: '#0F172A',
   },
   badge: {
     paddingHorizontal: 7,
-    paddingVertical: 2,
+    paddingVertical: 2.5,
     borderRadius: 6,
+    flexShrink: 0,
   },
   badgeText: {
-    fontSize: 9,
+    fontSize: 8.5,
     fontWeight: '800',
-    letterSpacing: 0.5,
+    letterSpacing: 0.4,
   },
   subtitle: {
     fontSize: 12,
