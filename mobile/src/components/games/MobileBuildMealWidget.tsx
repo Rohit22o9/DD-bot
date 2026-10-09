@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Meal } from '../../types';
-import { MOCK_MOBILE_MEALS } from '../../mockData';
+import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
 
 interface MobileBuildMealWidgetProps {
@@ -72,21 +72,33 @@ export const MobileBuildMealWidget: React.FC<MobileBuildMealWidgetProps> = ({
     onPlayAgain?.();
   };
 
-  // Determine closest available match from mock meals
-  let matchedMeal: Meal = MOCK_MOBILE_MEALS[0];
-  if (selectedPersonality?.key === 'fresh' || selectedBase?.key === 'quinoa') {
-    matchedMeal = MOCK_MOBILE_MEALS[1]; // Quinoa bowl
-  } else if (selectedProtein?.key === 'salmon') {
-    matchedMeal = MOCK_MOBILE_MEALS[2]; // Salmon Teriyaki
-  } else if (selectedPersonality?.key === 'rich') {
-    matchedMeal = MOCK_MOBILE_MEALS[3]; // Biryani
+  // Determine closest available match from real 136 meals
+  let matchedMeal: Meal = REAL_DAILY_DROP_MEALS[0];
+  let candidates: Meal[] = REAL_DAILY_DROP_MEALS.filter((m: Meal) => m.category === 'main');
+
+  if (selectedProtein?.key === 'veg') {
+    const vegPool = candidates.filter((m: Meal) => m.healthFlags?.vegetarian || m.dietaryTags.some((t: string) => /veg/i.test(t)));
+    if (vegPool.length > 0) candidates = vegPool;
+  } else if (selectedProtein?.key === 'chicken') {
+    const chickenPool = candidates.filter((m: Meal) => /chicken/i.test(m.name));
+    if (chickenPool.length > 0) candidates = chickenPool;
   } else if (selectedProtein?.key === 'beef') {
-    matchedMeal = MOCK_MOBILE_MEALS[5]; // Rendang
-  } else if (selectedProtein?.key === 'veg') {
-    matchedMeal = MOCK_MOBILE_MEALS[4]; // Halloumi
-  } else {
-    matchedMeal = MOCK_MOBILE_MEALS[0]; // Thai Basil
+    const beefPool = candidates.filter((m: Meal) => /beef|pork|lamb|goat/i.test(m.name));
+    if (beefPool.length > 0) candidates = beefPool;
+  } else if (selectedProtein?.key === 'salmon') {
+    const seafoodPool = candidates.filter((m: Meal) => /fish|salmon|seafood|squid/i.test(m.name));
+    if (seafoodPool.length > 0) candidates = seafoodPool;
   }
+
+  if (selectedBase?.key === 'rice') {
+    const ricePool = candidates.filter((m: Meal) => /rice|biryani/i.test(m.name));
+    if (ricePool.length > 0) candidates = ricePool;
+  } else if (selectedBase?.key === 'noodles') {
+    const noodlePool = candidates.filter((m: Meal) => /noodle|ramen|jjajang|pasta|spaghetti/i.test(m.name));
+    if (noodlePool.length > 0) candidates = noodlePool;
+  }
+
+  matchedMeal = candidates[Math.floor(Math.random() * candidates.length)] || REAL_DAILY_DROP_MEALS[0];
 
   return (
     <View style={styles.container}>

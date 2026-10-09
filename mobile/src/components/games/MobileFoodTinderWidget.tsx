@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { Meal } from '../../types';
-import { MOCK_MOBILE_MEALS } from '../../mockData';
+import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
 
 const { width } = Dimensions.get('window');
@@ -29,9 +29,10 @@ export const MobileFoodTinderWidget: React.FC<MobileFoodTinderWidgetProps> = ({
   onPreferencesDiscovered,
   onPlayAgain,
 }) => {
-  // Use a curated 5-dish deck
+  // Use a dynamic 5-dish deck from real 136 meals
   const [deck] = useState<Meal[]>(() => {
-    return MOCK_MOBILE_MEALS.slice(0, 5);
+    const mains = REAL_DAILY_DROP_MEALS.filter((m) => m.category === 'main');
+    return [...mains].sort(() => Math.random() - 0.5).slice(0, 5);
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -104,13 +105,13 @@ export const MobileFoodTinderWidget: React.FC<MobileFoodTinderWidgetProps> = ({
       // Find another meal with matching cuisine or the highest liked meal
       const topCuisine = likes[0].cuisine;
       match =
-        MOCK_MOBILE_MEALS.find((m) => m.cuisine === topCuisine && !likes.includes(m)) ||
+        REAL_DAILY_DROP_MEALS.find((m) => m.cuisine.toLowerCase() === topCuisine.toLowerCase() && !likes.includes(m)) ||
         likes[0];
     } else {
-      match = MOCK_MOBILE_MEALS[0]; // fallback
+      match = REAL_DAILY_DROP_MEALS[0]; // fallback
     }
 
-    setMatchedMeal(match || MOCK_MOBILE_MEALS[0]);
+    setMatchedMeal(match || REAL_DAILY_DROP_MEALS[0]);
     setIsCompleted(true);
 
     if (onPreferencesDiscovered && likes.length > 0) {

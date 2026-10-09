@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Meal } from '../../types';
-import { MOCK_MOBILE_MEALS } from '../../mockData';
+import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
 
 interface MobileMysteryMealWidgetProps {
@@ -24,40 +24,53 @@ interface MysteryBox {
   highlightText: string;
 }
 
-const BOXES: MysteryBox[] = [
-  {
-    id: 'box_a',
-    letter: 'A',
-    label: 'Under $12',
-    tagline: 'Best value drop',
-    emoji: '💰',
-    meal: MOCK_MOBILE_MEALS.find((m) => m.price <= 12) || MOCK_MOBILE_MEALS[1],
-    highlightText: 'Budget Super Saver · Under $12',
-  },
-  {
-    id: 'box_b',
-    letter: 'B',
-    label: 'High Protein',
-    tagline: 'Macro powerhouse',
-    emoji: '💪',
-    meal: MOCK_MOBILE_MEALS.find((m) => (m.proteinGrams || 0) >= 36) || MOCK_MOBILE_MEALS[0],
-    highlightText: '38g+ Pure Lean Protein',
-  },
-  {
-    id: 'box_c',
-    letter: 'C',
-    label: 'Adventurous',
-    tagline: 'Bold global flavours',
-    emoji: '🌶️',
-    meal: MOCK_MOBILE_MEALS.find((m) => m.cuisine === 'African' || m.cuisine === 'Indonesian') || MOCK_MOBILE_MEALS[5],
-    highlightText: 'Chef’s Bold Flavour Surprise',
-  },
-];
+function getDynamicMysteryBoxes(): MysteryBox[] {
+  const budgetMeals = REAL_DAILY_DROP_MEALS.filter((m) => m.price <= 12);
+  const proteinMeals = REAL_DAILY_DROP_MEALS.filter((m) => (m.proteinGrams || 0) >= 30);
+  const spicyMeals = REAL_DAILY_DROP_MEALS.filter(
+    (m) => m.spicyLevel > 0 || /spicy|chilli|mala|pepper/i.test(m.name)
+  );
+
+  const mealA = budgetMeals[Math.floor(Math.random() * budgetMeals.length)] || REAL_DAILY_DROP_MEALS[0];
+  const mealB = proteinMeals[Math.floor(Math.random() * proteinMeals.length)] || REAL_DAILY_DROP_MEALS[3];
+  const mealC = spicyMeals[Math.floor(Math.random() * spicyMeals.length)] || REAL_DAILY_DROP_MEALS[10];
+
+  return [
+    {
+      id: 'box_a',
+      letter: 'A',
+      label: 'Under $12',
+      tagline: 'Best value drop',
+      emoji: '💰',
+      meal: mealA,
+      highlightText: `Budget Super Saver · $${mealA.price.toFixed(2)}`,
+    },
+    {
+      id: 'box_b',
+      letter: 'B',
+      label: 'High Protein',
+      tagline: 'Macro powerhouse',
+      emoji: '💪',
+      meal: mealB,
+      highlightText: `${mealB.proteinGrams || 32}g Pure Lean Protein`,
+    },
+    {
+      id: 'box_c',
+      letter: 'C',
+      label: 'Adventurous',
+      tagline: 'Bold global flavours',
+      emoji: '🌶️',
+      meal: mealC,
+      highlightText: `Chef’s Bold ${mealC.cuisine} Surprise`,
+    },
+  ];
+}
 
 export const MobileMysteryMealWidget: React.FC<MobileMysteryMealWidgetProps> = ({
   onAddToCart,
   onTryAnother,
 }) => {
+  const [boxes, setBoxes] = useState<MysteryBox[]>(() => getDynamicMysteryBoxes());
   const [selectedBox, setSelectedBox] = useState<MysteryBox | null>(null);
 
   const handleOpenBox = (box: MysteryBox) => {
@@ -65,6 +78,7 @@ export const MobileMysteryMealWidget: React.FC<MobileMysteryMealWidgetProps> = (
   };
 
   const handleReset = () => {
+    setBoxes(getDynamicMysteryBoxes());
     setSelectedBox(null);
     onTryAnother?.();
   };
@@ -85,7 +99,7 @@ export const MobileMysteryMealWidget: React.FC<MobileMysteryMealWidgetProps> = (
 
       {!selectedBox ? (
         <View style={styles.boxesRow}>
-          {BOXES.map((box) => (
+          {boxes.map((box) => (
             <TouchableOpacity
               key={box.id}
               style={styles.boxCard}

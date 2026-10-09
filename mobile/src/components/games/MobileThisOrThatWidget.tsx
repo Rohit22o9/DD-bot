@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Meal } from '../../types';
-import { MOCK_MOBILE_MEALS } from '../../mockData';
+import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
 
 interface MobileThisOrThatWidgetProps {
@@ -29,16 +29,16 @@ const ROUNDS: QuestionRound[] = [
   {
     title: 'Round 2: Protein Choice',
     optionA: { label: 'Chicken', icon: '🍗', key: 'chicken' },
-    optionB: { label: 'Beef / Seafood', icon: '🥩', key: 'beef_seafood' },
+    optionB: { label: 'Beef / Seafood / Veg', icon: '🥩', key: 'beef_seafood' },
   },
   {
     title: 'Round 3: Preferred Base',
-    optionA: { label: 'Rice', icon: '🍚', key: 'rice' },
-    optionB: { label: 'Bread / Quinoa', icon: '🫓', key: 'bread_quinoa' },
+    optionA: { label: 'Rice / Biryani', icon: '🍚', key: 'rice' },
+    optionB: { label: 'Noodles / Roti / Pasta', icon: '🍜', key: 'bread_noodles' },
   },
   {
     title: 'Round 4: Mood & Vibe',
-    optionA: { label: 'Healthy & Fresh', icon: '🥗', key: 'healthy' },
+    optionA: { label: 'Healthy & Light', icon: '🥗', key: 'healthy' },
     optionB: { label: 'Rich Comfort', icon: '🍛', key: 'comfort' },
   },
 ];
@@ -57,25 +57,39 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
     setChoices(nextChoices);
 
     if (currentRoundIndex + 1 >= ROUNDS.length) {
-      // Calculate match
+      // Calculate match dynamically from real 136 meals
       const isSpicy = nextChoices.includes('spicy');
       const wantsChicken = nextChoices.includes('chicken');
-      const wantsHealthy = nextChoices.includes('healthy');
+      const wantsRice = nextChoices.includes('rice');
 
-      let match: Meal | undefined;
-      if (wantsHealthy && !isSpicy) {
-        match = MOCK_MOBILE_MEALS.find((m) => m.id === 'meal_quinoa_bowl') || MOCK_MOBILE_MEALS[1];
-      } else if (isSpicy && wantsChicken) {
-        match = MOCK_MOBILE_MEALS.find((m) => m.id === 'meal_thai_basil') || MOCK_MOBILE_MEALS[0];
-      } else if (!isSpicy && !wantsChicken) {
-        match = MOCK_MOBILE_MEALS.find((m) => m.id === 'meal_salmon_bowl') || MOCK_MOBILE_MEALS[2];
-      } else if (isSpicy && !wantsChicken) {
-        match = MOCK_MOBILE_MEALS.find((m) => m.id === 'meal_beef_rendang') || MOCK_MOBILE_MEALS[5];
+      let candidates = REAL_DAILY_DROP_MEALS.filter((m) => m.category === 'main');
+
+      if (wantsChicken) {
+        const chickenPool = candidates.filter((m) => /chicken/i.test(m.name));
+        if (chickenPool.length > 0) candidates = chickenPool;
       } else {
-        match = MOCK_MOBILE_MEALS[0];
+        const nonChickenPool = candidates.filter((m) => !/chicken/i.test(m.name));
+        if (nonChickenPool.length > 0) candidates = nonChickenPool;
       }
 
-      setMatchedMeal(match || MOCK_MOBILE_MEALS[0]);
+      if (isSpicy) {
+        const spicyPool = candidates.filter((m) => m.spicyLevel > 0 || /spicy|chilli|mala|pepper/i.test(m.name));
+        if (spicyPool.length > 0) candidates = spicyPool;
+      } else {
+        const mildPool = candidates.filter((m) => m.spicyLevel === 0 && !/spicy|chilli|mala/i.test(m.name));
+        if (mildPool.length > 0) candidates = mildPool;
+      }
+
+      if (wantsRice) {
+        const ricePool = candidates.filter((m) => /rice|biryani/i.test(m.name));
+        if (ricePool.length > 0) candidates = ricePool;
+      } else {
+        const otherBasePool = candidates.filter((m) => /noodle|pasta|roti|chapati|pancake/i.test(m.name));
+        if (otherBasePool.length > 0) candidates = otherBasePool;
+      }
+
+      const match = candidates[Math.floor(Math.random() * candidates.length)] || REAL_DAILY_DROP_MEALS[0];
+      setMatchedMeal(match);
       setIsFinished(true);
     } else {
       setCurrentRoundIndex((prev) => prev + 1);

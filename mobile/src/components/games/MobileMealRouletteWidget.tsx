@@ -7,7 +7,7 @@ import {
   Animated,
 } from 'react-native';
 import { Meal } from '../../types';
-import { MOCK_MOBILE_MEALS } from '../../mockData';
+import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
 
 interface MobileMealRouletteWidgetProps {
@@ -22,12 +22,12 @@ interface RouletteCategory {
 }
 
 const CATEGORIES: RouletteCategory[] = [
-  { label: 'Indonesian', emoji: '🇮🇩', cuisine: 'Indonesian' },
-  { label: 'Thai Flavours', emoji: '🇹🇭', cuisine: 'Thai' },
-  { label: 'Indian Spice', emoji: '🇮🇳', cuisine: 'Indian' },
-  { label: 'African Heat', emoji: '🌍', cuisine: 'African' },
-  { label: 'Mediterranean Fresh', emoji: '🥗', cuisine: 'Mediterranean' },
-  { label: 'Japanese Bento', emoji: '🍱', cuisine: 'Japanese' },
+  { label: 'North Indian Spice', emoji: '🇮🇳', cuisine: 'North Indian' },
+  { label: 'Chinese Wok Drops', emoji: '🇨🇳', cuisine: 'Chinese' },
+  { label: 'Korean Street Food', emoji: '🇰🇷', cuisine: 'Korean' },
+  { label: 'Japanese Ramen & Don', emoji: '🇯🇵', cuisine: 'Japanese' },
+  { label: 'Italian Fresh Pasta', emoji: '🇮🇹', cuisine: 'Italian' },
+  { label: 'Malaysian Comfort', emoji: '🇲🇾', cuisine: 'Malaysian' },
 ];
 
 export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> = ({
@@ -64,10 +64,16 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
       } else {
         // Landed!
         const finalCategory = CATEGORIES[targetIdx];
-        const dishes = MOCK_MOBILE_MEALS.filter(
-          (m) => m.cuisine.toLowerCase() === finalCategory.cuisine.toLowerCase()
+        const dishes = REAL_DAILY_DROP_MEALS.filter(
+          (m) =>
+            m.cuisine.toLowerCase().includes(finalCategory.cuisine.toLowerCase()) ||
+            finalCategory.cuisine.toLowerCase().includes(m.cuisine.toLowerCase())
         );
-        setMatchedMeals(dishes.length > 0 ? dishes.slice(0, 2) : [MOCK_MOBILE_MEALS[0]]);
+        setMatchedMeals(
+          dishes.length > 0
+            ? [...dishes].sort(() => Math.random() - 0.5).slice(0, 2)
+            : [REAL_DAILY_DROP_MEALS[0]]
+        );
         setIsSpinning(false);
         setHasLanded(true);
         onSpinAgain?.();

@@ -7,7 +7,7 @@ import {
   Animated,
 } from 'react-native';
 import { Meal } from '../../types';
-import { MOCK_MOBILE_MEALS } from '../../mockData';
+import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
 
 interface MobileMealBattleWidgetProps {
@@ -19,12 +19,19 @@ export const MobileMealBattleWidget: React.FC<MobileMealBattleWidgetProps> = ({
   onAddToCart,
   onPlayAgain,
 }) => {
-  // 4 rounds of contenders
+  // Pull real mains from catalog
+  const realMains = REAL_DAILY_DROP_MEALS.filter((m) => m.category === 'main');
+
+  // Generate 5 random contenders for 4 rounds
+  const [battleDeck, setBattleDeck] = useState<Meal[]>(() => {
+    return [...realMains].sort(() => Math.random() - 0.5).slice(0, 8);
+  });
+
   const [currentRound, setCurrentRound] = useState(1);
   const totalRounds = 4;
 
-  const [currentLeader, setCurrentLeader] = useState<Meal>(MOCK_MOBILE_MEALS[0]);
-  const [currentChallenger, setCurrentChallenger] = useState<Meal>(MOCK_MOBILE_MEALS[1]);
+  const [currentLeader, setCurrentLeader] = useState<Meal>(() => battleDeck[0] || realMains[0]);
+  const [currentChallenger, setCurrentChallenger] = useState<Meal>(() => battleDeck[1] || realMains[1]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [winner, setWinner] = useState<Meal | null>(null);
 
@@ -37,20 +44,18 @@ export const MobileMealBattleWidget: React.FC<MobileMealBattleWidgetProps> = ({
       const nextRound = currentRound + 1;
       setCurrentRound(nextRound);
       setCurrentLeader(picked);
-      // Next challenger from pool
-      const nextMealIndex = nextRound % MOCK_MOBILE_MEALS.length;
-      let nextChallenger = MOCK_MOBILE_MEALS[nextMealIndex];
-      if (nextChallenger.id === picked.id) {
-        nextChallenger = MOCK_MOBILE_MEALS[(nextMealIndex + 1) % MOCK_MOBILE_MEALS.length];
-      }
+      // Next challenger from randomized deck
+      const nextChallenger = battleDeck[nextRound] || realMains[(nextRound + 2) % realMains.length];
       setCurrentChallenger(nextChallenger);
     }
   };
 
   const handleRestart = () => {
+    const newDeck = [...realMains].sort(() => Math.random() - 0.5).slice(0, 8);
+    setBattleDeck(newDeck);
     setCurrentRound(1);
-    setCurrentLeader(MOCK_MOBILE_MEALS[0]);
-    setCurrentChallenger(MOCK_MOBILE_MEALS[1]);
+    setCurrentLeader(newDeck[0]);
+    setCurrentChallenger(newDeck[1]);
     setIsGameOver(false);
     setWinner(null);
     onPlayAgain?.();

@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Meal } from '../../types';
-import { MOCK_MOBILE_MEALS } from '../../mockData';
+import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
 
 interface MobileFoodPassportWidgetProps {
@@ -19,27 +19,29 @@ interface PassportStamp {
   flag: string;
   cuisine: string;
   isUnlocked: boolean;
-  mealId?: string;
+  sampleMealName: string;
 }
 
 const PASSPORT_STAMPS: PassportStamp[] = [
-  { country: 'India', flag: '🇮🇳', cuisine: 'Indian', isUnlocked: true },
-  { country: 'Thailand', flag: '🇹🇭', cuisine: 'Thai', isUnlocked: true },
-  { country: 'Indonesia', flag: '🇮🇩', cuisine: 'Indonesian', isUnlocked: false, mealId: 'meal_beef_rendang' },
-  { country: 'Nigeria', flag: '🇳🇬', cuisine: 'African', isUnlocked: false, mealId: 'meal_jollof_chicken' },
-  { country: 'Japan', flag: '🇯🇵', cuisine: 'Japanese', isUnlocked: false, mealId: 'meal_salmon_bowl' },
-  { country: 'Greece', flag: '🇬🇷', cuisine: 'Mediterranean', isUnlocked: false, mealId: 'meal_halloumi_bowl' },
+  { country: 'India', flag: '🇮🇳', cuisine: 'North Indian', isUnlocked: true, sampleMealName: 'Chicken Biryani' },
+  { country: 'China', flag: '🇨🇳', cuisine: 'Chinese', isUnlocked: false, sampleMealName: 'Homestyle Mapo Tofu' },
+  { country: 'Korea', flag: '🇰🇷', cuisine: 'Korean', isUnlocked: false, sampleMealName: 'Kimchi Pancake' },
+  { country: 'Japan', flag: '🇯🇵', cuisine: 'Japanese', isUnlocked: false, sampleMealName: 'Signature Tonkotsu Ramen' },
+  { country: 'Italy', flag: '🇮🇹', cuisine: 'Italian', isUnlocked: false, sampleMealName: 'Rigatoni Napoletana' },
+  { country: 'Malaysia', flag: '🇲🇾', cuisine: 'Malaysian', isUnlocked: false, sampleMealName: 'Nasi Lemak' },
 ];
 
 export const MobileFoodPassportWidget: React.FC<MobileFoodPassportWidgetProps> = ({
   onAddToCart,
   onExploreMore,
 }) => {
-  const [selectedTarget, setSelectedTarget] = useState<PassportStamp>(PASSPORT_STAMPS[2]); // Indonesia
+  const [selectedTarget, setSelectedTarget] = useState<PassportStamp>(PASSPORT_STAMPS[1]); // China
   const unlockedCount = PASSPORT_STAMPS.filter((s) => s.isUnlocked).length;
 
   const targetMeal: Meal =
-    MOCK_MOBILE_MEALS.find((m) => m.id === selectedTarget.mealId) || MOCK_MOBILE_MEALS[5];
+    REAL_DAILY_DROP_MEALS.find((m) =>
+      m.cuisine.toLowerCase().includes(selectedTarget.cuisine.toLowerCase())
+    ) || REAL_DAILY_DROP_MEALS[0];
 
   return (
     <View style={styles.container}>

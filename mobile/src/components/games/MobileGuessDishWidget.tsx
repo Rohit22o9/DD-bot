@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   View,
   Text,
@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Meal } from '../../types';
-import { MOCK_MOBILE_MEALS } from '../../mockData';
+import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
 
 interface MobileGuessDishWidgetProps {
@@ -14,60 +14,113 @@ interface MobileGuessDishWidgetProps {
   onPlayAgain?: () => void;
 }
 
-interface TriviaChallenge {
+interface TriviaQuestion {
+  targetMeal: Meal;
   clues: string[];
   options: string[];
   correctAnswer: string;
-  mealId: string;
 }
 
-const TRIVIA: TriviaChallenge = {
-  clues: [
-    'Clue 1: 🇳🇬 West African culinary heritage',
-    'Clue 2: 🍚 Fragrant, slow-simmered rice',
-    'Clue 3: 🍅 Smoky tomato, scotch bonnet & peppers',
-  ],
-  options: ['Jollof Rice', 'Fried Rice', 'Chicken Biryani'],
-  correctAnswer: 'Jollof Rice',
-  mealId: 'meal_jollof_chicken',
-};
+// Helper to build a dynamic trivia challenge from real meals
+function generateTriviaChallenge(excludeId?: string): TriviaQuestion {
+  const pool = REAL_DAILY_DROP_MEALS.filter(
+    (m) => m.category === 'main' && m.id !== excludeId
+  );
+  const randomIndex = Math.floor(Math.random() * pool.length);
+  const target = pool[randomIndex] || REAL_DAILY_DROP_MEALS[0];
+
+  // Build authentic clues based on real data
+  const flagEmoji =
+    target.cuisine === 'Chinese'
+      ? '🇨🇳'
+      : target.cuisine === 'North Indian' || target.cuisine === 'Indian' || target.cuisine === 'Punjabi'
+      ? '🇮🇳'
+      : target.cuisine === 'Korean'
+      ? '🇰🇷'
+      : target.cuisine === 'Japanese'
+      ? '🇯🇵'
+      : target.cuisine === 'Italian'
+      ? '🇮🇹'
+      : target.cuisine === 'Malaysian'
+      ? '🇲🇾'
+      : '🍽️';
+
+  const clue1 = `Clue 1: ${flagEmoji} Authentic ${target.cuisine} culinary tradition`;
+  const ings = target.ingredients && target.ingredients.length > 0
+    ? target.ingredients.slice(0, 3).join(', ')
+    : 'Fresh chef-selected pantry essentials';
+  const clue2 = `Clue 2: 🥘 Key ingredients include ${ings}`;
+  const dietTag = target.dietaryTags && target.dietaryTags[0] ? target.dietaryTags[0] : 'Fresh Drop';
+  const clue3 = `Clue 3: ✨ ${dietTag} · ${target.calories} kcal · ${target.spicyLevel > 0 ? '🌶️ Spicy kick' : '🌱 Mild & savory'}`;
+
+  // Select 2 real distractors
+  const distractors: string[] = [];
+  const otherMeals = REAL_DAILY_DROP_MEALS.filter((m) => m.id !== target.id);
+  while (distractors.length < 2 && otherMeals.length > 0) {
+    const pick = otherMeals[Math.floor(Math.random() * otherMeals.length)];
+    if (!distractors.includes(pick.name) && pick.name !== target.name) {
+      distractors.push(pick.name);
+    }
+  }
+
+  // Shuffle options
+  const options = [target.name, ...distractors].sort(() => Math.random() - 0.5);
+
+  return {
+    targetMeal: target,
+    clues: [clue1, clue2, clue3],
+    options,
+    correctAnswer: target.name,
+  };
+}
 
 export const MobileGuessDishWidget: React.FC<MobileGuessDishWidgetProps> = ({
   onAddToCart,
-  onPlayAgain,
 }) => {
+  // Generate a trivia challenge dynamically from the real 136 meals
+  const [challenge, setChallenge] = useState<TriviaQuestion>(() =>
+    generateTriviaChallenge()
+  );
+
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const [hasAttempted, setHasAttempted] = useState(false);
+  const [sessionCompleted, setSessionCompleted] = useState(false);
 
-  const matchedMeal: Meal =
-    MOCK_MOBILE_MEALS.find((m) => m.id === TRIVIA.mealId) || MOCK_MOBILE_MEALS[6];
+  const isCorrect = selectedAnswer === challenge.correctAnswer;
+  const meal = challenge.targetMeal;
 
+  // STRICT SINGLE-ATTEMPT LOGIC:
+  // Once an option is clicked, the attempt is locked. No re-selecting.
   const handlePickOption = (opt: string) => {
+    if (hasAttempted) return; // Prevent any further clicking
     setSelectedAnswer(opt);
-    setIsCorrect(opt === TRIVIA.correctAnswer);
-  };
-
-  const handleReset = () => {
-    setSelectedAnswer(null);
-    setIsCorrect(false);
-    onPlayAgain?.();
+    setHasAttempted(true);
+    setSessionCompleted(true);
   };
 
   return (
     <View style={styles.container}>
+      {/* Header */}
       <View style={styles.header}>
         <View style={styles.titleRow}>
           <Text style={styles.headerEmoji}>🕵️</Text>
-          <Text style={styles.headerTitle}>Guess the Dish</Text>
+          <View>
+            <Text style={styles.headerTitle}>Guess the Dish</Text>
+            <Text style={styles.sessionStatus}>1 ATTEMPT PER CHALLENGE</Text>
+          </View>
         </View>
-        <Text style={styles.challengeBadge}>Daily Food Trivia</Text>
+        <View style={styles.challengeBadge}>
+          <Text style={styles.challengeBadgeText}>Daily Trivia</Text>
+        </View>
       </View>
 
-      <Text style={styles.subtitle}>Can you guess today's mystery culinary creation?</Text>
+      <Text style={styles.subtitle}>
+        Can you identify today's real Daily Drop mystery dish from the clues?
+      </Text>
 
       {/* Clues Box */}
       <View style={styles.cluesBox}>
-        {TRIVIA.clues.map((clue, idx) => (
+        {challenge.clues.map((clue, idx) => (
           <View key={idx} style={styles.clueRow}>
             <Text style={styles.clueBullet}>🔍</Text>
             <Text style={styles.clueText}>{clue}</Text>
@@ -75,71 +128,114 @@ export const MobileGuessDishWidget: React.FC<MobileGuessDishWidgetProps> = ({
         ))}
       </View>
 
-      {/* Multiple Choice Buttons */}
-      {!selectedAnswer ? (
+      {/* Multiple Choice Options (Only active before guessing) */}
+      {!hasAttempted ? (
         <View style={styles.optionsCol}>
-          {TRIVIA.options.map((opt, idx) => (
+          <Text style={styles.promptLabel}>Select your one guess below:</Text>
+          {challenge.options.map((opt, idx) => (
             <TouchableOpacity
               key={idx}
               style={styles.optionBtn}
               activeOpacity={0.8}
               onPress={() => handlePickOption(opt)}
             >
+              <View style={styles.radioDot} />
               <Text style={styles.optionBtnText}>{opt}</Text>
             </TouchableOpacity>
           ))}
         </View>
       ) : (
+        /* Single-Attempt Outcome Section */
         <View style={styles.outcomeSection}>
           {isCorrect ? (
             <View style={styles.correctBanner}>
               <Text style={styles.bannerEmoji}>🎉</Text>
-              <View>
-                <Text style={styles.correctTitle}>Spot on! It's {TRIVIA.correctAnswer}!</Text>
-                <Text style={styles.correctSub}>You know your global comfort food!</Text>
+              <View style={styles.bannerTextCol}>
+                <Text style={styles.correctTitle}>
+                  Spot on! It's {challenge.correctAnswer}!
+                </Text>
+                <Text style={styles.correctSub}>
+                  You know your culinary recipes! +50 Foodie XP unlocked.
+                </Text>
               </View>
             </View>
           ) : (
             <View style={styles.incorrectBanner}>
               <Text style={styles.bannerEmoji}>😅</Text>
-              <View>
-                <Text style={styles.incorrectTitle}>Close, but it's {TRIVIA.correctAnswer}!</Text>
-                <Text style={styles.incorrectSub}>A West African legend of spices.</Text>
+              <View style={styles.bannerTextCol}>
+                <Text style={styles.incorrectTitle}>
+                  Nice try! The dish was {challenge.correctAnswer}
+                </Text>
+                <Text style={styles.incorrectSub}>
+                  You guessed "{selectedAnswer}". Check out the real dish below:
+                </Text>
               </View>
             </View>
           )}
 
-          {/* Dish Card */}
+          {/* Real Revealed Meal Card */}
           <View style={styles.dishCard}>
             <MobileMealImage
-              uri={matchedMeal.imageUrl}
+              uri={meal.imageUrl}
               style={styles.dishImage}
-              dishName={matchedMeal.name}
+              dishName={meal.name}
             />
             <View style={styles.dishBody}>
               <View style={styles.dishRow}>
-                <Text style={styles.dishName}>{matchedMeal.name}</Text>
-                <Text style={styles.dishPrice}>${matchedMeal.price.toFixed(2)}</Text>
+                <Text style={styles.dishName}>{meal.name}</Text>
+                <Text style={styles.dishPrice}>${meal.price.toFixed(2)}</Text>
               </View>
-              <Text style={styles.dishRest}>{matchedMeal.restaurantName}</Text>
-              <Text style={styles.dishDesc} numberOfLines={2}>
-                {matchedMeal.description}
+              <Text style={styles.dishRest}>
+                {meal.restaurantName} · {meal.cuisine}
               </Text>
+              <Text style={styles.dishDesc} numberOfLines={2}>
+                {meal.description}
+              </Text>
+
+              {/* Nutrition Pill */}
+              <View style={styles.macroPillRow}>
+                <Text style={styles.macroPillText}>
+                  🔥 {meal.calories} kcal · 💪 {meal.proteinGrams || 22}g protein
+                </Text>
+              </View>
 
               <TouchableOpacity
                 style={styles.addCartBtn}
                 activeOpacity={0.8}
-                onPress={() => onAddToCart(matchedMeal.id)}
+                onPress={() => onAddToCart(meal.id)}
               >
                 <Text style={styles.addCartText}>
-                  🛒 Add to cart — ${matchedMeal.price.toFixed(2)}
+                  🛒 Add to cart — ${meal.price.toFixed(2)}
                 </Text>
               </TouchableOpacity>
             </View>
           </View>
 
-          <TouchableOpacity style={styles.tryAnotherBtn} onPress={handleReset}>
-            <Text style={styles.tryAnotherText}>🔄 Try again</Text>
+          {/* Locked Status Notice - No retrying the same question */}
+          <View style={styles.lockedNotice}>
+            <Text style={styles.lockIcon}>🔒</Text>
+            <View style={styles.lockedTextCol}>
+              <Text style={styles.lockedTitle}>Challenge Finished (1-Attempt Only)</Text>
+              <Text style={styles.lockedSub}>
+                To keep the trivia fair, you cannot re-guess the same dish.
+              </Text>
+            </View>
+          </View>
+
+          {/* Play a brand new mystery dish (completely different meal) */}
+          <TouchableOpacity
+            style={styles.nextDishBtn}
+            activeOpacity={0.8}
+            onPress={() => {
+              setChallenge(generateTriviaChallenge(meal.id));
+              setSelectedAnswer(null);
+              setHasAttempted(false);
+              setSessionCompleted(false);
+            }}
+          >
+            <Text style={styles.nextDishText}>
+              ✨ Play Next Mystery Dish (New Question)
+            </Text>
           </TouchableOpacity>
         </View>
       )}
@@ -150,144 +246,183 @@ export const MobileGuessDishWidget: React.FC<MobileGuessDishWidgetProps> = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 18,
-    padding: 14,
+    borderRadius: 20,
+    padding: 16,
     marginVertical: 8,
     borderWidth: 1,
-    borderColor: '#E5E7EB',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.06,
-    shadowRadius: 6,
-    elevation: 3,
+    borderColor: '#E2E8F0',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+    elevation: 4,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 4,
+    marginBottom: 8,
   },
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
   },
   headerEmoji: {
-    fontSize: 18,
+    fontSize: 24,
+    marginRight: 10,
   },
   headerTitle: {
-    fontSize: 15,
+    fontSize: 17,
     fontWeight: '800',
-    color: '#111827',
+    color: '#0F172A',
+  },
+  sessionStatus: {
+    fontSize: 9,
+    fontWeight: '800',
+    color: '#0D7844',
+    letterSpacing: 0.5,
+    marginTop: 1,
   },
   challengeBadge: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#D97706',
     backgroundColor: '#FEF3C7',
     paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 12,
+    paddingVertical: 4,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
+  },
+  challengeBadgeText: {
+    color: '#B45309',
+    fontSize: 10,
+    fontWeight: '800',
   },
   subtitle: {
-    fontSize: 12,
-    color: '#6B7280',
-    marginBottom: 10,
+    fontSize: 13,
+    color: '#64748B',
+    marginBottom: 14,
+    lineHeight: 18,
   },
   cluesBox: {
-    backgroundColor: '#F9FAFB',
-    borderRadius: 12,
-    padding: 10,
-    marginBottom: 12,
+    backgroundColor: '#F8FAFC',
+    borderRadius: 14,
+    padding: 14,
+    marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#E5E7EB',
-    gap: 6,
+    borderColor: '#E2E8F0',
   },
   clueRow: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
+    alignItems: 'flex-start',
+    marginVertical: 4,
   },
   clueBullet: {
-    fontSize: 12,
+    fontSize: 13,
+    marginRight: 8,
+    marginTop: 1,
   },
   clueText: {
-    fontSize: 12,
-    color: '#374151',
-    fontWeight: '600',
+    flex: 1,
+    fontSize: 13,
+    color: '#1E293B',
+    lineHeight: 18,
+    fontWeight: '500',
+  },
+  promptLabel: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#64748B',
+    marginBottom: 8,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
   optionsCol: {
     gap: 8,
   },
   optionBtn: {
-    backgroundColor: '#F3F4F6',
-    borderRadius: 12,
-    paddingVertical: 12,
-    paddingHorizontal: 14,
+    flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#F1F5F9',
+    borderRadius: 12,
+    paddingVertical: 14,
+    paddingHorizontal: 14,
     borderWidth: 1.5,
-    borderColor: '#E5E7EB',
+    borderColor: '#CBD5E1',
+  },
+  radioDot: {
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+    borderWidth: 2,
+    borderColor: '#94A3B8',
+    marginRight: 10,
   },
   optionBtnText: {
     fontSize: 14,
-    fontWeight: '800',
-    color: '#111827',
+    fontWeight: '700',
+    color: '#0F172A',
+    flex: 1,
   },
-
-  // Outcome
   outcomeSection: {
     marginTop: 4,
   },
   correctBanner: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
     backgroundColor: '#ECFDF5',
-    padding: 10,
-    borderRadius: 12,
-    marginBottom: 10,
+    borderRadius: 14,
+    padding: 12,
+    marginBottom: 14,
+    borderWidth: 1.5,
+    borderColor: '#A7F3D0',
   },
   incorrectBanner: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
     backgroundColor: '#FEF2F2',
-    padding: 10,
-    borderRadius: 12,
-    marginBottom: 10,
+    borderRadius: 14,
+    padding: 12,
+    marginBottom: 14,
+    borderWidth: 1.5,
+    borderColor: '#FECACA',
   },
   bannerEmoji: {
-    fontSize: 22,
+    fontSize: 26,
+    marginRight: 12,
+  },
+  bannerTextCol: {
+    flex: 1,
   },
   correctTitle: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: '800',
     color: '#065F46',
   },
   correctSub: {
     fontSize: 11,
     color: '#047857',
+    marginTop: 2,
   },
   incorrectTitle: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: '800',
     color: '#991B1B',
   },
   incorrectSub: {
     fontSize: 11,
     color: '#B91C1C',
+    marginTop: 2,
   },
   dishCard: {
+    backgroundColor: '#FFFFFF',
     borderRadius: 14,
     overflow: 'hidden',
-    backgroundColor: '#F9FAFB',
     borderWidth: 1,
-    borderColor: '#E5E7EB',
-    marginBottom: 10,
+    borderColor: '#E2E8F0',
+    marginBottom: 12,
   },
   dishImage: {
     width: '100%',
-    height: 140,
+    height: 160,
   },
   dishBody: {
     padding: 12,
@@ -301,7 +436,7 @@ const styles = StyleSheet.create({
   dishName: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#111827',
+    color: '#0F172A',
     flex: 1,
   },
   dishPrice: {
@@ -311,34 +446,77 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   dishRest: {
-    fontSize: 11,
-    color: '#6B7280',
+    fontSize: 12,
+    color: '#64748B',
     marginBottom: 6,
   },
   dishDesc: {
     fontSize: 12,
-    color: '#4B5563',
+    color: '#475569',
     lineHeight: 16,
+    marginBottom: 8,
+  },
+  macroPillRow: {
+    backgroundColor: '#F1F5F9',
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    borderRadius: 6,
+    alignSelf: 'flex-start',
     marginBottom: 10,
+  },
+  macroPillText: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: '#475569',
   },
   addCartBtn: {
     backgroundColor: '#0D7844',
-    borderRadius: 12,
     paddingVertical: 12,
+    borderRadius: 10,
     alignItems: 'center',
   },
   addCartText: {
-    fontSize: 14,
-    fontWeight: '800',
     color: '#FFFFFF',
-  },
-  tryAnotherBtn: {
-    paddingVertical: 4,
-    alignItems: 'center',
-  },
-  tryAnotherText: {
+    fontWeight: '800',
     fontSize: 13,
+  },
+  lockedNotice: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F8FAFC',
+    borderRadius: 12,
+    padding: 10,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+  },
+  lockIcon: {
+    fontSize: 16,
+    marginRight: 8,
+  },
+  lockedTextCol: {
+    flex: 1,
+  },
+  lockedTitle: {
+    fontSize: 11,
+    fontWeight: '800',
+    color: '#334155',
+  },
+  lockedSub: {
+    fontSize: 10,
+    color: '#64748B',
+  },
+  nextDishBtn: {
+    backgroundColor: '#F1F5F9',
+    paddingVertical: 12,
+    borderRadius: 12,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#CBD5E1',
+  },
+  nextDishText: {
+    fontSize: 12,
     fontWeight: '700',
-    color: '#4B5563',
+    color: '#334155',
   },
 });
