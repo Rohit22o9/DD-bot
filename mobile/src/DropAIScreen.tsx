@@ -41,6 +41,7 @@ export interface DropAIScreenProps {
   onCartUpdated?: (cart: Cart | null) => void;
   onProfileUpdated?: (profile: UserProfile | null) => void;
   isKeyboardVisible?: boolean;
+  keyboardHeight?: number;
 }
 
 export const DropAIScreen: React.FC<DropAIScreenProps> = ({
@@ -51,6 +52,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
   onCartUpdated,
   onProfileUpdated,
   isKeyboardVisible: isKeyboardVisibleProp,
+  keyboardHeight: keyboardHeightProp,
 }) => {
   const [userId, setUserId] = useState(initialUserId);
   const [activeBaseUrl, setActiveBaseUrl] = useState(apiBaseUrl);
@@ -89,11 +91,14 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
 
   const insets = useSafeAreaInsets();
   const [localKeyboardOpen, setLocalKeyboardOpen] = useState(false);
+  const [localKeyboardHeight, setLocalKeyboardHeight] = useState(0);
 
-  // Track keyboard visibility and scroll to bottom so input bar is always fully visible above the keyboard
+  // Track keyboard visibility and height directly so input bar is always lifted above the keyboard
   useEffect(() => {
-    const onKeyboardShow = () => {
+    const onKeyboardShow = (e: any) => {
       setLocalKeyboardOpen(true);
+      const h = e?.endCoordinates?.height || 0;
+      if (h > 0) setLocalKeyboardHeight(h);
       setTimeout(() => {
         scrollRef.current?.scrollToEnd({ animated: true });
       }, 100);
@@ -101,6 +106,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
 
     const onKeyboardHide = () => {
       setLocalKeyboardOpen(false);
+      setLocalKeyboardHeight(0);
     };
 
     const showEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
@@ -115,7 +121,8 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     };
   }, []);
 
-  const isKeyboardOpen = Boolean(isKeyboardVisibleProp || localKeyboardOpen);
+  const effectiveKeyboardHeight = Math.max(keyboardHeightProp || 0, localKeyboardHeight);
+  const isKeyboardOpen = Boolean(isKeyboardVisibleProp || localKeyboardOpen || effectiveKeyboardHeight > 0);
 
   const [input, setInput] = useState('');
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -789,10 +796,8 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
         <View
           style={[
             styles.inputContainer,
-            {
-              paddingBottom: isKeyboardOpen
-                ? Math.max(insets.bottom, 28) + 8
-                : 10,
+            Platform.OS === 'android' && isKeyboardOpen && {
+              marginBottom: (effectiveKeyboardHeight > 0 ? effectiveKeyboardHeight : 290) + Math.max(insets.bottom, 24),
             },
           ]}
         >

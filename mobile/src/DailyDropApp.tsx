@@ -28,15 +28,25 @@ export const DailyDropApp: React.FC<DailyDropAppProps> = ({
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isTasteModalOpen, setIsTasteModalOpen] = useState(false);
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
 
   useEffect(() => {
-    const showSub1 = Keyboard.addListener('keyboardDidShow', () => setIsKeyboardVisible(true));
-    const hideSub1 = Keyboard.addListener('keyboardDidHide', () => setIsKeyboardVisible(false));
+    const onShow = (e: any) => {
+      setIsKeyboardVisible(true);
+      setKeyboardHeight(e?.endCoordinates?.height || 0);
+    };
+    const onHide = () => {
+      setIsKeyboardVisible(false);
+      setKeyboardHeight(0);
+    };
+
+    const showSub1 = Keyboard.addListener('keyboardDidShow', onShow);
+    const hideSub1 = Keyboard.addListener('keyboardDidHide', onHide);
     let showSub2: any;
     let hideSub2: any;
     if (Platform.OS === 'ios') {
-      showSub2 = Keyboard.addListener('keyboardWillShow', () => setIsKeyboardVisible(true));
-      hideSub2 = Keyboard.addListener('keyboardWillHide', () => setIsKeyboardVisible(false));
+      showSub2 = Keyboard.addListener('keyboardWillShow', onShow);
+      hideSub2 = Keyboard.addListener('keyboardWillHide', onHide);
     }
 
     return () => {
@@ -183,6 +193,7 @@ export const DailyDropApp: React.FC<DailyDropAppProps> = ({
             onCartUpdated={setCart}
             onProfileUpdated={setUserProfile}
             isKeyboardVisible={isKeyboardVisible}
+            keyboardHeight={keyboardHeight}
           />
         </View>
 
