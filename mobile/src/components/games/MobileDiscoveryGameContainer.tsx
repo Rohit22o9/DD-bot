@@ -58,7 +58,12 @@ export const MobileDiscoveryGameContainer: React.FC<MobileDiscoveryGameContainer
       return <MobileGuessDishWidget onAddToCart={onAddToCart} />;
 
     case 'build_meal':
-      return <MobileBuildMealWidget onAddToCart={onAddToCart} />;
+      return (
+        <MobileBuildMealWidget
+          onAddToCart={onAddToCart}
+          onPreferencesDiscovered={onPreferencesDiscovered}
+        />
+      );
 
     default:
       return null;

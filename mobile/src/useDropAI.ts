@@ -354,7 +354,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
         q.includes('craft protein')
       ) {
         await streamAssistantReply({
-          message: "Let's craft your dinner! 🧑‍🍳 Choose your protein, flavour personality, and base.",
+          message: "Let's craft your dinner! 🧑‍🍳 Choose your protein, calories, flavour personality, and base.",
           gamePayload: {
             gameType: 'build_meal',
             title: 'Build My Meal 🧑‍🍳',
