@@ -8,11 +8,12 @@ import {
   StyleSheet,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { GamePayload, DiscoveryGameType } from '../types';
 
 interface MobileGamesModalProps {
   visible: boolean;
   onClose: () => void;
-  onSelectGame: (prompt: string) => void;
+  onSelectGame: (prompt: string, payload?: GamePayload) => void;
 }
 
 interface GameItem {
@@ -114,9 +115,12 @@ export const MobileGamesModal: React.FC<MobileGamesModalProps> = ({
   onClose,
   onSelectGame,
 }) => {
-  const handlePickGame = (prompt: string) => {
+  const handlePickGame = (game: GameItem) => {
     onClose();
-    onSelectGame(prompt);
+    onSelectGame(game.prompt, {
+      gameType: game.id as DiscoveryGameType,
+      title: game.title,
+    });
   };
 
   return (
@@ -164,7 +168,7 @@ export const MobileGamesModal: React.FC<MobileGamesModalProps> = ({
                   key={game.id}
                   style={styles.gameCard}
                   activeOpacity={0.8}
-                  onPress={() => handlePickGame(game.prompt)}
+                  onPress={() => handlePickGame(game)}
                 >
                   <View style={styles.gameIconBox}>
                     <Text style={styles.gameIconText}>{game.icon}</Text>

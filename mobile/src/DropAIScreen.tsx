@@ -26,9 +26,10 @@ import { MobileOrderConfirmModal } from './components/MobileOrderConfirmModal';
 import { MobileWeeklyPlan } from './components/MobileWeeklyPlan';
 import { MobileDropForMeWidget } from './components/MobileDropForMeWidget';
 import { MobileThinkingBubble } from './components/MobileThinkingBubble';
-import { MobileDiscoveryGameContainer } from './components/games/MobileDiscoveryGameContainer';
+import { MobileGameFullScreenModal } from './components/games/MobileGameFullScreenModal';
+import { MobileInChatGameCard } from './components/games/MobileInChatGameCard';
 import { MobileGamesModal } from './components/MobileGamesModal';
-import { QuickSearchFilters, Cart, UserProfile } from './types';
+import { QuickSearchFilters, Cart, UserProfile, GamePayload } from './types';
 
 export interface DropAIScreenProps {
   apiBaseUrl?: string;
@@ -115,6 +116,24 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isTasteProfileOpen, setIsTasteProfileOpen] = useState(false);
   const [isGamesModalOpen, setIsGamesModalOpen] = useState(false);
+  const [activeGamePayload, setActiveGamePayload] = useState<GamePayload | null>(null);
+  const lastGameMsgIdRef = useRef<string | null>(null);
+
+  // Automatically open the full-screen game view when an assistant message introduces a game
+  useEffect(() => {
+    const lastMsg = messages[messages.length - 1];
+    if (
+      lastMsg &&
+      lastMsg.sender === 'assistant' &&
+      !lastMsg.isStreaming &&
+      lastMsg.gamePayload &&
+      lastMsg.id !== lastGameMsgIdRef.current
+    ) {
+      lastGameMsgIdRef.current = lastMsg.id;
+      setActiveGamePayload(lastMsg.gamePayload);
+    }
+  }, [messages]);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeFilters, setActiveFilters] = useState<QuickSearchFilters>({});
   const [confirmModal, setConfirmModal] = useState<{
@@ -507,24 +526,11 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                       />
                     )}
 
-                    {/* 🎮 FOOD DISCOVERY GAME WIDGET */}
+                    {/* 🎮 IN-CHAT FULL-SCREEN GAME LAUNCH CARD */}
                     {!msg.isStreaming && msg.gamePayload && (
-                      <MobileDiscoveryGameContainer
+                      <MobileInChatGameCard
                         payload={msg.gamePayload}
-                        onAddToCart={(mealId) => addToCart(mealId)}
-                        onSendMessage={(prompt) => handleSend(prompt)}
-                        onPreferencesDiscovered={(signals) => {
-                          fetch(`${activeBaseUrl}/api/preferences/${userId}`, {
-                            method: 'PUT',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                              preferences: {
-                                favoriteCuisines: signals.likedCuisines,
-                                spicyPreference: signals.spicyLoved ? 'spicy' : 'mild',
-                              },
-                            }),
-                          }).catch(() => {});
-                        }}
+                        onLaunchGame={() => setActiveGamePayload(msg.gamePayload || null)}
                       />
                     )}
 
@@ -693,7 +699,41 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
       <MobileGamesModal
         visible={isGamesModalOpen}
         onClose={() => setIsGamesModalOpen(false)}
-        onSelectGame={(prompt) => handleSend(prompt)}
+        onSelectGame={(prompt, payload) => {
+          if (payload) {
+            setActiveGamePayload(payload);
+          }
+          handleSend(prompt);
+        }}
+      />
+
+      {/* 🎮 DEDICATED FULL-SCREEN GAME MODAL (Hides chat input, mic, and bottom tabs) */}
+      <MobileGameFullScreenModal
+        visible={!!activeGamePayload}
+        payload={activeGamePayload}
+        onClose={() => setActiveGamePayload(null)}
+        onAddToCart={(mealId) => {
+          addToCart(mealId);
+          setActiveGamePayload(null);
+        }}
+        onSendMessage={(prompt) => {
+          setActiveGamePayload(null);
+          handleSend(prompt);
+        }}
+        onPreferencesDiscovered={(signals) => {
+          fetch(`${activeBaseUrl}/api/preferences/${userId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              preferences: {
+                favoriteCuisines: signals.likedCuisines,
+                spicyPreference: signals.spicyLoved ? 'spicy' : 'mild',
+              },
+            }),
+          }).catch(() => {});
+        }}
+        cartCount={cartItemCount}
+        onOpenCart={() => setIsCartOpen(true)}
       />
     </View>
   );
