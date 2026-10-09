@@ -189,6 +189,7 @@ export const MobileGameFullScreenModal: React.FC<MobileGameFullScreenModalProps>
                 onClose();
               }}
               onPreferencesDiscovered={onPreferencesDiscovered}
+              onClose={onClose}
             />
           </View>
 

@@ -14,6 +14,7 @@ interface MobileDiscoveryGameContainerProps {
   payload: GamePayload;
   onAddToCart: (mealId: string) => void;
   onSendMessage?: (prompt: string) => void;
+  onClose?: () => void;
   onPreferencesDiscovered?: (signals: {
     likedCuisines: string[];
     spicyLoved: boolean;
@@ -25,6 +26,7 @@ export const MobileDiscoveryGameContainer: React.FC<MobileDiscoveryGameContainer
   payload,
   onAddToCart,
   onSendMessage,
+  onClose,
   onPreferencesDiscovered,
 }) => {
   switch (payload.gameType) {
@@ -32,6 +34,7 @@ export const MobileDiscoveryGameContainer: React.FC<MobileDiscoveryGameContainer
       return (
         <MobileFoodTinderWidget
           onAddToCart={onAddToCart}
+          onClose={onClose}
           onPreferencesDiscovered={onPreferencesDiscovered}
         />
       );
