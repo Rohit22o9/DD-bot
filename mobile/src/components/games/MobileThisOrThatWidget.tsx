@@ -15,32 +15,66 @@ interface MobileThisOrThatWidgetProps {
   onPlayAgain?: () => void;
 }
 
-interface QuestionRound {
+export interface QuestionOption {
+  label: string;
+  icon: string;
+  key: string;
+  desc?: string;
+}
+
+export interface QuestionRound {
   title: string;
-  optionA: { label: string; icon: string; key: string };
-  optionB: { label: string; icon: string; key: string };
+  shortTitle: string;
+  options: QuestionOption[];
+}
+
+export interface ChoiceHistoryItem {
+  roundTitle: string;
+  label: string;
+  icon: string;
+  key: string;
 }
 
 const ROUNDS: QuestionRound[] = [
   {
     title: 'Round 1: Spice Level',
-    optionA: { label: 'Spicy', icon: '🌶️', key: 'spicy' },
-    optionB: { label: 'Mild', icon: '🙂', key: 'mild' },
+    shortTitle: 'Spice',
+    options: [
+      { label: 'Mild', icon: '🙂', key: 'mild', desc: 'Gentle & light' },
+      { label: 'Medium', icon: '⚖️', key: 'medium', desc: 'Balanced kick' },
+      { label: 'Spicy', icon: '🌶️', key: 'spicy', desc: 'Bold heat' },
+      { label: 'Extra Spicy', icon: '🔥', key: 'extra_spicy', desc: 'Fiery punch' },
+    ],
   },
   {
     title: 'Round 2: Protein Choice',
-    optionA: { label: 'Chicken', icon: '🍗', key: 'chicken' },
-    optionB: { label: 'Beef / Seafood / Veg', icon: '🥩', key: 'beef_seafood' },
+    shortTitle: 'Protein',
+    options: [
+      { label: 'Chicken', icon: '🍗', key: 'chicken', desc: 'Tender poultry' },
+      { label: 'Beef & Lamb', icon: '🥩', key: 'beef', desc: 'Hearty meat' },
+      { label: 'Seafood', icon: '🦐', key: 'seafood', desc: 'Prawns & fish' },
+      { label: 'Veg & Paneer', icon: '🌱', key: 'veg', desc: 'Plant & tofu' },
+    ],
   },
   {
     title: 'Round 3: Preferred Base',
-    optionA: { label: 'Rice / Biryani', icon: '🍚', key: 'rice' },
-    optionB: { label: 'Noodles / Roti / Pasta', icon: '🍜', key: 'bread_noodles' },
+    shortTitle: 'Base',
+    options: [
+      { label: 'Rice & Biryani', icon: '🍚', key: 'rice', desc: 'Fragrant grains' },
+      { label: 'Noodles & Pasta', icon: '🍜', key: 'noodles', desc: 'Wok tossed' },
+      { label: 'Roti & Bread', icon: '🫓', key: 'bread', desc: 'Freshly baked' },
+      { label: 'Salad & Greens', icon: '🥗', key: 'salad', desc: 'Crisp & light' },
+    ],
   },
   {
     title: 'Round 4: Mood & Vibe',
-    optionA: { label: 'Healthy & Light', icon: '🥗', key: 'healthy' },
-    optionB: { label: 'Rich Comfort', icon: '🍛', key: 'comfort' },
+    shortTitle: 'Vibe',
+    options: [
+      { label: 'Healthy & Light', icon: '🥗', key: 'healthy', desc: 'Clean & fresh' },
+      { label: 'Rich Comfort', icon: '🍛', key: 'comfort', desc: 'Warm & hearty' },
+      { label: 'Crispy & Savory', icon: '🥟', key: 'crispy', desc: 'Crunchy delight' },
+      { label: 'Chef Special', icon: '⭐', key: 'special', desc: 'Signature drop' },
+    ],
   },
 ];
 
@@ -50,44 +84,88 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
 }) => {
   const [currentRoundIndex, setCurrentRoundIndex] = useState(0);
   const [choices, setChoices] = useState<string[]>([]);
+  const [selectedHistory, setSelectedHistory] = useState<ChoiceHistoryItem[]>([]);
   const [isFinished, setIsFinished] = useState(false);
   const [matchedMeal, setMatchedMeal] = useState<Meal | null>(null);
   const [showCelebration, setShowCelebration] = useState(false);
 
-  const handleSelectChoice = (choiceKey: string) => {
-    const nextChoices = [...choices, choiceKey];
+  const handleSelectChoice = (option: QuestionOption) => {
+    const nextChoices = [...choices, option.key];
+    const nextHistory: ChoiceHistoryItem[] = [
+      ...selectedHistory,
+      {
+        roundTitle: ROUNDS[currentRoundIndex].title,
+        label: option.label,
+        icon: option.icon,
+        key: option.key,
+      },
+    ];
+
     setChoices(nextChoices);
+    setSelectedHistory(nextHistory);
 
     if (currentRoundIndex + 1 >= ROUNDS.length) {
       // Calculate match dynamically from real 136 meals
-      const isSpicy = nextChoices.includes('spicy');
+      const isExtraSpicy = nextChoices.includes('extra_spicy');
+      const isSpicy = nextChoices.includes('spicy') || isExtraSpicy;
+      const isMedium = nextChoices.includes('medium');
+      const isMild = nextChoices.includes('mild');
+
       const wantsChicken = nextChoices.includes('chicken');
+      const wantsBeef = nextChoices.includes('beef');
+      const wantsSeafood = nextChoices.includes('seafood');
+      const wantsVeg = nextChoices.includes('veg');
+
       const wantsRice = nextChoices.includes('rice');
+      const wantsNoodles = nextChoices.includes('noodles');
+      const wantsBread = nextChoices.includes('bread');
+      const wantsSalad = nextChoices.includes('salad');
 
       let candidates = REAL_DAILY_DROP_MEALS.filter((m) => m.category === 'main');
 
+      // 1. Protein filtering
       if (wantsChicken) {
-        const chickenPool = candidates.filter((m) => /chicken/i.test(m.name));
-        if (chickenPool.length > 0) candidates = chickenPool;
-      } else {
-        const nonChickenPool = candidates.filter((m) => !/chicken/i.test(m.name));
-        if (nonChickenPool.length > 0) candidates = nonChickenPool;
+        const pool = candidates.filter((m) => /chicken/i.test(m.name) || /chicken/i.test(m.description));
+        if (pool.length > 0) candidates = pool;
+      } else if (wantsBeef) {
+        const pool = candidates.filter((m) => /beef|lamb|steak/i.test(m.name) || /beef|lamb/i.test(m.description));
+        if (pool.length > 0) candidates = pool;
+      } else if (wantsSeafood) {
+        const pool = candidates.filter((m) => /fish|salmon|prawn|shrimp|seafood/i.test(m.name) || /fish|salmon|prawn/i.test(m.description));
+        if (pool.length > 0) candidates = pool;
+      } else if (wantsVeg) {
+        const pool = candidates.filter((m) => /veg|paneer|tofu|dal|lentil|egg/i.test(m.name) || m.dietaryTags.some((t) => /veg/i.test(t)));
+        if (pool.length > 0) candidates = pool;
       }
 
-      if (isSpicy) {
-        const spicyPool = candidates.filter((m) => m.spicyLevel > 0 || /spicy|chilli|mala|pepper/i.test(m.name));
-        if (spicyPool.length > 0) candidates = spicyPool;
-      } else {
-        const mildPool = candidates.filter((m) => m.spicyLevel === 0 && !/spicy|chilli|mala/i.test(m.name));
-        if (mildPool.length > 0) candidates = mildPool;
+      // 2. Spice filtering
+      if (isExtraSpicy) {
+        const pool = candidates.filter((m) => m.spicyLevel >= 2 || /spicy|chilli|mala|fiery|schezwan/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
+      } else if (isSpicy) {
+        const pool = candidates.filter((m) => m.spicyLevel >= 1 || /spicy|chilli|pepper|curry/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
+      } else if (isMedium) {
+        const pool = candidates.filter((m) => m.spicyLevel <= 1);
+        if (pool.length > 0) candidates = pool;
+      } else if (isMild) {
+        const pool = candidates.filter((m) => m.spicyLevel === 0 && !/spicy|chilli|mala/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
       }
 
+      // 3. Base filtering
       if (wantsRice) {
-        const ricePool = candidates.filter((m) => /rice|biryani/i.test(m.name));
-        if (ricePool.length > 0) candidates = ricePool;
-      } else {
-        const otherBasePool = candidates.filter((m) => /noodle|pasta|roti|chapati|pancake/i.test(m.name));
-        if (otherBasePool.length > 0) candidates = otherBasePool;
+        const pool = candidates.filter((m) => /rice|biryani/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
+      } else if (wantsNoodles) {
+        const pool = candidates.filter((m) => /noodle|ramen|pasta|spaghetti/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
+      } else if (wantsBread) {
+        const pool = candidates.filter((m) => /roti|naan|bread|wrap|taco|burger/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
+      } else if (wantsSalad) {
+        const pool = candidates.filter((m) => /salad|bowl|greens/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
       }
 
       const match = candidates[Math.floor(Math.random() * candidates.length)] || REAL_DAILY_DROP_MEALS[0];
@@ -102,6 +180,7 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
   const handleRestart = () => {
     setCurrentRoundIndex(0);
     setChoices([]);
+    setSelectedHistory([]);
     setIsFinished(false);
     setMatchedMeal(null);
     setShowCelebration(false);
@@ -119,6 +198,21 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
         <View style={styles.matchScoreBar}>
           <Text style={styles.matchScoreText}>✨ 92% Match for your choices</Text>
         </View>
+
+        {/* Selected Preferences Summary (Upper side of the card) */}
+        {selectedHistory.length > 0 && (
+          <View style={styles.resultPrefContainer}>
+            <Text style={styles.resultPrefHeader}>Your chosen preferences:</Text>
+            <View style={styles.resultPrefRow}>
+              {selectedHistory.map((item, idx) => (
+                <View key={idx} style={styles.resultPrefBadge}>
+                  <Text style={styles.resultPrefIcon}>{item.icon}</Text>
+                  <Text style={styles.resultPrefText}>{item.label}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+        )}
 
         {/* Matched Meal Card */}
         <View style={styles.matchCard}>
@@ -166,6 +260,10 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
           }}
           title="DINNER PINPOINTED! 🎯"
           subtitle="92% match based on your preferences!"
+          selectedPreferences={selectedHistory.map((h) => ({
+            icon: h.icon,
+            label: h.label,
+          }))}
         />
       </View>
     );
@@ -189,51 +287,82 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
         Quick game. I'll find your perfect dinner in 4 questions.
       </Text>
 
-      {/* Progress Dots */}
-      <View style={styles.dotsRow}>
-        {ROUNDS.map((_, i) => (
-          <View
-            key={i}
-            style={[
-              styles.dot,
-              i < currentRoundIndex && styles.dotDone,
-              i === currentRoundIndex && styles.dotActive,
-            ]}
-          />
-        ))}
+      {/* Stepper with Previous Choice Icons so user remembers choices */}
+      <View style={styles.stepperContainer}>
+        {ROUNDS.map((round, i) => {
+          const isDone = i < currentRoundIndex;
+          const isActive = i === currentRoundIndex;
+          const pastChoice = selectedHistory[i];
+
+          return (
+            <React.Fragment key={i}>
+              <View style={styles.stepCol}>
+                <View
+                  style={[
+                    styles.stepCircle,
+                    isDone && styles.stepCircleDone,
+                    isActive && styles.stepCircleActive,
+                  ]}
+                >
+                  {isDone && pastChoice ? (
+                    <Text style={styles.stepEmoji}>{pastChoice.icon}</Text>
+                  ) : (
+                    <Text
+                      style={[
+                        styles.stepNum,
+                        isActive && styles.stepNumActive,
+                        isDone && styles.stepNumDone,
+                      ]}
+                    >
+                      {i + 1}
+                    </Text>
+                  )}
+                </View>
+                <Text
+                  style={[
+                    styles.stepLabel,
+                    isActive && styles.stepLabelActive,
+                    isDone && styles.stepLabelDone,
+                  ]}
+                  numberOfLines={1}
+                >
+                  {isDone && pastChoice ? pastChoice.label : round.shortTitle}
+                </Text>
+              </View>
+
+              {/* Connecting progress line */}
+              {i < ROUNDS.length - 1 && (
+                <View
+                  style={[
+                    styles.stepConnector,
+                    i < currentRoundIndex && styles.stepConnectorDone,
+                  ]}
+                />
+              )}
+            </React.Fragment>
+          );
+        })}
       </View>
 
       <Text style={styles.questionTitle}>{currentRound.title}</Text>
 
-      {/* 2 Big Choice Cards */}
-      <View style={styles.choicesRow}>
-        <TouchableOpacity
-          style={styles.choiceCard}
-          activeOpacity={0.8}
-          onPress={() => handleSelectChoice(currentRound.optionA.key)}
-        >
-          <Text style={styles.choiceIcon}>{currentRound.optionA.icon}</Text>
-          <Text style={styles.choiceLabel}>{currentRound.optionA.label}</Text>
-          <View style={styles.chooseTap}>
-            <Text style={styles.chooseTapText}>Pick this</Text>
-          </View>
-        </TouchableOpacity>
-
-        <View style={styles.orDivider}>
-          <Text style={styles.orText}>OR</Text>
-        </View>
-
-        <TouchableOpacity
-          style={styles.choiceCard}
-          activeOpacity={0.8}
-          onPress={() => handleSelectChoice(currentRound.optionB.key)}
-        >
-          <Text style={styles.choiceIcon}>{currentRound.optionB.icon}</Text>
-          <Text style={styles.choiceLabel}>{currentRound.optionB.label}</Text>
-          <View style={styles.chooseTap}>
-            <Text style={styles.chooseTapText}>Pick this</Text>
-          </View>
-        </TouchableOpacity>
+      {/* 4 Square-Friendly Choice Cards (2x2 Grid) */}
+      <View style={styles.grid2x2}>
+        {currentRound.options.map((opt) => (
+          <TouchableOpacity
+            key={opt.key}
+            style={styles.gridCard}
+            activeOpacity={0.8}
+            onPress={() => handleSelectChoice(opt)}
+          >
+            <Text style={styles.gridIcon}>{opt.icon}</Text>
+            <Text style={styles.gridLabel}>{opt.label}</Text>
+            {opt.desc ? <Text style={styles.gridDesc}>{opt.desc}</Text> : null}
+            <View style={styles.chooseTap}>
+              <Text style={styles.chooseTapText}>Pick this</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
       </View>
     </View>
   );
@@ -282,23 +411,79 @@ const styles = StyleSheet.create({
     color: '#6B7280',
     marginBottom: 10,
   },
-  dotsRow: {
+
+  // Stepper with Previous Choice Icons
+  stepperContainer: {
     flexDirection: 'row',
-    gap: 6,
-    marginBottom: 12,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 14,
+    paddingHorizontal: 2,
   },
-  dot: {
+  stepCol: {
+    alignItems: 'center',
+    width: 60,
+  },
+  stepCircle: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#F3F4F6',
+    borderWidth: 1.5,
+    borderColor: '#E5E7EB',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 4,
+  },
+  stepCircleActive: {
+    backgroundColor: '#ECFDF5',
+    borderColor: '#0D7844',
+    borderWidth: 2,
+  },
+  stepCircleDone: {
+    backgroundColor: '#ECFDF5',
+    borderColor: '#10B981',
+    borderWidth: 1.5,
+  },
+  stepEmoji: {
+    fontSize: 16,
+  },
+  stepNum: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#9CA3AF',
+  },
+  stepNumActive: {
+    color: '#0D7844',
+    fontWeight: '900',
+  },
+  stepNumDone: {
+    color: '#065F46',
+  },
+  stepLabel: {
+    fontSize: 10,
+    color: '#9CA3AF',
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  stepLabelActive: {
+    color: '#0D7844',
+    fontWeight: '800',
+  },
+  stepLabelDone: {
+    color: '#374151',
+    fontWeight: '700',
+  },
+  stepConnector: {
     flex: 1,
-    height: 4,
-    borderRadius: 2,
+    height: 2,
     backgroundColor: '#E5E7EB',
+    marginBottom: 16,
   },
-  dotDone: {
-    backgroundColor: '#0D7844',
-  },
-  dotActive: {
+  stepConnectorDone: {
     backgroundColor: '#10B981',
   },
+
   questionTitle: {
     fontSize: 13,
     fontWeight: '700',
@@ -306,50 +491,55 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 10,
   },
-  choicesRow: {
+
+  // 2x2 Grid Choices
+  grid2x2: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    rowGap: 10,
   },
-  choiceCard: {
-    flex: 1,
+  gridCard: {
+    width: '48.5%',
     backgroundColor: '#F9FAFB',
     borderRadius: 14,
-    paddingVertical: 16,
-    paddingHorizontal: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 6,
     alignItems: 'center',
+    justifyContent: 'space-between',
     borderWidth: 1.5,
     borderColor: '#E5E7EB',
+    minHeight: 126,
   },
-  choiceIcon: {
-    fontSize: 32,
-    marginBottom: 6,
+  gridIcon: {
+    fontSize: 30,
+    marginBottom: 2,
   },
-  choiceLabel: {
-    fontSize: 13,
+  gridLabel: {
+    fontSize: 12,
     fontWeight: '800',
     color: '#111827',
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 2,
+  },
+  gridDesc: {
+    fontSize: 10,
+    color: '#6B7280',
+    textAlign: 'center',
+    marginBottom: 6,
   },
   chooseTap: {
     backgroundColor: '#ECFDF5',
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     paddingVertical: 4,
-    borderRadius: 10,
+    borderRadius: 8,
+    alignSelf: 'stretch',
+    alignItems: 'center',
   },
   chooseTapText: {
     fontSize: 11,
     fontWeight: '700',
     color: '#0D7844',
-  },
-  orDivider: {
-    paddingHorizontal: 2,
-  },
-  orText: {
-    fontSize: 12,
-    fontWeight: '800',
-    color: '#9CA3AF',
   },
 
   // Results
@@ -381,13 +571,55 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 8,
     alignSelf: 'flex-start',
-    marginBottom: 12,
+    marginBottom: 10,
   },
   matchScoreText: {
     fontSize: 12,
     fontWeight: '800',
     color: '#065F46',
   },
+
+  resultPrefContainer: {
+    backgroundColor: '#F8FAFC',
+    borderRadius: 12,
+    padding: 10,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+  },
+  resultPrefHeader: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#64748B',
+    marginBottom: 6,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  resultPrefRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+  },
+  resultPrefBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#CBD5E1',
+    gap: 4,
+  },
+  resultPrefIcon: {
+    fontSize: 12,
+  },
+  resultPrefText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#1E293B',
+  },
+
   matchCard: {
     borderRadius: 14,
     overflow: 'hidden',

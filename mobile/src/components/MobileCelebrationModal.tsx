@@ -14,6 +14,11 @@ import { MobileMealImage } from './MobileMealImage';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
+export interface PreferenceBadge {
+  icon: string;
+  label: string;
+}
+
 interface MobileCelebrationModalProps {
   visible: boolean;
   meal: Meal | null;
@@ -21,6 +26,7 @@ interface MobileCelebrationModalProps {
   onAddToCart: (mealId: string) => void;
   title?: string;
   subtitle?: string;
+  selectedPreferences?: PreferenceBadge[];
 }
 
 const CONFETTI_COLORS = [
@@ -64,6 +70,7 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
   onAddToCart,
   title = 'CORRECT GUESS!',
   subtitle = 'You cracked the mystery dish! +50 Foodie XP',
+  selectedPreferences,
 }) => {
   // Card pop-in scale & opacity
   const cardScale = useRef(new Animated.Value(0.7)).current;
@@ -143,6 +150,20 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
           </View>
 
           <Text style={styles.cardSubtitle}>{subtitle}</Text>
+
+          {/* Selected Choices Tags (Upper side of the revealed card) */}
+          {selectedPreferences && selectedPreferences.length > 0 && (
+            <View style={styles.prefBadgesContainer}>
+              <View style={styles.prefBadgesRow}>
+                {selectedPreferences.map((p, idx) => (
+                  <View key={idx} style={styles.prefBadge}>
+                    <Text style={styles.prefBadgeIcon}>{p.icon}</Text>
+                    <Text style={styles.prefBadgeText}>{p.label}</Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+          )}
 
           {/* Winning Dish Card */}
           <View style={styles.mealCard}>
@@ -316,8 +337,38 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#64748B',
     textAlign: 'center',
-    marginBottom: 16,
+    marginBottom: 10,
     lineHeight: 16,
+  },
+  prefBadgesContainer: {
+    marginBottom: 12,
+    alignItems: 'center',
+    width: '100%',
+  },
+  prefBadgesRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 6,
+  },
+  prefBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F0FDF4',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#BBF7D0',
+    gap: 4,
+  },
+  prefBadgeIcon: {
+    fontSize: 12,
+  },
+  prefBadgeText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#166534',
   },
   mealCard: {
     width: '100%',
