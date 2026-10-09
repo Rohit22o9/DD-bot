@@ -182,6 +182,7 @@ export const DailyDropApp: React.FC<DailyDropAppProps> = ({
             onClearActivePrompt={() => setActivePrompt('')}
             onCartUpdated={setCart}
             onProfileUpdated={setUserProfile}
+            isKeyboardVisible={isKeyboardVisible}
           />
         </View>
 

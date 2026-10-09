@@ -31,6 +31,7 @@ import { MobileGameFullScreenModal } from './components/games/MobileGameFullScre
 import { MobileInChatGameCard } from './components/games/MobileInChatGameCard';
 import { MobileGamesModal } from './components/MobileGamesModal';
 import { QuickSearchFilters, Cart, UserProfile, GamePayload } from './types';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export interface DropAIScreenProps {
   apiBaseUrl?: string;
@@ -39,6 +40,7 @@ export interface DropAIScreenProps {
   onClearActivePrompt?: () => void;
   onCartUpdated?: (cart: Cart | null) => void;
   onProfileUpdated?: (profile: UserProfile | null) => void;
+  isKeyboardVisible?: boolean;
 }
 
 export const DropAIScreen: React.FC<DropAIScreenProps> = ({
@@ -48,6 +50,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
   onClearActivePrompt,
   onCartUpdated,
   onProfileUpdated,
+  isKeyboardVisible: isKeyboardVisibleProp,
 }) => {
   const [userId, setUserId] = useState(initialUserId);
   const [activeBaseUrl, setActiveBaseUrl] = useState(apiBaseUrl);
@@ -84,20 +87,20 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     onProfileUpdated?.(userProfile);
   }, [userProfile]);
 
-  const [keyboardHeight, setKeyboardHeight] = useState(0);
+  const insets = useSafeAreaInsets();
+  const [localKeyboardOpen, setLocalKeyboardOpen] = useState(false);
 
-  // Track keyboard height directly and scroll to bottom so input bar is always above the keyboard
+  // Track keyboard visibility and scroll to bottom so input bar is always fully visible above the keyboard
   useEffect(() => {
-    const onKeyboardShow = (e: any) => {
-      const h = e?.endCoordinates?.height || 0;
-      setKeyboardHeight(h);
+    const onKeyboardShow = () => {
+      setLocalKeyboardOpen(true);
       setTimeout(() => {
         scrollRef.current?.scrollToEnd({ animated: true });
       }, 100);
     };
 
     const onKeyboardHide = () => {
-      setKeyboardHeight(0);
+      setLocalKeyboardOpen(false);
     };
 
     const showEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
@@ -111,6 +114,8 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
       hideSub.remove();
     };
   }, []);
+
+  const isKeyboardOpen = Boolean(isKeyboardVisibleProp || localKeyboardOpen);
 
   const [input, setInput] = useState('');
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -741,7 +746,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
         </ScrollView>
 
         {/* PANEL 4: STICKY FLOATING CART BANNER */}
-        {cartItemCount > 0 && keyboardHeight === 0 && (
+        {cartItemCount > 0 && !isKeyboardOpen && (
           <MobileFloatingCartBar
             itemCount={cartItemCount}
             total={cartTotal}
@@ -784,8 +789,10 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
         <View
           style={[
             styles.inputContainer,
-            Platform.OS === 'android' && keyboardHeight > 0 && {
-              marginBottom: keyboardHeight,
+            {
+              paddingBottom: isKeyboardOpen
+                ? Math.max(insets.bottom, 28) + 8
+                : 10,
             },
           ]}
         >
@@ -814,6 +821,15 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
             onChangeText={setInput}
             onSubmitEditing={() => handleSend()}
             returnKeyType="send"
+            onFocus={() => {
+              setLocalKeyboardOpen(true);
+              setTimeout(() => {
+                scrollRef.current?.scrollToEnd({ animated: true });
+              }, 150);
+            }}
+            onBlur={() => {
+              setLocalKeyboardOpen(false);
+            }}
           />
 
           {/* Voice Prompt Mic Button */}
@@ -1370,7 +1386,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 12,
-    paddingVertical: 8,
+    paddingTop: 8,
+    paddingBottom: 10,
     borderTopWidth: 1,
     borderTopColor: '#F3F4F6',
     gap: 8,
@@ -1412,6 +1429,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9FAFB',
     borderRadius: 21,
     paddingHorizontal: 16,
+    paddingVertical: 0,
     fontSize: 14,
     color: '#111827',
     borderWidth: 1,
