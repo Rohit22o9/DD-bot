@@ -804,7 +804,12 @@ export class DropAIOrchestrator {
       !lower.includes('plan') &&
       !lower.includes('5 day') &&
       !lower.includes('five day') &&
-      !lower.includes('week')
+      !lower.includes('week') &&
+      !lower.includes('family') &&
+      !lower.includes('feast') &&
+      !lower.includes('night') &&
+      !lower.includes('dinner for') &&
+      !lower.includes('feed')
     ) {
       const isIndoChinese =
         lower.includes('indian chinese') ||
@@ -1362,9 +1367,18 @@ export class DropAIOrchestrator {
 
     const isDinnerFor4Cuisine =
       lower.includes('italian dinner for 4') ||
+      lower.includes('italian family') ||
+      lower.includes('italian feast') ||
+      lower.includes('italian family night') ||
       lower.includes('asian dinner for 4') ||
+      lower.includes('asian fusion') ||
+      lower.includes('asian feast') ||
       lower.includes('mexican dinner for 4') ||
-      lower.includes('indian dinner for 4');
+      lower.includes('mexican fiesta') ||
+      lower.includes('mexican feast') ||
+      lower.includes('indian dinner for 4') ||
+      lower.includes('indian feast') ||
+      lower.includes('indian family');
 
     const isFamilyPreferenceChoice =
       lower.includes('kid friendly') ||
@@ -1392,19 +1406,47 @@ export class DropAIOrchestrator {
       let feastMsg =
         'Dinner for 4 — $52.00\nCurated with 2x Chicken Biryani, 1x Veg Lentil Curry, 1x Teriyaki Salmon + Garlic Naan sides for the whole family.\n\nWould you like to try a different cuisine for your family dinner?';
       let dishes = [biryani!, lentil!, salmon!, quinoa!].filter(Boolean);
+      let totalCost = 52.0;
+      let basketItems: { category: 'Meal' | 'Side' | 'Drink'; name: string; price: number; mealId: string }[] = [
+        { category: 'Meal', name: '2x Chicken Biryani', price: 26.0, mealId: biryani?.id || 'm1' },
+        { category: 'Meal', name: '1x Veg Lentil Curry', price: 12.0, mealId: lentil?.id || 'm2' },
+        { category: 'Meal', name: '1x Teriyaki Salmon', price: 14.0, mealId: salmon?.id || 'm3' },
+        { category: 'Side', name: 'Garlic Naan (Basket of 4)', price: 0.0, mealId: 'side_naan' },
+      ];
 
       if (lower.includes('italian')) {
-        feastTitle = 'Italian Family Feast (Dinner for 4)';
+        feastTitle = 'Italian Family Night (Dinner for 4)';
         feastMsg =
-          'Italian Dinner for 4 — $54.00\nCurated with 2x Truffle Tagliatelle, 1x Margherita Sourdough, 1x Chicken Parmesan + Rosemary Focaccia.\n\nWould you like to try a different cuisine for your family dinner?';
+          'Italian Family Night — $48.00 🍝\nCurated with 2x Rigatoni Pork Amatriciana, 1x Mezze Maniche Creamy Basil, 1x Margherita Pizza + Rosemary Focaccia for 4.\n\nWould you like to try a different cuisine for your family dinner?';
+        totalCost = 48.0;
+        basketItems = [
+          { category: 'Meal', name: '2x Rigatoni Pork Amatriciana', price: 24.0, mealId: dishes[0]?.id || 'm_rigatoni' },
+          { category: 'Meal', name: '1x Mezze Maniche Creamy Basil', price: 12.0, mealId: dishes[1]?.id || 'm_mezze' },
+          { category: 'Meal', name: '1x Margherita Pizza', price: 12.0, mealId: dishes[2]?.id || 'm_pizza' },
+          { category: 'Side', name: 'Rosemary Garlic Focaccia (Basket of 4)', price: 0.0, mealId: 'side_focaccia' },
+        ];
       } else if (lower.includes('asian')) {
         feastTitle = 'Pan-Asian Family Feast (Dinner for 4)';
         feastMsg =
-          'Pan-Asian Dinner for 4 — $50.00\nCurated with 2x Teriyaki Salmon, 1x Thai Basil Chicken, 1x Tonkotsu Ramen + Steamed Edamame.\n\nWould you like to try a different cuisine for your family dinner?';
+          'Pan-Asian Dinner for 4 — $50.00 🥢\nCurated with 2x Teriyaki Salmon, 1x Thai Basil Chicken, 1x Tonkotsu Ramen + Steamed Edamame.\n\nWould you like to try a different cuisine for your family dinner?';
+        totalCost = 50.0;
+        basketItems = [
+          { category: 'Meal', name: '2x Thai Basil Chicken', price: 26.0, mealId: dishes[0]?.id || 'm_thai' },
+          { category: 'Meal', name: '1x Tonkotsu Ramen', price: 12.0, mealId: dishes[1]?.id || 'm_ramen' },
+          { category: 'Meal', name: '1x Teriyaki Salmon', price: 12.0, mealId: dishes[2]?.id || 'm_salmon' },
+          { category: 'Side', name: 'Hot Tom Yum Soup (Serves 4)', price: 0.0, mealId: 'side_soup' },
+        ];
       } else if (lower.includes('mexican')) {
         feastTitle = 'Fiesta Mexican Dinner for 4';
         feastMsg =
-          'Mexican Dinner for 4 — $48.00\nCurated with 2x Chipotle Burrito Bowls, 1x Grilled Chicken Fajitas, 1x Veggie Enchiladas + Guac & Chips.\n\nWould you like to try a different cuisine for your family dinner?';
+          'Mexican Dinner for 4 — $46.00 🌮\nCurated with 2x Chipotle Burrito Bowls, 1x Grilled Chicken Fajitas, 1x Veggie Enchiladas + Guac & Chips.\n\nWould you like to try a different cuisine for your family dinner?';
+        totalCost = 46.0;
+        basketItems = [
+          { category: 'Meal', name: '2x Chipotle Burrito Bowls', price: 24.0, mealId: dishes[0]?.id || 'm_burrito' },
+          { category: 'Meal', name: '1x Grilled Chicken Fajitas', price: 11.0, mealId: dishes[1]?.id || 'm_fajitas' },
+          { category: 'Meal', name: '1x Veggie Enchiladas', price: 11.0, mealId: dishes[2]?.id || 'm_enchiladas' },
+          { category: 'Side', name: 'Tortilla Chips & Guacamole', price: 0.0, mealId: 'side_chips' },
+        ];
       }
 
       const basket: BudgetBasket = {
@@ -1412,15 +1454,10 @@ export class DropAIOrchestrator {
         main: dishes[0] || biryani!,
         side: dishes[1] || lentil!,
         drink: dishes[2] || salmon!,
-        total: 52.0,
+        total: totalCost,
         budgetCap: 60.0,
         currency: 'USD',
-        items: [
-          { category: 'Meal', name: '2x Chicken Biryani', price: 26.0, mealId: biryani?.id || 'm1' },
-          { category: 'Meal', name: '1x Veg Lentil Curry', price: 12.0, mealId: lentil?.id || 'm2' },
-          { category: 'Meal', name: '1x Teriyaki Salmon', price: 14.0, mealId: salmon?.id || 'm3' },
-          { category: 'Side', name: 'Garlic Naan (Basket of 4)', price: 0.0, mealId: 'side_naan' },
-        ],
+        items: basketItems,
       };
 
       return {
@@ -1436,11 +1473,18 @@ export class DropAIOrchestrator {
           reasons: ['✓ Family Feast component', '✓ Serves 4 generously'],
         })),
         quickOptions: [
-          '🛒 Add Dinner for 4 to cart',
-          '🍝 Italian Dinner for 4',
-          '🥢 Asian Dinner for 4',
-          '🌮 Mexican Dinner for 4',
-          '🍛 Indian Dinner for 4',
+          lower.includes('italian')
+            ? '🛒 Add Entire Feast to Cart ($48)'
+            : lower.includes('asian')
+            ? '🛒 Add Entire Feast to Cart ($50)'
+            : lower.includes('mexican')
+            ? '🛒 Add Entire Feast to Cart ($46)'
+            : '🛒 Add Entire Feast to Cart ($52)',
+          '🍝 Italian Family Night ($48)',
+          '🥢 Asian Fusion Combo ($50)',
+          '🌮 Mexican Fiesta ($46)',
+          '🍛 Indian Feast ($52)',
+          '📅 5-Day Family Meal Plan',
         ],
       };
     }

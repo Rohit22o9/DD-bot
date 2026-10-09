@@ -400,6 +400,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
           ref={scrollRef}
           style={styles.scroll}
           contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled"
           onContentSizeChange={() => {
             if (messages.length > 0) {
               scrollRef.current?.scrollToEnd({ animated: true });
@@ -736,7 +737,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
         </ScrollView>
 
         {/* PANEL 4: STICKY FLOATING CART BANNER */}
-        {cartItemCount > 0 && (
+        {cartItemCount > 0 && keyboardHeight === 0 && (
           <MobileFloatingCartBar
             itemCount={cartItemCount}
             total={cartTotal}
@@ -776,7 +777,14 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
         )}
 
         {/* BOTTOM PINNED INPUT BAR */}
-        <View style={styles.inputContainer}>
+        <View
+          style={[
+            styles.inputContainer,
+            Platform.OS === 'android' && keyboardHeight > 0 && {
+              marginBottom: keyboardHeight,
+            },
+          ]}
+        >
           {/* Filter Sliders Button */}
           <TouchableOpacity
             style={[

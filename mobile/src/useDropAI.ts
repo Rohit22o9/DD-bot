@@ -54,6 +54,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
   const lastFilterRef = useRef<{ type: string; cap?: number; cuisine?: string }>({ type: 'general' });
   const lastWeeklyPlanRef = useRef<Meal[]>([]);
   const activeHealthCategoryRef = useRef<string | null>(null);
+  const lastFeastCuisineRef = useRef<'italian' | 'asian' | 'mexican' | 'indian'>('indian');
 
   // Fetch initial profile & cart from server safely
   const refreshCart = useCallback(async () => {
@@ -954,6 +955,336 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           quickOptions: [`🛒 Add all ${daysCount} to cart`, '🌱 Make Friday vegetarian', '🌶️ Adjust spice', '🔄 Create another plan'],
         });
       }
+      // FLOW 13 — FAMILY / MULTIPLE PEOPLE / DINNER FOR 4 FEASTS (High priority before general cuisines)
+      else if (
+        q.includes('dinner for four') ||
+        q.includes('dinner for 4') ||
+        q.includes('dinner for three') ||
+        q.includes('dinner for 3') ||
+        q.includes('family dinner') ||
+        q.includes('multiple people') ||
+        q.includes('feed 4')
+      ) {
+        await streamAssistantReply({
+          message: 'Got it. Is everyone happy eating similar food?',
+          quickOptions: ['👍 Yes', '👨‍👩‍👧 Different preferences'],
+        });
+      } else if (q.includes('different preferences')) {
+        await streamAssistantReply({
+          message: 'Tell me what I need to work around:',
+          quickOptions: ['🌱 Vegetarian', '🌶️ Different spice levels', '🥜 Allergies', '👧 Kid friendly', 'Nothing'],
+        });
+      } else if (
+        q.includes('add dinner for 4') ||
+        q.includes('add entire feast') ||
+        q.includes('add indian feast') ||
+        q.includes('add italian feast') ||
+        q.includes('add asian feast') ||
+        q.includes('add mexican feast') ||
+        q === 'add selection' ||
+        q === '🛒 add selection'
+      ) {
+        // Direct One-Tap Add to Cart for the 4-person feast
+        const targetFeast = q.includes('italian')
+          ? 'italian'
+          : q.includes('asian')
+          ? 'asian'
+          : q.includes('mexican')
+          ? 'mexican'
+          : q.includes('indian')
+          ? 'indian'
+          : lastFeastCuisineRef.current;
+
+        let feastItems: { meal: Meal; qty: number }[] = [];
+        let feastLabel = 'Family Feast: Dinner for 4';
+        let feastTotal = 52.0;
+
+        if (targetFeast === 'italian') {
+          const rigatoni =
+            MOCK_MOBILE_MEALS.find((m) => /amatriciana|rigatoni.*pork/i.test(m.name)) ||
+            MOCK_MOBILE_MEALS.find((m) => /rigatoni/i.test(m.name)) ||
+            MOCK_MOBILE_MEALS[0];
+          const mezze =
+            MOCK_MOBILE_MEALS.find((m) => /mezze maniche|creamy basil/i.test(m.name)) ||
+            MOCK_MOBILE_MEALS.find((m) => /napoletana/i.test(m.name)) ||
+            MOCK_MOBILE_MEALS[1];
+          const pizza =
+            MOCK_MOBILE_MEALS.find((m) => /sourdough|pizza|margherita/i.test(m.name)) ||
+            MOCK_MOBILE_MEALS.find((m) => /halloumi|bowl/i.test(m.name)) ||
+            MOCK_MOBILE_MEALS[2];
+          feastItems = [
+            { meal: rigatoni, qty: 2 },
+            { meal: mezze, qty: 1 },
+            { meal: pizza, qty: 1 },
+          ];
+          feastLabel = 'Italian Family Night (Dinner for 4)';
+          feastTotal = 48.0;
+        } else if (targetFeast === 'asian') {
+          const thai = MOCK_MOBILE_MEALS.find((m) => /thai basil/i.test(m.name)) || MOCK_MOBILE_MEALS[0];
+          const ramen = MOCK_MOBILE_MEALS.find((m) => /ramen|noodle/i.test(m.name)) || MOCK_MOBILE_MEALS[1];
+          const salmon = MOCK_MOBILE_MEALS.find((m) => /salmon/i.test(m.name)) || MOCK_MOBILE_MEALS[2];
+          feastItems = [
+            { meal: thai, qty: 2 },
+            { meal: ramen, qty: 1 },
+            { meal: salmon, qty: 1 },
+          ];
+          feastLabel = 'Asian Fusion Feast (Dinner for 4)';
+          feastTotal = 50.0;
+        } else if (targetFeast === 'mexican') {
+          const burrito = MOCK_MOBILE_MEALS.find((m) => /burrito|quinoa/i.test(m.name)) || MOCK_MOBILE_MEALS[0];
+          const chicken = MOCK_MOBILE_MEALS.find((m) => /tinga|taco|chicken/i.test(m.name) && m.id !== burrito.id) || MOCK_MOBILE_MEALS[1];
+          const veg = MOCK_MOBILE_MEALS.find((m) => /black bean|enchilada|veg/i.test(m.name)) || MOCK_MOBILE_MEALS[2];
+          feastItems = [
+            { meal: burrito, qty: 2 },
+            { meal: chicken, qty: 1 },
+            { meal: veg, qty: 1 },
+          ];
+          feastLabel = 'Mexican Fiesta (Dinner for 4)';
+          feastTotal = 46.0;
+        } else {
+          const biryani = MOCK_MOBILE_MEALS.find((m) => /chicken biryani/i.test(m.name)) || MOCK_MOBILE_MEALS[3];
+          const dal = MOCK_MOBILE_MEALS.find((m) => /dal chawal|lentil/i.test(m.name)) || MOCK_MOBILE_MEALS[6];
+          const salmon = MOCK_MOBILE_MEALS.find((m) => /salmon/i.test(m.name)) || MOCK_MOBILE_MEALS[2];
+          feastItems = [
+            { meal: biryani, qty: 2 },
+            { meal: dal, qty: 1 },
+            { meal: salmon, qty: 1 },
+          ];
+          feastLabel = 'Indian Family Feast (Dinner for 4)';
+          feastTotal = 52.0;
+        }
+
+        setCart((prev) => {
+          const newItems = [...(prev?.items || [])];
+          for (const it of feastItems) {
+            const existingIdx = newItems.findIndex((x) => x.mealId === it.meal.id);
+            if (existingIdx >= 0) {
+              newItems[existingIdx] = {
+                ...newItems[existingIdx],
+                quantity: newItems[existingIdx].quantity + it.qty,
+              };
+            } else {
+              newItems.push({
+                mealId: it.meal.id,
+                meal: it.meal,
+                quantity: it.qty,
+                selectedSlot: 'dinner',
+                selectedDate: 'Tomorrow',
+              });
+            }
+          }
+          const subtotal = newItems.reduce((s, i) => s + i.meal.price * i.quantity, 0);
+          return {
+            items: newItems,
+            subtotal,
+            deliveryFee: 2.5,
+            estimatedTax: 1.5,
+            total: subtotal + 4.0,
+            currency: 'USD',
+          };
+        });
+
+        await streamAssistantReply({
+          message: `Added the ${feastLabel} to your cart! 🛒 Total: $${feastTotal.toFixed(2)}. Ready to checkout?`,
+          quickOptions: ['Confirm order', 'Edit cart', 'Add extra drinks'],
+        });
+      } else if (
+        q.includes('italian family') ||
+        q.includes('italian family night') ||
+        q.includes('italian dinner for 4') ||
+        q.includes('italian feast') ||
+        (q.includes('italian') && (q.includes('dinner for 4') || q.includes('dinner for four') || q.includes('feast') || q.includes('family') || q.includes('night') || q.includes('$48')))
+      ) {
+        lastFeastCuisineRef.current = 'italian';
+        const rigatoni =
+          MOCK_MOBILE_MEALS.find((m) => /amatriciana|rigatoni.*pork/i.test(m.name)) ||
+          MOCK_MOBILE_MEALS.find((m) => /rigatoni/i.test(m.name)) ||
+          MOCK_MOBILE_MEALS[0];
+        const mezze =
+          MOCK_MOBILE_MEALS.find((m) => /mezze maniche|creamy basil/i.test(m.name)) ||
+          MOCK_MOBILE_MEALS.find((m) => /napoletana/i.test(m.name)) ||
+          MOCK_MOBILE_MEALS[1];
+        const pizza =
+          MOCK_MOBILE_MEALS.find((m) => /sourdough|pizza|margherita/i.test(m.name)) ||
+          MOCK_MOBILE_MEALS.find((m) => /halloumi|bowl/i.test(m.name)) ||
+          MOCK_MOBILE_MEALS[2];
+        const salad = MOCK_MOBILE_MEALS.find((m) => /salad|greens/i.test(m.name)) || MOCK_MOBILE_MEALS[3];
+
+        const recs: Recommendation[] = [rigatoni, mezze, pizza, salad].map((meal, idx) => ({
+          meal,
+          score: 98 - idx * 2,
+          reasons: [
+            idx === 0
+              ? '✓ Family portion main (2x Rigatoni Pork)'
+              : idx === 1
+              ? '✓ Creamy crowd favourite (1x Mezze Maniche)'
+              : idx === 2
+              ? '✓ Crispy sourdough pizza (1x)'
+              : '✓ Fresh Mediterranean greens',
+          ],
+        }));
+
+        await streamAssistantReply({
+          message: 'Italian Family Night — $48.00 👨‍👩‍👧‍👦🍝\nCurated with 2x Rigatoni Pork Amatriciana, 1x Mezze Maniche Creamy Basil, 1x Margherita Sourdough Pizza + Garlic Herb Focaccia for 4.\n\nWould you like to try a different cuisine for your family dinner?',
+          budgetBasket: {
+            id: 'basket_italian_4',
+            userId,
+            budgetCap: 48,
+            actualTotal: 48,
+            total: 48,
+            title: '👨‍👩‍👧‍👦 Italian Family Night (Dinner for 4)',
+            items: [
+              { mealId: rigatoni.id, name: '2x Rigatoni Pork Amatriciana', price: 24, quantity: 2 },
+              { mealId: mezze.id, name: '1x Mezze Maniche Creamy Basil', price: 12, quantity: 1 },
+              { mealId: pizza.id, name: '1x Margherita Sourdough Pizza', price: 12, quantity: 1 },
+              { mealId: 'side_focaccia', name: 'Garlic Herb Focaccia (Basket of 4)', price: 0, quantity: 1 },
+            ],
+          },
+          recommendations: recs,
+          quickOptions: [
+            '🛒 Add Entire Feast to Cart ($48)',
+            '🇮🇳 Indian Feast ($52)',
+            '🥢 Asian Fusion Combo ($50)',
+            '🌮 Mexican Fiesta ($46)',
+            '📅 5-Day Italian Meal Plan',
+          ],
+        });
+      } else if (
+        q.includes('asian fusion') ||
+        q.includes('asian fusion combo') ||
+        q.includes('asian dinner for 4') ||
+        q.includes('asian feast') ||
+        (q.includes('asian') && (q.includes('dinner for 4') || q.includes('dinner for four') || q.includes('feast') || q.includes('family') || q.includes('night') || q.includes('$50')))
+      ) {
+        lastFeastCuisineRef.current = 'asian';
+        const thai = MOCK_MOBILE_MEALS.find((m) => /thai basil/i.test(m.name)) || MOCK_MOBILE_MEALS[0];
+        const ramen = MOCK_MOBILE_MEALS.find((m) => /ramen|noodle/i.test(m.name)) || MOCK_MOBILE_MEALS[1];
+        const salmon = MOCK_MOBILE_MEALS.find((m) => /salmon/i.test(m.name)) || MOCK_MOBILE_MEALS[2];
+        const soup = MOCK_MOBILE_MEALS.find((m) => /soup/i.test(m.name)) || MOCK_MOBILE_MEALS[3];
+
+        const recs: Recommendation[] = [thai, ramen, salmon, soup].map((meal, idx) => ({
+          meal,
+          score: 98 - idx * 2,
+          reasons: [idx === 0 ? '✓ Wok-fired family favourite (2x)' : idx === 1 ? '✓ Rich broth & noodles' : '✓ Omega-3 teriyaki salmon'],
+        }));
+
+        await streamAssistantReply({
+          message: 'Asian Fusion Combo — $50.00 🥢\nCurated with 2x Thai Basil Chicken Rice, 1x Tonkotsu Ramen Noodle Bowl, 1x Teriyaki Salmon Bowl + Hot Tom Yum Soup for 4.\n\nWould you like to try a different cuisine for your family dinner?',
+          budgetBasket: {
+            id: 'basket_asian_4',
+            userId,
+            budgetCap: 50,
+            actualTotal: 50,
+            total: 50,
+            title: '👨‍👩‍👧‍👦 Asian Fusion Feast (Dinner for 4)',
+            items: [
+              { mealId: thai.id, name: '2x Thai Basil Chicken Rice', price: 26, quantity: 2 },
+              { mealId: ramen.id, name: '1x Tonkotsu Ramen Bowl', price: 12, quantity: 1 },
+              { mealId: salmon.id, name: '1x Teriyaki Salmon Bowl', price: 12, quantity: 1 },
+              { mealId: 'side_tomyum', name: 'Hot Tom Yum Soup (Serves 4)', price: 0, quantity: 1 },
+            ],
+          },
+          recommendations: recs,
+          quickOptions: [
+            '🛒 Add Entire Feast to Cart ($50)',
+            '🇮🇳 Indian Feast ($52)',
+            '🍝 Italian Family Night ($48)',
+            '🌮 Mexican Fiesta ($46)',
+            '📅 5-Day Asian Meal Plan',
+          ],
+        });
+      } else if (
+        q.includes('mexican fiesta') ||
+        q.includes('mexican dinner for 4') ||
+        q.includes('mexican feast') ||
+        (q.includes('mexican') && (q.includes('dinner for 4') || q.includes('dinner for four') || q.includes('feast') || q.includes('family') || q.includes('night') || q.includes('$46')))
+      ) {
+        lastFeastCuisineRef.current = 'mexican';
+        const burrito = MOCK_MOBILE_MEALS.find((m) => /burrito|quinoa/i.test(m.name)) || MOCK_MOBILE_MEALS[0];
+        const chicken = MOCK_MOBILE_MEALS.find((m) => /tinga|taco|chicken/i.test(m.name) && m.id !== burrito.id) || MOCK_MOBILE_MEALS[1];
+        const veg = MOCK_MOBILE_MEALS.find((m) => /black bean|enchilada|veg/i.test(m.name)) || MOCK_MOBILE_MEALS[2];
+        const side = MOCK_MOBILE_MEALS.find((m) => m.category === 'main' && m.id !== chicken.id) || MOCK_MOBILE_MEALS[3];
+
+        const recs: Recommendation[] = [burrito, chicken, veg, side].map((meal, idx) => ({
+          meal,
+          score: 98 - idx * 2,
+          reasons: [idx === 0 ? '✓ Hearty fiesta bowls (2x)' : idx === 1 ? '✓ Tender spiced protein' : '✓ Loaded fresh greens & beans'],
+        }));
+
+        await streamAssistantReply({
+          message: 'Mexican Fiesta — $46.00 🌮\nCurated with 2x Carne Asada Bowls, 1x Chicken Tinga Tacos, 1x Veggie Black Bean Bowl + Fresh tortilla chips for 4.\n\nWould you like to try a different cuisine for your family dinner?',
+          budgetBasket: {
+            id: 'basket_mexican_4',
+            userId,
+            budgetCap: 46,
+            actualTotal: 46,
+            total: 46,
+            title: '👨‍👩‍👧‍👦 Mexican Fiesta (Dinner for 4)',
+            items: [
+              { mealId: burrito.id, name: '2x Carne Asada Burrito Bowls', price: 24, quantity: 2 },
+              { mealId: chicken.id, name: '1x Chicken Tinga Tacos', price: 11, quantity: 1 },
+              { mealId: veg.id, name: '1x Veggie Black Bean Bowl', price: 11, quantity: 1 },
+              { mealId: 'side_chips', name: 'Fresh Tortilla Chips & Salsa', price: 0, quantity: 1 },
+            ],
+          },
+          recommendations: recs,
+          quickOptions: [
+            '🛒 Add Entire Feast to Cart ($46)',
+            '🇮🇳 Indian Feast ($52)',
+            '🍝 Italian Family Night ($48)',
+            '🥢 Asian Fusion Combo ($50)',
+            '📅 5-Day Mexican Meal Plan',
+          ],
+        });
+      } else if (
+        q.includes('kid friendly') ||
+        q.includes('different spice') ||
+        q === 'yes' ||
+        q === '👍 yes' ||
+        q.includes('indian feast') ||
+        q.includes('indian family') ||
+        (q.includes('indian') && (q.includes('dinner for 4') || q.includes('feast') || q.includes('family')))
+      ) {
+        lastFeastCuisineRef.current = 'indian';
+        const biryani = MOCK_MOBILE_MEALS.find((m) => /chicken biryani/i.test(m.name)) || MOCK_MOBILE_MEALS[3];
+        const dal = MOCK_MOBILE_MEALS.find((m) => /dal chawal|lentil/i.test(m.name)) || MOCK_MOBILE_MEALS[6];
+        const salmon = MOCK_MOBILE_MEALS.find((m) => /salmon/i.test(m.name)) || MOCK_MOBILE_MEALS[2];
+        const paneer = MOCK_MOBILE_MEALS.find((m) => /paneer biryani|paneer/i.test(m.name)) || MOCK_MOBILE_MEALS[7];
+
+        const recs: Recommendation[] = [biryani, dal, salmon, paneer].map((meal, idx) => ({
+          meal,
+          score: 98 - idx * 2,
+          reasons: [
+            idx === 0 ? '✓ Family favourite (2x portions)' : idx === 1 ? '✓ 100% Vegetarian & mild' : idx === 2 ? '✓ Heart-healthy omega-3 salmon' : '✓ Rich vegetarian main',
+          ],
+        }));
+
+        await streamAssistantReply({
+          message: 'Dinner for 4 — $52.00 👨‍👩‍👧‍👦\nCurated with 2x Chicken Biryani, 1x Veg Lentil Curry, 1x Teriyaki Salmon + Garlic Naan sides for the whole family.\n\nWould you like to try a different cuisine for your family dinner?',
+          budgetBasket: {
+            id: 'basket_indian_4',
+            userId,
+            budgetCap: 52,
+            actualTotal: 52,
+            total: 52,
+            title: '👨‍👩‍👧‍👦 Indian Family Feast (Dinner for 4)',
+            items: [
+              { mealId: biryani.id, name: '2x Chicken Biryani', price: 26, quantity: 2 },
+              { mealId: dal.id, name: '1x Veg Lentil Curry & Rice', price: 13, quantity: 1 },
+              { mealId: salmon.id, name: '1x Teriyaki Salmon Bowl', price: 13, quantity: 1 },
+              { mealId: 'side_naan', name: 'Garlic Naan (Basket of 4)', price: 0, quantity: 1 },
+            ],
+          },
+          recommendations: recs,
+          quickOptions: [
+            '🛒 Add Entire Feast to Cart ($52)',
+            '🍝 Italian Family Night ($48)',
+            '🥢 Asian Fusion Combo ($50)',
+            '🌮 Mexican Fiesta ($46)',
+            '📅 5-Day Indian Meal Plan',
+          ],
+        });
+      }
       // FLOW 5 — CUISINE DISCOVERY
       else if (q.includes('asian food') || q.includes('feel like asian') || q === 'asian') {
         await streamAssistantReply({
@@ -967,7 +1298,13 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
         });
       } else if (
         (q.includes('chinese') || q.includes('korean') || q.includes('italian') || q.includes('thai') || q.includes('indonesian') || q.includes('japanese') || q.includes('indian') || q.includes('punjabi') || q.includes('african') || q.includes('malaysian') || q.includes('indo-chinese') || q.includes('manchurian') || q.includes('hakka')) &&
-        !q.includes('combo') && !q.includes('side')
+        !q.includes('combo') &&
+        !q.includes('side') &&
+        !q.includes('family') &&
+        !q.includes('feast') &&
+        !q.includes('night') &&
+        !q.includes('dinner for') &&
+        !q.includes('feed')
       ) {
         const isIndoChinese =
           q.includes('indian chinese') ||
@@ -1503,234 +1840,6 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           message: "Here's what's available for tomorrow's dinner:",
           recommendations: recs,
           quickOptions: ['❤️ Healthy', '💰 Under $15', '🌶️ Spicy', '🌱 Vegetarian', '✨ Surprise me'],
-        });
-      }
-      // FLOW 13 — FAMILY / MULTIPLE PEOPLE
-      else if (q.includes('dinner for four') || q.includes('dinner for 4') || q.includes('dinner for three') || q.includes('family dinner') || q.includes('feed 4')) {
-        await streamAssistantReply({
-          message: 'Got it. Is everyone happy eating similar food?',
-          quickOptions: ['👍 Yes', '👨‍👩‍👧 Different preferences'],
-        });
-      } else if (q.includes('different preferences')) {
-        await streamAssistantReply({
-          message: 'Tell me what I need to work around:',
-          quickOptions: ['🌱 Vegetarian', '🌶️ Different spice levels', '🥜 Allergies', '👧 Kid friendly', 'Nothing'],
-        });
-      } else if (
-        q.includes('add dinner for 4') ||
-        q.includes('add entire feast') ||
-        q.includes('add indian feast') ||
-        q.includes('add italian feast') ||
-        q.includes('add asian feast') ||
-        q.includes('add mexican feast') ||
-        q === 'add selection' ||
-        q === '🛒 add selection'
-      ) {
-        // Direct One-Tap Add to Cart for the 4-person feast
-        const biryani = MOCK_MOBILE_MEALS.find((m) => /chicken biryani/i.test(m.name)) || MOCK_MOBILE_MEALS[3];
-        const dal = MOCK_MOBILE_MEALS.find((m) => /dal chawal|lentil/i.test(m.name)) || MOCK_MOBILE_MEALS[6];
-        const salmon = MOCK_MOBILE_MEALS.find((m) => /salmon/i.test(m.name)) || MOCK_MOBILE_MEALS[2];
-
-        setCart((prev) => {
-          const newItems = [...(prev?.items || [])];
-          const feastItems = [
-            { meal: biryani, qty: 2 },
-            { meal: dal, qty: 1 },
-            { meal: salmon, qty: 1 },
-          ];
-          for (const it of feastItems) {
-            const existingIdx = newItems.findIndex((x) => x.mealId === it.meal.id);
-            if (existingIdx >= 0) {
-              newItems[existingIdx] = {
-                ...newItems[existingIdx],
-                quantity: newItems[existingIdx].quantity + it.qty,
-              };
-            } else {
-              newItems.push({
-                mealId: it.meal.id,
-                meal: it.meal,
-                quantity: it.qty,
-                selectedSlot: 'dinner',
-                selectedDate: 'Tomorrow',
-              });
-            }
-          }
-          const subtotal = newItems.reduce((s, i) => s + i.meal.price * i.quantity, 0);
-          return {
-            items: newItems,
-            subtotal,
-            deliveryFee: 2.5,
-            estimatedTax: 1.5,
-            total: subtotal + 4.0,
-            currency: 'USD',
-          };
-        });
-
-        await streamAssistantReply({
-          message: 'Added the Family Feast (Dinner for 4) to your cart! 🛒 Total: $52.00. Ready to checkout?',
-          quickOptions: ['Confirm order', 'Edit cart', 'Add extra drinks'],
-        });
-      } else if (
-        q.includes('italian family') ||
-        (q.includes('italian') && (q.includes('dinner for 4') || q.includes('feast') || q.includes('family')))
-      ) {
-        // Italian Family Night ($48)
-        const bolognese = MOCK_MOBILE_MEALS.find((m) => /bolognese|beef/i.test(m.name)) || MOCK_MOBILE_MEALS[0];
-        const alfredo = MOCK_MOBILE_MEALS.find((m) => /pasta|quinoa|rice/i.test(m.name) && m.id !== bolognese.id) || MOCK_MOBILE_MEALS[1];
-        const pizza = MOCK_MOBILE_MEALS.find((m) => /halloumi|bowl/i.test(m.name)) || MOCK_MOBILE_MEALS[2];
-        const salad = MOCK_MOBILE_MEALS.find((m) => /salad|greens/i.test(m.name)) || MOCK_MOBILE_MEALS[3];
-
-        const recs: Recommendation[] = [bolognese, alfredo, pizza, salad].map((meal, idx) => ({
-          meal,
-          score: 98 - idx * 2,
-          reasons: [idx === 0 ? '✓ Family portion main (2x)' : idx === 1 ? '✓ Creamy crowd favourite' : '✓ Freshly baked classic'],
-        }));
-
-        await streamAssistantReply({
-          message: 'Italian Family Night — $48.00 🍝\nCurated with 2x Beef Bolognese Pasta, 1x Creamy Fettuccine Alfredo, 1x Margherita Pizza + Garlic Herb bread for 4.\n\nWould you like to try a different cuisine for your family dinner?',
-          budgetBasket: {
-            id: 'basket_italian_4',
-            userId,
-            budgetCap: 48,
-            actualTotal: 48,
-            total: 48,
-            title: '👨‍👩‍👧‍👦 Italian Family Night (Dinner for 4)',
-            items: [
-              { mealId: bolognese.id, name: '2x Beef Bolognese Pasta', price: 24 },
-              { mealId: alfredo.id, name: '1x Creamy Fettuccine Alfredo', price: 12 },
-              { mealId: pizza.id, name: '1x Margherita Pizza', price: 12 },
-            ],
-          },
-          recommendations: recs,
-          quickOptions: [
-            '🛒 Add Dinner for 4 to cart ($48)',
-            '🇮🇳 Indian Feast ($52)',
-            '🥢 Asian Fusion Combo ($50)',
-            '🌮 Mexican Fiesta ($46)',
-          ],
-        });
-      } else if (
-        q.includes('asian fusion') ||
-        (q.includes('asian') && (q.includes('dinner for 4') || q.includes('feast') || q.includes('family')))
-      ) {
-        // Asian Fusion Combo ($50)
-        const thai = MOCK_MOBILE_MEALS.find((m) => /thai basil/i.test(m.name)) || MOCK_MOBILE_MEALS[0];
-        const ramen = MOCK_MOBILE_MEALS.find((m) => /ramen|noodle/i.test(m.name)) || MOCK_MOBILE_MEALS[1];
-        const salmon = MOCK_MOBILE_MEALS.find((m) => /salmon/i.test(m.name)) || MOCK_MOBILE_MEALS[2];
-        const soup = MOCK_MOBILE_MEALS.find((m) => /soup/i.test(m.name)) || MOCK_MOBILE_MEALS[3];
-
-        const recs: Recommendation[] = [thai, ramen, salmon, soup].map((meal, idx) => ({
-          meal,
-          score: 98 - idx * 2,
-          reasons: [idx === 0 ? '✓ Wok-fired family favourite (2x)' : idx === 1 ? '✓ Rich broth & noodles' : '✓ Omega-3 teriyaki salmon'],
-        }));
-
-        await streamAssistantReply({
-          message: 'Asian Fusion Combo — $50.00 🥢\nCurated with 2x Thai Basil Chicken Rice, 1x Tonkotsu Ramen Noodle Bowl, 1x Teriyaki Salmon Bowl + Hot Tom Yum Soup for 4.\n\nWould you like to try a different cuisine for your family dinner?',
-          budgetBasket: {
-            id: 'basket_asian_4',
-            userId,
-            budgetCap: 50,
-            actualTotal: 50,
-            total: 50,
-            title: '👨‍👩‍👧‍👦 Asian Fusion Feast (Dinner for 4)',
-            items: [
-              { mealId: thai.id, name: '2x Thai Basil Chicken Rice', price: 26 },
-              { mealId: ramen.id, name: '1x Tonkotsu Ramen Bowl', price: 12 },
-              { mealId: salmon.id, name: '1x Teriyaki Salmon Bowl', price: 12 },
-            ],
-          },
-          recommendations: recs,
-          quickOptions: [
-            '🛒 Add Dinner for 4 to cart ($50)',
-            '🇮🇳 Indian Feast ($52)',
-            '🍝 Italian Family Night ($48)',
-            '🌮 Mexican Fiesta ($46)',
-          ],
-        });
-      } else if (
-        q.includes('mexican fiesta') ||
-        (q.includes('mexican') && (q.includes('dinner for 4') || q.includes('feast') || q.includes('family')))
-      ) {
-        // Mexican Fiesta ($46)
-        const burrito = MOCK_MOBILE_MEALS.find((m) => /quinoa|halloumi/i.test(m.name)) || MOCK_MOBILE_MEALS[0];
-        const chicken = MOCK_MOBILE_MEALS.find((m) => /chicken/i.test(m.name) && m.id !== burrito.id) || MOCK_MOBILE_MEALS[1];
-        const veg = MOCK_MOBILE_MEALS.find((m) => /veg|paneer/i.test(m.name)) || MOCK_MOBILE_MEALS[2];
-        const side = MOCK_MOBILE_MEALS.find((m) => m.category === 'main' && m.id !== chicken.id) || MOCK_MOBILE_MEALS[3];
-
-        const recs: Recommendation[] = [burrito, chicken, veg, side].map((meal, idx) => ({
-          meal,
-          score: 98 - idx * 2,
-          reasons: [idx === 0 ? '✓ Hearty fiesta bowls (2x)' : idx === 1 ? '✓ Tender spiced protein' : '✓ Loaded fresh greens & beans'],
-        }));
-
-        await streamAssistantReply({
-          message: 'Mexican Fiesta — $46.00 🌮\nCurated with 2x Carne Asada Bowls, 1x Chicken Tinga Tacos, 1x Veggie Black Bean Bowl + Fresh tortilla chips for 4.\n\nWould you like to try a different cuisine for your family dinner?',
-          budgetBasket: {
-            id: 'basket_mexican_4',
-            userId,
-            budgetCap: 46,
-            actualTotal: 46,
-            total: 46,
-            title: '👨‍👩‍👧‍👦 Mexican Fiesta (Dinner for 4)',
-            items: [
-              { mealId: burrito.id, name: '2x Carne Asada Burrito Bowls', price: 24 },
-              { mealId: chicken.id, name: '1x Chicken Tinga Tacos', price: 11 },
-              { mealId: veg.id, name: '1x Veggie Black Bean Bowl', price: 11 },
-            ],
-          },
-          recommendations: recs,
-          quickOptions: [
-            '🛒 Add Dinner for 4 to cart ($46)',
-            '🇮🇳 Indian Feast ($52)',
-            '🍝 Italian Family Night ($48)',
-            '🥢 Asian Fusion Combo ($50)',
-          ],
-        });
-      } else if (
-        q.includes('kid friendly') ||
-        q.includes('different spice') ||
-        q === 'yes' ||
-        q === '👍 yes' ||
-        q.includes('indian feast')
-      ) {
-        // Default Indian Family Feast ($52.00)
-        const biryani = MOCK_MOBILE_MEALS.find((m) => /chicken biryani/i.test(m.name)) || MOCK_MOBILE_MEALS.find((m) => m.id === 'meal_biryani') || MOCK_MOBILE_MEALS[3];
-        const dal = MOCK_MOBILE_MEALS.find((m) => /dal chawal|lentil/i.test(m.name)) || MOCK_MOBILE_MEALS[6];
-        const salmon = MOCK_MOBILE_MEALS.find((m) => /salmon/i.test(m.name)) || MOCK_MOBILE_MEALS.find((m) => m.id === 'meal_salmon_bowl') || MOCK_MOBILE_MEALS[2];
-        const paneer = MOCK_MOBILE_MEALS.find((m) => /paneer biryani|paneer/i.test(m.name)) || MOCK_MOBILE_MEALS[7];
-
-        const recs: Recommendation[] = [biryani, dal, salmon, paneer].map((meal, idx) => ({
-          meal,
-          score: 98 - idx * 2,
-          reasons: [
-            idx === 0 ? '✓ Family favourite (2x portions)' : idx === 1 ? '✓ 100% Vegetarian & mild' : idx === 2 ? '✓ Heart-healthy omega-3 salmon' : '✓ Rich vegetarian main',
-          ],
-        }));
-
-        await streamAssistantReply({
-          message: 'Dinner for 4 — $52.00 👨‍👩‍👧‍👦\nCurated with 2x Chicken Biryani, 1x Veg Lentil Curry, 1x Teriyaki Salmon + Garlic Naan sides for the whole family.\n\nWould you like to try a different cuisine for your family dinner?',
-          budgetBasket: {
-            id: 'basket_indian_4',
-            userId,
-            budgetCap: 52,
-            actualTotal: 52,
-            total: 52,
-            title: '👨‍👩‍👧‍👦 Indian Family Feast (Dinner for 4)',
-            items: [
-              { mealId: biryani.id, name: '2x Chicken Biryani', price: 26 },
-              { mealId: dal.id, name: '1x Veg Lentil Curry & Rice', price: 13 },
-              { mealId: salmon.id, name: '1x Teriyaki Salmon Bowl', price: 13 },
-            ],
-          },
-          recommendations: recs,
-          quickOptions: [
-            '🛒 Add Dinner for 4 to cart ($52)',
-            '🍝 Italian Family Night ($48)',
-            '🥢 Asian Fusion Combo ($50)',
-            '🌮 Mexican Fiesta ($46)',
-            '🔄 Try another combination',
-          ],
         });
       }
       // FLOW 14 — COMPLETE MY CART (ANOTHER MEAL)
