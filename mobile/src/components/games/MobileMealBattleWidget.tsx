@@ -9,6 +9,7 @@ import {
 import { Meal } from '../../types';
 import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
+import { MobileCelebrationModal } from '../MobileCelebrationModal';
 
 interface MobileMealBattleWidgetProps {
   onAddToCart: (mealId: string) => void;
@@ -34,12 +35,14 @@ export const MobileMealBattleWidget: React.FC<MobileMealBattleWidgetProps> = ({
   const [currentChallenger, setCurrentChallenger] = useState<Meal>(() => battleDeck[1] || realMains[1]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [winner, setWinner] = useState<Meal | null>(null);
+  const [showCelebration, setShowCelebration] = useState(false);
 
   const handlePickContender = (picked: Meal) => {
     if (currentRound >= totalRounds) {
       // Winner crowned!
       setWinner(picked);
       setIsGameOver(true);
+      setShowCelebration(true);
     } else {
       const nextRound = currentRound + 1;
       setCurrentRound(nextRound);
@@ -107,6 +110,19 @@ export const MobileMealBattleWidget: React.FC<MobileMealBattleWidgetProps> = ({
         <TouchableOpacity style={styles.newBattleBtn} onPress={handleRestart}>
           <Text style={styles.newBattleText}>⚔️ Start a New Battle</Text>
         </TouchableOpacity>
+
+        {/* Celebratory Pop-up with Falling Confetti Bars */}
+        <MobileCelebrationModal
+          visible={showCelebration}
+          meal={winner}
+          onClose={() => setShowCelebration(false)}
+          onAddToCart={(mealId) => {
+            setShowCelebration(false);
+            onAddToCart(mealId);
+          }}
+          title="CHAMPION CROWNED! ⚔️"
+          subtitle="Undefeated champion after 4 epic battles!"
+        />
       </View>
     );
   }

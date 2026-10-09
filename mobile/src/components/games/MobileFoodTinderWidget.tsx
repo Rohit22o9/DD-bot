@@ -11,6 +11,7 @@ import {
 import { Meal } from '../../types';
 import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
+import { MobileCelebrationModal } from '../MobileCelebrationModal';
 
 const { width } = Dimensions.get('window');
 
@@ -39,6 +40,7 @@ export const MobileFoodTinderWidget: React.FC<MobileFoodTinderWidgetProps> = ({
   const [likedMeals, setLikedMeals] = useState<Meal[]>([]);
   const [isCompleted, setIsCompleted] = useState(false);
   const [matchedMeal, setMatchedMeal] = useState<Meal | null>(null);
+  const [showCelebration, setShowCelebration] = useState(false);
 
   // Animated values for swipe gesture & button actions
   const position = useRef(new Animated.ValueXY()).current;
@@ -113,6 +115,7 @@ export const MobileFoodTinderWidget: React.FC<MobileFoodTinderWidgetProps> = ({
 
     setMatchedMeal(match || REAL_DAILY_DROP_MEALS[0]);
     setIsCompleted(true);
+    setShowCelebration(true);
 
     if (onPreferencesDiscovered && likes.length > 0) {
       const cuisines = Array.from(new Set(likes.map((m) => m.cuisine)));
@@ -193,6 +196,19 @@ export const MobileFoodTinderWidget: React.FC<MobileFoodTinderWidgetProps> = ({
         <TouchableOpacity style={styles.keepSwipingBtn} onPress={handleReset}>
           <Text style={styles.keepSwipingText}>🔥 Keep swiping / Play again</Text>
         </TouchableOpacity>
+
+        {/* Celebratory Pop-up with Falling Confetti Bars */}
+        <MobileCelebrationModal
+          visible={showCelebration}
+          meal={matchedMeal}
+          onClose={() => setShowCelebration(false)}
+          onAddToCart={(mealId) => {
+            setShowCelebration(false);
+            onAddToCart(mealId);
+          }}
+          title="CRAVING MATCHED! 🔥"
+          subtitle="AI discovered your ideal match from your swipes!"
+        />
       </View>
     );
   }

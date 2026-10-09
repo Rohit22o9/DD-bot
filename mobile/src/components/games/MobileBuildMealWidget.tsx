@@ -8,6 +8,7 @@ import {
 import { Meal } from '../../types';
 import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
+import { MobileCelebrationModal } from '../MobileCelebrationModal';
 
 interface MobileBuildMealWidgetProps {
   onAddToCart: (mealId: string) => void;
@@ -48,6 +49,7 @@ export const MobileBuildMealWidget: React.FC<MobileBuildMealWidgetProps> = ({
   const [selectedProtein, setSelectedProtein] = useState<StepOption | null>(null);
   const [selectedPersonality, setSelectedPersonality] = useState<StepOption | null>(null);
   const [selectedBase, setSelectedBase] = useState<StepOption | null>(null);
+  const [showCelebration, setShowCelebration] = useState(false);
 
   const handleSelectProtein = (opt: StepOption) => {
     setSelectedProtein(opt);
@@ -62,6 +64,7 @@ export const MobileBuildMealWidget: React.FC<MobileBuildMealWidgetProps> = ({
   const handleSelectBase = (opt: StepOption) => {
     setSelectedBase(opt);
     setStep(4);
+    setShowCelebration(true);
   };
 
   const handleReset = () => {
@@ -69,6 +72,7 @@ export const MobileBuildMealWidget: React.FC<MobileBuildMealWidgetProps> = ({
     setSelectedProtein(null);
     setSelectedPersonality(null);
     setSelectedBase(null);
+    setShowCelebration(false);
     onPlayAgain?.();
   };
 
@@ -218,6 +222,19 @@ export const MobileBuildMealWidget: React.FC<MobileBuildMealWidgetProps> = ({
           </TouchableOpacity>
         </View>
       )}
+
+      {/* Celebratory Pop-up with Falling Confetti Bars */}
+      <MobileCelebrationModal
+        visible={showCelebration}
+        meal={matchedMeal}
+        onClose={() => setShowCelebration(false)}
+        onAddToCart={(mealId) => {
+          setShowCelebration(false);
+          onAddToCart(mealId);
+        }}
+        title="CUSTOM BOWL READY! 🧑‍🍳"
+        subtitle="AI matched your recipe with today's hot kitchen drop!"
+      />
     </View>
   );
 };

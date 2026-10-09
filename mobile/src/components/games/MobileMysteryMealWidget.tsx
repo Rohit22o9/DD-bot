@@ -8,6 +8,7 @@ import {
 import { Meal } from '../../types';
 import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
+import { MobileCelebrationModal } from '../MobileCelebrationModal';
 
 interface MobileMysteryMealWidgetProps {
   onAddToCart: (mealId: string) => void;
@@ -72,14 +73,17 @@ export const MobileMysteryMealWidget: React.FC<MobileMysteryMealWidgetProps> = (
 }) => {
   const [boxes, setBoxes] = useState<MysteryBox[]>(() => getDynamicMysteryBoxes());
   const [selectedBox, setSelectedBox] = useState<MysteryBox | null>(null);
+  const [showCelebration, setShowCelebration] = useState(false);
 
   const handleOpenBox = (box: MysteryBox) => {
     setSelectedBox(box);
+    setShowCelebration(true);
   };
 
   const handleReset = () => {
     setBoxes(getDynamicMysteryBoxes());
     setSelectedBox(null);
+    setShowCelebration(false);
     onTryAnother?.();
   };
 
@@ -164,6 +168,19 @@ export const MobileMysteryMealWidget: React.FC<MobileMysteryMealWidgetProps> = (
           </TouchableOpacity>
         </View>
       )}
+
+      {/* Celebratory Pop-up with Falling Confetti Bars */}
+      <MobileCelebrationModal
+        visible={showCelebration}
+        meal={selectedBox?.meal || null}
+        onClose={() => setShowCelebration(false)}
+        onAddToCart={(mealId) => {
+          setShowCelebration(false);
+          onAddToCart(mealId);
+        }}
+        title="MYSTERY CRACKED! 🎁"
+        subtitle={selectedBox ? `Box ${selectedBox.letter} unlocked: ${selectedBox.meal.name}` : undefined}
+      />
     </View>
   );
 };

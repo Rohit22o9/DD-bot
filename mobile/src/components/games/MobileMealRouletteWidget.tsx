@@ -9,6 +9,7 @@ import {
 import { Meal } from '../../types';
 import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
+import { MobileCelebrationModal } from '../MobileCelebrationModal';
 
 interface MobileMealRouletteWidgetProps {
   onAddToCart: (mealId: string) => void;
@@ -38,6 +39,7 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
   const [isSpinning, setIsSpinning] = useState(false);
   const [hasLanded, setHasLanded] = useState(false);
   const [matchedMeals, setMatchedMeals] = useState<Meal[]>([]);
+  const [showCelebration, setShowCelebration] = useState(false);
 
   const spinAnimation = useRef(new Animated.Value(0)).current;
 
@@ -76,6 +78,7 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
         );
         setIsSpinning(false);
         setHasLanded(true);
+        setShowCelebration(true);
         onSpinAgain?.();
       }
     };
@@ -169,6 +172,19 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
           </TouchableOpacity>
         </View>
       )}
+
+      {/* Celebratory Pop-up with Falling Confetti Bars */}
+      <MobileCelebrationModal
+        visible={showCelebration}
+        meal={matchedMeals[0] || null}
+        onClose={() => setShowCelebration(false)}
+        onAddToCart={(mealId) => {
+          setShowCelebration(false);
+          onAddToCart(mealId);
+        }}
+        title="ROULETTE JACKPOT! 🎲"
+        subtitle={`The wheel selected delicious ${currentCategory.label}!`}
+      />
     </View>
   );
 };

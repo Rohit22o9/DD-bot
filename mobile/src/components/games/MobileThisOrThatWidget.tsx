@@ -8,6 +8,7 @@ import {
 import { Meal } from '../../types';
 import { REAL_DAILY_DROP_MEALS } from '../../realDailyDropMeals';
 import { MobileMealImage } from '../MobileMealImage';
+import { MobileCelebrationModal } from '../MobileCelebrationModal';
 
 interface MobileThisOrThatWidgetProps {
   onAddToCart: (mealId: string) => void;
@@ -51,6 +52,7 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
   const [choices, setChoices] = useState<string[]>([]);
   const [isFinished, setIsFinished] = useState(false);
   const [matchedMeal, setMatchedMeal] = useState<Meal | null>(null);
+  const [showCelebration, setShowCelebration] = useState(false);
 
   const handleSelectChoice = (choiceKey: string) => {
     const nextChoices = [...choices, choiceKey];
@@ -91,6 +93,7 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
       const match = candidates[Math.floor(Math.random() * candidates.length)] || REAL_DAILY_DROP_MEALS[0];
       setMatchedMeal(match);
       setIsFinished(true);
+      setShowCelebration(true);
     } else {
       setCurrentRoundIndex((prev) => prev + 1);
     }
@@ -101,6 +104,7 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
     setChoices([]);
     setIsFinished(false);
     setMatchedMeal(null);
+    setShowCelebration(false);
     onPlayAgain?.();
   };
 
@@ -150,6 +154,19 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
         <TouchableOpacity style={styles.restartBtn} onPress={handleRestart}>
           <Text style={styles.restartText}>🤔 Try different choices</Text>
         </TouchableOpacity>
+
+        {/* Celebratory Pop-up with Falling Confetti Bars */}
+        <MobileCelebrationModal
+          visible={showCelebration}
+          meal={matchedMeal}
+          onClose={() => setShowCelebration(false)}
+          onAddToCart={(mealId) => {
+            setShowCelebration(false);
+            onAddToCart(mealId);
+          }}
+          title="DINNER PINPOINTED! 🎯"
+          subtitle="92% match based on your preferences!"
+        />
       </View>
     );
   }
