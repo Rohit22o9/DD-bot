@@ -43,63 +43,7 @@ export const MobileAddedCard: React.FC<MobileAddedCardProps> = ({
 
   return (
     <View style={styles.container}>
-      {/* If single item, show sleek stepper card; if multiple, show compact line items */}
-      {activeItems.length === 1 ? (
-        <View style={styles.card}>
-          <MobileMealImage
-            uri={activeItems[0].meal.imageUrl}
-            style={styles.thumb}
-            containerStyle={styles.thumbContainer}
-            resizeMode="cover"
-          />
-
-          <View style={styles.info}>
-            <Text style={styles.name} numberOfLines={1}>
-              {activeItems[0].meal.name}
-            </Text>
-            <Text style={styles.price}>
-              ${activeItems[0].meal.price.toFixed(2)} · {activeItems[0].quantity} added
-            </Text>
-          </View>
-
-          {/* Stepper */}
-          <View style={styles.stepper}>
-            <TouchableOpacity
-              style={styles.stepBtn}
-              onPress={() => onUpdateQuantity?.(activeItems[0].meal.id, Math.max(1, activeItems[0].quantity - 1))}
-              activeOpacity={0.7}
-            >
-              <Text style={styles.stepBtnText}>-</Text>
-            </TouchableOpacity>
-            <Text style={styles.stepCount}>{activeItems[0].quantity}</Text>
-            <TouchableOpacity
-              style={styles.stepBtn}
-              onPress={() => onUpdateQuantity?.(activeItems[0].meal.id, activeItems[0].quantity + 1)}
-              activeOpacity={0.7}
-            >
-              <Text style={styles.stepBtnText}>+</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      ) : (
-        /* Multi-item compact list (as requested: one line per dish) */
-        <View style={styles.multiCard}>
-          <Text style={styles.multiCardHeader}>Added to your cart:</Text>
-          {activeItems.map((item, idx) => (
-            <View key={item.meal.id || idx} style={styles.compactRow}>
-              <Text style={styles.compactDot}>•</Text>
-              <Text style={styles.compactName} numberOfLines={1}>
-                {item.meal.name}
-              </Text>
-              <Text style={styles.compactMeta}>
-                ${(item.meal.price * item.quantity).toFixed(2)} ({item.quantity}x)
-              </Text>
-            </View>
-          ))}
-        </View>
-      )}
-
-      {/* Single upsell prompt after the dishes */}
+      {/* Upsell prompt directly without the dish card above it */}
       <Text style={styles.question}>Would you like to add something else?</Text>
 
       {/* Follow-up Chips */}

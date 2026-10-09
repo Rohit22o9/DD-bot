@@ -1214,11 +1214,11 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           quickOptions: ['Confirm order', '🛒 View cart', '🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert'],
         });
       }
-      // FLOW 11C — ADD SIDE (Solves feedback points 3 & 9)
+      // FLOW 11C — ADD SIDE (Directly show side dishes without intro text message)
       else if (q.includes('add a side') || q.includes('add side') || q === 'side' || q === 'sides' || q === '🥟 add a side') {
         const sides = MOCK_MOBILE_MEALS.filter((m) => m.category === 'side').slice(0, 4);
         await streamAssistantReply({
-          message: 'Here are fresh, delicious sides to complement your meal 🥟:',
+          message: '',
           recommendations: sides.map((m, idx) => ({
             meal: m,
             score: 98 - idx * 2,
@@ -1227,11 +1227,11 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           quickOptions: ['🥤 Add a drink', '🍰 Add a dessert', '🛒 View cart', "✅ I'm done"],
         });
       }
-      // FLOW 11D — ADD DRINK (Solves feedback points 3 & 9)
+      // FLOW 11D — ADD DRINK (Directly show drinks without intro text message)
       else if (q.includes('add a drink') || q.includes('add drink') || q === 'drink' || q === 'drinks' || q === '🥤 add a drink') {
         const drinks = MOCK_MOBILE_MEALS.filter((m) => m.category === 'drink').slice(0, 4);
         await streamAssistantReply({
-          message: 'Here are chilled, refreshing drinks ready to add 🥤:',
+          message: '',
           recommendations: drinks.map((m, idx) => ({
             meal: m,
             score: 99 - idx * 2,
@@ -1240,7 +1240,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           quickOptions: ['🥟 Add a side', '🍰 Add a dessert', '🛒 View cart', "✅ I'm done"],
         });
       }
-      // FLOW 11E — ADD DESSERT (Solves feedback points 3 & 9)
+      // FLOW 11E — ADD DESSERT (Directly show desserts without intro text message)
       else if (
         q.includes('add a dessert') ||
         q.includes('add dessert') ||
@@ -1252,7 +1252,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
       ) {
         const desserts = MOCK_MOBILE_MEALS.filter((m) => m.category === 'dessert').slice(0, 4);
         await streamAssistantReply({
-          message: 'Here are sweet treats to finish your meal 🍰:',
+          message: '',
           recommendations: desserts.map((m, idx) => ({
             meal: m,
             score: 97 - idx * 2,
@@ -1261,11 +1261,11 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           quickOptions: ['🥤 Add a drink', '🥟 Add a side', '🛒 View cart', "✅ I'm done"],
         });
       }
-      // FLOW 11F — ADD SOUP
+      // FLOW 11F — ADD SOUP (Directly show soups without intro text message)
       else if (q.includes('add soup') || q.includes('soup') || q === '🍲 add soup') {
         const soups = MOCK_MOBILE_MEALS.filter((m) => m.name.toLowerCase().includes('soup')).slice(0, 3);
         await streamAssistantReply({
-          message: 'Here are comforting, hot soups 🍲:',
+          message: '',
           recommendations: soups.map((m, idx) => ({
             meal: m,
             score: 98 - idx * 2,
@@ -1274,11 +1274,11 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           quickOptions: ['🥟 Add a side', '🥤 Add a drink', '🛒 View cart'],
         });
       }
-      // FLOW 11G — ADD SALAD
+      // FLOW 11G — ADD SALAD (Directly show salads without intro text message)
       else if (q.includes('add salad') || q.includes('salad') || q === '🥗 add salad') {
         const salads = MOCK_MOBILE_MEALS.filter((m) => m.name.toLowerCase().includes('salad') || m.ingredients.includes('greens')).slice(0, 3);
         await streamAssistantReply({
-          message: 'Here are crisp, garden-fresh salads 🥗:',
+          message: '',
           recommendations: salads.map((m, idx) => ({
             meal: m,
             score: 98 - idx * 2,

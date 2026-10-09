@@ -31,10 +31,14 @@ function getDynamicMysteryBoxes(): MysteryBox[] {
   const spicyMeals = REAL_DAILY_DROP_MEALS.filter(
     (m) => m.spicyLevel > 0 || /spicy|chilli|mala|pepper/i.test(m.name)
   );
+  const chefSpecialMeals = REAL_DAILY_DROP_MEALS.filter(
+    (m) => m.category === 'main' && m.price > 12 && (m.proteinGrams || 0) < 30
+  );
 
   const mealA = budgetMeals[Math.floor(Math.random() * budgetMeals.length)] || REAL_DAILY_DROP_MEALS[0];
   const mealB = proteinMeals[Math.floor(Math.random() * proteinMeals.length)] || REAL_DAILY_DROP_MEALS[3];
   const mealC = spicyMeals[Math.floor(Math.random() * spicyMeals.length)] || REAL_DAILY_DROP_MEALS[10];
+  const mealD = chefSpecialMeals[Math.floor(Math.random() * chefSpecialMeals.length)] || REAL_DAILY_DROP_MEALS[5];
 
   return [
     {
@@ -63,6 +67,15 @@ function getDynamicMysteryBoxes(): MysteryBox[] {
       emoji: '🌶️',
       meal: mealC,
       highlightText: `Chef’s Bold ${mealC.cuisine} Surprise`,
+    },
+    {
+      id: 'box_d',
+      letter: 'D',
+      label: 'Chef Special',
+      tagline: 'Signature tonight',
+      emoji: '⭐',
+      meal: mealD,
+      highlightText: `Signature Drop · ${mealD.cuisine} Specialty`,
     },
   ];
 }
@@ -102,7 +115,7 @@ export const MobileMysteryMealWidget: React.FC<MobileMysteryMealWidgetProps> = (
       </Text>
 
       {!selectedBox ? (
-        <View style={styles.boxesRow}>
+        <View style={styles.boxesGrid}>
           {boxes.map((box) => (
             <TouchableOpacity
               key={box.id}
@@ -232,22 +245,27 @@ const styles = StyleSheet.create({
     color: '#6B7280',
     marginBottom: 12,
   },
-  boxesRow: {
+  boxesGrid: {
     flexDirection: 'row',
-    gap: 8,
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    rowGap: 10,
   },
   boxCard: {
-    flex: 1,
+    width: '48%',
+    aspectRatio: 1,
     backgroundColor: '#F9FAFB',
-    borderRadius: 14,
-    padding: 10,
+    borderRadius: 16,
+    paddingVertical: 10,
+    paddingHorizontal: 6,
     alignItems: 'center',
+    justifyContent: 'space-between',
     borderWidth: 1.5,
     borderColor: '#E5E7EB',
   },
   boxEmoji: {
-    fontSize: 32,
-    marginBottom: 4,
+    fontSize: 28,
+    marginBottom: 2,
   },
   boxBadge: {
     backgroundColor: '#E5E7EB',

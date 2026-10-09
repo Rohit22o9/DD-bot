@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -11,6 +11,7 @@ import {
   StyleSheet,
   ActivityIndicator,
   StatusBar,
+  Animated,
 } from 'react-native';
 import { useDropAI } from './useDropAI';
 import { MobileChatLaunchScreen } from './components/MobileChatLaunchScreen';
@@ -190,6 +191,50 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     await removeFromCart(mealId);
   };
 
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const toastFadeAnim = useRef(new Animated.Value(0)).current;
+  const toastSlideAnim = useRef(new Animated.Value(-20)).current;
+  const toastTimeoutRef = useRef<any>(null);
+
+  const showToast = useCallback((msg: string) => {
+    if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+    setToastMessage(msg);
+    toastFadeAnim.setValue(0);
+    toastSlideAnim.setValue(-20);
+    Animated.parallel([
+      Animated.timing(toastFadeAnim, {
+        toValue: 1,
+        duration: 250,
+        useNativeDriver: true,
+      }),
+      Animated.timing(toastSlideAnim, {
+        toValue: 0,
+        duration: 250,
+        useNativeDriver: true,
+      }),
+    ]).start();
+
+    toastTimeoutRef.current = setTimeout(() => {
+      Animated.parallel([
+        Animated.timing(toastFadeAnim, {
+          toValue: 0,
+          duration: 250,
+          useNativeDriver: true,
+        }),
+        Animated.timing(toastSlideAnim, {
+          toValue: -20,
+          duration: 250,
+          useNativeDriver: true,
+        }),
+      ]).start(() => setToastMessage(null));
+    }, 2500);
+  }, [toastFadeAnim, toastSlideAnim]);
+
+  const handleAddToCart = (mealId: string, quantity?: number) => {
+    addToCart(mealId, quantity);
+    showToast('Your meal is added to cart! 🛍️');
+  };
+
   const activeFilterCount = [
     activeFilters.budgetCap !== undefined,
     activeFilters.wellness !== undefined,
@@ -293,6 +338,25 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
         </View>
       )}
 
+      {/* Floating Added to Cart Toast Popup */}
+      {toastMessage && (
+        <Animated.View
+          style={[
+            styles.toastPopup,
+            {
+              opacity: toastFadeAnim,
+              transform: [{ translateY: toastSlideAnim }],
+            },
+          ]}
+          pointerEvents="none"
+        >
+          <View style={styles.toastContent}>
+            <Text style={styles.toastEmoji}>🛍️</Text>
+            <Text style={styles.toastText}>{toastMessage}</Text>
+          </View>
+        </Animated.View>
+      )}
+
       {/* Keyboard Avoiding Container */}
       <KeyboardAvoidingView
         style={[
@@ -321,12 +385,22 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
               const isUser = msg.sender === 'user';
               const isAddToCartFlow =
                 Boolean(msg.addedCartItem) ||
+                Boolean(msg.addedCartItems && msg.addedCartItems.length > 0) ||
                 msg.text.toLowerCase().includes('added to your cart') ||
                 msg.text.toLowerCase().includes('added to cart') ||
+                msg.text.toLowerCase().includes('to your bag') ||
                 msg.text.toLowerCase().startsWith('added!') ||
                 msg.text.toLowerCase().includes('added! ✅');
 
-              const isAssistantThinking = !isUser && (!msg.text || msg.text.trim().length === 0);
+              const prevUserMsg = idx > 0 ? messages.slice(0, idx).reverse().find((m) => m.sender === 'user') : null;
+              const isSidesOrDrinksRequest = prevUserMsg && /side|drink|dessert|soup|salad/i.test(prevUserMsg.text);
+
+              const isSidesOrDrinksIntroText = !isUser && (
+                /sides? to complement|drinks? to complement|fresh.*delicious sides|refreshing drinks|to complement your meal/i.test(msg.text || '') ||
+                (Boolean(msg.recommendations && msg.recommendations.length > 0) && isSidesOrDrinksRequest)
+              );
+
+              const isAssistantThinking = !isUser && Boolean(msg.isStreaming) && (!msg.text || msg.text.trim().length === 0);
 
               if (isAssistantThinking) {
                 return (
@@ -334,6 +408,31 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                     <MobileThinkingBubble statusText={msg.statusText} />
                   </View>
                 );
+              }
+
+              const shouldShowBubble = isUser
+                ? Boolean(msg.text && msg.text.trim().length > 0)
+                : Boolean(
+                    msg.text &&
+                    msg.text.trim().length > 0 &&
+                    !isAddToCartFlow &&
+                    !isSidesOrDrinksIntroText
+                  );
+
+              const hasOtherContent =
+                isAddToCartFlow ||
+                Boolean(msg.recommendations && msg.recommendations.length > 0) ||
+                Boolean(msg.healthGoals && msg.healthGoals.length > 0) ||
+                Boolean(msg.usualOrder) ||
+                Boolean(msg.budgetBasket) ||
+                Boolean(msg.dropForMe) ||
+                Boolean(msg.weeklyPlan) ||
+                Boolean(msg.gamePayload) ||
+                Boolean(msg.inChatCart) ||
+                Boolean(msg.quickOptions && msg.quickOptions.length > 0 && !isAddToCartFlow);
+
+              if (!shouldShowBubble && !hasOtherContent) {
+                return null;
               }
 
               return (
@@ -352,26 +451,28 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
 
                   <View style={styles.bubbleCol}>
                     {/* Main Bubble */}
-                    <View
-                      style={[
-                        styles.bubble,
-                        isUser ? styles.bubbleUser : styles.bubbleAssistant,
-                      ]}
-                    >
-                      <Text
+                    {shouldShowBubble && (
+                      <View
                         style={[
-                          styles.bubbleText,
-                          isUser
-                            ? styles.bubbleTextUser
-                            : styles.bubbleTextAssistant,
+                          styles.bubble,
+                          isUser ? styles.bubbleUser : styles.bubbleAssistant,
                         ]}
                       >
-                        {msg.text}
-                        {!isUser && msg.isStreaming ? (
-                          <Text style={styles.cursorText}> ▮</Text>
-                        ) : null}
-                      </Text>
-                    </View>
+                        <Text
+                          style={[
+                            styles.bubbleText,
+                            isUser
+                              ? styles.bubbleTextUser
+                              : styles.bubbleTextAssistant,
+                          ]}
+                        >
+                          {msg.text}
+                          {!isUser && msg.isStreaming ? (
+                            <Text style={styles.cursorText}> ▮</Text>
+                          ) : null}
+                        </Text>
+                      </View>
+                    )}
 
                     {/* PANEL 2: HEALTH GOAL QUESTION CARDS */}
                     {!msg.isStreaming && msg.healthGoals && msg.healthGoals.length > 0 && (
@@ -441,7 +542,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                               key={`rec-${rec.meal.id}-${index}`}
                               recommendation={rec}
                               index={index}
-                              onAddToCart={addToCart}
+                              onAddToCart={handleAddToCart}
                             />
                           ))}
                         </ScrollView>
@@ -466,7 +567,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                           style={styles.usualAddBtn}
                           onPress={() => {
                             msg.usualOrder!.items.forEach((it) =>
-                              addToCart(it.mealId, it.quantity)
+                              handleAddToCart(it.mealId, it.quantity)
                             );
                           }}
                         >
@@ -499,7 +600,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                           style={styles.bundleBtn}
                           onPress={() => {
                             msg.budgetBasket!.items.forEach((it) =>
-                              addToCart(it.mealId)
+                              handleAddToCart(it.mealId)
                             );
                             setIsCartOpen(true);
                           }}
@@ -513,7 +614,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                     {!msg.isStreaming && msg.dropForMe && (
                       <MobileDropForMeWidget
                         drop={msg.dropForMe}
-                        onAddToCart={(mId) => addToCart(mId)}
+                        onAddToCart={(mId) => handleAddToCart(mId)}
                         onActionPrompt={(p) => handleSend(p)}
                       />
                     )}
@@ -713,7 +814,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
         payload={activeGamePayload}
         onClose={() => setActiveGamePayload(null)}
         onAddToCart={(mealId) => {
-          addToCart(mealId);
+          handleAddToCart(mealId);
           setActiveGamePayload(null);
         }}
         onSendMessage={(prompt) => {
@@ -1209,5 +1310,35 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 15,
     fontWeight: '800',
+  },
+  toastPopup: {
+    position: 'absolute',
+    top: Platform.OS === 'ios' ? 95 : 75,
+    left: 20,
+    right: 20,
+    zIndex: 9999,
+    alignItems: 'center',
+  },
+  toastContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#064E3B',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 24,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  toastEmoji: {
+    fontSize: 16,
+    marginRight: 8,
+  },
+  toastText: {
+    color: '#FFFFFF',
+    fontSize: 13,
+    fontWeight: '700',
   },
 });
