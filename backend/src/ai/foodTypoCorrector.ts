@@ -59,6 +59,17 @@ const FOOD_TYPO_MAP: Record<string, string> = {
   protien: 'protein',
   desrt: 'dessert',
   drnk: 'drinks',
+  indochinese: 'indo-chinese',
+  indochines: 'indo-chinese',
+  indianchinese: 'indo-chinese',
+  manchuriann: 'manchurian',
+  haka: 'hakka',
+  schezwan: 'schezwan',
+  hllal: 'halal',
+  halaal: 'halal',
+  planing: 'plan',
+  usuel: 'usual',
+  ususal: 'usual',
 };
 
 const CANONICAL_FOOD_WORDS = [

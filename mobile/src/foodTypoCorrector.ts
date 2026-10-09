@@ -157,6 +157,30 @@ const FOOD_TYPO_MAP: Record<string, string> = {
   cheep: 'cheap',
   budjet: 'budget',
   familly: 'family',
+
+  // Indo-Chinese & Asian dishes
+  indochinese: 'indo-chinese',
+  indochines: 'indo-chinese',
+  indianchinese: 'indo-chinese',
+  manchuriann: 'manchurian',
+  manchurian: 'manchurian',
+  haka: 'hakka',
+  hakaa: 'hakka',
+  hakka: 'hakka',
+  schezwan: 'schezwan',
+  schezuan: 'schezwan',
+  szechuan: 'schezwan',
+
+  // Dietary & Intents
+  hllal: 'halal',
+  halaal: 'halal',
+  halall: 'halal',
+  hlal: 'halal',
+  planing: 'plan',
+  plann: 'plan',
+  usuel: 'usual',
+  ususal: 'usual',
+  usuaal: 'usual',
 };
 
 // Target keywords for fuzzy Levenshtein comparison

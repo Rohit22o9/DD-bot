@@ -143,6 +143,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     summary?: string;
   }>({ visible: false, total: 0 });
 
+  const [selectedChips, setSelectedChips] = useState<string[]>([]);
   const scrollRef = useRef<ScrollView>(null);
 
   const cartItemCount = cart?.items.reduce((s, i) => s + i.quantity, 0) || 0;
@@ -152,9 +153,40 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     const text = (textToSend || input).trim();
     if (!text || isLoading) return;
 
+    setSelectedChips([]);
     sendMessage(text);
     if (!textToSend) setInput('');
     setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 150);
+  };
+
+  const handleChipPress = (opt: string) => {
+    const lower = opt.toLowerCase().trim();
+    // Direct actions that execute immediately without multi-select
+    if (
+      lower.includes('view cart') ||
+      lower === 'none' ||
+      lower === 'nothing' ||
+      lower.includes('surprise me') ||
+      lower.includes('create another plan')
+    ) {
+      setSelectedChips([]);
+      handleSend(opt);
+      return;
+    }
+
+    // Toggle chip in multi-selection
+    setSelectedChips((prev) =>
+      prev.includes(opt) ? prev.filter((o) => o !== opt) : [...prev, opt]
+    );
+  };
+
+  const handleGoSubmit = () => {
+    if (selectedChips.length === 0) return;
+    const cleanSelections = selectedChips
+      .map((s) => s.replace(/^[^\w\s]+/, '').trim())
+      .join(', ');
+    setSelectedChips([]);
+    handleSend(cleanSelections);
   };
 
   const handleApplyFilters = (filters: QuickSearchFilters) => {
@@ -644,19 +676,52 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                     {!msg.isStreaming &&
                       msg.quickOptions &&
                       !msg.healthGoals &&
-                      !isAddToCartFlow && (
-                        <View style={styles.chipsRow}>
-                          {msg.quickOptions.map((opt, i) => (
-                            <TouchableOpacity
-                              key={`opt-${opt}-${i}`}
-                              style={styles.chip}
-                              onPress={() => handleSend(opt)}
-                            >
-                              <Text style={styles.chipText}>{opt}</Text>
-                            </TouchableOpacity>
-                          ))}
-                        </View>
-                      )}
+                      !isAddToCartFlow && (() => {
+                        // Deduplicate 'Add to cart' if meal cards, usual order, or bundle cards already have an Add to cart button
+                        const hasCardAddToCart =
+                          Boolean(msg.usualOrder) ||
+                          Boolean(msg.budgetBasket) ||
+                          Boolean(msg.recommendations && msg.recommendations.length > 0);
+
+                        const filteredOpts = msg.quickOptions.filter((opt) => {
+                          const norm = opt.toLowerCase().trim();
+                          if (hasCardAddToCart && (norm === 'add to cart' || norm === '🛒 add to cart')) {
+                            return false;
+                          }
+                          return true;
+                        });
+
+                        if (filteredOpts.length === 0) return null;
+
+                        return (
+                          <View style={styles.chipsRow}>
+                            {filteredOpts.map((opt, i) => {
+                              const isSelected = selectedChips.includes(opt);
+                              return (
+                                <TouchableOpacity
+                                  key={`opt-${opt}-${i}`}
+                                  style={[styles.chip, isSelected && styles.chipSelected]}
+                                  onPress={() => handleChipPress(opt)}
+                                >
+                                  <Text style={[styles.chipText, isSelected && styles.chipTextSelected]}>
+                                    {isSelected ? `✓ ${opt}` : opt}
+                                  </Text>
+                                </TouchableOpacity>
+                              );
+                            })}
+                            {selectedChips.length > 0 && (
+                              <TouchableOpacity
+                                style={styles.goButton}
+                                onPress={handleGoSubmit}
+                              >
+                                <Text style={styles.goButtonText}>
+                                  GO {selectedChips.length > 1 ? `(${selectedChips.length})` : ''} ➔
+                                </Text>
+                              </TouchableOpacity>
+                            )}
+                          </View>
+                        );
+                      })()}
                   </View>
                 </View>
               );
@@ -1215,6 +1280,36 @@ const styles = StyleSheet.create({
     color: '#374151',
     fontSize: 12,
     fontWeight: '600',
+  },
+  chipSelected: {
+    backgroundColor: '#0D7844',
+    borderColor: '#065F46',
+  },
+  chipTextSelected: {
+    color: '#FFFFFF',
+    fontWeight: '800',
+  },
+  goButton: {
+    backgroundColor: '#0D7844',
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderRadius: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 3,
+    elevation: 2,
+    borderWidth: 1,
+    borderColor: '#065F46',
+  },
+  goButtonText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '900',
+    letterSpacing: 0.5,
   },
   loadingRow: {
     flexDirection: 'row',

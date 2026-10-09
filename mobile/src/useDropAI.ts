@@ -6,6 +6,11 @@ import {
   rankQualifiedMeals,
   qualifyMealHealth,
   HealthCategory,
+  isHalalMeal,
+  isGlutenFreeMeal,
+  isDairyFreeMeal,
+  isVeganMeal,
+  isVegetarianMeal,
 } from './mockData';
 import { DEFAULT_HEALTH_GOALS } from './components/MobileQuickQuestions';
 import { correctFoodTypos } from './foodTypoCorrector';
@@ -865,6 +870,90 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           quickOptions: ['🥟 Add a side', '🥤 Add a drink', '🍰 Add a dessert', '🔄 More', '🛒 View cart'],
         });
       }
+      // FLOW 11 — PLAN MY WEEK / FIVE DAY MEAL PLAN (Priority intent over simple cuisine discovery)
+      else if (
+        q.includes('plan my week') ||
+        q.includes('plan my meals') ||
+        q.includes('weekly plan') ||
+        q.includes('plan meals') ||
+        q.includes('five day meal') ||
+        q.includes('5 day meal') ||
+        q.includes('5-day meal') ||
+        q.includes('monday to friday') ||
+        (q.includes('plan') && (q.includes('day') || q.includes('week') || q.includes('dinner') || q.includes('cuisine')))
+      ) {
+        let daysCount = 5;
+        if (q.includes('7 day') || q.includes('7-day') || q.includes('7 meals')) {
+          daysCount = 7;
+        } else if (q.includes('3 day') || q.includes('3-day') || q.includes('3 meals')) {
+          daysCount = 3;
+        }
+
+        const allDays: ('Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday')[] = [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday',
+        ];
+        const selectedDays = allDays.slice(0, daysCount);
+
+        const isIndianPlan = q.includes('indian') || q.includes('punjabi');
+        const isChinesePlan = q.includes('chinese');
+        const isIndoChinesePlan = /indo[- ]?chinese|indian chinese|manchurian|hakka/i.test(q);
+        const isItalianPlan = q.includes('italian');
+        const isAsianPlan = q.includes('asian') || q.includes('thai') || q.includes('japanese');
+
+        let planPool = MOCK_MOBILE_MEALS.filter((m) => m.category === 'main');
+        if (isIndoChinesePlan) {
+          planPool = planPool.filter((m) => m.cuisine.toLowerCase().includes('indo-chinese') || /manchurian|hakka|schezwan|chilli/i.test(m.name));
+        } else if (isIndianPlan) {
+          planPool = planPool.filter((m) => m.cuisine.toLowerCase().includes('indian') || m.cuisine.toLowerCase().includes('punjabi'));
+        } else if (isChinesePlan) {
+          planPool = planPool.filter((m) => m.cuisine.toLowerCase().includes('chinese'));
+        } else if (isItalianPlan) {
+          planPool = planPool.filter((m) => m.cuisine.toLowerCase().includes('italian'));
+        } else if (isAsianPlan) {
+          planPool = planPool.filter((m) => ['thai', 'japanese', 'asian', 'malaysian', 'korean'].includes(m.cuisine.toLowerCase()));
+        }
+
+        if (planPool.length === 0) {
+          planPool = MOCK_MOBILE_MEALS.filter((m) => m.category === 'main');
+        }
+
+        const planMeals: Meal[] = [];
+        let runningTotal = 0;
+        for (let i = 0; i < selectedDays.length; i++) {
+          const candidate = planPool[i % planPool.length];
+          planMeals.push(candidate);
+          runningTotal += candidate.price;
+        }
+        runningTotal = Math.round(runningTotal * 100) / 100;
+        lastWeeklyPlanRef.current = planMeals;
+
+        const cuisineLabel = isIndianPlan ? 'Indian ' : isIndoChinesePlan ? 'Indo-Chinese ' : isItalianPlan ? 'Italian ' : isAsianPlan ? 'Asian ' : '';
+        const targetBudget = isIndianPlan ? 65 : 60;
+
+        await streamAssistantReply({
+          message: `Here is your curated ${daysCount}-Day ${cuisineLabel}Meal Plan from Monday to Friday! Balanced, diverse, and strictly within your $${targetBudget} budget (Total: $${runningTotal.toFixed(2)}) 📅✨:`,
+          weeklyPlan: {
+            id: `plan_${Date.now()}`,
+            userId,
+            targetBudget,
+            actualTotal: runningTotal,
+            currency: 'USD',
+            days: selectedDays.map((day, idx) => ({
+              day,
+              slot: 'dinner',
+              meal: planMeals[idx],
+              reason: idx === selectedDays.length - 1 ? 'Wholesome dinner to wrap the week' : 'Authentic daily specialty',
+            })),
+          },
+          quickOptions: [`🛒 Add all ${daysCount} to cart`, '🌱 Make Friday vegetarian', '🌶️ Adjust spice', '🔄 Create another plan'],
+        });
+      }
       // FLOW 5 — CUISINE DISCOVERY
       else if (q.includes('asian food') || q.includes('feel like asian') || q === 'asian') {
         await streamAssistantReply({
@@ -874,13 +963,23 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
       } else if (q === 'cuisine discovery' || q === 'cuisines' || q === 'explore cuisines') {
         await streamAssistantReply({
           message: 'What sounds good?',
-          quickOptions: ['🇮🇳 Indian', '🌏 Asian', '🌍 African', '🥙 Middle Eastern', '🍝 Western', '✨ Something different'],
+          quickOptions: ['🇮🇳 Indian', '🥢 Indo-Chinese', '🌏 Asian', '🌍 African', '🥙 Middle Eastern', '🍝 Western', '✨ Something different'],
         });
       } else if (
-        (q.includes('chinese') || q.includes('korean') || q.includes('italian') || q.includes('thai') || q.includes('indonesian') || q.includes('japanese') || q.includes('indian') || q.includes('punjabi') || q.includes('african') || q.includes('malaysian')) &&
+        (q.includes('chinese') || q.includes('korean') || q.includes('italian') || q.includes('thai') || q.includes('indonesian') || q.includes('japanese') || q.includes('indian') || q.includes('punjabi') || q.includes('african') || q.includes('malaysian') || q.includes('indo-chinese') || q.includes('manchurian') || q.includes('hakka')) &&
         !q.includes('combo') && !q.includes('side')
       ) {
-        const cTarget = q.includes('chinese')
+        const isIndoChinese =
+          q.includes('indian chinese') ||
+          q.includes('indo chinese') ||
+          q.includes('indo-chinese') ||
+          q.includes('desi chinese') ||
+          q.includes('manchurian') ||
+          q.includes('hakka');
+
+        const cTarget = isIndoChinese
+          ? 'Indo-Chinese'
+          : q.includes('chinese')
           ? 'Chinese'
           : q.includes('korean')
           ? 'Korean'
@@ -897,14 +996,17 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           : q.includes('african')
           ? 'African'
           : 'Indian';
+
         let cMeals = MOCK_MOBILE_MEALS.filter((m) =>
-          m.cuisine.toLowerCase().includes(cTarget.toLowerCase())
+          isIndoChinese
+            ? m.cuisine.toLowerCase().includes('indo-chinese') || /manchurian|hakka|schezwan|chilli/i.test(m.name)
+            : m.cuisine.toLowerCase().includes(cTarget.toLowerCase())
         );
-        // CRUCIAL: Prioritize main meals ahead of drinks/sides so Mango Lassi is never 1st for meal query!
+
+        // Prioritize mains ahead of drinks/sides
         const mains = cMeals.filter((m) => m.category === 'main');
-        if (mains.length > 0) {
-          cMeals = mains;
-        }
+        if (mains.length > 0) cMeals = mains;
+
         if (q.includes('veg') || q.includes('vegetarian') || q.includes('plant')) {
           cMeals = cMeals.filter(
             (m) =>
@@ -914,20 +1016,29 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
                 !/chicken|beef|meat|fish|prawn|pork|lamb/i.test(m.name))
           );
         }
+
         const priceMatch = q.match(/under\s*\$?(\d+)/i);
         if (priceMatch) {
           const cap = parseFloat(priceMatch[1]);
           cMeals = cMeals.filter((m) => m.price <= cap);
         }
-        const recs: Recommendation[] = (cMeals.length > 0 ? cMeals : MOCK_MOBILE_MEALS.filter((m) => m.cuisine.toLowerCase().includes(cTarget.toLowerCase()))).slice(0, 4).map((meal, idx) => ({
+
+        const recs: Recommendation[] = (cMeals.length > 0 ? cMeals : MOCK_MOBILE_MEALS).slice(0, 4).map((meal, idx) => ({
           meal,
           score: 97 - idx * 2,
           reasons: [`✓ Authentic ${meal.cuisine}`, '✓ Fresh daily drop'],
         }));
+
+        const cuisineMsg = isIndoChinese
+          ? `Here are popular Indo-Chinese dishes tossed in bold chilli-garlic and Manchurian flavours 🥢:`
+          : `Here are popular ${cTarget} dishes ready for order:`;
+
         await streamAssistantReply({
-          message: `Here are popular ${cTarget} dishes ready for order:`,
+          message: cuisineMsg,
           recommendations: recs,
-          quickOptions: ['💰 Under $15', '🌶️ Spicy', '🍗 Chicken', '🌱 Vegetarian', '🛒 View cart'],
+          quickOptions: isIndoChinese
+            ? ['🌶️ Extra spicy', '🌱 Veg only', '🍗 Chicken only', '🍜 Add Hakka Noodles', '🛒 View cart']
+            : ['💰 Under $15', '🌶️ Spicy', '🍗 Chicken', '🌱 Vegetarian', '🛒 View cart'],
         });
       }
       // FLOW 6 — PROTEIN-FIRST CUSTOMER
@@ -973,18 +1084,69 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           recommendations: recs,
           quickOptions: ['💰 Under $15', '🌶️ Spicy', '💪 High protein', '🥗 Healthy'],
         });
-      } else if (q === 'vegan' || q === 'vegetarian' || q === 'halal' || q === 'gluten free') {
-        const tag = q.includes('vegan') ? 'Vegan' : q.includes('vegetarian') ? 'Vegetarian' : 'Halal';
-        const dMeals = MOCK_MOBILE_MEALS.filter((m) => m.dietaryTags.some(t => t.toLowerCase().includes(tag.toLowerCase())));
-        const recs: Recommendation[] = (dMeals.length > 0 ? dMeals : MOCK_MOBILE_MEALS).slice(0, 3).map((meal, idx) => ({
+      } else if (
+        q.includes('halal') ||
+        q.includes('vegan') ||
+        q.includes('vegetarian') ||
+        q.includes('gluten free') ||
+        q.includes('dairy free')
+      ) {
+        const isHalal = q.includes('halal');
+        const isGlutenFree = q.includes('gluten free') || q.includes('gluten-free');
+        const isDairyFree = q.includes('dairy free') || q.includes('dairy-free');
+        const isVegan = q.includes('vegan');
+        const isVeg = q.includes('vegetarian') || q.includes('veg');
+
+        let dMeals = MOCK_MOBILE_MEALS;
+        if (isHalal) dMeals = dMeals.filter(isHalalMeal);
+        if (isGlutenFree) dMeals = dMeals.filter(isGlutenFreeMeal);
+        if (isDairyFree) dMeals = dMeals.filter(isDairyFreeMeal);
+        if (isVegan) dMeals = dMeals.filter(isVeganMeal);
+        else if (isVeg) dMeals = dMeals.filter(isVegetarianMeal);
+
+        if (isHalal) {
+          // Sort authentic Halal meat & feast mains first from the sheet
+          dMeals = [...dMeals].sort((a, b) => {
+            const aMeat = a.category === 'main' && /chicken|mutton|beef|biryani|tikka|rendang/i.test(a.name);
+            const bMeat = b.category === 'main' && /chicken|mutton|beef|biryani|tikka|rendang/i.test(b.name);
+            if (aMeat && !bMeat) return -1;
+            if (!aMeat && bMeat) return 1;
+            return 0;
+          });
+        }
+
+        let msg = '';
+        if (isHalal && isGlutenFree) {
+          msg = 'I’ve curated delicious meals that are both certified Halal and 100% Gluten-Free for you 🌙✨:';
+        } else if (isHalal) {
+          msg = 'Here is our selection of certified Halal meals prepared fresh today with 100% Halal-sourced ingredients 🌙:';
+        } else if (isVegan) {
+          msg = 'Here are our top plant-based vegan dishes prepared fresh today 🌱:';
+        } else if (isVeg && isGlutenFree) {
+          msg = 'Here are fresh vegetarian and gluten-free meals ready for order 🌱🌾:';
+        } else if (isVeg) {
+          msg = 'Here are popular vegetarian meals ready for order 🌱:';
+        } else if (isGlutenFree) {
+          msg = 'Here are kitchen-verified gluten-free meals prepared safe for you 🌾:';
+        } else {
+          msg = 'Here are meals matching your dietary preferences ready for order 🍽️:';
+        }
+
+        const recs: Recommendation[] = (dMeals.length > 0 ? dMeals : MOCK_MOBILE_MEALS).slice(0, 4).map((meal, idx) => ({
           meal,
           score: 98 - idx * 2,
-          reasons: [`✓ Certified ${tag}`, '✓ Fresh & wholesome'],
+          reasons: [
+            isHalal ? '✓ 100% Halal certified kitchen' : isVegan ? '✓ 100% Vegan' : '✓ Verified dietary safe',
+            '✓ Fresh daily drop prep',
+          ],
         }));
+
         await streamAssistantReply({
-          message: `Here are verified ${tag} options prepared for you:`,
+          message: msg,
           recommendations: recs,
-          quickOptions: ['💰 Under $15', '🌶️ Spicy', '💪 High protein', '🥗 Healthy'],
+          quickOptions: isHalal
+            ? ['🍗 Chicken only', '🥩 Mutton/Beef', '🌶️ Spicy', '💰 Under $15', '🛒 View cart']
+            : ['💰 Under $15', '🌶️ Spicy', '💪 High protein', '🥗 Healthy', '🛒 View cart'],
         });
       }
       // FLOW 8 — “SOMETHING DIFFERENT” / ADVENTURE
@@ -1006,11 +1168,46 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
           quickOptions: ['🔄 Another surprise', '🙂 Less adventurous', '👍 More like this'],
         });
       }
-      // FLOW 9 — “MY USUAL”
-      else if (q === 'my usual' || q === 'order my usual' || q === 'favourite' || q === 'favorites') {
+      // FLOW 9 — “MY USUAL” (Direct Intelligent Reorder without redundant pre-questions)
+      else if (
+        q === 'my usual' ||
+        q === 'order my usual' ||
+        q === 'reorder my usual' ||
+        q === 'give me my usual' ||
+        q === 'the usual' ||
+        q === 'usual' ||
+        q === 'favourite' ||
+        q === 'favorites' ||
+        q.includes('favourite again') ||
+        q.includes('usual again')
+      ) {
         await streamAssistantReply({
-          message: 'What would you like?',
-          quickOptions: ['❤️ My favourite again', '🔄 Similar to my usual', '✨ Something different today'],
+          message:
+            "Welcome back, Alex! Here is your usual go-to order based on your recent favourites: **Thai Basil Chicken** ($13.00 + fees = $16.00). Ready for tomorrow's dinner 🍽️:",
+          usualOrder: {
+            id: 'ord_usual',
+            userId,
+            date: 'Tomorrow',
+            slot: 'dinner',
+            items: [
+              {
+                mealId: 'meal_thai_basil',
+                mealName: 'Thai Basil Chicken',
+                price: 13,
+                quantity: 1,
+                restaurantName: 'Thai Orchid Street',
+              },
+            ],
+            subtotal: 13,
+            deliveryFee: 2.0,
+            tax: 1.0,
+            total: 16,
+            restaurantId: 'rest_thai',
+            restaurantName: 'Thai Orchid Street',
+            status: 'draft',
+            isUsual: true,
+          },
+          quickOptions: ['🥟 Add a side', '🥤 Add a drink', '🔄 Similar to my usual', '✨ Something different today'],
         });
       } else if (q.includes('similar to my usual')) {
         const recs: Recommendation[] = MOCK_MOBILE_MEALS.slice(0, 3).map((meal, idx) => ({

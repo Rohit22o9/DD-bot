@@ -800,9 +800,23 @@ export class DropAIOrchestrator {
       !lower.includes('added') &&
       !lower.includes('usual') &&
       !lower.includes('biryani') &&
-      !lower.includes('add the')
+      !lower.includes('add the') &&
+      !lower.includes('plan') &&
+      !lower.includes('5 day') &&
+      !lower.includes('five day') &&
+      !lower.includes('week')
     ) {
-      const cuisineTarget = lower.includes('korean')
+      const isIndoChinese =
+        lower.includes('indian chinese') ||
+        lower.includes('indo chinese') ||
+        lower.includes('indo-chinese') ||
+        lower.includes('desi chinese') ||
+        lower.includes('manchurian') ||
+        lower.includes('hakka');
+
+      const cuisineTarget = isIndoChinese
+        ? 'Indo-Chinese'
+        : lower.includes('korean')
         ? 'Korean'
         : lower.includes('chinese')
         ? 'Chinese'
@@ -825,6 +839,10 @@ export class DropAIOrchestrator {
         : 'Mexican';
 
       let meals = await this.tools.searchMeals({ cuisine: cuisineTarget });
+      if (meals.length === 0 && isIndoChinese) {
+        meals = await this.tools.searchMeals({ keyword: 'Chicken' });
+      }
+
       if (lower.includes('veg') || lower.includes('vegetarian') || lower.includes('plant')) {
         meals = meals.filter(
           (m) =>
@@ -842,15 +860,21 @@ export class DropAIOrchestrator {
       const safe = this.safety.filterSafeMeals(meals, preferences);
       const picked = (safe.length > 0 ? safe : meals).slice(0, 4);
 
+      const msg = isIndoChinese
+        ? `Here are popular Indo-Chinese dishes tossed in bold chilli-garlic and Manchurian flavours 🥢:`
+        : `Here are popular ${cuisineTarget} meals ready for order:`;
+
       return {
-        message: `Here are popular ${cuisineTarget} meals ready for order:`,
+        message: msg,
         job: 'FIND',
         recommendations: picked.map((m, idx) => ({
           meal: m,
           score: 97 - idx * 2,
           reasons: [`✓ Authentic ${cuisineTarget}`, '✓ Fresh ingredients'],
         })),
-        quickOptions: ['💰 Under $15', '🌶️ Spicy', '🍗 Chicken', '🌱 Vegetarian'],
+        quickOptions: isIndoChinese
+          ? ['🌶️ Extra spicy', '🌱 Veg only', '🍗 Chicken only', '🍜 Add Hakka Noodles', '🛒 View cart']
+          : ['💰 Under $15', '🌶️ Spicy', '🍗 Chicken', '🌱 Vegetarian'],
       };
     }
 
@@ -1078,15 +1102,36 @@ export class DropAIOrchestrator {
     const isMyUsualPrompt =
       lower === 'my usual' ||
       lower === 'order my usual' ||
+      lower === 'reorder my usual' ||
       lower === 'favourite' ||
       lower === 'favourites' ||
-      lower === 'favorites';
+      lower === 'favorites' ||
+      lower.includes('favourite again') ||
+      lower.includes('usual again');
 
     if (isMyUsualPrompt) {
+      const history = await this.tools.getOrderHistory(userId, 1);
+      const usualOrder = history[0];
+      const mealName = usualOrder?.items[0]?.mealName || 'Thai Basil Chicken';
       return {
-        message: 'What would you like?',
-        job: 'CHOOSE',
-        quickOptions: ['❤️ My favourite again', '🔄 Similar to my usual', '✨ Something different today'],
+        message: `Welcome back! Here is your usual go-to order based on your recent favourites: **${mealName}** ($${usualOrder?.total?.toFixed(2) || '16.00'}). Ready for tomorrow's dinner 🍽️:`,
+        job: 'BUILD',
+        usualOrder: usualOrder || {
+          id: 'ord_usual',
+          userId,
+          date: 'Tomorrow',
+          slot: 'dinner',
+          items: [{ mealId: 'meal_thai_basil', mealName: 'Thai Basil Chicken', price: 13, quantity: 1, restaurantName: 'Thai Orchid Street' }],
+          subtotal: 13,
+          deliveryFee: 2.0,
+          tax: 1.0,
+          total: 16,
+          restaurantId: 'rest_thai',
+          restaurantName: 'Thai Orchid Street',
+          status: 'draft',
+          isUsual: true,
+        },
+        quickOptions: ['🥟 Add a side', '🥤 Add a drink', '🔄 Similar to my usual', '✨ Something different today'],
       };
     }
 
@@ -1188,24 +1233,43 @@ export class DropAIOrchestrator {
       lower === 'plan my week' ||
       lower === 'plan my meals' ||
       lower === 'weekly plan' ||
-      lower === 'plan meals';
+      lower === 'plan meals' ||
+      lower.includes('five day meal') ||
+      lower.includes('5 day meal') ||
+      lower.includes('5-day meal') ||
+      lower.includes('monday to friday') ||
+      (lower.includes('plan') && (lower.includes('day') || lower.includes('week') || lower.includes('cuisine')));
 
     if (isPlanWeekInitial) {
-      const plan = await this.tools.buildMealPlan(userId, {
+      let plan = await this.tools.buildMealPlan(userId, {
         targetBudget: 65,
         isVegetarianFriday: false,
         excludeKeywords: [],
       });
+
+      if (lower.includes('indian')) {
+        const indianMeals = await this.tools.searchMeals({ cuisine: 'North Indian' });
+        if (indianMeals.length >= 3) {
+          plan.days = plan.days.map((d, i) => ({
+            ...d,
+            meal: indianMeals[i % indianMeals.length] || d.meal,
+            reason: 'Authentic Indian chef specialty',
+          }));
+          plan.actualTotal = plan.days.reduce((s, d) => s + d.meal.price, 0);
+        }
+      }
+
       this.activeMealPlans.set(userId, plan);
 
+      const planCuisineText = lower.includes('indian') ? 'Indian ' : '';
       return {
-        message: `I've prepared a curated Monday–Friday dinner plan keeping your meals balanced, diverse, and under $65.00! Total: $${plan.actualTotal.toFixed(2)}. 📅✨`,
+        message: `I've prepared a curated Monday–Friday ${planCuisineText}dinner plan keeping your meals balanced, diverse, and under $65.00! Total: $${plan.actualTotal.toFixed(2)}. 📅✨`,
         job: 'BUILD',
         weeklyPlan: plan,
         quickOptions: [
+          '🛒 Add all 5 to cart',
           'Change Wednesday',
           'Make Friday vegetarian',
-          'Remove salads',
           'Keep everything under $60',
         ],
       };

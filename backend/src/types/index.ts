@@ -38,6 +38,7 @@ export interface MealHealthFlags {
   dairyFree?: boolean;
   vegan?: boolean;
   vegetarian?: boolean;
+  halal?: boolean;
 }
 
 export interface Meal {

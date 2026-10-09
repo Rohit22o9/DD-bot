@@ -359,6 +359,208 @@ export const MOCK_MOBILE_MEALS: Meal[] = [
     displayBadges: ['❤️ Heart Healthy', '🧂 Low Sodium', '💪 39g Protein'],
   },
   {
+    id: 'meal_indo_chilli_chicken',
+    name: 'Chilli Chicken Dry / Gravy',
+    description: 'Crispy diced chicken wok-tossed with fresh green chillies, garlic, diced onions, capsicum, and spicy soya glaze.',
+    restaurantId: 'rest_dragon_wok',
+    restaurantName: 'Dragon Wok Box',
+    price: 13.5,
+    imageUrl: 'https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=500&q=80',
+    cuisine: 'Indo-Chinese',
+    category: 'main',
+    dietaryTags: ['Halal', 'High Protein', 'Spicy', 'Indo-Chinese'],
+    ingredients: ['Chicken', 'Green Chillies', 'Capsicum', 'Garlic', 'Soy Sauce', 'Spring Onion'],
+    spicyLevel: 2,
+    availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    availableSlots: ['lunch', 'dinner'],
+    active: true,
+    calories: 520,
+    proteinGrams: 35,
+    nutrition: {
+      calories: 520,
+      proteinGrams: 35,
+      fibreGrams: 4,
+      sodiumMg: 620,
+      saturatedFatGrams: 3.2,
+      carbsGrams: 42,
+      sugarGrams: 3,
+    },
+    healthFlags: {
+      highProtein: true,
+      dairyFree: true,
+      halal: true,
+    },
+    displayBadges: ['💪 35g Protein', '🌶️ Spicy Kick'],
+  },
+  {
+    id: 'meal_indo_veg_manchurian',
+    name: 'Veg Manchurian with Fried Rice',
+    description: 'Crispy vegetable dumplings simmered in rich tangy garlic soya gravy, served alongside seasoned wok-tossed fried rice.',
+    restaurantId: 'rest_dragon_wok',
+    restaurantName: 'Dragon Wok Box',
+    price: 13.0,
+    imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
+    cuisine: 'Indo-Chinese',
+    category: 'main',
+    dietaryTags: ['Vegetarian', 'Vegan', 'Indo-Chinese'],
+    ingredients: ['Cabbage', 'Carrot', 'Manchurian Balls', 'Rice', 'Soy Sauce', 'Ginger-Garlic'],
+    spicyLevel: 1,
+    availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    availableSlots: ['lunch', 'dinner'],
+    active: true,
+    calories: 470,
+    proteinGrams: 14,
+    nutrition: {
+      calories: 470,
+      proteinGrams: 14,
+      fibreGrams: 6,
+      sodiumMg: 580,
+      saturatedFatGrams: 2.1,
+      carbsGrams: 68,
+      sugarGrams: 4,
+    },
+    healthFlags: {
+      vegetarian: true,
+      vegan: true,
+      dairyFree: true,
+    },
+    displayBadges: ['🌱 Vegetarian', '🍲 Tangy & Spicy'],
+  },
+  {
+    id: 'meal_indo_veg_hakka_noodles',
+    name: 'Veg Hakka Noodles',
+    description: 'Classic wok-tossed noodles with finely shredded cabbage, bell peppers, carrots, scallions, and light white pepper seasoning.',
+    restaurantId: 'rest_dragon_wok',
+    restaurantName: 'Dragon Wok Box',
+    price: 12.5,
+    imageUrl: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80',
+    cuisine: 'Indo-Chinese',
+    category: 'main',
+    dietaryTags: ['Vegetarian', 'Vegan', 'Indo-Chinese'],
+    ingredients: ['Noodles', 'Cabbage', 'Carrots', 'Capsicum', 'Spring Onions', 'Soy Sauce'],
+    spicyLevel: 1,
+    availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    availableSlots: ['lunch', 'dinner'],
+    active: true,
+    calories: 440,
+    proteinGrams: 12,
+    nutrition: {
+      calories: 440,
+      proteinGrams: 12,
+      fibreGrams: 5,
+      sodiumMg: 510,
+      saturatedFatGrams: 1.8,
+      carbsGrams: 64,
+      sugarGrams: 3,
+    },
+    healthFlags: {
+      vegetarian: true,
+      vegan: true,
+      dairyFree: true,
+    },
+    displayBadges: ['🌱 Vegetarian', '🥢 Wok Tossed'],
+  },
+  {
+    id: 'meal_indo_schezwan_chicken_rice',
+    name: 'Chicken Schezwan Fried Rice',
+    description: 'Spicy wok-fried basmati rice tossed with shredded chicken, scrambled eggs, and authentic fiery Sichuan pepper paste.',
+    restaurantId: 'rest_dragon_wok',
+    restaurantName: 'Dragon Wok Box',
+    price: 13.5,
+    imageUrl: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80',
+    cuisine: 'Indo-Chinese',
+    category: 'main',
+    dietaryTags: ['Halal', 'High Protein', 'Spicy', 'Indo-Chinese'],
+    ingredients: ['Chicken', 'Rice', 'Schezwan Sauce', 'Garlic', 'Egg', 'Spring Onion'],
+    spicyLevel: 3,
+    availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    availableSlots: ['lunch', 'dinner'],
+    active: true,
+    calories: 550,
+    proteinGrams: 34,
+    nutrition: {
+      calories: 550,
+      proteinGrams: 34,
+      fibreGrams: 4,
+      sodiumMg: 690,
+      saturatedFatGrams: 3.5,
+      carbsGrams: 58,
+      sugarGrams: 2,
+    },
+    healthFlags: {
+      highProtein: true,
+      dairyFree: true,
+      halal: true,
+    },
+    displayBadges: ['💪 34g Protein', '🔥 Fiery Schezwan'],
+  },
+  {
+    id: 'meal_indo_chilli_paneer',
+    name: 'Chilli Paneer with Fried Rice',
+    description: 'Golden fried cottage cheese cubes tossed in spicy soy-garlic sauce with bell peppers and spring onions over fried rice.',
+    restaurantId: 'rest_dragon_wok',
+    restaurantName: 'Dragon Wok Box',
+    price: 13.5,
+    imageUrl: 'https://images.unsplash.com/photo-1567337710282-00832b415979?auto=format&fit=crop&w=500&q=80',
+    cuisine: 'Indo-Chinese',
+    category: 'main',
+    dietaryTags: ['Vegetarian', 'Indo-Chinese', 'Spicy'],
+    ingredients: ['Paneer', 'Fried Rice', 'Capsicum', 'Soy Sauce', 'Green Chillies', 'Garlic'],
+    spicyLevel: 2,
+    availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    availableSlots: ['lunch', 'dinner'],
+    active: true,
+    calories: 540,
+    proteinGrams: 22,
+    nutrition: {
+      calories: 540,
+      proteinGrams: 22,
+      fibreGrams: 5,
+      sodiumMg: 610,
+      saturatedFatGrams: 4.8,
+      carbsGrams: 56,
+      sugarGrams: 3,
+    },
+    healthFlags: {
+      vegetarian: true,
+    },
+    displayBadges: ['🧀 Rich Paneer', '🌶️ Medium Spicy'],
+  },
+  {
+    id: 'meal_indo_manchow_soup',
+    name: 'Crispy Veg Manchow Soup',
+    description: 'Aromatic spicy and tangy Indo-Chinese soup loaded with finely chopped vegetables, ginger, garlic, topped with crunchy noodles.',
+    restaurantId: 'rest_dragon_wok',
+    restaurantName: 'Dragon Wok Box',
+    price: 7.5,
+    imageUrl: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80',
+    cuisine: 'Indo-Chinese',
+    category: 'side',
+    dietaryTags: ['Vegetarian', 'Vegan', 'Indo-Chinese', 'Soup'],
+    ingredients: ['Vegetable Broth', 'Crispy Noodles', 'Ginger', 'Garlic', 'Coriander', 'Soy Sauce'],
+    spicyLevel: 1,
+    availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    availableSlots: ['lunch', 'dinner'],
+    active: true,
+    calories: 180,
+    proteinGrams: 5,
+    nutrition: {
+      calories: 180,
+      proteinGrams: 5,
+      fibreGrams: 3,
+      sodiumMg: 490,
+      saturatedFatGrams: 1.0,
+      carbsGrams: 24,
+      sugarGrams: 2,
+    },
+    healthFlags: {
+      vegetarian: true,
+      vegan: true,
+      dairyFree: true,
+    },
+    displayBadges: ['🌱 Vegetarian', '🍜 Crispy Noodles'],
+  },
+  {
     id: 'meal_mango_lassi',
     name: 'Alphonso Mango Lassi',
     description: 'Chilled creamy yogurt drink blended with sweet Alphonso mango pulp and a touch of fragrant green cardamom.',
@@ -1208,9 +1410,23 @@ export function isVeganMeal(meal: Meal): boolean {
 
 export function isHalalMeal(meal: Meal): boolean {
   const tags = meal.dietaryTags.map((t) => t.toLowerCase());
-  if (tags.includes('halal') || isVegetarianMeal(meal)) {
-    const fullText = (meal.name + ' ' + meal.description + ' ' + meal.ingredients.join(' ')).toLowerCase();
-    return !['pork', 'bacon', 'alcohol', 'wine', 'beer'].some((kw) => fullText.includes(kw));
+  const fullText = (meal.name + ' ' + meal.description + ' ' + meal.ingredients.join(' ')).toLowerCase();
+  const forbidden = ['pork', 'bacon', 'ham', 'lard', 'alcohol', 'wine', 'beer', 'prosciutto', 'gelatin', 'pork-bone'];
+  if (forbidden.some((kw) => fullText.includes(kw))) return false;
+
+  // Explicit Halal tag or flag
+  if (tags.includes('halal') || (meal.healthFlags as any)?.halal) {
+    return true;
+  }
+  // Authentic Halal certified meat/poultry kitchens from the actual sheet
+  const halalKitchens = ['bawarchi biryani', "gulati's kitchen", 'spice route', 'suya king', 'thai orchid', 'dragon wok'];
+  const isHalalKitchen = halalKitchens.some((k) => meal.restaurantName?.toLowerCase().includes(k));
+  if (isHalalKitchen && /chicken|mutton|lamb|biryani|tikka|rogan|kebab|rendang/i.test(fullText)) {
+    return true;
+  }
+  // Authentic halal Asian/Malaysian chicken & beef
+  if (/rendang|jollof chicken|mee goreng|butter chicken|chicken biryani|mutton biryani|chicken tikka/i.test(meal.name)) {
+    return true;
   }
   return false;
 }
@@ -1324,11 +1540,13 @@ export function getMockRecommendations(
     q.includes('mild') || q.includes('not spicy') || q.includes('non-spicy');
 
   // 6. Detect Cuisines
-  const isChineseReq = q.includes('chinese') || q.includes('china') || q.includes('dim sum') || q.includes('mapo') || q.includes('fried rice');
+  const isIndoChineseReq =
+    /indo[- ]?chinese|indian chinese|desi chinese|manchurian|hakka|schezwan|chilli chicken|chilli paneer/i.test(q);
+  const isChineseReq = !isIndoChineseReq && (q.includes('chinese') || q.includes('china') || q.includes('dim sum') || q.includes('mapo') || q.includes('fried rice'));
   const isKoreanReq = q.includes('korean') || q.includes('korea') || q.includes('bibimbap') || q.includes('bulgogi') || q.includes('jjajang') || q.includes('jajangmyeon');
   const isItalianReq = q.includes('italian') || q.includes('pasta') || q.includes('spaghetti') || q.includes('rigatoni') || q.includes('carbonara');
   const isThaiReq = q.includes('thai');
-  const isIndianReq = q.includes('indian') || q.includes('punjabi') || q.includes('biryani') || q.includes('curry') || q.includes('dal') || q.includes('thali');
+  const isIndianReq = !isIndoChineseReq && (q.includes('indian') || q.includes('punjabi') || q.includes('biryani') || q.includes('curry') || q.includes('dal') || q.includes('thali'));
   const isJapaneseReq = q.includes('japanese') || q.includes('ramen') || q.includes('teriyaki');
   const isMalaysianReq = q.includes('malaysian') || q.includes('malaysia') || q.includes('nasi lemak');
   const isMedReq = q.includes('mediterranean');
@@ -1348,6 +1566,11 @@ export function getMockRecommendations(
 
   if (isHalalReq) {
     pool = pool.filter(isHalalMeal);
+    pool.sort((a, b) => {
+      const aScore = (a.category === 'main' ? 10 : 0) + (/chicken|mutton|beef|biryani|tikka|rendang/i.test(a.name) ? 20 : 0);
+      const bScore = (b.category === 'main' ? 10 : 0) + (/chicken|mutton|beef|biryani|tikka|rendang/i.test(b.name) ? 20 : 0);
+      return bScore - aScore;
+    });
   }
   if (isGlutenFreeReq) {
     pool = pool.filter(isGlutenFreeMeal);
@@ -1415,7 +1638,14 @@ export function getMockRecommendations(
   // =========================================================================
   // CUISINE CONSTRAINTS
   // =========================================================================
-  if (isChineseReq) {
+  if (isIndoChineseReq) {
+    const indo = pool.filter(
+      (m) =>
+        m.cuisine.toLowerCase().includes('indo-chinese') ||
+        /manchurian|hakka|schezwan|chilli/i.test(m.name)
+    );
+    if (indo.length > 0) pool = indo;
+  } else if (isChineseReq) {
     const ch = pool.filter((m) => m.cuisine.toLowerCase().includes('chinese'));
     if (ch.length > 0) pool = ch;
   } else if (isKoreanReq) {
