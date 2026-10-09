@@ -231,16 +231,18 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
 
       {/* ROTATING CIRCULAR WHEEL ARENA */}
       <View style={styles.wheelArena}>
-        {/* Top Indicator Arrow Needle pointing DOWN at winning wedge */}
-        <Animated.View
-          style={[
-            styles.pointerContainer,
-            { transform: [{ rotate: pointerWobbleInterpolate }] },
-          ]}
-        >
-          <View style={styles.pointerTriangle} />
-          <View style={styles.pointerCircle} />
-        </Animated.View>
+        {/* Top Indicator Arrow Needle pointing DOWN at winning wedge (Hidden when slice pops up so it never covers the popped slice) */}
+        {!isSlicePopped && (
+          <Animated.View
+            style={[
+              styles.pointerContainer,
+              { transform: [{ rotate: pointerWobbleInterpolate }] },
+            ]}
+          >
+            <View style={styles.pointerTriangle} />
+            <View style={styles.pointerCircle} />
+          </Animated.View>
+        )}
 
         {/* Outer Golden Studded Ring */}
         <View style={styles.wheelOuterRing}>
