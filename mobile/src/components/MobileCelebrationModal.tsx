@@ -169,6 +169,7 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
           <View style={styles.mealCard}>
             <View style={styles.imageFrame}>
               <MobileMealImage
+                key={meal.id}
                 uri={meal.imageUrl}
                 style={styles.mealImage}
                 dishName={meal.name}

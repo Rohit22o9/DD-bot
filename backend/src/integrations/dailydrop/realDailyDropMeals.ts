@@ -70,7 +70,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 15.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Bhindi_Masala.jpg/960px-Bhindi_Masala.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -134,7 +134,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 15.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Baigan_Bharta_from_Nagpur.JPG/960px-Baigan_Bharta_from_Nagpur.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -199,7 +199,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_bawarchi",
     "restaurantName": "Bawarchi Biryani",
     "price": 12.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/%22Hyderabadi_Dum_Biryani%22.jpg/960px-%22Hyderabadi_Dum_Biryani%22.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -327,7 +327,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 16.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Chana_masala.jpg/960px-Chana_masala.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -389,7 +389,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Rajma_Masala_%2832081557778%29.jpg/960px-Rajma_Masala_%2832081557778%29.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -642,7 +642,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_tokyo",
     "restaurantName": "Tokyo Bento & Ramen",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Tonkotsu_ramen.JPG/960px-Tonkotsu_ramen.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Japanese",
     "category": "main",
     "dietaryTags": [
@@ -702,7 +702,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_tokyo",
     "restaurantName": "Tokyo Bento & Ramen",
     "price": 14.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Tonkotsu_ramen.JPG/960px-Tonkotsu_ramen.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Japanese",
     "category": "main",
     "dietaryTags": [
@@ -765,7 +765,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_tokyo",
     "restaurantName": "Tokyo Bento & Ramen",
     "price": 14.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Tonkotsu_ramen.JPG/960px-Tonkotsu_ramen.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Japanese",
     "category": "main",
     "dietaryTags": [
@@ -828,7 +828,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_tokyo",
     "restaurantName": "Tokyo Bento & Ramen",
     "price": 14.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Shoyu_Ramen%EF%BC%88Tokyo_Ramen%EF%BC%89_-_01.jpg/960px-Shoyu_Ramen%EF%BC%88Tokyo_Ramen%EF%BC%89_-_01.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Japanese",
     "category": "main",
     "dietaryTags": [
@@ -892,7 +892,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 19.8,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/960px-Dolsot-bibimbap.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -954,7 +954,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 19.8,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/960px-Dolsot-bibimbap.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1017,7 +1017,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 20.35,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/960px-Bulgogi_2.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1078,7 +1078,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 20.35,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/02/Sundubu-jjigae.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1547496502-affa22d38842?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1139,7 +1139,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 25.3,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg/960px-Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1380,7 +1380,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 20.35,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Gamja-tang_2.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1547496502-affa22d38842?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1441,7 +1441,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 24.2,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Galbitang_%EA%B0%88%EB%B9%84%ED%83%95_beeniru.jpg/960px-Galbitang_%EA%B0%88%EB%B9%84%ED%83%95_beeniru.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1547496502-affa22d38842?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1688,7 +1688,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 20.35,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Jajangmyeon.jpg/960px-Jajangmyeon.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1747,7 +1747,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 22.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Jajangmyeon.jpg/960px-Jajangmyeon.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1806,7 +1806,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 27.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Jajangmyeon.jpg/960px-Jajangmyeon.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1867,7 +1867,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 28.6,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Jajangmyeon.jpg/960px-Jajangmyeon.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1930,7 +1930,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 23.1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jjampong.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -1992,7 +1992,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 27.5,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jjampong.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2054,7 +2054,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 27.5,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jjampong.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2114,7 +2114,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 24.2,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jjampong.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2176,7 +2176,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 28.6,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jjampong.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2238,7 +2238,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 28.6,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/Jjampong.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2300,7 +2300,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 35.2,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Tangsuyuk.jpg/960px-Tangsuyuk.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2361,7 +2361,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 36.3,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Tangsuyuk.jpg/960px-Tangsuyuk.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2424,7 +2424,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 35.2,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Yangnyeom-chikin_bhcChicken_1.jpg/960px-Yangnyeom-chikin_bhcChicken_1.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2485,7 +2485,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 36.3,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Yangnyeom-chikin_bhcChicken_1.jpg/960px-Yangnyeom-chikin_bhcChicken_1.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2548,7 +2548,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 35.2,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Yangnyeom-chikin_bhcChicken_1.jpg/960px-Yangnyeom-chikin_bhcChicken_1.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2608,7 +2608,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 36.3,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Yangnyeom-chikin_bhcChicken_1.jpg/960px-Yangnyeom-chikin_bhcChicken_1.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2671,7 +2671,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 39.05,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Yangnyeom-chikin_bhcChicken_1.jpg/960px-Yangnyeom-chikin_bhcChicken_1.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2731,7 +2731,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 39.05,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Yangnyeom-chikin_bhcChicken_1.jpg/960px-Yangnyeom-chikin_bhcChicken_1.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2908,7 +2908,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 49.5,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Gamja-tang_2.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1547496502-affa22d38842?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -2968,7 +2968,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 52.8,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Galbitang_%EA%B0%88%EB%B9%84%ED%83%95_beeniru.jpg/960px-Galbitang_%EA%B0%88%EB%B9%84%ED%83%95_beeniru.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -3031,7 +3031,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 49.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/960px-Bulgogi_2.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -3093,7 +3093,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 49.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Budae_jjigae_%2828587380901%29.jpg/960px-Budae_jjigae_%2828587380901%29.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "main",
     "dietaryTags": [
@@ -3156,7 +3156,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 38.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Tteokbokki.JPG/960px-Tteokbokki.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "side",
     "dietaryTags": [
@@ -3216,7 +3216,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 15.4,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/960px-Bulgogi_2.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "side",
     "dietaryTags": [
@@ -3503,7 +3503,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 24.2,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Korean_pancake-Pajeon-05.jpg/960px-Korean_pancake-Pajeon-05.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "side",
     "dietaryTags": [
@@ -3563,7 +3563,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 20.9,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Kimchibuchimgae_%28kimchi_pancake%29.jpg/960px-Kimchibuchimgae_%28kimchi_pancake%29.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "side",
     "dietaryTags": [
@@ -3622,7 +3622,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 24.2,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Kimchibuchimgae_%28kimchi_pancake%29.jpg/960px-Kimchibuchimgae_%28kimchi_pancake%29.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "side",
     "dietaryTags": [
@@ -3681,7 +3681,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_seoul",
     "restaurantName": "Seoul Pocha & Kitchen",
     "price": 24.2,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg/960px-Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Korean",
     "category": "side",
     "dietaryTags": [
@@ -4106,7 +4106,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Chinese_fried_rice_by_stu_spivack_in_Cleveland%2C_OH.jpg/960px-Chinese_fried_rice_by_stu_spivack_in_Cleveland%2C_OH.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "main",
     "dietaryTags": [
@@ -4169,7 +4169,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_kopitiam",
     "restaurantName": "Kopitiam Nanyang Flavours",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas%2C_di_Penang_Summer_Restaurant.jpg/960px-Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas%2C_di_Penang_Summer_Restaurant.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Malaysian",
     "category": "main",
     "dietaryTags": [
@@ -4229,7 +4229,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_tokyo",
     "restaurantName": "Tokyo Bento & Ramen",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Oyakodon_003.jpg/960px-Oyakodon_003.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Japanese",
     "category": "main",
     "dietaryTags": [
@@ -4290,7 +4290,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_tokyo",
     "restaurantName": "Tokyo Bento & Ramen",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Oyakodon_003.jpg/960px-Oyakodon_003.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Japanese",
     "category": "main",
     "dietaryTags": [
@@ -4415,7 +4415,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 13.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Panang_curry_%2842943883862%29.jpg/960px-Panang_curry_%2842943883862%29.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "main",
     "dietaryTags": [
@@ -4478,7 +4478,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 13.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg/960px-Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "main",
     "dietaryTags": [
@@ -4541,7 +4541,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_tokyo",
     "restaurantName": "Tokyo Bento & Ramen",
     "price": 13.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg/960px-Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Japanese",
     "category": "main",
     "dietaryTags": [
@@ -4604,7 +4604,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_tokyo",
     "restaurantName": "Tokyo Bento & Ramen",
     "price": 13.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg/960px-Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Japanese",
     "category": "main",
     "dietaryTags": [
@@ -4667,7 +4667,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_continental",
     "restaurantName": "Continental Roastery",
     "price": 13.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg/960px-Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Western/Continental",
     "category": "main",
     "dietaryTags": [
@@ -4730,7 +4730,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 13.5,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg/960px-Homemade_Chow_mein_with_shrimps_and_meat_with_a_choy_and_Choung.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "main",
     "dietaryTags": [
@@ -4793,7 +4793,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_roma",
     "restaurantName": "Roma Pasta Cucina",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Vegetarian_Neapolitan_sauce15.JPG/960px-Vegetarian_Neapolitan_sauce15.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Italian",
     "category": "main",
     "dietaryTags": [
@@ -4855,7 +4855,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_roma",
     "restaurantName": "Roma Pasta Cucina",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/BasilPesto.JPG/960px-BasilPesto.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Italian",
     "category": "main",
     "dietaryTags": [
@@ -4916,7 +4916,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_roma",
     "restaurantName": "Roma Pasta Cucina",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Vegetarian_Neapolitan_sauce15.JPG/960px-Vegetarian_Neapolitan_sauce15.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Italian",
     "category": "main",
     "dietaryTags": [
@@ -4978,7 +4978,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_roma",
     "restaurantName": "Roma Pasta Cucina",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Tagliatelle_al_rag%C3%B9_%28image_modified%29.jpg/960px-Tagliatelle_al_rag%C3%B9_%28image_modified%29.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1621996346565-e3d5d6281081?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Italian",
     "category": "main",
     "dietaryTags": [
@@ -5043,7 +5043,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_roma",
     "restaurantName": "Roma Pasta Cucina",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Espaguetis_carbonara.jpg/960px-Espaguetis_carbonara.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Italian",
     "category": "main",
     "dietaryTags": [
@@ -5167,7 +5167,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 8.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Corn_soup.jpg/960px-Corn_soup.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "side",
     "dietaryTags": [
@@ -5229,7 +5229,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 8.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Corn_soup.jpg/960px-Corn_soup.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "side",
     "dietaryTags": [
@@ -5290,7 +5290,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 8.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/5-Minute_Egg_Drop_Soup-5_%2832079790121%29.jpg/960px-5-Minute_Egg_Drop_Soup-5_%2832079790121%29.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "side",
     "dietaryTags": [
@@ -5351,7 +5351,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Chen_Mapo_Tofu.jpg/960px-Chen_Mapo_Tofu.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "main",
     "dietaryTags": [
@@ -5537,7 +5537,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Chinese_fried_rice_by_stu_spivack_in_Cleveland%2C_OH.jpg/960px-Chinese_fried_rice_by_stu_spivack_in_Cleveland%2C_OH.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "main",
     "dietaryTags": [
@@ -5599,7 +5599,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Chen_Mapo_Tofu.jpg/960px-Chen_Mapo_Tofu.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "main",
     "dietaryTags": [
@@ -5722,7 +5722,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/%E7%95%AA%E8%8C%84%E7%82%92%E8%9B%8B2.PNG/960px-%E7%95%AA%E8%8C%84%E7%82%92%E8%9B%8B2.PNG",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "side",
     "dietaryTags": [
@@ -5783,7 +5783,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_dragon",
     "restaurantName": "Dragon Wok Box",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Chinese_fried_rice_by_stu_spivack_in_Cleveland%2C_OH.jpg/960px-Chinese_fried_rice_by_stu_spivack_in_Cleveland%2C_OH.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Chinese",
     "category": "main",
     "dietaryTags": [
@@ -5905,7 +5905,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 4.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Onion_pakora_-_a.jpg/960px-Onion_pakora_-_a.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "side",
     "dietaryTags": [
@@ -5965,7 +5965,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 3.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Aloo_Tikki_served_with_chutneys.jpg/960px-Aloo_Tikki_served_with_chutneys.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "side",
     "dietaryTags": [
@@ -6027,7 +6027,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 3.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Salt_lassi.jpg/960px-Salt_lassi.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "side",
     "dietaryTags": [
@@ -6087,7 +6087,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 8.0,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Paneer_Makhani_Veggie.jpeg",
+    "imageUrl": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "side",
     "dietaryTags": [
@@ -6336,7 +6336,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 8.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg/960px-Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "side",
     "dietaryTags": [
@@ -6399,7 +6399,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 18.0,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/Gujarat_Thali.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -6459,7 +6459,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 15.0,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/Gujarat_Thali.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -6520,7 +6520,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 5.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Ras_Malai_2.JPG/960px-Ras_Malai_2.JPG",
+    "imageUrl": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "dessert",
     "dietaryTags": [
@@ -6889,7 +6889,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 5.0,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Tandoorimumbai.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "side",
     "dietaryTags": [
@@ -6952,7 +6952,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 5.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Kolkata_Rolls.jpg/960px-Kolkata_Rolls.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "side",
     "dietaryTags": [
@@ -7013,7 +7013,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 3.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Onion_pakora_-_a.jpg/960px-Onion_pakora_-_a.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "side",
     "dietaryTags": [
@@ -7073,7 +7073,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 3.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Onion_pakora_-_a.jpg/960px-Onion_pakora_-_a.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "side",
     "dietaryTags": [
@@ -7137,7 +7137,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 2.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Samosas%2C_snack_food_at_Wikipedia%27s_16th_Birthday_celebration_in_Chittagong_%2801%29.jpg/960px-Samosas%2C_snack_food_at_Wikipedia%27s_16th_Birthday_celebration_in_Chittagong_%2801%29.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "side",
     "dietaryTags": [
@@ -7200,7 +7200,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 3.0,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Gulab-jamun-wallpaper-1.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "dessert",
     "dietaryTags": [
@@ -7321,7 +7321,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 4.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Salt_lassi.jpg/960px-Salt_lassi.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "drink",
     "dietaryTags": [
@@ -7442,7 +7442,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 4.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Salt_lassi.jpg/960px-Salt_lassi.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Indian",
     "category": "drink",
     "dietaryTags": [
@@ -7567,7 +7567,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_gulati",
     "restaurantName": "Gulati's Kitchen",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/%22Hyderabadi_Dum_Biryani%22.jpg/960px-%22Hyderabadi_Dum_Biryani%22.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -7821,7 +7821,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg/960px-Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -7946,7 +7946,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Aloo_Ghobi.jpg/960px-Aloo_Ghobi.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -8011,7 +8011,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Kadhi_Pakora.jpg/960px-Kadhi_Pakora.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
     "cuisine": "Punjabi",
     "category": "main",
     "dietaryTags": [
@@ -8133,7 +8133,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Punjabi_style_Dal_Makhani.jpg/960px-Punjabi_style_Dal_Makhani.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [
@@ -8256,7 +8256,7 @@ export const REAL_DAILY_DROP_MEALS: Meal[] = [
     "restaurantId": "rest_spice_route",
     "restaurantName": "Spice Route Indian Kitchen",
     "price": 12.0,
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Rajma_Masala_%2832081557778%29.jpg/960px-Rajma_Masala_%2832081557778%29.jpg",
+    "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80",
     "cuisine": "North Indian",
     "category": "main",
     "dietaryTags": [

@@ -32,10 +32,36 @@ export const MobileFoodTinderWidget: React.FC<MobileFoodTinderWidgetProps> = ({
   onPreferencesDiscovered,
   onPlayAgain,
 }) => {
-  // Use a dynamic 5-dish deck from real 136 meals
+  // Use a dynamic 5-dish deck with 5 distinct cuisines and distinct meal photos
   const [deck] = useState<Meal[]>(() => {
-    const mains = REAL_DAILY_DROP_MEALS.filter((m) => m.category === 'main');
-    return [...mains].sort(() => Math.random() - 0.5).slice(0, 5);
+    const mains = REAL_DAILY_DROP_MEALS.filter(
+      (m) => m.category === 'main' && m.imageUrl && m.imageUrl.trim() !== ''
+    );
+    const selected: Meal[] = [];
+    const usedCuisines = new Set<string>();
+    const usedImages = new Set<string>();
+    const shuffled = [...mains].sort(() => Math.random() - 0.5);
+
+    // Pick 5 distinct cuisines with distinct image URLs
+    for (const meal of shuffled) {
+      if (!usedCuisines.has(meal.cuisine) && !usedImages.has(meal.imageUrl)) {
+        usedCuisines.add(meal.cuisine);
+        usedImages.add(meal.imageUrl);
+        selected.push(meal);
+        if (selected.length === 5) break;
+      }
+    }
+    // Fallback if less than 5 distinct cuisines found
+    if (selected.length < 5) {
+      for (const meal of shuffled) {
+        if (!selected.some((s) => s.id === meal.id) && !usedImages.has(meal.imageUrl)) {
+          usedImages.add(meal.imageUrl);
+          selected.push(meal);
+          if (selected.length === 5) break;
+        }
+      }
+    }
+    return selected;
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -225,6 +251,7 @@ export const MobileFoodTinderWidget: React.FC<MobileFoodTinderWidgetProps> = ({
             style={styles.cardTouchable}
           >
             <MobileMealImage
+              key={currentMeal.id}
               uri={currentMeal.imageUrl}
               style={styles.cardImage}
               dishName={currentMeal.name}
