@@ -256,7 +256,8 @@ export type DiscoveryGameType =
   | 'mystery_meal'
   | 'food_passport'
   | 'guess_dish'
-  | 'build_meal';
+  | 'build_meal'
+  | 'food_iq';
 
 export interface GamePayload {
   gameType: DiscoveryGameType;

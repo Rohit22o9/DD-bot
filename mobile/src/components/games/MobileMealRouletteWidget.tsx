@@ -20,7 +20,7 @@ interface MobileMealRouletteWidgetProps {
 interface RouletteCategory {
   id: string;
   label: string;
-  shortLabel: string;
+  countryName: string;
   emoji: string;
   cuisine: string;
   color: string;
@@ -32,56 +32,96 @@ const WHEEL_RADIUS = WHEEL_DIAMETER / 2;
 const CATEGORIES: RouletteCategory[] = [
   {
     id: 'indian',
-    label: 'North Indian Spice',
-    shortLabel: 'INDIAN',
+    label: 'Indian Specialties',
+    countryName: 'India',
     emoji: '🇮🇳',
-    cuisine: 'North Indian',
+    cuisine: 'Indian',
     color: '#DC2626', // Crimson Red
+  },
+  {
+    id: 'australian',
+    label: 'Australian Classics',
+    countryName: 'Australia',
+    emoji: '🇦🇺',
+    cuisine: 'Australian',
+    color: '#0D9488', // Aussie Teal
+  },
+  {
+    id: 'african',
+    label: 'African Spiced Kitchen',
+    countryName: 'Africa',
+    emoji: '🌍',
+    cuisine: 'African',
+    color: '#D97706', // Warm Amber
   },
   {
     id: 'chinese',
     label: 'Chinese Wok Drops',
-    shortLabel: 'CHINESE',
+    countryName: 'China',
     emoji: '🇨🇳',
     cuisine: 'Chinese',
-    color: '#D97706', // Golden Amber
+    color: '#B91C1C', // Imperial Red
   },
   {
-    id: 'korean',
-    label: 'Korean Street Food',
-    shortLabel: 'KOREAN',
-    emoji: '🇰🇷',
-    cuisine: 'Korean',
-    color: '#7C3AED', // Deep Violet
+    id: 'malaysian',
+    label: 'Malaysian Delights',
+    countryName: 'Malaysia',
+    emoji: '🇲🇾',
+    cuisine: 'Malaysian',
+    color: '#DB2777', // Hibiscus Pink
+  },
+  {
+    id: 'singaporean',
+    label: 'Singaporean Street Eats',
+    countryName: 'Singapore',
+    emoji: '🇸🇬',
+    cuisine: 'Singaporean',
+    color: '#E11D48', // Vibrant Rose
+  },
+  {
+    id: 'indonesian',
+    label: 'Indonesian Flavours',
+    countryName: 'Indonesia',
+    emoji: '🇮🇩',
+    cuisine: 'Indonesian',
+    color: '#EA580C', // Terracotta Orange
+  },
+  {
+    id: 'vietnamese',
+    label: 'Vietnamese Fresh Drops',
+    countryName: 'Vietnam',
+    emoji: '🇻🇳',
+    cuisine: 'Vietnamese',
+    color: '#16A34A', // Fresh Herb Green
+  },
+  {
+    id: 'philippines',
+    label: 'Filipino Comfort Kitchen',
+    countryName: 'Philippines',
+    emoji: '🇵🇭',
+    cuisine: 'Filipino',
+    color: '#2563EB', // Sapphire Blue
   },
   {
     id: 'japanese',
     label: 'Japanese Ramen & Don',
-    shortLabel: 'JAPANESE',
+    countryName: 'Japan',
     emoji: '🇯🇵',
     cuisine: 'Japanese',
-    color: '#2563EB', // Cobalt Blue
+    color: '#9333EA', // Kyoto Purple
   },
   {
-    id: 'italian',
-    label: 'Italian Fresh Pasta',
-    shortLabel: 'ITALIAN',
-    emoji: '🇮🇹',
-    cuisine: 'Italian',
-    color: '#059669', // Emerald Green
-  },
-  {
-    id: 'malaysian',
-    label: 'Malaysian Comfort',
-    shortLabel: 'MALAYSIAN',
-    emoji: '🇲🇾',
-    cuisine: 'Malaysian',
-    color: '#DB2777', // Vibrant Pink
+    id: 'thai',
+    label: 'Thai Street Curries',
+    countryName: 'Thailand',
+    emoji: '🇹🇭',
+    cuisine: 'Thai',
+    color: '#0891B2', // Andaman Cyan
   },
 ];
 
 const NUM_SLICES = CATEGORIES.length;
-const SLICE_ANGLE = 360 / NUM_SLICES; // 60 deg
+const SLICE_ANGLE = 360 / NUM_SLICES; // ~32.72 deg
 
 export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> = ({
   onAddToCart,
@@ -101,6 +141,9 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
   // Pop-up animation for the winning slice of the wheel
   const slicePopAnim = useRef(new Animated.Value(0)).current;
 
+  // Center country name pop-up animation
+  const centerPopupAnim = useRef(new Animated.Value(0)).current;
+
   // Pointer tick wobble animation
   const pointerAnim = useRef(new Animated.Value(0)).current;
 
@@ -113,6 +156,7 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
     setIsSlicePopped(false);
     setHasLanded(false);
     slicePopAnim.setValue(0);
+    centerPopupAnim.setValue(0);
     mealsFadeAnim.setValue(0);
 
     // Pick a random destination category
@@ -120,70 +164,95 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
     const targetCat = CATEGORIES[targetIdx];
 
     // Math for wheel alignment:
-    // Slice 0 is at 0° (top). Slice k is at k * 60°.
-    // To align Slice k with the top arrow (0°), wheel must rotate clockwise by:
-    // (360 - (k * 60)) % 360.
-    // We add 5 full rotations (1800°) for realistic momentum.
-    const baseSpins = 5 * 360; // 1800°
+    // 7 full rotations (2520°) for high-speed momentum and extended deceleration
+    const baseSpins = 7 * 360;
     const offsetToArrow = (360 - (targetIdx * SLICE_ANGLE)) % 360;
     const nextTotalAngle = currentAngleRef.current + baseSpins + offsetToArrow - (currentAngleRef.current % 360);
 
-    // Pointer tick wobble during spin
+    // Pointer tick wobble during spin with prolonged duration
     Animated.loop(
       Animated.sequence([
         Animated.timing(pointerAnim, {
-          toValue: -8,
-          duration: 70,
+          toValue: -10,
+          duration: 65,
           useNativeDriver: true,
         }),
         Animated.timing(pointerAnim, {
-          toValue: 4,
-          duration: 70,
+          toValue: 5,
+          duration: 65,
           useNativeDriver: true,
         }),
         Animated.timing(pointerAnim, {
           toValue: 0,
-          duration: 70,
+          duration: 65,
           useNativeDriver: true,
         }),
       ]),
-      { iterations: 14 }
+      { iterations: 26 } // Sync with 5.2s total spin time
     ).start();
 
-    // 1. Spin the wheel smoothly with deceleration
+    // 1. Spin the wheel with dramatic physics deceleration curve (fast start, gradual suspenseful slowdown)
     Animated.timing(wheelRotationAnim, {
       toValue: nextTotalAngle,
-      duration: 3500,
-      easing: Easing.out(Easing.cubic),
+      duration: 5200,
+      easing: Easing.bezier(0.12, 0.85, 0.2, 1), // Realistic casino roulette deceleration curve
       useNativeDriver: true,
     }).start(() => {
+      pointerAnim.setValue(0);
       currentAngleRef.current = nextTotalAngle;
       setSelectedCategory(targetCat);
       setIsSpinning(false);
 
-      // Find real matching meals for this cuisine
-      const dishes = REAL_DAILY_DROP_MEALS.filter(
-        (m) =>
-          m.cuisine.toLowerCase().includes(targetCat.cuisine.toLowerCase()) ||
-          targetCat.cuisine.toLowerCase().includes(m.cuisine.toLowerCase())
-      );
+      // Find real matching meals for this country / cuisine
+      const dishes = REAL_DAILY_DROP_MEALS.filter((m) => {
+        const cLower = m.cuisine.toLowerCase();
+        const nLower = m.name.toLowerCase();
+        const dLower = m.description.toLowerCase();
+        switch (targetCat.id) {
+          case 'indian':
+            return /indian|curry|dal|biryani|paneer|tandoori/i.test(cLower + nLower + dLower);
+          case 'australian':
+            return /australian|aussie|burger|steak|salad|salmon/i.test(cLower + nLower + dLower);
+          case 'african':
+            return /african|jollof|stew|spiced/i.test(cLower + nLower + dLower);
+          case 'chinese':
+            return /chinese|wok|fried rice|dumpling|sichuan/i.test(cLower + nLower + dLower);
+          case 'malaysian':
+            return /malaysian|laksa|rendang|satay|nasi/i.test(cLower + nLower + dLower);
+          case 'singaporean':
+            return /singaporean|noodle|rice|roti/i.test(cLower + nLower + dLower);
+          case 'indonesian':
+            return /indonesian|bali|satay|goreng|gado/i.test(cLower + nLower + dLower);
+          case 'vietnamese':
+            return /vietnamese|pho|roll|banh|vermicelli/i.test(cLower + nLower + dLower);
+          case 'philippines':
+            return /filipino|philippines|adobo|rice|stew/i.test(cLower + nLower + dLower);
+          case 'japanese':
+            return /japanese|ramen|teriyaki|miso|don/i.test(cLower + nLower + dLower);
+          case 'thai':
+            return /thai|pad thai|green curry|tom yum/i.test(cLower + nLower + dLower);
+          default:
+            return cLower.includes(targetCat.cuisine.toLowerCase());
+        }
+      });
       const pickedDishes = dishes.length > 0
         ? [...dishes].sort(() => Math.random() - 0.5).slice(0, 2)
-        : [REAL_DAILY_DROP_MEALS[0]];
+        : [REAL_DAILY_DROP_MEALS[Math.floor(Math.random() * REAL_DAILY_DROP_MEALS.length)]];
       setMatchedMeals(pickedDishes);
 
-      // 2. POP UP that specific part of the wheel that was selected!
+      // 2. POP UP that specific country in the center of the wheel!
       setIsSlicePopped(true);
-      Animated.sequence([
-        Animated.spring(slicePopAnim, {
-          toValue: 1.25,
+      centerPopupAnim.setValue(0);
+      Animated.parallel([
+        Animated.spring(centerPopupAnim, {
+          toValue: 1,
           friction: 4,
-          tension: 110,
+          tension: 90,
           useNativeDriver: true,
         }),
         Animated.spring(slicePopAnim, {
-          toValue: 1.12,
-          friction: 6,
+          toValue: 1.15,
+          friction: 5,
           tension: 90,
           useNativeDriver: true,
         }),
@@ -199,7 +268,7 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
             setShowCelebration(true);
             onSpinAgain?.();
           });
-        }, 500);
+        }, 1100);
       });
     });
   };
@@ -272,10 +341,9 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
                     ]}
                   />
 
-                  {/* Wedge Content (Emoji + Cuisine Label) */}
+                  {/* Wedge Content (Flag Emoji ONLY — Country Name Removed from Slices) */}
                   <View style={styles.sliceContent}>
                     <Text style={styles.sliceEmoji}>{cat.emoji}</Text>
-                    <Text style={styles.sliceLabel}>{cat.shortLabel}</Text>
                   </View>
                 </View>
               );
@@ -289,52 +357,32 @@ export const MobileMealRouletteWidget: React.FC<MobileMealRouletteWidgetProps> =
             </View>
           </Animated.View>
 
-          {/* THE SELECTED SLICE OF THE WHEEL POPS UP HERE! */}
+          {/* CENTER COUNTRY POP-UP: Shows Country Name in center of wheel when selected */}
           {isSlicePopped && (
             <Animated.View
               style={[
-                styles.poppedSliceContainer,
+                styles.centerPopupOverlay,
                 {
                   transform: [
                     {
-                      scale: slicePopAnim.interpolate({
-                        inputRange: [0, 1, 1.25],
-                        outputRange: [1, 1.12, 1.25],
-                      }),
-                    },
-                    {
-                      translateY: slicePopAnim.interpolate({
+                      scale: centerPopupAnim.interpolate({
                         inputRange: [0, 1],
-                        outputRange: [0, -10],
+                        outputRange: [0.2, 1],
                       }),
                     },
                   ],
+                  opacity: centerPopupAnim,
                 },
               ]}
               pointerEvents="none"
             >
-              {/* Outer Golden Glow Triangle */}
-              <View
-                style={[
-                  styles.poppedSliceGlow,
-                  { borderTopColor: '#F59E0B' },
-                ]}
-              />
-
-              {/* Popped Slice Triangle Wedge */}
-              <View
-                style={[
-                  styles.poppedSliceTriangle,
-                  { borderTopColor: selectedCategory.color },
-                ]}
-              />
-
-              {/* Popped Slice Badge Content */}
-              <View style={styles.poppedSliceContent}>
-                <Text style={styles.poppedSliceEmoji}>{selectedCategory.emoji}</Text>
-                <Text style={styles.poppedSliceLabel}>{selectedCategory.shortLabel}</Text>
-                <View style={styles.poppedWinnerPill}>
-                  <Text style={styles.poppedWinnerPillText}>🎯 SELECTED</Text>
+              <View style={styles.centerCountryCard}>
+                <Text style={styles.centerCountryFlag}>{selectedCategory.emoji}</Text>
+                <Text style={styles.centerCountryName}>
+                  {selectedCategory.countryName.toUpperCase()}
+                </Text>
+                <View style={styles.centerCountryBadge}>
+                  <Text style={styles.centerCountryBadgeText}>SELECTED 🎯</Text>
                 </View>
               </View>
             </Animated.View>
@@ -569,8 +617,8 @@ const styles = StyleSheet.create({
   sliceTriangle: {
     width: 0,
     height: 0,
-    borderLeftWidth: 70,
-    borderRightWidth: 70,
+    borderLeftWidth: 38,
+    borderRightWidth: 38,
     borderTopWidth: WHEEL_RADIUS,
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
@@ -579,11 +627,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 14,
     alignItems: 'center',
-    width: 70,
+    width: 44,
   },
   sliceEmoji: {
-    fontSize: 20,
-    marginBottom: 2,
+    fontSize: 22,
   },
   sliceLabel: {
     fontSize: 9,
@@ -624,73 +671,51 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
-  // Popped Selected Slice of the Wheel Animation
-  poppedSliceContainer: {
+  // Center Country Pop-up in Wheel Hub
+  centerPopupOverlay: {
     position: 'absolute',
-    top: 7, // aligns with top 12 o'clock sector of the wheel
-    left: 7,
-    width: WHEEL_DIAMETER,
-    height: WHEEL_DIAMETER,
     alignItems: 'center',
-    zIndex: 80,
+    justifyContent: 'center',
+    zIndex: 99,
   },
-  poppedSliceGlow: {
-    position: 'absolute',
-    top: -4,
-    width: 0,
-    height: 0,
-    borderLeftWidth: 76,
-    borderRightWidth: 76,
-    borderTopWidth: WHEEL_RADIUS + 8,
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
-    shadowColor: '#F59E0B',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.9,
+  centerCountryCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2.5,
+    borderColor: '#F59E0B',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.35,
     shadowRadius: 10,
     elevation: 10,
+    minWidth: 120,
   },
-  poppedSliceTriangle: {
-    width: 0,
-    height: 0,
-    borderLeftWidth: 72,
-    borderRightWidth: 72,
-    borderTopWidth: WHEEL_RADIUS + 4,
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
+  centerCountryFlag: {
+    fontSize: 32,
+    marginBottom: 4,
   },
-  poppedSliceContent: {
-    position: 'absolute',
-    top: 12,
-    alignItems: 'center',
-    width: 80,
-  },
-  poppedSliceEmoji: {
-    fontSize: 26,
-    marginBottom: 2,
-  },
-  poppedSliceLabel: {
-    fontSize: 10,
+  centerCountryName: {
+    fontSize: 14,
     fontWeight: '900',
+    color: '#0F172A',
+    letterSpacing: 0.8,
+  },
+  centerCountryBadge: {
+    backgroundColor: '#0D7844',
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    marginTop: 4,
+  },
+  centerCountryBadgeText: {
+    fontSize: 9,
+    fontWeight: '800',
     color: '#FFFFFF',
     letterSpacing: 0.5,
-    textShadowColor: 'rgba(0, 0, 0, 0.9)',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 3,
-  },
-  poppedWinnerPill: {
-    backgroundColor: '#FEF3C7',
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 6,
-    marginTop: 3,
-    borderWidth: 1,
-    borderColor: '#F59E0B',
-  },
-  poppedWinnerPillText: {
-    fontSize: 9,
-    fontWeight: '900',
-    color: '#B45309',
   },
 
   spinBtn: {

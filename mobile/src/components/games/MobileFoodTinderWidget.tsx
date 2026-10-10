@@ -215,7 +215,7 @@ export const MobileFoodTinderWidget: React.FC<MobileFoodTinderWidgetProps> = ({
       </View>
 
       <Text style={styles.subtitle}>
-        Tap card to pick your dish, or swipe to pass to the next one!
+        Curated hot kitchen drops for tonight's craving
       </Text>
 
       {/* Progress Bars */}
@@ -285,24 +285,9 @@ export const MobileFoodTinderWidget: React.FC<MobileFoodTinderWidgetProps> = ({
                   </View>
                 ))}
               </View>
-
-              {/* Direct Tap to Pick Prompt Button inside the card */}
-              <View style={styles.tapToPickBtn}>
-                <Text style={styles.tapToPickBtnText}>👆 Tap to Pick This Dish</Text>
-              </View>
             </View>
           </TouchableOpacity>
         </Animated.View>
-      </View>
-
-      {/* Gesture Hint Ribbon (Replacing Pass/Yum buttons) */}
-      <View style={styles.hintRow}>
-        <View style={styles.hintBadge}>
-          <Text style={styles.hintBadgeText}>👈 Swipe to Pass</Text>
-        </View>
-        <View style={styles.hintBadge}>
-          <Text style={styles.hintBadgeText}>Swipe to Pass 👉</Text>
-        </View>
       </View>
 
       {/* Celebratory Pop-up with Falling Confetti Bars */}
@@ -476,39 +461,5 @@ const styles = StyleSheet.create({
   },
   spicyTag: {
     backgroundColor: '#FEF2F2',
-  },
-
-  // Tap to Pick button inside the card
-  tapToPickBtn: {
-    backgroundColor: '#ECFDF5',
-    borderWidth: 1.5,
-    borderColor: '#10B981',
-    borderRadius: 12,
-    paddingVertical: 9,
-    alignItems: 'center',
-  },
-  tapToPickBtnText: {
-    fontSize: 13,
-    fontWeight: '800',
-    color: '#065F46',
-  },
-
-  // Interactive Gesture Hints (replacing Pass & Yum buttons)
-  hintRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 4,
-    marginTop: 2,
-  },
-  hintBadge: {
-    backgroundColor: '#F3F4F6',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 10,
-  },
-  hintBadgeText: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: '#6B7280',
   },
 });

@@ -68,10 +68,13 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
   meal,
   onClose,
   onAddToCart,
-  title = 'CORRECT GUESS!',
-  subtitle = 'You cracked the mystery dish! +50 Foodie XP',
+  title,
+  subtitle = "Drop AI matched your recipe with today's hot kitchen drop!",
   selectedPreferences,
 }) => {
+  // 2-Step Flow: 'celebration' -> 'reveal'
+  const [step, setStep] = React.useState<'celebration' | 'reveal'>('celebration');
+
   // Card pop-in scale & opacity
   const cardScale = useRef(new Animated.Value(0.7)).current;
   const cardOpacity = useRef(new Animated.Value(0)).current;
@@ -83,6 +86,7 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
 
   useEffect(() => {
     if (visible) {
+      setStep('celebration');
       // 1. Pop in the meal card
       Animated.parallel([
         Animated.spring(cardScale, {
@@ -114,6 +118,7 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
         ).start();
       });
     } else {
+      setStep('celebration');
       cardScale.setValue(0.7);
       cardOpacity.setValue(0);
       particleAnims.forEach((anim) => anim.setValue(0));
@@ -121,6 +126,12 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
   }, [visible]);
 
   if (!visible || !meal) return null;
+
+  // Filter out any "CUSTOM MEAL BUILT" wording from title
+  const displayTitle =
+    title && !title.toUpperCase().includes('CUSTOM MEAL BUILT')
+      ? title
+      : 'Your Meal is Ready! 🎉';
 
   return (
     <Modal
@@ -141,88 +152,128 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
             },
           ]}
         >
-          {/* Top Celebration Badge */}
-          <View style={styles.topBadgeWrapper}>
-            <View style={styles.topBadge}>
-              <Text style={styles.topBadgeEmoji}>🎉</Text>
-              <Text style={styles.topBadgeText}>{title}</Text>
-            </View>
-          </View>
+          {step === 'celebration' ? (
+            /* ================= STEP 1: CELEBRATION POP-UP ================= */
+            <View style={styles.celebrationStepContainer}>
+              {/* Big Celebration Hero Ring */}
+              <View style={styles.celebrationHeroCircle}>
+                <Text style={styles.celebrationHeroEmoji}>🎉</Text>
+              </View>
 
-          <Text style={styles.cardSubtitle}>{subtitle}</Text>
+              {/* Celebration Title & Subtitle */}
+              <Text style={styles.celebrationMainTitle}>{displayTitle}</Text>
+              <Text style={styles.cardSubtitle}>{subtitle}</Text>
 
-          {/* Selected Choices Tags (Upper side of the revealed card) */}
-          {selectedPreferences && selectedPreferences.length > 0 && (
-            <View style={styles.prefBadgesContainer}>
-              <View style={styles.prefBadgesRow}>
-                {selectedPreferences.map((p, idx) => (
-                  <View key={idx} style={styles.prefBadge}>
-                    <Text style={styles.prefBadgeIcon}>{p.icon}</Text>
-                    <Text style={styles.prefBadgeText}>{p.label}</Text>
+              {/* Selected Choices Tags */}
+              {selectedPreferences && selectedPreferences.length > 0 && (
+                <View style={styles.prefBadgesContainer}>
+                  <View style={styles.prefBadgesRow}>
+                    {selectedPreferences.map((p, idx) => (
+                      <View key={idx} style={styles.prefBadge}>
+                        <Text style={styles.prefBadgeIcon}>{p.icon}</Text>
+                        <Text style={styles.prefBadgeText}>{p.label}</Text>
+                      </View>
+                    ))}
                   </View>
-                ))}
-              </View>
-            </View>
-          )}
+                </View>
+              )}
 
-          {/* Winning Dish Card */}
-          <View style={styles.mealCard}>
-            <View style={styles.imageFrame}>
-              <MobileMealImage
-                key={meal.id}
-                uri={meal.imageUrl}
-                style={styles.mealImage}
-                dishName={meal.name}
-              />
-              <View style={styles.unlockedRibbon}>
-                <Text style={styles.unlockedRibbonText}>🏆 REVEALED</Text>
-              </View>
-            </View>
-
-            <View style={styles.mealInfo}>
-              <View style={styles.nameRow}>
-                <Text style={styles.mealName} numberOfLines={1}>
-                  {meal.name}
-                </Text>
-                <Text style={styles.mealPrice}>${meal.price.toFixed(2)}</Text>
+              {/* Ready Indicator Box */}
+              <View style={styles.celebrationReadyBox}>
+                <Text style={styles.celebrationReadyEmoji}>🍽️</Text>
+                <View style={styles.celebrationReadyTextCol}>
+                  <Text style={styles.celebrationReadyTitle}>Perfect Chef Drop Ready</Text>
+                  <Text style={styles.celebrationReadySub}>
+                    Crafted specially to match today's fresh kitchen drop
+                  </Text>
+                </View>
               </View>
 
-              <Text style={styles.mealRest}>
-                {meal.restaurantName} · {meal.cuisine}
-              </Text>
-
-              <Text style={styles.mealDesc} numberOfLines={2}>
-                {meal.description}
-              </Text>
-
-              {/* Nutrition Pill */}
-              <View style={styles.macroPill}>
-                <Text style={styles.macroPillText}>
-                  🔥 {meal.calories} kcal · 💪 {meal.proteinGrams || 22}g protein
-                </Text>
-              </View>
-
-              {/* Big Celebration Action: Add to Cart */}
+              {/* Button: View Your Meal */}
               <TouchableOpacity
-                style={styles.orderBtn}
-                activeOpacity={0.85}
-                onPress={() => onAddToCart(meal.id)}
+                style={styles.viewMealBtn}
+                activeOpacity={0.88}
+                onPress={() => setStep('reveal')}
               >
-                <Text style={styles.orderBtnText}>
-                  🛒 Add to cart — ${meal.price.toFixed(2)}
-                </Text>
+                <Text style={styles.viewMealBtnText}>🍽️ View Your Meal</Text>
+              </TouchableOpacity>
+
+              {/* Secondary Option: Continue */}
+              <TouchableOpacity
+                style={styles.continueBtn}
+                activeOpacity={0.7}
+                onPress={onClose}
+              >
+                <Text style={styles.continueBtnText}>Continue</Text>
               </TouchableOpacity>
             </View>
-          </View>
+          ) : (
+            /* ================= STEP 2: REVEALED MEAL DETAILS ================= */
+            <View style={styles.revealStepContainer}>
+              <View style={styles.revealHeaderRow}>
+                <Text style={styles.revealHeaderTitle}>Tonight's Kitchen Match 🌟</Text>
+              </View>
 
-          {/* Dismiss / Continue Button */}
-          <TouchableOpacity
-            style={styles.continueBtn}
-            activeOpacity={0.7}
-            onPress={onClose}
-          >
-            <Text style={styles.continueBtnText}>Continue</Text>
-          </TouchableOpacity>
+              {/* Winning Dish Card */}
+              <View style={styles.mealCard}>
+                <View style={styles.imageFrame}>
+                  <MobileMealImage
+                    key={meal.id}
+                    uri={meal.imageUrl}
+                    style={styles.mealImage}
+                    dishName={meal.name}
+                  />
+                  <View style={styles.unlockedRibbon}>
+                    <Text style={styles.unlockedRibbonText}>🏆 REVEALED</Text>
+                  </View>
+                </View>
+
+                <View style={styles.mealInfo}>
+                  <View style={styles.nameRow}>
+                    <Text style={styles.mealName} numberOfLines={1}>
+                      {meal.name}
+                    </Text>
+                    <Text style={styles.mealPrice}>${meal.price.toFixed(2)}</Text>
+                  </View>
+
+                  <Text style={styles.mealRest}>
+                    {meal.restaurantName} · {meal.cuisine}
+                  </Text>
+
+                  <Text style={styles.mealDesc} numberOfLines={2}>
+                    {meal.description}
+                  </Text>
+
+                  {/* Nutrition Pill */}
+                  <View style={styles.macroPill}>
+                    <Text style={styles.macroPillText}>
+                      🔥 {meal.calories} kcal · 💪 {meal.proteinGrams || 22}g protein
+                    </Text>
+                  </View>
+
+                  {/* Big Action: Add to Cart */}
+                  <TouchableOpacity
+                    style={styles.orderBtn}
+                    activeOpacity={0.85}
+                    onPress={() => onAddToCart(meal.id)}
+                  >
+                    <Text style={styles.orderBtnText}>
+                      🛒 Add to cart — ${meal.price.toFixed(2)}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              {/* Dismiss / Continue Button */}
+              <TouchableOpacity
+                style={styles.continueBtn}
+                activeOpacity={0.7}
+                onPress={onClose}
+              >
+                <Text style={styles.continueBtnText}>Continue</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </Animated.View>
 
         {/* Animated Celebration Confetti Bars — Placed AFTER card so they rain down directly ON TOP OF the card */}
@@ -471,10 +522,104 @@ const styles = StyleSheet.create({
   continueBtn: {
     paddingVertical: 8,
     paddingHorizontal: 16,
+    alignItems: 'center',
+    marginTop: 4,
   },
   continueBtnText: {
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: '700',
-    color: '#94A3B8',
+    color: '#64748B',
+  },
+  celebrationStepContainer: {
+    width: '100%',
+    alignItems: 'center',
+    paddingVertical: 6,
+  },
+  celebrationHeroCircle: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: '#FEF3C7',
+    borderWidth: 2,
+    borderColor: '#F59E0B',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 14,
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 6,
+  },
+  celebrationHeroEmoji: {
+    fontSize: 34,
+  },
+  celebrationMainTitle: {
+    fontSize: 20,
+    fontWeight: '900',
+    color: '#0F172A',
+    textAlign: 'center',
+    marginBottom: 6,
+  },
+  celebrationReadyBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F0FDF4',
+    borderWidth: 1.5,
+    borderColor: '#86EFAC',
+    borderRadius: 16,
+    padding: 12,
+    width: '100%',
+    marginVertical: 12,
+    gap: 12,
+  },
+  celebrationReadyEmoji: {
+    fontSize: 24,
+  },
+  celebrationReadyTextCol: {
+    flex: 1,
+  },
+  celebrationReadyTitle: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#166534',
+  },
+  celebrationReadySub: {
+    fontSize: 11,
+    color: '#15803D',
+    marginTop: 2,
+  },
+  viewMealBtn: {
+    width: '100%',
+    backgroundColor: '#059669',
+    paddingVertical: 14,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#059669',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    marginBottom: 8,
+  },
+  viewMealBtnText: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '800',
+    letterSpacing: 0.3,
+  },
+  revealStepContainer: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  revealHeaderRow: {
+    marginBottom: 10,
+    alignItems: 'center',
+  },
+  revealHeaderTitle: {
+    fontSize: 15,
+    fontWeight: '800',
+    color: '#0F172A',
   },
 });

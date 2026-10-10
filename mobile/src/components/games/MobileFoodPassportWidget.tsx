@@ -35,12 +35,18 @@ const INITIAL_PASSPORT_STAMPS: PassportStamp[] = [
   { country: 'Greece', flag: '🇬🇷', cuisine: 'Greek', isUnlocked: false, sampleMealName: 'Mediterranean Greek Salad' },
 ];
 
+// Persistent across game opens & sessions
+let savedPassportStamps: PassportStamp[] = [...INITIAL_PASSPORT_STAMPS];
+
 export const MobileFoodPassportWidget: React.FC<MobileFoodPassportWidgetProps> = ({
   onAddToCart,
   onExploreMore,
 }) => {
-  const [stamps, setStamps] = useState<PassportStamp[]>(INITIAL_PASSPORT_STAMPS);
-  const [selectedCountryName, setSelectedCountryName] = useState<string>('Indonesia');
+  const [stamps, setStamps] = useState<PassportStamp[]>(savedPassportStamps);
+  const [selectedCountryName, setSelectedCountryName] = useState<string>(() => {
+    const nextLocked = savedPassportStamps.find((s) => !s.isUnlocked);
+    return nextLocked ? nextLocked.country : 'Indonesia';
+  });
   const [showCelebration, setShowCelebration] = useState(false);
 
   const selectedTarget =
@@ -60,12 +66,12 @@ export const MobileFoodPassportWidget: React.FC<MobileFoodPassportWidgetProps> =
 
   // Handler for Stamp Button (Step 1)
   const handleStampPassport = () => {
-    // 1. Mark stamp as unlocked
-    setStamps((prev) =>
-      prev.map((s) =>
-        s.country === selectedTarget.country ? { ...s, isUnlocked: true } : s
-      )
+    // 1. Mark stamp as unlocked and save permanently
+    const updated = savedPassportStamps.map((s) =>
+      s.country === selectedTarget.country ? { ...s, isUnlocked: true } : s
     );
+    savedPassportStamps = updated;
+    setStamps(updated);
     // 2. Trigger celebratory pop animation modal (Step 2)
     setShowCelebration(true);
   };
@@ -244,6 +250,11 @@ export const MobileFoodPassportWidget: React.FC<MobileFoodPassportWidgetProps> =
         meal={targetMeal}
         onClose={() => setShowCelebration(false)}
         onAddToCart={(mealId) => {
+          const updated = savedPassportStamps.map((s) =>
+            s.country === selectedTarget.country ? { ...s, isUnlocked: true } : s
+          );
+          savedPassportStamps = updated;
+          setStamps(updated);
           setShowCelebration(false);
           onAddToCart(mealId);
         }}

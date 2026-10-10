@@ -75,6 +75,14 @@ const GAME_INFO: Record<
     bgBadge: '#ECFDF5',
     ctaText: '🥗 Build Your Bowl',
   },
+  food_iq: {
+    title: 'Food IQ',
+    subtitle: 'Learn culinary secrets & discover food behind the science 🧠',
+    icon: '🧠',
+    themeColor: '#7C3AED',
+    bgBadge: '#F5F3FF',
+    ctaText: '🧠 Test Your Food IQ',
+  },
 };
 
 export const MobileInChatGameCard: React.FC<MobileInChatGameCardProps> = ({

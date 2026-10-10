@@ -446,7 +446,7 @@ export const MobileBuildMealWidget: React.FC<MobileBuildMealWidgetProps> = ({
           setShowCelebration(false);
           onAddToCart(mealId);
         }}
-        title="CUSTOM MEAL BUILT! 🧑‍🍳"
+        title="Your Meal is Ready! 🎉"
         subtitle="Drop AI matched your recipe with today's hot kitchen drop!"
         selectedPreferences={
           matchedMeal

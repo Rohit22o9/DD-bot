@@ -2252,5 +2252,9 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
     refreshCart,
     refreshProfile,
     resetChat,
+    setMessages,
+    clearGameMessages: () => {
+      setMessages((prev) => prev.filter((m) => !m.gamePayload));
+    },
   };
 }

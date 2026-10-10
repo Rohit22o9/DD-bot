@@ -21,15 +21,17 @@ export const MobileFloatingCartBar: React.FC<MobileFloatingCartBarProps> = ({
       onPress={onPress}
     >
       <View style={styles.left}>
-        <Text style={styles.cartEmoji}>🛒</Text>
+        <View style={styles.cartIconBadge}>
+          <Text style={styles.cartEmoji}>🛒</Text>
+        </View>
         <Text style={styles.title}>
           {itemCount} meal{itemCount > 1 ? 's' : ''} · ${total.toFixed(2)}
         </Text>
       </View>
 
-      <View style={styles.right}>
+      <View style={styles.viewCartBtnPill}>
         <Text style={styles.actionText}>View cart</Text>
-        <Text style={styles.arrowIcon}>⌃</Text>
+        <Text style={styles.arrowIcon}>▲</Text>
       </View>
     </TouchableOpacity>
   );
@@ -37,48 +39,67 @@ export const MobileFloatingCartBar: React.FC<MobileFloatingCartBarProps> = ({
 
 const styles = StyleSheet.create({
   banner: {
-    backgroundColor: '#0D7844',
+    backgroundColor: '#111827', // Sleek Obsidian / Charcoal Dark, distinct from food card Add To Cart
     marginHorizontal: 16,
     marginBottom: 8,
     borderRadius: 22,
-    paddingHorizontal: 18,
-    paddingVertical: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    shadowColor: '#0D7844',
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.28,
-    shadowRadius: 8,
-    elevation: 4,
+    shadowOpacity: 0.35,
+    shadowRadius: 10,
+    elevation: 6,
+    borderWidth: 1,
+    borderColor: '#1F2937',
   },
   left: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: 10,
+  },
+  cartIconBadge: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#1E293B',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   cartEmoji: {
     fontSize: 16,
   },
   title: {
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '800',
     color: '#FFFFFF',
+    letterSpacing: 0.2,
   },
-  right: {
+  viewCartBtnPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    backgroundColor: '#059669', // Vibrant emerald pill inside dark bar
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 14,
+    gap: 6,
   },
   actionText: {
     fontSize: 13,
-    fontWeight: '600',
-    color: '#E5F5EC',
-  },
-  arrowIcon: {
-    fontSize: 14,
     fontWeight: '800',
     color: '#FFFFFF',
-    marginTop: -2,
+    includeFontPadding: false,
+    textAlignVertical: 'center',
+  },
+  arrowIcon: {
+    fontSize: 9,
+    fontWeight: '900',
+    color: '#FFFFFF',
+    includeFontPadding: false,
+    textAlignVertical: 'center',
+    alignSelf: 'center',
   },
 });

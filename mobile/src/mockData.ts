@@ -1776,6 +1776,42 @@ export function getMockRecommendations(
     if (weight.length > 0) pool = weight;
   }
 
+  // Dish name / specific ingredient keyword matching
+  const stopWords = new Set([
+    'a', 'an', 'the', 'in', 'on', 'for', 'to', 'with', 'and', 'or', 'me',
+    'i', 'want', 'order', 'some', 'any', 'can', 'you', 'give', 'show',
+    'options', 'dishes', 'meals', 'please', 'tonight', 'today', 'delivery',
+    'dinner', 'lunch', 'something', 'good', 'food', 'like', 'need'
+  ]);
+  const searchWords = q
+    .split(/[\s,]+/)
+    .map((w) => w.replace(/[^\w]/g, ''))
+    .filter((w) => w.length > 2 && !stopWords.has(w));
+
+  if (searchWords.length > 0) {
+    const directMatches = pool.filter((m) => {
+      const target = (m.name + ' ' + m.description + ' ' + m.ingredients.join(' ') + ' ' + m.cuisine).toLowerCase();
+      return searchWords.some((w) => target.includes(w));
+    });
+    if (directMatches.length > 0) {
+      directMatches.sort((a, b) => {
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+        const aDesc = (a.description + ' ' + a.ingredients.join(' ')).toLowerCase();
+        const bDesc = (b.description + ' ' + b.ingredients.join(' ')).toLowerCase();
+
+        const aScore =
+          searchWords.filter((w) => aName.includes(w)).length * 10 +
+          searchWords.filter((w) => aDesc.includes(w)).length * 2;
+        const bScore =
+          searchWords.filter((w) => bName.includes(w)).length * 10 +
+          searchWords.filter((w) => bDesc.includes(w)).length * 2;
+        return bScore - aScore;
+      });
+      pool = directMatches;
+    }
+  }
+
   // Safety fallback: NEVER violate dietary safety!
   if (pool.length === 0) {
     if (isVeganReq) {

@@ -108,6 +108,16 @@ const GAMES_LIST: GameItem[] = [
     badgeBg: '#EEF2FF',
     prompt: 'Build My Meal',
   },
+  {
+    id: 'food_iq',
+    icon: '🧠',
+    title: 'Food IQ (Learn & Earn)',
+    subtitle: '30s culinary lessons • Why is it there? Kitchen science • Earn IQ points & streak.',
+    badge: 'NEW! LEARN',
+    badgeColor: '#7C3AED',
+    badgeBg: '#F5F3FF',
+    prompt: 'Play Food IQ',
+  },
 ];
 
 export const MobileGamesModal: React.FC<MobileGamesModalProps> = ({

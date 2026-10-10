@@ -9,6 +9,7 @@ import { MobileMysteryMealWidget } from './MobileMysteryMealWidget';
 import { MobileFoodPassportWidget } from './MobileFoodPassportWidget';
 import { MobileGuessDishWidget } from './MobileGuessDishWidget';
 import { MobileBuildMealWidget } from './MobileBuildMealWidget';
+import { MobileFoodIQWidget } from './MobileFoodIQWidget';
 
 interface MobileDiscoveryGameContainerProps {
   payload: GamePayload;
@@ -64,6 +65,9 @@ export const MobileDiscoveryGameContainer: React.FC<MobileDiscoveryGameContainer
           onPreferencesDiscovered={onPreferencesDiscovered}
         />
       );
+
+    case 'food_iq':
+      return <MobileFoodIQWidget onAddToCart={onAddToCart} />;
 
     default:
       return null;

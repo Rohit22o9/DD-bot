@@ -24,6 +24,7 @@ import { MobileInChatCartCard } from './components/MobileInChatCartCard';
 import { MobileFilterModal } from './components/MobileFilterModal';
 import { MobileTasteProfileModal } from './components/MobileTasteProfileModal';
 import { MobileOrderConfirmModal } from './components/MobileOrderConfirmModal';
+import { MobileOrderSuccessModal } from './components/MobileOrderSuccessModal';
 import { MobileWeeklyPlan } from './components/MobileWeeklyPlan';
 import { MobileDropForMeWidget } from './components/MobileDropForMeWidget';
 import { MobileThinkingBubble } from './components/MobileThinkingBubble';
@@ -71,6 +72,8 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     refreshCart,
     refreshProfile,
     resetChat,
+    setMessages,
+    clearGameMessages,
   } = useDropAI({ apiBaseUrl: activeBaseUrl, userId });
 
   useEffect(() => {
@@ -154,6 +157,12 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     total: number;
     summary?: string;
   }>({ visible: false, total: 0 });
+  const [orderSuccessModal, setOrderSuccessModal] = useState<{
+    visible: boolean;
+    orderNumber: string;
+    total: number;
+  }>({ visible: false, orderNumber: '', total: 0 });
+  const [completedGameTypes, setCompletedGameTypes] = useState<string[]>([]);
 
   const [selectedChips, setSelectedChips] = useState<string[]>([]);
   const scrollRef = useRef<ScrollView>(null);
@@ -161,9 +170,35 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
   const cartItemCount = cart?.items.reduce((s, i) => s + i.quantity, 0) || 0;
   const cartTotal = cart?.total || 0;
 
+  const handleConfirmOrder = async () => {
+    const totalPaid = confirmModal.total || cartTotal;
+    setConfirmModal({ visible: false, total: 0 });
+    const orderNum = Math.floor(100000 + Math.random() * 900000);
+    await confirmOrder();
+    setOrderSuccessModal({
+      visible: true,
+      orderNumber: String(orderNum),
+      total: totalPaid,
+    });
+    showToast('🎉 Order placed successfully!');
+  };
+
   const handleSend = (textToSend?: string) => {
     const text = (textToSend || input).trim();
     if (!text || isLoading) return;
+
+    const lower = text.toLowerCase();
+    if (lower === 'confirm order' || lower === 'place order' || lower === 'place order now') {
+      if (cart && cart.items.length > 0) {
+        setConfirmModal({
+          visible: true,
+          total: cartTotal,
+          summary: cart.items.map((i) => `${i.quantity}x ${i.meal.name}`).join(', '),
+        });
+        if (!textToSend) setInput('');
+        return;
+      }
+    }
 
     setSelectedChips([]);
     sendMessage(text);
@@ -452,6 +487,14 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                 );
               }
 
+              const isCompletedGameIntro = Boolean(
+                msg.gamePayload && completedGameTypes.includes(msg.gamePayload.gameType)
+              );
+
+              if (isCompletedGameIntro) {
+                return null;
+              }
+
               const shouldShowBubble = isUser
                 ? Boolean(msg.text && msg.text.trim().length > 0)
                 : Boolean(
@@ -678,7 +721,9 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                     )}
 
                     {/* 🎮 IN-CHAT FULL-SCREEN GAME LAUNCH CARD */}
-                    {!msg.isStreaming && msg.gamePayload && (
+                    {!msg.isStreaming &&
+                      msg.gamePayload &&
+                      !completedGameTypes.includes(msg.gamePayload.gameType) && (
                       <MobileInChatGameCard
                         payload={msg.gamePayload}
                         onLaunchGame={() => setActiveGamePayload(msg.gamePayload || null)}
@@ -897,17 +942,28 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
         onClose={() => setConfirmModal({ visible: false, total: 0 })}
         total={confirmModal.total}
         summaryText={confirmModal.summary}
-        onConfirm={confirmOrder}
+        onConfirm={handleConfirmOrder}
+      />
+
+      {/* 🎉 Celebratory Order Placed Success Pop-up Modal */}
+      <MobileOrderSuccessModal
+        visible={orderSuccessModal.visible}
+        orderNumber={orderSuccessModal.orderNumber}
+        total={orderSuccessModal.total}
+        onClose={() => setOrderSuccessModal({ visible: false, orderNumber: '', total: 0 })}
       />
 
       <MobileGamesModal
         visible={isGamesModalOpen}
         onClose={() => setIsGamesModalOpen(false)}
-        onSelectGame={(prompt, payload) => {
+        onSelectGame={(_prompt, payload) => {
           if (payload) {
+            const lastMsg = messages[messages.length - 1];
+            if (lastMsg) {
+              lastGameMsgIdRef.current = lastMsg.id;
+            }
             setActiveGamePayload(payload);
           }
-          handleSend(prompt);
         }}
       />
 
@@ -915,12 +971,33 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
       <MobileGameFullScreenModal
         visible={!!activeGamePayload}
         payload={activeGamePayload}
-        onClose={() => setActiveGamePayload(null)}
-        onAddToCart={(mealId) => {
-          handleAddToCart(mealId);
+        onClose={() => {
+          if (activeGamePayload) {
+            setCompletedGameTypes((prev) => [...prev, activeGamePayload.gameType]);
+          }
+          const lastMsg = messages[messages.length - 1];
+          if (lastMsg) {
+            lastGameMsgIdRef.current = lastMsg.id;
+          }
+          clearGameMessages();
           setActiveGamePayload(null);
         }}
+        onAddToCart={(mealId) => {
+          if (activeGamePayload) {
+            setCompletedGameTypes((prev) => [...prev, activeGamePayload.gameType]);
+          }
+          clearGameMessages();
+          handleAddToCart(mealId);
+          setActiveGamePayload(null);
+          setTimeout(() => {
+            setIsCartOpen(true);
+          }, 350);
+        }}
         onSendMessage={(prompt) => {
+          if (activeGamePayload) {
+            setCompletedGameTypes((prev) => [...prev, activeGamePayload.gameType]);
+          }
+          clearGameMessages();
           setActiveGamePayload(null);
           handleSend(prompt);
         }}
@@ -1115,9 +1192,14 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   bubbleUser: {
-    backgroundColor: '#0D7844',
+    backgroundColor: '#1E293B', // Premium dark slate, high contrast and elegant
     borderBottomRightRadius: 4,
     alignSelf: 'flex-end',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.08,
+    shadowRadius: 3,
+    elevation: 1,
   },
   bubbleAssistant: {
     backgroundColor: '#FFFFFF',
@@ -1453,7 +1535,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#0D7844',
+    backgroundColor: '#1E293B',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1476,15 +1558,17 @@ const styles = StyleSheet.create({
   toastContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#064E3B',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: 24,
+    backgroundColor: '#0F172A', // High contrast rich dark slate, visible over images and cards
+    borderWidth: 1.5,
+    borderColor: '#10B981', // Crisp emerald glow outline
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 26,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 8,
-    elevation: 8,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.35,
+    shadowRadius: 12,
+    elevation: 10,
   },
   toastEmoji: {
     fontSize: 16,
@@ -1493,6 +1577,7 @@ const styles = StyleSheet.create({
   toastText: {
     color: '#FFFFFF',
     fontSize: 13,
-    fontWeight: '700',
+    fontWeight: '800',
+    letterSpacing: 0.2,
   },
 });

@@ -47,7 +47,17 @@ const ROUNDS: QuestionRound[] = [
     ],
   },
   {
-    title: 'Round 2: Protein Choice',
+    title: 'Round 2: Cuisine Craving',
+    shortTitle: 'Cuisine',
+    options: [
+      { label: 'Italian', icon: '🇮🇹', key: 'italian', desc: 'Pasta, Risotto & Bread' },
+      { label: 'Indian', icon: '🇮🇳', key: 'indian', desc: 'Biryani, Curry & Tikka' },
+      { label: 'Indo-Chinese / Asian', icon: '🥢', key: 'asian', desc: 'Noodles & Wok Stir-fry' },
+      { label: 'Japanese & Global', icon: '🍱', key: 'japanese', desc: 'Ramen, Bowls & Teriyaki' },
+    ],
+  },
+  {
+    title: 'Round 3: Protein Choice',
     shortTitle: 'Protein',
     options: [
       { label: 'Chicken', icon: '🍗', key: 'chicken', desc: 'Tender poultry' },
@@ -57,7 +67,7 @@ const ROUNDS: QuestionRound[] = [
     ],
   },
   {
-    title: 'Round 3: Preferred Base',
+    title: 'Round 4: Preferred Base',
     shortTitle: 'Base',
     options: [
       { label: 'Rice & Biryani', icon: '🍚', key: 'rice', desc: 'Fragrant grains' },
@@ -67,7 +77,7 @@ const ROUNDS: QuestionRound[] = [
     ],
   },
   {
-    title: 'Round 4: Mood & Vibe',
+    title: 'Round 5: Mood & Vibe',
     shortTitle: 'Vibe',
     options: [
       { label: 'Healthy & Light', icon: '🥗', key: 'healthy', desc: 'Clean & fresh' },
@@ -123,7 +133,27 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
 
       let candidates = REAL_DAILY_DROP_MEALS.filter((m) => m.category === 'main');
 
-      // 1. Protein filtering
+      // 1. Cuisine filtering
+      const wantsItalian = nextChoices.includes('italian');
+      const wantsIndian = nextChoices.includes('indian');
+      const wantsAsian = nextChoices.includes('asian');
+      const wantsJapanese = nextChoices.includes('japanese');
+
+      if (wantsItalian) {
+        const pool = candidates.filter((m) => m.cuisine.toLowerCase() === 'italian' || /pasta|risotto|napoletana|lasagna|rigatoni/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
+      } else if (wantsIndian) {
+        const pool = candidates.filter((m) => /indian|punjabi/i.test(m.cuisine) || /biryani|curry|tikka|paneer|dal/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
+      } else if (wantsAsian) {
+        const pool = candidates.filter((m) => /indo-chinese|chinese|thai/i.test(m.cuisine) || /hakka|manchurian|noodles|wok/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
+      } else if (wantsJapanese) {
+        const pool = candidates.filter((m) => /japanese|korean/i.test(m.cuisine) || /ramen|teriyaki|miso|donburi/i.test(m.name));
+        if (pool.length > 0) candidates = pool;
+      }
+
+      // 2. Protein filtering
       if (wantsChicken) {
         const pool = candidates.filter((m) => /chicken/i.test(m.name) || /chicken/i.test(m.description));
         if (pool.length > 0) candidates = pool;
@@ -284,7 +314,7 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
       </View>
 
       <Text style={styles.subtitle}>
-        Quick game. I'll find your perfect dinner in 4 questions.
+        Quick game. I'll find your perfect dinner in 5 questions.
       </Text>
 
       {/* Stepper with Previous Choice Icons so user remembers choices */}
@@ -407,9 +437,11 @@ const styles = StyleSheet.create({
     color: '#0D7844',
   },
   subtitle: {
-    fontSize: 12,
-    color: '#6B7280',
-    marginBottom: 10,
+    fontSize: 14.5,
+    fontWeight: '600',
+    color: '#374151',
+    lineHeight: 20,
+    marginBottom: 14,
   },
 
   // Stepper with Previous Choice Icons
@@ -422,7 +454,8 @@ const styles = StyleSheet.create({
   },
   stepCol: {
     alignItems: 'center',
-    width: 60,
+    minWidth: 46,
+    flexShrink: 0,
   },
   stepCircle: {
     width: 32,

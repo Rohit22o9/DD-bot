@@ -88,6 +88,13 @@ const GAME_METADATA: Record<
     themeColor: '#059669',
     bgBadge: '#ECFDF5',
   },
+  food_iq: {
+    title: 'Food IQ',
+    subtitle: 'Learn • Understand • Taste • 30s Culinary Lessons 🧠',
+    icon: '🧠',
+    themeColor: '#7C3AED',
+    bgBadge: '#F5F3FF',
+  },
 };
 
 export const MobileGameFullScreenModal: React.FC<MobileGameFullScreenModalProps> = ({
@@ -167,14 +174,6 @@ export const MobileGameFullScreenModal: React.FC<MobileGameFullScreenModalProps>
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          {/* Game Tag Banner */}
-          <View style={styles.modeBanner}>
-            <View style={styles.modeDot} />
-            <Text style={styles.modeBannerText}>
-              FULL-SCREEN GAME ARENA • TAP TO INTERACT
-            </Text>
-          </View>
-
           {/* Game Widget Container */}
           <View style={styles.widgetWrapper}>
             <MobileDiscoveryGameContainer

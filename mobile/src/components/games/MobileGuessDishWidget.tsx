@@ -107,49 +107,59 @@ export const MobileGuessDishWidget: React.FC<MobileGuessDishWidgetProps> = ({
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+      {/* Attractive Trivia Header */}
       <View style={styles.header}>
         <View style={styles.titleRow}>
-          <Text style={styles.headerEmoji}>🕵️</Text>
+          <View style={styles.detectiveBadge}>
+            <Text style={styles.headerEmoji}>🕵️</Text>
+          </View>
           <View>
             <Text style={styles.headerTitle}>Guess the Dish</Text>
-            <Text style={styles.sessionStatus}>1 ATTEMPT PER CHALLENGE</Text>
+            <Text style={styles.sessionStatus}>🎯 1 ATTEMPT CHALLENGE</Text>
           </View>
         </View>
-        <View style={styles.challengeBadge}>
-          <Text style={styles.challengeBadgeText}>Daily Trivia</Text>
+        <View style={styles.xpBadge}>
+          <Text style={styles.xpBadgeText}>✨ +50 Foodie XP</Text>
         </View>
       </View>
 
       <Text style={styles.subtitle}>
-        Can you identify today's real Daily Drop mystery dish from the clues?
+        Identify today's real Daily Drop mystery dish from the 3 secret clues!
       </Text>
 
-      {/* Clues Box */}
-      <View style={styles.cluesBox}>
+      {/* 3 Rich Interactive Clue Cards */}
+      <View style={styles.cluesGrid}>
         {challenge.clues.map((clue, idx) => (
-          <View key={idx} style={styles.clueRow}>
-            <Text style={styles.clueBullet}>🔍</Text>
-            <Text style={styles.clueText}>{clue}</Text>
+          <View key={idx} style={styles.clueCard}>
+            <View style={styles.clueBadge}>
+              <Text style={styles.clueBadgeText}>CLUE #{idx + 1}</Text>
+            </View>
+            <Text style={styles.clueText}>{clue.replace(/^Clue \d:\s*/, '')}</Text>
           </View>
         ))}
       </View>
 
-      {/* Multiple Choice Options (Only active before guessing) */}
+      {/* Multiple Choice Options (Attractive A/B/C lettered tiles) */}
       {!hasAttempted ? (
         <View style={styles.optionsCol}>
-          <Text style={styles.promptLabel}>Select your one guess below:</Text>
-          {challenge.options.map((opt, idx) => (
-            <TouchableOpacity
-              key={idx}
-              style={styles.optionBtn}
-              activeOpacity={0.8}
-              onPress={() => handlePickOption(opt)}
-            >
-              <View style={styles.radioDot} />
-              <Text style={styles.optionBtnText}>{opt}</Text>
-            </TouchableOpacity>
-          ))}
+          <Text style={styles.promptLabel}>Choose your guess:</Text>
+          {challenge.options.map((opt, idx) => {
+            const letter = String.fromCharCode(65 + idx); // A, B, C
+            return (
+              <TouchableOpacity
+                key={idx}
+                style={styles.optionBtn}
+                activeOpacity={0.8}
+                onPress={() => handlePickOption(opt)}
+              >
+                <View style={styles.optionLetterBadge}>
+                  <Text style={styles.optionLetterText}>{letter}</Text>
+                </View>
+                <Text style={styles.optionBtnText}>{opt}</Text>
+                <Text style={styles.optionArrow}>➔</Text>
+              </TouchableOpacity>
+            );
+          })}
         </View>
       ) : (
         /* Single-Attempt Outcome Section */
@@ -286,101 +296,143 @@ const styles = StyleSheet.create({
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 10,
+  },
+  detectiveBadge: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: '#FEF3C7',
+    borderWidth: 1.5,
+    borderColor: '#F59E0B',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   headerEmoji: {
-    fontSize: 24,
-    marginRight: 10,
+    fontSize: 20,
   },
   headerTitle: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: '800',
     color: '#0F172A',
   },
   sessionStatus: {
     fontSize: 9,
     fontWeight: '800',
-    color: '#0D7844',
+    color: '#059669',
     letterSpacing: 0.5,
     marginTop: 1,
   },
-  challengeBadge: {
-    backgroundColor: '#FEF3C7',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 8,
+  xpBadge: {
+    backgroundColor: '#ECFDF5',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#FDE68A',
+    borderColor: '#A7F3D0',
   },
-  challengeBadgeText: {
-    color: '#B45309',
-    fontSize: 10,
+  xpBadgeText: {
+    color: '#047857',
+    fontSize: 11,
     fontWeight: '800',
   },
   subtitle: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#475569',
     marginBottom: 14,
-    lineHeight: 18,
-  },
-  cluesBox: {
-    backgroundColor: '#F8FAFC',
-    borderRadius: 14,
-    padding: 14,
-    marginBottom: 16,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
-  },
-  clueRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    marginVertical: 4,
-  },
-  clueBullet: {
-    fontSize: 13,
-    marginRight: 8,
-    marginTop: 1,
-  },
-  clueText: {
-    flex: 1,
-    fontSize: 13,
-    color: '#1E293B',
     lineHeight: 18,
     fontWeight: '500',
   },
+  cluesGrid: {
+    gap: 8,
+    marginBottom: 16,
+  },
+  clueCard: {
+    backgroundColor: '#F8FAFC',
+    borderRadius: 14,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.03,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  clueBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#EEF2FF',
+    borderRadius: 6,
+    paddingHorizontal: 7,
+    paddingVertical: 2,
+    marginBottom: 5,
+    borderWidth: 1,
+    borderColor: '#C7D2FE',
+  },
+  clueBadgeText: {
+    color: '#4338CA',
+    fontSize: 9,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  clueText: {
+    fontSize: 13,
+    color: '#1E293B',
+    lineHeight: 18,
+    fontWeight: '600',
+  },
   promptLabel: {
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: '800',
     color: '#64748B',
     marginBottom: 8,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
   optionsCol: {
-    gap: 8,
+    gap: 10,
   },
   optionBtn: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F1F5F9',
-    borderRadius: 12,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
     paddingVertical: 14,
     paddingHorizontal: 14,
     borderWidth: 1.5,
-    borderColor: '#CBD5E1',
+    borderColor: '#E2E8F0',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
   },
-  radioDot: {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
-    borderWidth: 2,
-    borderColor: '#94A3B8',
-    marginRight: 10,
+  optionLetterBadge: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: '#F1F5F9',
+    borderWidth: 1,
+    borderColor: '#CBD5E1',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
+  optionLetterText: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#334155',
   },
   optionBtnText: {
     fontSize: 14,
     fontWeight: '700',
     color: '#0F172A',
     flex: 1,
+  },
+  optionArrow: {
+    fontSize: 14,
+    color: '#94A3B8',
+    fontWeight: '800',
   },
   outcomeSection: {
     marginTop: 4,

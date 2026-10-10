@@ -37,24 +37,84 @@ export const MobileMealBattleWidget: React.FC<MobileMealBattleWidgetProps> = ({
   const [winner, setWinner] = useState<Meal | null>(null);
   const [showCelebration, setShowCelebration] = useState(false);
 
-  const handlePickContender = (picked: Meal) => {
-    if (currentRound >= totalRounds) {
-      // Winner crowned!
-      setWinner(picked);
-      setIsGameOver(true);
-      setShowCelebration(true);
-    } else {
-      const nextRound = currentRound + 1;
-      setCurrentRound(nextRound);
-      setCurrentLeader(picked);
-      // Next challenger from randomized deck
-      const nextChallenger = battleDeck[nextRound] || realMains[(nextRound + 2) % realMains.length];
-      setCurrentChallenger(nextChallenger);
-    }
+  // Tap animation & feedback state
+  const [selectedContender, setSelectedContender] = useState<'leader' | 'challenger' | null>(null);
+  const [isVoting, setIsVoting] = useState(false);
+
+  const leaderScale = React.useRef(new Animated.Value(1)).current;
+  const challengerScale = React.useRef(new Animated.Value(1)).current;
+  const leaderOpacity = React.useRef(new Animated.Value(1)).current;
+  const challengerOpacity = React.useRef(new Animated.Value(1)).current;
+
+  const handlePickContender = (which: 'leader' | 'challenger', picked: Meal) => {
+    if (isVoting) return;
+    setIsVoting(true);
+    setSelectedContender(which);
+
+    const winnerScale = which === 'leader' ? leaderScale : challengerScale;
+    const loserScale = which === 'leader' ? challengerScale : leaderScale;
+    const loserOpacity = which === 'leader' ? challengerOpacity : leaderOpacity;
+
+    // Pulse animation on the tapped meal: punch up and settle
+    Animated.parallel([
+      Animated.sequence([
+        Animated.timing(winnerScale, {
+          toValue: 1.05,
+          duration: 160,
+          useNativeDriver: true,
+        }),
+        Animated.spring(winnerScale, {
+          toValue: 1.02,
+          friction: 4,
+          tension: 70,
+          useNativeDriver: true,
+        }),
+      ]),
+      Animated.timing(loserScale, {
+        toValue: 0.94,
+        duration: 200,
+        useNativeDriver: true,
+      }),
+      Animated.timing(loserOpacity, {
+        toValue: 0.45,
+        duration: 200,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      // Brief pause so user sees the selected winner clearly before transitioning
+      setTimeout(() => {
+        leaderScale.setValue(1);
+        challengerScale.setValue(1);
+        leaderOpacity.setValue(1);
+        challengerOpacity.setValue(1);
+        setSelectedContender(null);
+        setIsVoting(false);
+
+        if (currentRound >= totalRounds) {
+          // Winner crowned!
+          setWinner(picked);
+          setIsGameOver(true);
+          setShowCelebration(true);
+        } else {
+          const nextRound = currentRound + 1;
+          setCurrentRound(nextRound);
+          setCurrentLeader(picked);
+          // Next challenger from randomized deck
+          const nextChallenger = battleDeck[nextRound] || realMains[(nextRound + 2) % realMains.length];
+          setCurrentChallenger(nextChallenger);
+        }
+      }, 340);
+    });
   };
 
   const handleRestart = () => {
     const newDeck = [...realMains].sort(() => Math.random() - 0.5).slice(0, 8);
+    leaderScale.setValue(1);
+    challengerScale.setValue(1);
+    leaderOpacity.setValue(1);
+    challengerOpacity.setValue(1);
+    setSelectedContender(null);
+    setIsVoting(false);
     setBattleDeck(newDeck);
     setCurrentRound(1);
     setCurrentLeader(newDeck[0]);
@@ -147,31 +207,54 @@ export const MobileMealBattleWidget: React.FC<MobileMealBattleWidgetProps> = ({
       </Text>
 
       {/* Contender 1 */}
-      <TouchableOpacity
-        style={styles.fighterCard}
-        activeOpacity={0.85}
-        onPress={() => handlePickContender(currentLeader)}
+      <Animated.View
+        style={{
+          transform: [{ scale: leaderScale }],
+          opacity: leaderOpacity,
+        }}
       >
-        <MobileMealImage
-          uri={currentLeader.imageUrl}
-          style={styles.fighterImage}
-          dishName={currentLeader.name}
-        />
-        <View style={styles.fighterInfo}>
-          <View style={styles.fighterTop}>
-            <Text style={styles.fighterName} numberOfLines={1}>
-              {currentLeader.name}
+        <TouchableOpacity
+          style={[
+            styles.fighterCard,
+            selectedContender === 'leader' && styles.fighterCardSelected,
+          ]}
+          activeOpacity={0.85}
+          disabled={isVoting}
+          onPress={() => handlePickContender('leader', currentLeader)}
+        >
+          <MobileMealImage
+            uri={currentLeader.imageUrl}
+            style={styles.fighterImage}
+            dishName={currentLeader.name}
+          />
+          <View style={styles.fighterInfo}>
+            <View style={styles.fighterTop}>
+              <Text style={styles.fighterName} numberOfLines={1}>
+                {currentLeader.name}
+              </Text>
+              <Text style={styles.fighterPrice}>${currentLeader.price.toFixed(2)}</Text>
+            </View>
+            <Text style={styles.fighterSub}>
+              {currentLeader.restaurantName} · {currentLeader.cuisine}
             </Text>
-            <Text style={styles.fighterPrice}>${currentLeader.price.toFixed(2)}</Text>
           </View>
-          <Text style={styles.fighterSub}>
-            {currentLeader.restaurantName} · {currentLeader.cuisine}
-          </Text>
-        </View>
-        <View style={styles.voteTapBadge}>
-          <Text style={styles.voteTapText}>TAP TO VOTE 👆</Text>
-        </View>
-      </TouchableOpacity>
+          <View
+            style={[
+              styles.voteTapBadge,
+              selectedContender === 'leader' && styles.voteTapBadgeSelected,
+            ]}
+          >
+            <Text
+              style={[
+                styles.voteTapText,
+                selectedContender === 'leader' && styles.voteTapTextSelected,
+              ]}
+            >
+              {selectedContender === 'leader' ? '👑 WINNER CHOSEN!' : 'TAP TO VOTE 👆'}
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </Animated.View>
 
       {/* VS Ribbon */}
       <View style={styles.vsContainer}>
@@ -183,31 +266,54 @@ export const MobileMealBattleWidget: React.FC<MobileMealBattleWidgetProps> = ({
       </View>
 
       {/* Contender 2 */}
-      <TouchableOpacity
-        style={styles.fighterCard}
-        activeOpacity={0.85}
-        onPress={() => handlePickContender(currentChallenger)}
+      <Animated.View
+        style={{
+          transform: [{ scale: challengerScale }],
+          opacity: challengerOpacity,
+        }}
       >
-        <MobileMealImage
-          uri={currentChallenger.imageUrl}
-          style={styles.fighterImage}
-          dishName={currentChallenger.name}
-        />
-        <View style={styles.fighterInfo}>
-          <View style={styles.fighterTop}>
-            <Text style={styles.fighterName} numberOfLines={1}>
-              {currentChallenger.name}
+        <TouchableOpacity
+          style={[
+            styles.fighterCard,
+            selectedContender === 'challenger' && styles.fighterCardSelected,
+          ]}
+          activeOpacity={0.85}
+          disabled={isVoting}
+          onPress={() => handlePickContender('challenger', currentChallenger)}
+        >
+          <MobileMealImage
+            uri={currentChallenger.imageUrl}
+            style={styles.fighterImage}
+            dishName={currentChallenger.name}
+          />
+          <View style={styles.fighterInfo}>
+            <View style={styles.fighterTop}>
+              <Text style={styles.fighterName} numberOfLines={1}>
+                {currentChallenger.name}
+              </Text>
+              <Text style={styles.fighterPrice}>${currentChallenger.price.toFixed(2)}</Text>
+            </View>
+            <Text style={styles.fighterSub}>
+              {currentChallenger.restaurantName} · {currentChallenger.cuisine}
             </Text>
-            <Text style={styles.fighterPrice}>${currentChallenger.price.toFixed(2)}</Text>
           </View>
-          <Text style={styles.fighterSub}>
-            {currentChallenger.restaurantName} · {currentChallenger.cuisine}
-          </Text>
-        </View>
-        <View style={styles.voteTapBadge}>
-          <Text style={styles.voteTapText}>TAP TO VOTE 👆</Text>
-        </View>
-      </TouchableOpacity>
+          <View
+            style={[
+              styles.voteTapBadge,
+              selectedContender === 'challenger' && styles.voteTapBadgeSelected,
+            ]}
+          >
+            <Text
+              style={[
+                styles.voteTapText,
+                selectedContender === 'challenger' && styles.voteTapTextSelected,
+              ]}
+            >
+              {selectedContender === 'challenger' ? '👑 WINNER CHOSEN!' : 'TAP TO VOTE 👆'}
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </Animated.View>
     </View>
   );
 };
@@ -297,6 +403,16 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: '#6B7280',
   },
+  fighterCardSelected: {
+    borderColor: '#0D7844',
+    borderWidth: 2,
+    backgroundColor: '#F0FDF4',
+    shadowColor: '#0D7844',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 5,
+  },
   voteTapBadge: {
     backgroundColor: '#F3F4F6',
     paddingVertical: 5,
@@ -304,11 +420,19 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#E5E7EB',
   },
+  voteTapBadgeSelected: {
+    backgroundColor: '#0D7844',
+    borderTopColor: '#0D7844',
+  },
   voteTapText: {
     fontSize: 11,
     fontWeight: '700',
     color: '#0D7844',
     letterSpacing: 0.5,
+  },
+  voteTapTextSelected: {
+    color: '#FFFFFF',
+    fontWeight: '800',
   },
   vsContainer: {
     flexDirection: 'row',
