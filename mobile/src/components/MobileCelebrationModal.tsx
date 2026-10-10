@@ -4,6 +4,7 @@ import {
   Text,
   Modal,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   StyleSheet,
   Animated,
   Dimensions,
@@ -27,6 +28,7 @@ interface MobileCelebrationModalProps {
   title?: string;
   subtitle?: string;
   selectedPreferences?: PreferenceBadge[];
+  initialStep?: 'celebration' | 'reveal';
 }
 
 const CONFETTI_COLORS = [
@@ -71,9 +73,15 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
   title,
   subtitle = "Drop AI matched your recipe with today's hot kitchen drop!",
   selectedPreferences,
+  initialStep,
 }) => {
-  // 2-Step Flow: 'celebration' -> 'reveal'
-  const [step, setStep] = React.useState<'celebration' | 'reveal'>('celebration');
+  const computeStep = () => {
+    if (initialStep) return initialStep;
+    return selectedPreferences && selectedPreferences.length > 0 ? 'celebration' : 'reveal';
+  };
+
+  // Show celebration step if preferences exist (custom builder); otherwise reveal meal card directly
+  const [step, setStep] = React.useState<'celebration' | 'reveal'>(computeStep);
 
   // Card pop-in scale & opacity
   const cardScale = useRef(new Animated.Value(0.7)).current;
@@ -86,7 +94,7 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
 
   useEffect(() => {
     if (visible) {
-      setStep('celebration');
+      setStep(computeStep());
       // 1. Pop in the meal card
       Animated.parallel([
         Animated.spring(cardScale, {
@@ -118,12 +126,12 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
         ).start();
       });
     } else {
-      setStep('celebration');
+      setStep(computeStep());
       cardScale.setValue(0.7);
       cardOpacity.setValue(0);
       particleAnims.forEach((anim) => anim.setValue(0));
     }
-  }, [visible]);
+  }, [visible, selectedPreferences, initialStep]);
 
   if (!visible || !meal) return null;
 
@@ -131,7 +139,7 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
   const displayTitle =
     title && !title.toUpperCase().includes('CUSTOM MEAL BUILT')
       ? title
-      : 'Your Meal is Ready! 🎉';
+      : "Tonight's Kitchen Match 🌟";
 
   return (
     <Modal
@@ -142,8 +150,14 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
       onRequestClose={onClose}
     >
       <View style={styles.overlay}>
-        {/* Central Glowing Card Container */}
+        {/* Backdrop touchable to dismiss modal and view the screen underneath */}
+        <TouchableWithoutFeedback onPress={onClose}>
+          <View style={styles.backdropPressable} />
+        </TouchableWithoutFeedback>
+
+        {/* Central Card Container */}
         <Animated.View
+          onStartShouldSetResponder={() => true}
           style={[
             styles.cardContainer,
             {
@@ -178,17 +192,6 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
                 </View>
               )}
 
-              {/* Ready Indicator Box */}
-              <View style={styles.celebrationReadyBox}>
-                <Text style={styles.celebrationReadyEmoji}>🍽️</Text>
-                <View style={styles.celebrationReadyTextCol}>
-                  <Text style={styles.celebrationReadyTitle}>Perfect Chef Drop Ready</Text>
-                  <Text style={styles.celebrationReadySub}>
-                    Crafted specially to match today's fresh kitchen drop
-                  </Text>
-                </View>
-              </View>
-
               {/* Button: View Your Meal */}
               <TouchableOpacity
                 style={styles.viewMealBtn}
@@ -197,21 +200,12 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
               >
                 <Text style={styles.viewMealBtnText}>🍽️ View Your Meal</Text>
               </TouchableOpacity>
-
-              {/* Secondary Option: Continue */}
-              <TouchableOpacity
-                style={styles.continueBtn}
-                activeOpacity={0.7}
-                onPress={onClose}
-              >
-                <Text style={styles.continueBtnText}>Continue</Text>
-              </TouchableOpacity>
             </View>
           ) : (
             /* ================= STEP 2: REVEALED MEAL DETAILS ================= */
             <View style={styles.revealStepContainer}>
               <View style={styles.revealHeaderRow}>
-                <Text style={styles.revealHeaderTitle}>Tonight's Kitchen Match 🌟</Text>
+                <Text style={styles.revealHeaderTitle}>{displayTitle}</Text>
               </View>
 
               {/* Winning Dish Card */}
@@ -263,15 +257,6 @@ export const MobileCelebrationModal: React.FC<MobileCelebrationModalProps> = ({
                   </TouchableOpacity>
                 </View>
               </View>
-
-              {/* Dismiss / Continue Button */}
-              <TouchableOpacity
-                style={styles.continueBtn}
-                activeOpacity={0.7}
-                onPress={onClose}
-              >
-                <Text style={styles.continueBtnText}>Continue</Text>
-              </TouchableOpacity>
             </View>
           )}
         </Animated.View>
@@ -328,6 +313,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 20,
   },
+  backdropPressable: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
   confettiOverlay: {
     position: 'absolute',
     top: 0,
@@ -354,13 +346,13 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 20,
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: '#FDE68A', // Gold celebration trim
-    shadowColor: '#F59E0B',
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.35,
-    shadowRadius: 20,
-    elevation: 12,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.16,
+    shadowRadius: 24,
+    elevation: 10,
   },
   topBadgeWrapper: {
     marginBottom: 6,
@@ -560,34 +552,6 @@ const styles = StyleSheet.create({
     color: '#0F172A',
     textAlign: 'center',
     marginBottom: 6,
-  },
-  celebrationReadyBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#F0FDF4',
-    borderWidth: 1.5,
-    borderColor: '#86EFAC',
-    borderRadius: 16,
-    padding: 12,
-    width: '100%',
-    marginVertical: 12,
-    gap: 12,
-  },
-  celebrationReadyEmoji: {
-    fontSize: 24,
-  },
-  celebrationReadyTextCol: {
-    flex: 1,
-  },
-  celebrationReadyTitle: {
-    fontSize: 13,
-    fontWeight: '800',
-    color: '#166534',
-  },
-  celebrationReadySub: {
-    fontSize: 11,
-    color: '#15803D',
-    marginTop: 2,
   },
   viewMealBtn: {
     width: '100%',

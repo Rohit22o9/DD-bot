@@ -283,6 +283,7 @@ export const MobileThisOrThatWidget: React.FC<MobileThisOrThatWidgetProps> = ({
         <MobileCelebrationModal
           visible={showCelebration}
           meal={matchedMeal}
+          initialStep="reveal"
           onClose={() => setShowCelebration(false)}
           onAddToCart={(mealId) => {
             setShowCelebration(false);

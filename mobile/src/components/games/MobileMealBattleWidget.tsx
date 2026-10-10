@@ -203,7 +203,7 @@ export const MobileMealBattleWidget: React.FC<MobileMealBattleWidgetProps> = ({
       </View>
 
       <Text style={styles.subtext}>
-        Which one wins? Tap your craving to crown tonight's champion.
+        Which one wins? Tap either meal to vote and crown tonight's champion.
       </Text>
 
       {/* Contender 1 */}
@@ -236,21 +236,6 @@ export const MobileMealBattleWidget: React.FC<MobileMealBattleWidgetProps> = ({
             </View>
             <Text style={styles.fighterSub}>
               {currentLeader.restaurantName} · {currentLeader.cuisine}
-            </Text>
-          </View>
-          <View
-            style={[
-              styles.voteTapBadge,
-              selectedContender === 'leader' && styles.voteTapBadgeSelected,
-            ]}
-          >
-            <Text
-              style={[
-                styles.voteTapText,
-                selectedContender === 'leader' && styles.voteTapTextSelected,
-              ]}
-            >
-              {selectedContender === 'leader' ? '👑 WINNER CHOSEN!' : 'TAP TO VOTE 👆'}
             </Text>
           </View>
         </TouchableOpacity>
@@ -295,21 +280,6 @@ export const MobileMealBattleWidget: React.FC<MobileMealBattleWidgetProps> = ({
             </View>
             <Text style={styles.fighterSub}>
               {currentChallenger.restaurantName} · {currentChallenger.cuisine}
-            </Text>
-          </View>
-          <View
-            style={[
-              styles.voteTapBadge,
-              selectedContender === 'challenger' && styles.voteTapBadgeSelected,
-            ]}
-          >
-            <Text
-              style={[
-                styles.voteTapText,
-                selectedContender === 'challenger' && styles.voteTapTextSelected,
-              ]}
-            >
-              {selectedContender === 'challenger' ? '👑 WINNER CHOSEN!' : 'TAP TO VOTE 👆'}
             </Text>
           </View>
         </TouchableOpacity>
