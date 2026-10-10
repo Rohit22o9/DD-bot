@@ -13,6 +13,7 @@ import {
 } from '../../types';
 import { AIProvider } from '../providers/AIProvider';
 import { GeminiProvider } from '../providers/GeminiProvider';
+import { QwenProvider } from '../providers/QwenProvider';
 import { OpenAIProvider } from '../providers/OpenAIProvider';
 import { HybridRuleProvider } from '../providers/HybridRuleProvider';
 import { toolRegistry, ToolRegistry } from '../tools/ToolRegistry';
@@ -90,9 +91,20 @@ export class DropAIOrchestrator {
     if (options?.aiProvider) {
       this.aiProvider = options.aiProvider;
     } else {
+      const qwen = new QwenProvider();
       const gemini = new GeminiProvider();
       const openAI = new OpenAIProvider();
-      if (gemini.isAvailable()) {
+      const pref = (process.env.AI_PROVIDER || '').toLowerCase();
+
+      if (pref === 'qwen' && qwen.isAvailable()) {
+        this.aiProvider = qwen;
+      } else if (pref === 'gemini' && gemini.isAvailable()) {
+        this.aiProvider = gemini;
+      } else if (pref === 'openai' && openAI.isAvailable()) {
+        this.aiProvider = openAI;
+      } else if (qwen.isAvailable()) {
+        this.aiProvider = qwen;
+      } else if (gemini.isAvailable()) {
         this.aiProvider = gemini;
       } else if (openAI.isAvailable()) {
         this.aiProvider = openAI;
@@ -317,8 +329,8 @@ export class DropAIOrchestrator {
       const safe = this.safety.filterSafeMeals(allMains, preferences);
       const picked = safe.slice(0, 4);
       let replyMsg = "Here are tonight's top chef-crafted picks from our kitchen, curated for great flavor and balanced nutrition:";
-      if (this.aiProvider instanceof GeminiProvider) {
-        const aiMsg = await this.aiProvider.generateConversationalReply(rawInput, picked, {
+      if ('generateConversationalReply' in this.aiProvider && typeof (this.aiProvider as any).generateConversationalReply === 'function') {
+        const aiMsg = await (this.aiProvider as any).generateConversationalReply(rawInput, picked, {
           userName: userProfile?.name,
           dietPreferences: preferences?.dietaryPreferences,
           allergies: preferences?.allergies,
@@ -492,8 +504,8 @@ export class DropAIOrchestrator {
       const safeMeals = [qBowl, salmon, beetroot, thaiChicken].filter(Boolean) as Meal[];
 
       let replyMsg = 'Here are some healthy options for you. These meals are nutritious, fresh and full of flavour. ✨';
-      if (this.aiProvider instanceof GeminiProvider) {
-        const aiMsg = await this.aiProvider.generateConversationalReply(rawInput, safeMeals, {
+      if ('generateConversationalReply' in this.aiProvider && typeof (this.aiProvider as any).generateConversationalReply === 'function') {
+        const aiMsg = await (this.aiProvider as any).generateConversationalReply(rawInput, safeMeals, {
           userName: userProfile?.name,
           dietPreferences: preferences?.dietaryPreferences,
           allergies: preferences?.allergies,
@@ -570,8 +582,8 @@ export class DropAIOrchestrator {
         ? 'Here are our best value meals today! Generous portions, high protein, and exceptional ratings:'
         : `Here are great options ${isUnder10 ? 'under $10' : isUnder12 ? 'under $12' : 'under $15'}:`;
 
-      if (this.aiProvider instanceof GeminiProvider) {
-        const aiMsg = await this.aiProvider.generateConversationalReply(rawInput, picked, {
+      if ('generateConversationalReply' in this.aiProvider && typeof (this.aiProvider as any).generateConversationalReply === 'function') {
+        const aiMsg = await (this.aiProvider as any).generateConversationalReply(rawInput, picked, {
           userName: userProfile?.name,
           dietPreferences: preferences?.dietaryPreferences,
           allergies: preferences?.allergies,
@@ -1083,8 +1095,8 @@ export class DropAIOrchestrator {
       const picked = (adventurousMeals.length > 0 ? adventurousMeals : allMeals).slice(0, 3);
 
       let replyMsg = 'Here are exciting, authentic dishes outside your usual routine:';
-      if (this.aiProvider instanceof GeminiProvider) {
-        const aiMsg = await this.aiProvider.generateConversationalReply(rawInput, picked, {
+      if ('generateConversationalReply' in this.aiProvider && typeof (this.aiProvider as any).generateConversationalReply === 'function') {
+        const aiMsg = await (this.aiProvider as any).generateConversationalReply(rawInput, picked, {
           userName: userProfile?.name,
           dietPreferences: preferences?.dietaryPreferences,
           allergies: preferences?.allergies,
@@ -2454,9 +2466,9 @@ export class DropAIOrchestrator {
       responseMsg = `Explored something fresh outside your routine!\nHere are authentic ${targetCuisine} dishes tailored for you:`;
     } else if (intent.isAlternativeRequest) {
       responseMsg = 'Here are fresh alternative options for you.\nHandpicked to match your dietary preferences:';
-    } else if (this.aiProvider instanceof GeminiProvider) {
+    } else if ('generateConversationalReply' in this.aiProvider && typeof (this.aiProvider as any).generateConversationalReply === 'function') {
       try {
-        const dynamicReply = await this.aiProvider.generateConversationalReply(
+        const dynamicReply = await (this.aiProvider as any).generateConversationalReply(
           rawInput,
           recommendations.map((r) => r.meal),
           {
