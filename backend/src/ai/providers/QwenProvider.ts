@@ -35,7 +35,7 @@ export class QwenProvider implements AIProvider {
     }
 
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 12000); // 12s timeout for local inference
+    const timeout = setTimeout(() => controller.abort(), 45000); // 45s timeout to allow local model loading and inference
 
     try {
       const endpoint = this.baseUrl.endsWith('/chat/completions')
