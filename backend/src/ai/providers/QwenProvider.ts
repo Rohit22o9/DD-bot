@@ -112,11 +112,9 @@ User Query: "${userInput}"`;
 
   async generateConversationalReply(
     userInput: string,
-    meals: Meal[],
+    meals: Meal[] = [],
     userContext?: { userName?: string; dietPreferences?: string[]; allergies?: string[] }
   ): Promise<string> {
-    if (meals.length === 0) return '';
-
     const mealSummaries = meals
       .slice(0, 4)
       .map(
@@ -125,7 +123,9 @@ User Query: "${userInput}"`;
       )
       .join('\n');
 
-    const prompt = `The user asked: "${userInput}".
+    const prompt =
+      meals.length > 0
+        ? `The user asked: "${userInput}".
 Dietary preferences: ${userContext?.dietPreferences?.join(', ') || 'None specified'}.
 Allergies: ${userContext?.allergies?.join(', ') || 'None'}.
 
@@ -135,7 +135,12 @@ ${mealSummaries}
 Write a natural, warm, thoughtful, 2 to 3 sentence GPT-style response:
 - Answer directly with clear culinary reasoning (why these dishes fit their craving/nutrition).
 - Do NOT ask repetitive survey questions (do NOT ask "what are you in the mood for?" or "what price works for you?").
-- Act like an intelligent food expert who already picked the best options for them.`;
+- Act like an intelligent food expert who already picked the best options for them.`
+        : `The user asked Drop AI: "${userInput}".
+Dietary preferences: ${userContext?.dietPreferences?.join(', ') || 'None specified'}.
+Allergies: ${userContext?.allergies?.join(', ') || 'None'}.
+
+Provide a helpful, natural, friendly 2 to 3 sentence answer to their question directly as Drop AI, the intelligent dining & grocery ordering assistant for Daily Drop.`;
 
     try {
       const reply = await this.generateText(

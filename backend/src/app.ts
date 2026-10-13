@@ -8,11 +8,12 @@ import orderRoutes from './routes/orderRoutes';
 import mealPlanRoutes from './routes/mealPlanRoutes';
 import mcpRoutes from './routes/mcpRoutes';
 import feedbackRoutes from './routes/feedbackRoutes';
+import voiceRoutes from './routes/voiceRoutes';
 
 export const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '25mb' }));
 
 // Health Check
 app.get('/api/health', (_req, res) => {
@@ -33,6 +34,7 @@ app.use('/api', orderRoutes);
 app.use('/api', mealPlanRoutes);
 app.use('/api', mcpRoutes);
 app.use('/api', feedbackRoutes);
+app.use('/api', voiceRoutes);
 
 // Global Error Handler Middleware
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {

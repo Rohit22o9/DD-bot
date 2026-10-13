@@ -218,6 +218,27 @@ const CANONICAL_FOOD_WORDS = [
   'tacos',
 ];
 
+// Whitelist of valid English words, food items, groceries, and actions that must NEVER be fuzzy altered
+const VALID_WORDS_WHITELIST = new Set([
+  'butter', 'cheese', 'bread', 'milk', 'eggs', 'egg', 'rice', 'meat', 'pork', 'fish',
+  'apple', 'apples', 'banana', 'bananas', 'tomato', 'tomatoes', 'potato', 'potatoes',
+  'onion', 'onions', 'garlic', 'spinach', 'lemon', 'lemons', 'lime', 'limes', 'curd',
+  'yogurt', 'yoghurt', 'cream', 'berry', 'berries', 'grape', 'grapes', 'fruit', 'fruits',
+  'water', 'juice', 'coffee', 'tea', 'soda', 'cake', 'cookie', 'cookies', 'fries',
+  'chip', 'chips', 'roll', 'rolls', 'wrap', 'wraps', 'sandwich', 'pasta', 'sauce',
+  'oil', 'sugar', 'salt', 'pepper', 'spice', 'spices', 'honey', 'oats', 'cereal',
+  'flour', 'bean', 'beans', 'lentil', 'lentils', 'pea', 'peas', 'corn', 'tofu',
+  'chicken', 'beef', 'lamb', 'mutton', 'seafood', 'shrimp', 'prawn', 'salmon',
+  'tuna', 'trout', 'bacon', 'ham', 'turkey', 'duck', 'burger', 'pizza', 'noodle',
+  'noodles', 'biryani', 'curry', 'taco', 'tacos', 'burrito', 'bowl', 'salad',
+  'soup', 'dessert', 'drinks', 'drink', 'dinner', 'lunch', 'breakfast', 'brunch',
+  'snack', 'snacks', 'grocery', 'groceries', 'order', 'buy', 'cart', 'need', 'want',
+  'some', 'more', 'less', 'mild', 'spicy', 'hot', 'cold', 'warm', 'fresh', 'healthy',
+  'organic', 'pure', 'plain', 'sweet', 'sour', 'crispy', 'fried', 'baked', 'roasted',
+  'grilled', 'steamed', 'boiled', 'vegan', 'vegetarian', 'halal', 'kosher', 'gluten',
+  'dairy', 'protein', 'calorie', 'calories', 'carb', 'carbs', 'fat', 'fats', 'fiber'
+]);
+
 /**
  * Compute simple Levenshtein edit distance
  */
@@ -269,14 +290,19 @@ export function correctFoodTypos(rawText: string): TypoCorrectionResult {
       }
     }
 
+    // Never modify a recognized valid food or grocery word
+    if (VALID_WORDS_WHITELIST.has(cleanWord)) {
+      return word;
+    }
+
     // 2. Fuzzy Levenshtein check for words of length >= 4
     if (cleanWord.length >= 4) {
       let bestMatch: string | null = null;
       let minDistance = Infinity;
 
       for (const target of CANONICAL_FOOD_WORDS) {
-        // Distance tolerance: 1 for short words, 2 for longer words
-        const maxAllowed = target.length > 5 ? 2 : 1;
+        // Distance tolerance: 1 for short words, 2 only for words of length >= 7
+        const maxAllowed = target.length >= 7 && cleanWord.length >= 6 ? 2 : 1;
         const dist = getEditDistance(cleanWord, target);
 
         if (dist <= maxAllowed && dist < minDistance) {
@@ -285,7 +311,7 @@ export function correctFoodTypos(rawText: string): TypoCorrectionResult {
         }
       }
 
-      if (bestMatch && bestMatch !== cleanWord) {
+      if (bestMatch && bestMatch !== cleanWord && !VALID_WORDS_WHITELIST.has(cleanWord)) {
         correctedTerms.push({ from: word, to: bestMatch });
         return bestMatch;
       }

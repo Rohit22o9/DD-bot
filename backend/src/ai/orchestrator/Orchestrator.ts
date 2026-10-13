@@ -20,6 +20,7 @@ import { toolRegistry, ToolRegistry } from '../tools/ToolRegistry';
 import { recommendationEngine, RecommendationEngine } from './RecommendationEngine';
 import { safetyValidator, SafetyValidator } from './SafetyValidator';
 import { correctFoodTypos } from '../foodTypoCorrector';
+import { parseGroceryVoiceTranscript } from '../groceryData';
 
 export const HEALTH_GOAL_OPTIONS: HealthGoalOption[] = [
   {
@@ -312,6 +313,171 @@ export class DropAIOrchestrator {
     }
 
     // =========================================================================
+    // FLOW 0 — GROCERY VOICE & TEXT ORDERING (REAL-TIME FOR ANY INPUT)
+    // =========================================================================
+    const groceryKeywords = [
+      'grocer', 'grocery', 'supermarket', 'pantry', 'fresh produce', 'essentials',
+      'milk', 'eggs', 'bread', 'butter', 'yogurt', 'cheese', 'avocado', 'tomato',
+      'spinach', 'banana', 'apple', 'garlic', 'onion', 'olive oil', 'pasta', 'rice',
+      'oats', 'honey', 'chicken breast', 'salmon', 'coffee', 'juice', 'tofu',
+    ];
+    const isGroceryAction =
+      lower.includes('buy') ||
+      lower.includes('order') ||
+      lower.includes('get') ||
+      lower.includes('need') ||
+      lower.includes('pick up') ||
+      lower.includes('want') ||
+      lower.includes('add') ||
+      lower.includes('grocer') ||
+      lower.includes('cart');
+
+    const matchedGroceryKeywords = groceryKeywords.filter((k) => lower.includes(k));
+    const isGroceryRequest =
+      lower.includes('grocer') ||
+      lower.includes('grocery') ||
+      (isGroceryAction && matchedGroceryKeywords.length > 0) ||
+      matchedGroceryKeywords.length >= 2;
+
+    if (isGroceryRequest) {
+      const groceryList = parseGroceryVoiceTranscript(rawInput);
+      const topItems = groceryList.items.slice(0, 3).map((i) => `${i.quantity}x ${i.name}`).join(', ');
+      const dynamicMessage =
+        groceryList.items.length > 0
+          ? `Here is your grocery list with ${groceryList.items.length} fresh items (${topItems}) ready for quick ordering:`
+          : `Here are the fresh grocery essentials matching your request:`;
+
+      return {
+        message: dynamicMessage,
+        job: 'FIND',
+        groceryList,
+        quickOptions: ['🛒 Add All to Cart', '🥛 More Dairy', '🥑 Fresh Produce', '🍞 Bakery Items'],
+      };
+    }
+
+    // =========================================================================
+    // FLOW 0.1 — "ORDER THIS FOR ME" / "ADD TO CART" DIRECT COMMANDS
+    // =========================================================================
+    const isOrderThisCommand =
+      lower === 'order this for me' ||
+      lower === 'order this' ||
+      lower === 'order for me' ||
+      lower === 'order it for me' ||
+      lower === 'order it' ||
+      lower === 'order them' ||
+      lower === 'order these' ||
+      lower === 'order all' ||
+      lower === 'add this to cart' ||
+      lower === 'add these to cart' ||
+      lower === 'add to cart' ||
+      lower === 'add all to cart' ||
+      lower === 'proceed with order' ||
+      lower === 'proceed to checkout' ||
+      lower.includes('order this') ||
+      lower.includes('order for me') ||
+      lower.includes('order them') ||
+      lower.includes('add this to cart') ||
+      lower.includes('add all to cart');
+
+    if (isOrderThisCommand) {
+      const cart = await this.tools.getCart(userId);
+      const count = cart?.items?.length || 0;
+      const totalStr = cart ? `$${cart.total.toFixed(2)}` : '';
+      return {
+        message: count > 0
+          ? `I've added the items to your cart! You currently have ${count} items totaling ${totalStr}. Would you like to proceed with checkout now?`
+          : `I've added your items to your cart! Ready to review your cart and proceed with checkout?`,
+        job: 'FIND',
+        quickOptions: ['🛒 View Cart', '💳 Confirm Order', '➕ Add More Groceries'],
+      };
+    }
+
+    // =========================================================================
+    // CONVERSATIONAL INQUIRIES, GREETINGS & SERVICE QUESTIONS (No Random Meals)
+    // =========================================================================
+    const isGreeting =
+      lower === 'hi' ||
+      lower === 'hello' ||
+      lower === 'hey' ||
+      lower === 'hey there' ||
+      lower === 'good morning' ||
+      lower === 'good afternoon' ||
+      lower === 'good evening' ||
+      lower === 'how are you' ||
+      lower === 'how are you?' ||
+      lower === 'what’s up' ||
+      lower === "what's up";
+
+    if (isGreeting) {
+      const uName = userProfile?.name || 'there';
+      return {
+        message: `Hello ${uName}! 👋 I'm Drop AI, your personal food & grocery assistant. What are you in the mood for today? I can help you choose delicious chef-prepped meals, order fresh groceries, or find healthy dishes matching your taste!`,
+        job: 'CHOOSE',
+        quickOptions: ['🍛 Help me choose', '🛒 Order Groceries', '🥗 Healthy meals', '💰 Under $15', '🎲 Play Food Game'],
+      };
+    }
+
+    const isThankYou =
+      lower === 'thank you' ||
+      lower === 'thanks' ||
+      lower === 'thanks a lot' ||
+      lower === 'thank you so much' ||
+      lower === 'awesome' ||
+      lower === 'perfect' ||
+      lower === 'great';
+
+    if (isThankYou) {
+      return {
+        message: "You're very welcome! 😊 Let me know whenever you're ready to order or if you'd like to explore more dishes or groceries.",
+        job: 'CHOOSE',
+        quickOptions: ['🛒 View Cart', '🍛 Explore Meals', '🛒 Order Groceries', '⭐ Favorites'],
+      };
+    }
+
+    const isServiceFAQ =
+      lower.includes('what is daily drop') ||
+      lower.includes('who are you') ||
+      lower.includes('what can you do') ||
+      lower.includes('how does delivery work') ||
+      lower.includes('delivery time') ||
+      lower.includes('delivery fee') ||
+      lower.includes('how do i pay') ||
+      lower.includes('how to order') ||
+      lower.includes('cancel order') ||
+      lower.includes('refund');
+
+    if (isServiceFAQ) {
+      if ('generateConversationalReply' in this.aiProvider && typeof (this.aiProvider as any).generateConversationalReply === 'function') {
+        try {
+          const faqReply = await (this.aiProvider as any).generateConversationalReply(rawInput, [], {
+            userName: userProfile?.name,
+            dietPreferences: preferences?.dietaryPreferences,
+            allergies: preferences?.allergies,
+          });
+          if (faqReply && faqReply.trim().length > 10) {
+            return {
+              message: faqReply,
+              job: 'CHOOSE',
+              quickOptions: ['🍛 Browse Menu', '🛒 Order Groceries', '🥗 Healthy Picks', '❓ Help me choose'],
+            };
+          }
+        } catch {}
+      }
+
+      let fallbackAnswer = "Daily Drop brings fresh chef-prepared meals and daily groceries directly to your doorstep in 30-45 minutes. You can customize dishes, filter by dietary requirements, or build your weekly meal plan!";
+      if (lower.includes('delivery')) {
+        fallbackAnswer = "Daily Drop delivers freshly prepped meals and groceries in under 45 minutes for on-demand orders, or scheduled for lunch and dinner delivery slots. Deliveries are zero-contact and temperature-controlled!";
+      } else if (lower.includes('pay')) {
+        fallbackAnswer = "We accept all major credit/debit cards, Apple Pay, Google Pay, and Daily Drop credits for fast and seamless checkout.";
+      }
+
+      return {
+        message: fallbackAnswer,
+        job: 'CHOOSE',
+        quickOptions: ['🍛 Browse Menu', '🛒 Order Groceries', '🥗 Healthy Picks', '❓ Help me choose'],
+      };
+    }
+
     // =========================================================================
     // FLOW 1 — “HELP ME CHOOSE” (Default Discovery Flow)
     // =========================================================================
@@ -2408,13 +2574,40 @@ export class DropAIOrchestrator {
     // Enforce SAFETY: Exclude explicit medical allergies and user disliked ingredients
     const safeMeals = this.safety.filterSafeMeals(rawMeals, preferences);
 
+    // Identify if user is asking for a specific dish or food type
+    const effectiveDishKeyword = intent.dishKeyword || (
+      intent.query &&
+      !['dinner', 'lunch', 'food', 'meal', 'something', 'order', 'want', 'eat', 'delivery'].includes(intent.query.toLowerCase()) &&
+      intent.query.trim().length >= 3
+        ? intent.query.trim()
+        : null
+    );
+
+    let candidateMeals = safeMeals;
+    let didMatchDishKeyword = false;
+
+    if (effectiveDishKeyword) {
+      const dkLower = effectiveDishKeyword.toLowerCase();
+      const matched = safeMeals.filter((m) => {
+        const text = (m.name + ' ' + m.description + ' ' + m.cuisine + ' ' + m.ingredients.join(' ')).toLowerCase();
+        return text.includes(dkLower) || dkLower.split(/\s+/).some((w) => w.length >= 3 && text.includes(w));
+      });
+
+      if (matched.length > 0) {
+        candidateMeals = matched;
+        didMatchDishKeyword = true;
+      } else {
+        didMatchDishKeyword = false;
+      }
+    }
+
     // Get frequently ordered meals for affinity
     const history = await this.tools.getOrderHistory(userId, 5);
     const frequentIds = history.flatMap((o) => o.items.map((i) => i.mealId));
 
     // Transparent scoring and ranking with rotation
     const recommendations = this.recommender.rankMeals(
-      safeMeals,
+      candidateMeals,
       preferences,
       {
         maxPrice: maxPrice || 16,
@@ -2424,13 +2617,50 @@ export class DropAIOrchestrator {
         healthyRequested: intent.healthyFilter,
         wellnessCategory: intent.wellnessCategory,
         frequentlyOrderedMealIds: frequentIds,
-        dishKeyword: intent.dishKeyword,
+        dishKeyword: didMatchDishKeyword && effectiveDishKeyword ? effectiveDishKeyword : undefined,
         excludeMealIds: excludeIds,
       },
       3
     );
 
     if (recommendations.length === 0) {
+      if (effectiveDishKeyword && !didMatchDishKeyword) {
+        const availableAlternatives = this.recommender.rankMeals(
+          safeMeals,
+          preferences,
+          { maxPrice: maxPrice || 16 },
+          3
+        );
+        return {
+          message: `We don't currently have "${effectiveDishKeyword}" on today's kitchen menu. Would you like to explore these chef-crafted dishes available today instead?`,
+          job: 'FIND',
+          recommendations: availableAlternatives,
+          quickOptions: ['🍛 Help me choose', '🛒 Order Groceries', '🥗 Healthy Picks', '✨ Surprise me'],
+        };
+      }
+
+      if (
+        'generateConversationalReply' in this.aiProvider &&
+        typeof (this.aiProvider as any).generateConversationalReply === 'function'
+      ) {
+        try {
+          const aiReply = await (this.aiProvider as any).generateConversationalReply(rawInput, [], {
+            userName: userProfile?.name,
+            dietPreferences: preferences?.dietaryPreferences,
+            allergies: preferences?.allergies,
+          });
+          if (aiReply && aiReply.trim().length > 10) {
+            return {
+              message: aiReply,
+              job: 'FIND',
+              quickOptions: ['🍛 Help me choose', '🛒 Order Groceries', '🎲 Play Food Game'],
+            };
+          }
+        } catch (err) {
+          console.warn('Orchestrator conversational fallback error:', err);
+        }
+      }
+
       return {
         message: "I couldn't find an exact match with all filters. Here are some popular available meals you might enjoy:",
         job: 'FIND',
@@ -2458,8 +2688,10 @@ export class DropAIOrchestrator {
           ? 'Weight Management'
           : 'High Fibre & Gut Friendly';
       responseMsg = `Here are top ${wellnessTitle} Wellness Meals tailored for you:\nNutritious, wholesome, and ready to order:`;
-    } else if (intent.dishKeyword) {
-      responseMsg = `Found delicious ${intent.dishKeyword} dishes for you!\nHere are top-rated selections ready to order:`;
+    } else if (effectiveDishKeyword && didMatchDishKeyword) {
+      responseMsg = `Found delicious ${effectiveDishKeyword} dishes for you!\nHere are top-rated selections ready to order:`;
+    } else if (effectiveDishKeyword && !didMatchDishKeyword) {
+      responseMsg = `We don't currently have "${effectiveDishKeyword}" on today's kitchen menu. Here are our top chef-crafted options available today:`;
     } else if (targetProtein && maxPrice) {
       responseMsg = `Found delicious ${targetProtein} dinners under $${maxPrice}.\nFreshly prepared and ready for pickup tomorrow:`;
     } else if (lower.includes('something different')) {
@@ -2481,7 +2713,7 @@ export class DropAIOrchestrator {
           responseMsg = dynamicReply;
         }
       } catch (err) {
-        console.warn('Gemini dynamic reply error:', err);
+        console.warn('AI dynamic reply error:', err);
       }
     }
 

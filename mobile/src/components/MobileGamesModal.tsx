@@ -14,6 +14,7 @@ interface MobileGamesModalProps {
   visible: boolean;
   onClose: () => void;
   onSelectGame: (prompt: string, payload?: GamePayload) => void;
+  onOpenGroceryVoice?: () => void;
 }
 
 interface GameItem {
@@ -28,6 +29,16 @@ interface GameItem {
 }
 
 const GAMES_LIST: GameItem[] = [
+  {
+    id: 'voice_grocery',
+    icon: '🛒',
+    title: 'Voice Grocery Agent',
+    subtitle: 'Speak your grocery list & AI compiles fresh milk, eggs, bread & produce instantly.',
+    badge: 'VOICE AI',
+    badgeColor: '#059669',
+    badgeBg: '#ECFDF5',
+    prompt: 'I need to buy some groceries',
+  },
   {
     id: 'food_tinder',
     icon: '🔥',
@@ -124,9 +135,14 @@ export const MobileGamesModal: React.FC<MobileGamesModalProps> = ({
   visible,
   onClose,
   onSelectGame,
+  onOpenGroceryVoice,
 }) => {
   const handlePickGame = (game: GameItem) => {
     onClose();
+    if (game.id === 'voice_grocery' && onOpenGroceryVoice) {
+      onOpenGroceryVoice();
+      return;
+    }
     onSelectGame(game.prompt, {
       gameType: game.id as DiscoveryGameType,
       title: game.title,

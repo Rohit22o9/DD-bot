@@ -283,6 +283,7 @@ export interface ChatResponsePayload {
   draftCart?: Cart;
   inChatCart?: Cart;
   gamePayload?: GamePayload;
+  groceryList?: GroceryOrderList;
   confirmationRequired?: boolean;
   confirmationDetails?: {
     action: 'PLACE_ORDER' | 'CLEAR_CART' | 'CONFIRM_PLAN';
@@ -297,4 +298,28 @@ export interface ChatResponsePayload {
     dietary?: string[];
     excludedIngredients?: string[];
   };
+}
+
+export type GroceryCategory = 'dairy' | 'produce' | 'bakery' | 'pantry' | 'meat' | 'beverage' | 'snack';
+
+export interface GroceryItem {
+  id: string;
+  name: string;
+  category: GroceryCategory;
+  price: number;
+  unit: string;
+  imageUrl: string;
+  quantity: number;
+  checked?: boolean;
+  inStock?: boolean;
+  brand?: string;
+}
+
+export interface GroceryOrderList {
+  id: string;
+  title: string;
+  transcript?: string;
+  items: GroceryItem[];
+  subtotal: number;
+  estimatedDelivery?: string;
 }

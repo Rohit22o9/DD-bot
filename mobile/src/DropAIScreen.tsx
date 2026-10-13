@@ -31,7 +31,11 @@ import { MobileThinkingBubble } from './components/MobileThinkingBubble';
 import { MobileGameFullScreenModal } from './components/games/MobileGameFullScreenModal';
 import { MobileInChatGameCard } from './components/games/MobileInChatGameCard';
 import { MobileGamesModal } from './components/MobileGamesModal';
-import { QuickSearchFilters, Cart, UserProfile, GamePayload } from './types';
+import { MobileInChatGroceryCard } from './components/MobileInChatGroceryCard';
+import { MobileGroceryVoiceModal } from './components/MobileGroceryVoiceModal';
+import { MobileVoiceListeningOverlay } from './components/MobileVoiceListeningOverlay';
+import { voiceAgent, formatMessageForSpeech } from './voiceAgent';
+import { QuickSearchFilters, Cart, UserProfile, GamePayload, GroceryItem } from './types';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export interface DropAIScreenProps {
@@ -46,7 +50,7 @@ export interface DropAIScreenProps {
 }
 
 export const DropAIScreen: React.FC<DropAIScreenProps> = ({
-  apiBaseUrl = 'https://dd-bot-hx7u.onrender.com', // Live Render Cloud Backend
+  apiBaseUrl = 'http://172.19.13.103:5000',
   initialUserId = 'user_alex',
   activePrompt,
   onClearActivePrompt,
@@ -65,6 +69,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     userProfile,
     sendMessage,
     addToCart,
+    addMultipleGroceryItemsToCart,
     updateCartQuantity,
     removeFromCart,
     clearCart,
@@ -132,6 +137,8 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isTasteProfileOpen, setIsTasteProfileOpen] = useState(false);
   const [isGamesModalOpen, setIsGamesModalOpen] = useState(false);
+  const [isGroceryModalOpen, setIsGroceryModalOpen] = useState(false);
+  const [isVoiceOverlayOpen, setIsVoiceOverlayOpen] = useState(false);
   const [activeGamePayload, setActiveGamePayload] = useState<GamePayload | null>(null);
   const lastGameMsgIdRef = useRef<string | null>(null);
 
@@ -166,6 +173,33 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
 
   const [selectedChips, setSelectedChips] = useState<string[]>([]);
   const scrollRef = useRef<ScrollView>(null);
+  const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
+
+  // Clean up any ongoing TTS speech when screen unmounts
+  useEffect(() => {
+    return () => {
+      voiceAgent.stopSpeaking();
+    };
+  }, []);
+
+  const handleToggleSpeak = useCallback(
+    (msg: any) => {
+      if (speakingMsgId === msg.id) {
+        voiceAgent.stopSpeaking();
+        setSpeakingMsgId(null);
+      } else {
+        voiceAgent.stopSpeaking();
+        setSpeakingMsgId(msg.id);
+        const textToSpeak = formatMessageForSpeech(msg);
+        voiceAgent.speak(
+          textToSpeak,
+          () => setSpeakingMsgId(null),
+          () => setSpeakingMsgId(null)
+        );
+      }
+    },
+    [speakingMsgId]
+  );
 
   const cartItemCount = cart?.items.reduce((s, i) => s + i.quantity, 0) || 0;
   const cartTotal = cart?.total || 0;
@@ -187,7 +221,11 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     const text = (textToSend || input).trim();
     if (!text || isLoading) return;
 
-    const lower = text.toLowerCase();
+    voiceAgent.stopSpeaking();
+    setSpeakingMsgId(null);
+    setInput('');
+
+    const lower = text.toLowerCase().trim().replace(/[.,!]/g, '');
     if (lower === 'confirm order' || lower === 'place order' || lower === 'place order now') {
       if (cart && cart.items.length > 0) {
         setConfirmModal({
@@ -195,14 +233,49 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
           total: cartTotal,
           summary: cart.items.map((i) => `${i.quantity}x ${i.meal.name}`).join(', '),
         });
-        if (!textToSend) setInput('');
         return;
+      }
+    }
+
+    // Support "order this for me" / "add this to cart" voice & text commands
+    const isOrderThisCmd =
+      lower === 'order this for me' ||
+      lower === 'order this' ||
+      lower === 'order for me' ||
+      lower === 'order it for me' ||
+      lower === 'order it' ||
+      lower === 'order them' ||
+      lower === 'order these' ||
+      lower === 'order all' ||
+      lower === 'add this to cart' ||
+      lower === 'add these to cart' ||
+      lower === 'add to cart' ||
+      lower === 'add all to cart' ||
+      lower === 'proceed with order' ||
+      lower === 'proceed to checkout' ||
+      lower.includes('order this') ||
+      lower.includes('order for me') ||
+      lower.includes('order them') ||
+      lower.includes('add this to cart') ||
+      lower.includes('add all to cart');
+
+    if (isOrderThisCmd) {
+      const lastGroceryMsg = [...messages].reverse().find(
+        (m) => m.groceryList && m.groceryList.items && m.groceryList.items.length > 0
+      );
+      if (lastGroceryMsg && lastGroceryMsg.groceryList) {
+        const checkedItems = lastGroceryMsg.groceryList.items.filter(
+          (i) => i.checked !== false
+        );
+        const itemsToOrder =
+          checkedItems.length > 0 ? checkedItems : lastGroceryMsg.groceryList.items;
+        addMultipleGroceryItemsToCart(itemsToOrder);
+        showToast(`🛒 Added ${itemsToOrder.length} grocery items to cart!`);
       }
     }
 
     setSelectedChips([]);
     sendMessage(text);
-    if (!textToSend) setInput('');
     setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 150);
   };
 
@@ -353,6 +426,15 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
         </View>
 
         <View style={styles.headerRight}>
+          {/* 🛒 Grocery Button (Icon only) */}
+          <TouchableOpacity
+            style={styles.groceryHeaderBtn}
+            activeOpacity={0.75}
+            onPress={() => setIsGroceryModalOpen(true)}
+          >
+            <Text style={styles.groceryHeaderEmoji}>🛒</Text>
+          </TouchableOpacity>
+
           {/* 🎮 Food Discovery Games Button */}
           <TouchableOpacity
             style={styles.gameHeaderBtn}
@@ -378,6 +460,15 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
       {/* Popover Menu */}
       {isMenuOpen && (
         <View style={styles.popoverMenu}>
+          <TouchableOpacity
+            style={styles.popoverItem}
+            onPress={() => {
+              setIsGroceryModalOpen(true);
+              setIsMenuOpen(false);
+            }}
+          >
+            <Text style={styles.popoverItemText}>🛒 Voice Grocery Agent</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={styles.popoverItem}
             onPress={() => {
@@ -456,7 +547,10 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
         >
           {messages.length === 0 ? (
             /* PANEL 1: LAUNCH SCREEN */
-            <MobileChatLaunchScreen onSelectPrompt={(p) => handleSend(p)} />
+            <MobileChatLaunchScreen
+              onSelectPrompt={(p) => handleSend(p)}
+              onOpenGroceryVoice={() => setIsGroceryModalOpen(true)}
+            />
           ) : (
             messages.map((msg, idx) => {
               const isUser = msg.sender === 'user';
@@ -513,6 +607,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                 Boolean(msg.dropForMe) ||
                 Boolean(msg.weeklyPlan) ||
                 Boolean(msg.gamePayload) ||
+                Boolean(msg.groceryList) ||
                 Boolean(msg.inChatCart) ||
                 Boolean(msg.quickOptions && msg.quickOptions.length > 0 && !isAddToCartFlow);
 
@@ -534,7 +629,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                     </View>
                   )}
 
-                  <View style={styles.bubbleCol}>
+                  <View style={[styles.bubbleCol, !isUser && !!msg.groceryList && { maxWidth: '100%', width: '100%', flex: 1 }]}>
                     {/* Main Bubble */}
                     {shouldShowBubble && (
                       <View
@@ -556,6 +651,66 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                             <Text style={styles.cursorText}> ▮</Text>
                           ) : null}
                         </Text>
+
+                        {/* Speaker TTS button to hear AI response */}
+                        {!isUser && !msg.isStreaming && (
+                          <View style={styles.bubbleFooter}>
+                            <TouchableOpacity
+                              style={[
+                                styles.speakerBtn,
+                                speakingMsgId === msg.id && styles.speakerBtnActive,
+                              ]}
+                              onPress={() => handleToggleSpeak(msg)}
+                              activeOpacity={0.7}
+                              accessibilityRole="button"
+                              accessibilityLabel={
+                                speakingMsgId === msg.id ? 'Stop audio' : 'Listen to response'
+                              }
+                            >
+                              <Text style={styles.speakerIcon}>
+                                {speakingMsgId === msg.id ? '🔊' : '🔈'}
+                              </Text>
+                              <Text
+                                style={[
+                                  styles.speakerBtnText,
+                                  speakingMsgId === msg.id && styles.speakerBtnTextActive,
+                                ]}
+                              >
+                                {speakingMsgId === msg.id ? 'Speaking…' : 'Listen'}
+                              </Text>
+                            </TouchableOpacity>
+                          </View>
+                        )}
+                      </View>
+                    )}
+
+                    {/* Standalone Speaker button when text bubble is hidden but cards are present */}
+                    {!shouldShowBubble && !isUser && !msg.isStreaming && (
+                      <View style={styles.standaloneSpeakerRow}>
+                        <TouchableOpacity
+                          style={[
+                            styles.speakerBtn,
+                            speakingMsgId === msg.id && styles.speakerBtnActive,
+                          ]}
+                          onPress={() => handleToggleSpeak(msg)}
+                          activeOpacity={0.7}
+                          accessibilityRole="button"
+                          accessibilityLabel={
+                            speakingMsgId === msg.id ? 'Stop audio' : 'Listen to options'
+                          }
+                        >
+                          <Text style={styles.speakerIcon}>
+                            {speakingMsgId === msg.id ? '🔊' : '🔈'}
+                          </Text>
+                          <Text
+                            style={[
+                              styles.speakerBtnText,
+                              speakingMsgId === msg.id && styles.speakerBtnTextActive,
+                            ]}
+                          >
+                            {speakingMsgId === msg.id ? 'Speaking…' : 'Listen'}
+                          </Text>
+                        </TouchableOpacity>
                       </View>
                     )}
 
@@ -730,6 +885,21 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                       />
                     )}
 
+                    {/* 🛒 IN-CHAT GROCERY ORDER CARD */}
+                    {!msg.isStreaming && msg.groceryList && (
+                      <MobileInChatGroceryCard
+                        groceryList={msg.groceryList}
+                        onAddToCart={(item) => {
+                          addToCart(item.id);
+                          showToast(`🛒 Added ${item.name} to cart!`);
+                        }}
+                        onAddAllToCart={(items) => {
+                          addMultipleGroceryItemsToCart(items);
+                          showToast(`🛒 Added ${items.length} items to cart!`);
+                        }}
+                      />
+                    )}
+
                     {/* SUGGESTION PILLS */}
                     {!msg.isStreaming &&
                       msg.quickOptions &&
@@ -882,10 +1052,11 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
             }}
           />
 
-          {/* Voice Prompt Mic Button */}
+          {/* Voice Prompt Mic Button - Voice Agent */}
           <TouchableOpacity
             style={styles.micBtn}
-            onPress={() => handleSend('Something spicy under $15')}
+            activeOpacity={0.7}
+            onPress={() => setIsVoiceOverlayOpen(true)}
           >
             <Text style={styles.micIcon}>🎙️</Text>
           </TouchableOpacity>
@@ -956,6 +1127,7 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
       <MobileGamesModal
         visible={isGamesModalOpen}
         onClose={() => setIsGamesModalOpen(false)}
+        onOpenGroceryVoice={() => setIsGroceryModalOpen(true)}
         onSelectGame={(_prompt, payload) => {
           if (payload) {
             const lastMsg = messages[messages.length - 1];
@@ -965,6 +1137,54 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
             setActiveGamePayload(payload);
           }
         }}
+      />
+
+      {/* 🛒 DEDICATED GROCERY VOICE ORDERING MODAL */}
+      <MobileGroceryVoiceModal
+        visible={isGroceryModalOpen}
+        onClose={() => setIsGroceryModalOpen(false)}
+        apiBaseUrl={activeBaseUrl}
+        onAddToCart={(mealId) => {
+          addToCart(mealId);
+          showToast('🛒 Added to cart!');
+        }}
+        onAddMultipleToCart={(items) => {
+          addMultipleGroceryItemsToCart(items);
+          showToast(`🛒 Added ${items.length} grocery items to cart!`);
+        }}
+        onOpenCart={() => {
+          setIsGroceryModalOpen(false);
+          setIsCartOpen(true);
+        }}
+        onProceedToCheckout={() => {
+          setIsGroceryModalOpen(false);
+          if (cart && cart.items.length > 0) {
+            setConfirmModal({
+              visible: true,
+              total: cartTotal,
+              summary: cart.items.map((i) => `${i.quantity}x ${i.meal.name}`).join(', '),
+            });
+          } else {
+            setIsCartOpen(true);
+          }
+        }}
+        onSendToChat={(prompt) => {
+          setIsGroceryModalOpen(false);
+          handleSend(prompt);
+        }}
+      />
+
+      {/* 🎙️ IN-BOT VOICE LISTENING OVERLAY (For Mic Button) */}
+      <MobileVoiceListeningOverlay
+        visible={isVoiceOverlayOpen}
+        onClose={() => setIsVoiceOverlayOpen(false)}
+        apiBaseUrl={activeBaseUrl}
+        onSendTranscript={(transcript) => {
+          setIsVoiceOverlayOpen(false);
+          setInput('');
+          handleSend(transcript);
+        }}
+        initialTranscript={input}
       />
 
       {/* 🎮 DEDICATED FULL-SCREEN GAME MODAL (Hides chat input, mic, and bottom tabs) */}
@@ -1099,6 +1319,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E5E7EB',
   },
+  groceryHeaderBtn: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#ECFDF5',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#A7F3D0',
+  },
+  groceryHeaderEmoji: {
+    fontSize: 18,
+  },
   gameHeaderEmoji: {
     fontSize: 16,
   },
@@ -1232,6 +1465,46 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#6B7280',
     marginLeft: 6,
+  },
+  bubbleFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 8,
+    paddingTop: 6,
+    borderTopWidth: 1,
+    borderTopColor: '#F3F4F6',
+  },
+  standaloneSpeakerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  speakerBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    backgroundColor: '#F3F4F6',
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
+  },
+  speakerBtnActive: {
+    backgroundColor: '#DCFCE7',
+    borderColor: '#86EFAC',
+  },
+  speakerIcon: {
+    fontSize: 13,
+  },
+  speakerBtnText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#4B5563',
+  },
+  speakerBtnTextActive: {
+    color: '#15803D',
+    fontWeight: '700',
   },
   recsSection: {
     marginTop: 10,

@@ -12,6 +12,7 @@ const { width } = Dimensions.get('window');
 
 interface MobileChatLaunchScreenProps {
   onSelectPrompt: (prompt: string) => void;
+  onOpenGroceryVoice?: () => void;
 }
 
 interface ActionCard {
@@ -22,6 +23,12 @@ interface ActionCard {
 }
 
 const ACTION_CARDS: ActionCard[] = [
+  {
+    icon: '🛒',
+    title: 'Order Groceries',
+    subtitle: 'Fresh milk, eggs, bread & veggies',
+    prompt: 'I need to buy some groceries',
+  },
   {
     icon: '🍜',
     title: 'Help me choose',
@@ -61,6 +68,7 @@ const ACTION_CARDS: ActionCard[] = [
 ];
 
 const TRY_ASKING_PILLS = [
+  { label: '🛒 Voice Groceries', prompt: 'I need to buy some groceries' },
   { label: '🇹🇭 Asian cuisines', prompt: 'Asian food' },
   { label: '🍗 Protein-first', prompt: 'Build around protein' },
   { label: '✨ Something different', prompt: 'Something different' },
@@ -71,6 +79,7 @@ const TRY_ASKING_PILLS = [
 
 export const MobileChatLaunchScreen: React.FC<MobileChatLaunchScreenProps> = ({
   onSelectPrompt,
+  onOpenGroceryVoice,
 }) => {
   return (
     <View style={styles.container}>
@@ -102,7 +111,7 @@ export const MobileChatLaunchScreen: React.FC<MobileChatLaunchScreenProps> = ({
 
         <Text style={styles.title}>What would you like to eat?</Text>
         <Text style={styles.subtitle}>
-          I can find a meal, help you choose or plan ahead.
+          I can find a meal, order groceries, or plan ahead.
         </Text>
       </View>
 
@@ -113,15 +122,24 @@ export const MobileChatLaunchScreen: React.FC<MobileChatLaunchScreenProps> = ({
             key={idx}
             style={[
               styles.card,
+              card.title === 'Order Groceries' && styles.groceryCard,
               card.title === 'Eat healthier' && styles.highlightedCard,
             ]}
             activeOpacity={0.7}
-            onPress={() => onSelectPrompt(card.prompt)}
+            onPress={() => {
+              if (card.title === 'Order Groceries' && onOpenGroceryVoice) {
+                onOpenGroceryVoice();
+              } else {
+                onSelectPrompt(card.prompt);
+              }
+            }}
           >
-            <View style={styles.cardIconBox}>
+            <View style={[styles.cardIconBox, card.title === 'Order Groceries' && styles.groceryIconBox]}>
               <Text style={styles.cardIcon}>{card.icon}</Text>
             </View>
-            <Text style={styles.cardTitle}>{card.title}</Text>
+            <Text style={[styles.cardTitle, card.title === 'Order Groceries' && styles.groceryCardTitle]}>
+              {card.title}
+            </Text>
             <Text style={styles.cardSub}>{card.subtitle}</Text>
           </TouchableOpacity>
         ))}
@@ -290,6 +308,17 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: '#6B7280',
     lineHeight: 15,
+  },
+  groceryCard: {
+    backgroundColor: '#F0FDF4',
+    borderColor: '#86EFAC',
+    borderWidth: 1.5,
+  },
+  groceryIconBox: {
+    backgroundColor: '#DCFCE7',
+  },
+  groceryCardTitle: {
+    color: '#166534',
   },
 
   tryAskingSection: {

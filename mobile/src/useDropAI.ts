@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { ChatMessage, Cart, UserProfile, Recommendation, Meal } from './types';
+import { ChatMessage, Cart, UserProfile, Recommendation, Meal, GroceryItem } from './types';
 import {
   MOCK_MOBILE_MEALS,
   getMockRecommendations,
@@ -14,6 +14,7 @@ import {
 } from './mockData';
 import { DEFAULT_HEALTH_GOALS } from './components/MobileQuickQuestions';
 import { correctFoodTypos } from './foodTypoCorrector';
+import { GROCERY_CATALOG, groceryItemToMeal, parseGroceryVoiceTranscript } from './groceryData';
 
 export interface UseDropAIOptions {
   apiBaseUrl: string;
@@ -146,6 +147,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
       weeklyPlan?: any;
       gamePayload?: any;
       inChatCart?: any;
+      groceryList?: any;
     }) => {
       // 1. Guarantee the thinking animation with pulsing robot & bouncing dots is displayed
       // for at least 850ms so user has clear, delightful feedback on any input
@@ -224,6 +226,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
         weeklyPlan: payload.weeklyPlan,
         gamePayload: payload.gamePayload,
         inChatCart: payload.inChatCart,
+        groceryList: payload.groceryList,
       });
       setIsLoading(false);
     };
@@ -253,6 +256,153 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
       const typoResult = correctFoodTypos(cleanText);
       const effectiveText = typoResult.hasCorrection ? typoResult.correctedText : cleanText;
       const q = effectiveText.toLowerCase();
+
+      // 🛒 GROCERY ORDERING (Voice & Text for ANY items)
+      const groceryKeywords = [
+        'grocer', 'grocery', 'supermarket', 'pantry', 'fresh produce', 'essentials',
+        'milk', 'eggs', 'bread', 'butter', 'yogurt', 'cheese', 'avocado', 'tomato',
+        'spinach', 'banana', 'apple', 'garlic', 'onion', 'olive oil', 'pasta', 'rice',
+        'oats', 'honey', 'chicken breast', 'salmon', 'coffee', 'juice', 'tofu',
+      ];
+      const isGroceryAction =
+        q.includes('buy') ||
+        q.includes('order') ||
+        q.includes('get') ||
+        q.includes('need') ||
+        q.includes('pick up') ||
+        q.includes('want') ||
+        q.includes('add') ||
+        q.includes('grocer') ||
+        q.includes('cart');
+
+      const matchedGroceryKeywords = groceryKeywords.filter((k) => q.includes(k));
+      const isGroceryRequest =
+        q.includes('grocer') ||
+        q.includes('grocery') ||
+        (isGroceryAction && matchedGroceryKeywords.length > 0) ||
+        matchedGroceryKeywords.length >= 2;
+
+      if (isGroceryRequest) {
+        const groceryList = parseGroceryVoiceTranscript(effectiveText);
+        const topItems = groceryList.items.slice(0, 3).map((i) => `${i.quantity}x ${i.name}`).join(', ');
+        const dynamicMessage =
+          groceryList.items.length > 0
+            ? `Here is your grocery list with ${groceryList.items.length} fresh items (${topItems}) ready for quick ordering:`
+            : `Here are the fresh grocery essentials matching your request:`;
+
+        await streamAssistantReply({
+          message: dynamicMessage,
+          job: 'FIND',
+          groceryList,
+          quickOptions: ['🛒 Add All to Cart', '🥛 More Dairy', '🥑 Fresh Produce', '🍞 Bakery Items'],
+        });
+        return;
+      }
+
+      // =========================================================================
+      // FLOW 0.1 — "ORDER THIS FOR ME" / "ADD TO CART" DIRECT COMMANDS
+      // =========================================================================
+      const isOrderThisCommand =
+        q === 'order this for me' ||
+        q === 'order this' ||
+        q === 'order for me' ||
+        q === 'order it for me' ||
+        q === 'order it' ||
+        q === 'order them' ||
+        q === 'order these' ||
+        q === 'order all' ||
+        q === 'add this to cart' ||
+        q === 'add these to cart' ||
+        q === 'add to cart' ||
+        q === 'add all to cart' ||
+        q === 'proceed with order' ||
+        q === 'proceed to checkout' ||
+        q.includes('order this') ||
+        q.includes('order for me') ||
+        q.includes('order them') ||
+        q.includes('add this to cart') ||
+        q.includes('add all to cart');
+
+      if (isOrderThisCommand) {
+        const cartCount = cart?.items?.length || 0;
+        const totalStr = cart ? `$${cart.total.toFixed(2)}` : '';
+        await streamAssistantReply({
+          message: cartCount > 0
+            ? `I've added the grocery items to your cart! You currently have ${cartCount} items totaling ${totalStr}. Would you like to proceed with checkout now?`
+            : `I've added your grocery items to your cart! Ready to review your cart and proceed with checkout?`,
+          job: 'FIND',
+          quickOptions: ['🛒 View Cart', '💳 Confirm Order', '➕ Add More Groceries'],
+        });
+        return;
+      }
+
+      // =========================================================================
+      // CONVERSATIONAL INQUIRIES, GREETINGS & SERVICE QUESTIONS (No Random Meals)
+      // =========================================================================
+      const isGreeting =
+        q === 'hi' ||
+        q === 'hello' ||
+        q === 'hey' ||
+        q === 'hey there' ||
+        q === 'good morning' ||
+        q === 'good afternoon' ||
+        q === 'good evening' ||
+        q === 'how are you' ||
+        q === 'how are you?' ||
+        q === 'what’s up' ||
+        q === "what's up";
+
+      if (isGreeting) {
+        const uName = userProfile?.name || 'there';
+        await streamAssistantReply({
+          message: `Hello ${uName}! 👋 I'm Drop AI, your personal food & grocery assistant. What are you in the mood for today? I can help you choose delicious chef-prepped meals, order fresh groceries, or find healthy dishes matching your taste!`,
+          quickOptions: ['🍛 Help me choose', '🛒 Order Groceries', '🥗 Healthy meals', '💰 Under $15', '🎲 Play Food Game'],
+        });
+        return;
+      }
+
+      const isThankYou =
+        q === 'thank you' ||
+        q === 'thanks' ||
+        q === 'thanks a lot' ||
+        q === 'thank you so much' ||
+        q === 'awesome' ||
+        q === 'perfect' ||
+        q === 'great';
+
+      if (isThankYou) {
+        await streamAssistantReply({
+          message: "You're very welcome! 😊 Let me know whenever you're ready to order or if you'd like to explore more dishes or groceries.",
+          quickOptions: ['🛒 View Cart', '🍛 Explore Meals', '🛒 Order Groceries', '⭐ Favorites'],
+        });
+        return;
+      }
+
+      const isServiceFAQ =
+        q.includes('what is daily drop') ||
+        q.includes('who are you') ||
+        q.includes('what can you do') ||
+        q.includes('how does delivery work') ||
+        q.includes('delivery time') ||
+        q.includes('delivery fee') ||
+        q.includes('how do i pay') ||
+        q.includes('how to order') ||
+        q.includes('cancel order') ||
+        q.includes('refund');
+
+      if (isServiceFAQ) {
+        let faqMsg = "Daily Drop brings fresh chef-prepared meals and daily groceries directly to your doorstep in 30-45 minutes. You can customize dishes, filter by dietary requirements, or build your weekly meal plan!";
+        if (q.includes('delivery')) {
+          faqMsg = "Daily Drop delivers freshly prepped meals and groceries in under 45 minutes for on-demand orders, or scheduled for lunch and dinner delivery slots. Deliveries are zero-contact and temperature-controlled!";
+        } else if (q.includes('pay')) {
+          faqMsg = "We accept all major credit/debit cards, Apple Pay, Google Pay, and Daily Drop credits for fast and seamless checkout.";
+        }
+        await streamAssistantReply({
+          message: faqMsg,
+          quickOptions: ['🍛 Browse Menu', '🛒 Order Groceries', '🥗 Healthy Picks', '❓ Help me choose'],
+        });
+        return;
+      }
 
       // 🎮 FOOD DISCOVERY GAMES
       if (
@@ -1976,11 +2126,26 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
       else {
         const recs = getMockRecommendations(effectiveText, Array.from(shownMealIdsRef.current));
         recs.forEach((r) => shownMealIdsRef.current.add(r.meal.id));
+
+        // Check if any returned meals actually match the user's search words
+        const searchWords = effectiveText
+          .toLowerCase()
+          .split(/[\s,]+/)
+          .filter((w) => w.length > 2 && !['want', 'need', 'order', 'some', 'food', 'meal', 'please', 'like', 'show'].includes(w));
+
+        const hasMatchingMeal = recs.some((r) => {
+          const t = (r.meal.name + ' ' + r.meal.description + ' ' + r.meal.cuisine + ' ' + r.meal.ingredients.join(' ')).toLowerCase();
+          return searchWords.some((w) => t.includes(w));
+        });
+
         let introMsg = `Here are great options matching "${effectiveText}" today 🍽️:`;
-        if (typoResult.hasCorrection) {
+        if (searchWords.length > 0 && !hasMatchingMeal) {
+          introMsg = `We don't currently have "${effectiveText}" on today's kitchen menu. Here are our top chef-crafted dishes available today that you might enjoy instead 🍽️:`;
+        } else if (typoResult.hasCorrection) {
           const termsStr = typoResult.correctedTerms.map((t) => `"${t.to}"`).join(' & ');
           introMsg = `Recognized ${termsStr} ✨ — here are great options matching "${effectiveText}" today 🍽️:`;
         }
+
         await streamAssistantReply({
           message: introMsg,
           recommendations: recs,
@@ -2009,7 +2174,8 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
     } catch {}
 
     // 2. Offline local cart update (instant & always works reliably)
-    const meal = MOCK_MOBILE_MEALS.find((m) => m.id === mealId) || MOCK_MOBILE_MEALS[0];
+    const groc = GROCERY_CATALOG.find((g) => g.id === mealId);
+    const meal = groc ? groceryItemToMeal(groc) : (MOCK_MOBILE_MEALS.find((m) => m.id === mealId) || MOCK_MOBILE_MEALS[0]);
     let updatedCart: Cart | null = null;
     setCart((prev) => {
       const existing = prev?.items || [];
@@ -2238,6 +2404,12 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
     activeHealthCategoryRef.current = null;
   }, []);
 
+  const addMultipleGroceryItemsToCart = async (groceryItems: GroceryItem[]) => {
+    for (const it of groceryItems) {
+      await addToCart(it.id, it.quantity, false);
+    }
+  };
+
   return {
     messages,
     isLoading,
@@ -2245,6 +2417,7 @@ export function useDropAI({ apiBaseUrl, userId }: UseDropAIOptions) {
     userProfile,
     sendMessage,
     addToCart,
+    addMultipleGroceryItemsToCart,
     updateCartQuantity,
     removeFromCart,
     clearCart,
