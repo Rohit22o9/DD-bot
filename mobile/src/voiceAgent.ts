@@ -338,36 +338,40 @@ class VoiceAgentService {
     // 2. Transcribe Native Audio Recording with expo-audio + Backend Whisper / Direct Groq Cloud
     if (this.nativeRecorder) {
       try {
-        await this.nativeRecorder.stop?.();
-        const uri = this.nativeRecorder.uri;
+        const recordedUri = this.nativeRecorder.uri || this.nativeRecorder.getStatus?.()?.url;
+        await this.nativeRecorder.stop?.().catch(() => {});
+        const uri = recordedUri || this.nativeRecorder?.uri || this.nativeRecorder?.getStatus?.()?.url;
         this.nativeRecorder = null;
 
         if (uri) {
           let transcript = '';
 
-          // Tier 1: Send base64 audio to backend /api/voice/transcribe
-          const base64Audio = await readAudioFileAsBase64(uri);
-          if (base64Audio) {
-            const candidateUrls = [
-              `${this.activeBaseUrl.replace(/\/$/, '')}/api/voice/transcribe`,
-              'http://172.19.13.103:5000/api/voice/transcribe',
-              'http://localhost:5000/api/voice/transcribe',
-            ];
+          const candidateUrls = [
+            `${this.activeBaseUrl.replace(/\/$/, '')}/api/voice/transcribe`,
+            'http://172.19.13.103:5000/api/voice/transcribe',
+            'http://localhost:5000/api/voice/transcribe',
+          ];
+
+          // Tier 1A: Direct Multipart FormData upload to backend
+          try {
+            const formData = new FormData();
+            formData.append('file', {
+              uri,
+              name: 'recording.m4a',
+              type: 'audio/m4a',
+            } as any);
 
             for (const targetUrl of candidateUrls) {
               if (transcript) break;
               try {
                 const controller = new AbortController();
-                const timeout = setTimeout(() => controller.abort(), 6000);
-
+                const timeout = setTimeout(() => controller.abort(), 7000);
                 const res = await fetch(targetUrl, {
                   method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ audioBase64: base64Audio, mimeType: 'audio/m4a' }),
+                  body: formData,
                   signal: controller.signal,
                 });
                 clearTimeout(timeout);
-
                 if (res.ok) {
                   const data = await res.json();
                   if (data?.transcript?.trim()) {
@@ -376,7 +380,39 @@ class VoiceAgentService {
                   }
                 }
               } catch {
-                // Try next candidate URL
+                // Try next candidate
+              }
+            }
+          } catch {}
+
+          // Tier 1B: Send base64 audio to backend /api/voice/transcribe
+          if (!transcript) {
+            const base64Audio = await readAudioFileAsBase64(uri);
+            if (base64Audio) {
+              for (const targetUrl of candidateUrls) {
+                if (transcript) break;
+                try {
+                  const controller = new AbortController();
+                  const timeout = setTimeout(() => controller.abort(), 6000);
+
+                  const res = await fetch(targetUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ audioBase64: base64Audio, mimeType: 'audio/m4a' }),
+                    signal: controller.signal,
+                  });
+                  clearTimeout(timeout);
+
+                  if (res.ok) {
+                    const data = await res.json();
+                    if (data?.transcript?.trim()) {
+                      transcript = data.transcript.trim();
+                      break;
+                    }
+                  }
+                } catch {
+                  // Try next candidate URL
+                }
               }
             }
           }

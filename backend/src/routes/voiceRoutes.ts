@@ -1,31 +1,42 @@
 import { Router, Request, Response } from 'express';
+import multer from 'multer';
 
 const router = Router();
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 25 * 1024 * 1024 },
+});
 
 /**
  * Speech-to-Text Voice Transcription Endpoint
- * Accepts base64 encoded audio from mobile/web (m4a, wav, webm)
+ * Accepts multipart file upload OR base64 encoded audio from mobile/web (m4a, wav, webm)
  * Uses Groq Whisper (ultra-fast 200ms) or OpenAI Whisper or Gemini Flash
  */
-router.post('/voice/transcribe', async (req: Request, res: Response) => {
+router.post('/voice/transcribe', upload.single('file'), async (req: Request, res: Response) => {
   try {
-    const { audioBase64, mimeType = 'audio/m4a' } = req.body;
+    let buffer: Buffer | null = null;
+    let mimeType = 'audio/m4a';
+    let fileName = 'recording.m4a';
 
-    if (!audioBase64 || typeof audioBase64 !== 'string') {
-      res.status(400).json({ error: 'Field "audioBase64" is required.' });
-      return;
+    if (req.file) {
+      buffer = req.file.buffer;
+      mimeType = req.file.mimetype || 'audio/m4a';
+      fileName = req.file.originalname || 'recording.m4a';
+    } else if (req.body?.audioBase64 && typeof req.body.audioBase64 === 'string') {
+      buffer = Buffer.from(req.body.audioBase64, 'base64');
+      if (req.body.mimeType) mimeType = req.body.mimeType;
+      let ext = 'm4a';
+      if (mimeType.includes('webm')) ext = 'webm';
+      else if (mimeType.includes('wav')) ext = 'wav';
+      else if (mimeType.includes('ogg')) ext = 'ogg';
+      else if (mimeType.includes('mp3') || mimeType.includes('mpeg')) ext = 'mp3';
+      fileName = `recording.${ext}`;
     }
 
-    const buffer = Buffer.from(audioBase64, 'base64');
-
-    // Compute proper audio file extension based on mimeType (webm, wav, m4a, mp3, ogg)
-    let ext = 'm4a';
-    if (mimeType.includes('webm')) ext = 'webm';
-    else if (mimeType.includes('wav')) ext = 'wav';
-    else if (mimeType.includes('ogg')) ext = 'ogg';
-    else if (mimeType.includes('mp3') || mimeType.includes('mpeg')) ext = 'mp3';
-    else if (mimeType.includes('mp4') || mimeType.includes('m4a')) ext = 'm4a';
-    const fileName = `recording.${ext}`;
+    if (!buffer || buffer.length === 0) {
+      res.status(400).json({ error: 'No audio data received.' });
+      return;
+    }
 
     // 1. Try Groq Whisper (ultra-fast LPU transcription ~250ms)
     const groqKey = process.env.GROQ_API_KEY || process.env.QWEN_API_KEY;
@@ -35,7 +46,7 @@ router.post('/voice/transcribe', async (req: Request, res: Response) => {
         const fileObj = typeof File !== 'undefined'
           ? new File([buffer], fileName, { type: mimeType })
           : new Blob([buffer], { type: mimeType });
-        formData.append('file', fileObj, fileName);
+        formData.append('file', fileObj);
         formData.append('model', 'whisper-large-v3-turbo');
         formData.append('response_format', 'json');
 
@@ -114,7 +125,7 @@ router.post('/voice/transcribe', async (req: Request, res: Response) => {
                     {
                       inline_data: {
                         mime_type: mimeType,
-                        data: audioBase64,
+                        data: buffer.toString('base64'),
                       },
                     },
                   ],
