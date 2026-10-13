@@ -8,11 +8,20 @@
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.dailydrop.dropai"
+      "bundleIdentifier": "com.dailydrop.dropai",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Allow Drop AI to access your microphone for voice ordering and speech input."
+      }
     },
     "android": {
       "package": "com.dailydrop.dropai",
       "softwareKeyboardLayoutMode": "resize",
+      "usesCleartextTraffic": true,
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.INTERNET",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
       "adaptiveIcon": {
         "backgroundColor": "#FFFFFF",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -29,7 +38,13 @@
     },
     "plugins": [
       "expo-status-bar",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Allow Drop AI to access your microphone for voice ordering and speech input."
+        }
+      ]
     ]
   }
 }
