@@ -282,6 +282,79 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
       scrollRef.current?.scrollToEnd({ animated: true });
     }, 100);
 
+    const requestStartTime = Date.now();
+
+    const patchAi = (patch: Partial<ChatMessage>) => {
+      setMessages((prev) => prev.map((m) => (m.id === aiId ? { ...m, ...patch } : m)));
+    };
+
+    const streamGroceryReply = async (payload: {
+      message: string;
+      groceryList?: GroceryOrderList;
+      quickOptions?: string[];
+    }) => {
+      // 1. Maintain the exact timeline as main bot screen: at least 850ms thinking pulse
+      const minThinkingTime = 850;
+      const elapsed = Date.now() - requestStartTime;
+      if (elapsed < minThinkingTime) {
+        await new Promise((r) => setTimeout(r, minThinkingTime - elapsed));
+      }
+
+      const fullText = payload.message || '';
+      const rawWords = fullText.match(/\S+|\n/g) || [fullText];
+      const tokens: string[] = [];
+      for (let i = 0; i < rawWords.length; i++) {
+        const item = rawWords[i];
+        if (item === '\n') {
+          tokens.push('\n');
+        } else {
+          const next = rawWords[i + 1];
+          tokens.push(next === '\n' || i === rawWords.length - 1 ? item : item + ' ');
+        }
+      }
+
+      let accumulated = '';
+      for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i];
+        accumulated += token;
+        patchAi({
+          text: accumulated,
+          isStreaming: true,
+          statusText: undefined,
+        });
+
+        if (i % 2 === 0 || i === tokens.length - 1) {
+          scrollRef.current?.scrollToEnd({ animated: true });
+        }
+
+        let pause = 65;
+        if (token === '\n') {
+          pause = 240;
+        } else if (/[.!?]$/.test(token.trim())) {
+          pause = 180;
+        } else if (/[,;:\-—]$/.test(token.trim())) {
+          pause = 110;
+        }
+        await new Promise((r) => setTimeout(r, pause));
+      }
+
+      // 2. Natural breathing pause before revealing grocery card & quick suggestions
+      await new Promise((r) => setTimeout(r, 260));
+
+      patchAi({
+        text: fullText,
+        isStreaming: false,
+        statusText: undefined,
+        groceryList: payload.groceryList,
+        quickOptions: payload.quickOptions,
+      });
+      setIsLoading(false);
+
+      setTimeout(() => {
+        scrollRef.current?.scrollToEnd({ animated: true });
+      }, 150);
+    };
+
     try {
       const cleanBase = apiBaseUrl.replace(/\/$/, '');
       const controller = new AbortController();
@@ -310,22 +383,11 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
           '🔄 Clear & Start Over',
         ];
 
-        setMessages((prev) =>
-          prev.map((m) =>
-            m.id === aiId
-              ? {
-                  ...m,
-                  text: serverText,
-                  isStreaming: false,
-                  statusText: undefined,
-                  groceryList: serverGroceryList,
-                  quickOptions: serverOptions,
-                }
-              : m
-          )
-        );
-        setIsLoading(false);
-        setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 150);
+        await streamGroceryReply({
+          message: serverText,
+          groceryList: serverGroceryList,
+          quickOptions: serverOptions,
+        });
         return;
       }
     } catch (netErr) {
@@ -336,32 +398,17 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
     const parsedGroceryList = parseGroceryVoiceTranscript(text);
     const replyText = `I found ${parsedGroceryList.items.length} fresh grocery items matching your request. Here is your grocery list:`;
 
-    setMessages((prev) =>
-      prev.map((m) =>
-        m.id === aiId
-          ? {
-              ...m,
-              text: replyText,
-              isStreaming: false,
-              statusText: undefined,
-              groceryList: parsedGroceryList,
-              quickOptions: [
-                '🛒 Add All to Cart',
-                '🥛 More Dairy',
-                '🥑 Fresh Produce',
-                '🍞 Bakery Items',
-                '🔄 Clear & Start Over',
-              ],
-            }
-          : m
-      )
-    );
-
-    setIsLoading(false);
-
-    setTimeout(() => {
-      scrollRef.current?.scrollToEnd({ animated: true });
-    }, 150);
+    await streamGroceryReply({
+      message: replyText,
+      groceryList: parsedGroceryList,
+      quickOptions: [
+        '🛒 Add All to Cart',
+        '🥛 More Dairy',
+        '🥑 Fresh Produce',
+        '🍞 Bakery Items',
+        '🔄 Clear & Start Over',
+      ],
+    });
   };
 
   const handleSelectQuickOption = (option: string) => {
@@ -598,7 +645,7 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
                       ) : null}
 
                       {/* Interactive Grocery List Card */}
-                      {msg.groceryList ? (
+                      {!msg.isStreaming && msg.groceryList ? (
                         <MobileInChatGroceryCard
                           groceryList={msg.groceryList}
                           onAddToCart={(item) => {

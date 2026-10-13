@@ -34,7 +34,7 @@ export const MobileVoiceListeningOverlay: React.FC<MobileVoiceListeningOverlayPr
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [soundLevel, setSoundLevel] = useState(0.2);
   const [statusMessage, setStatusMessage] = useState('Listening… Speak now');
-  const [countdown, setCountdown] = useState(5);
+  const [countdown, setCountdown] = useState(8);
   const countdownIntervalRef = useRef<any>(null);
 
   const pulseAnim = useRef(new Animated.Value(1)).current;
@@ -107,7 +107,7 @@ export const MobileVoiceListeningOverlay: React.FC<MobileVoiceListeningOverlayPr
     setIsListening(true);
     setIsTranscribing(false);
     setStatusMessage('Listening… Speak now');
-    setCountdown(5);
+    setCountdown(8);
 
     countdownIntervalRef.current = setInterval(() => {
       setCountdown((prev) => {

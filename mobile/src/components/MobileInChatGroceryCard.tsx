@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
-  Image,
   ScrollView,
   StyleSheet,
+  Animated,
+  ActivityIndicator,
 } from 'react-native';
 import { GroceryOrderList, GroceryItem } from '../types';
 import { voiceAgent } from '../voiceAgent';
@@ -15,6 +16,194 @@ interface MobileInChatGroceryCardProps {
   onAddToCart: (item: GroceryItem) => void;
   onAddAllToCart: (items: GroceryItem[]) => void;
 }
+
+interface GroceryItemCardProps {
+  item: GroceryItem;
+  index: number;
+  isChecked: boolean;
+  isItemAdded: boolean;
+  onToggleCheck: (id: string) => void;
+  onUpdateQuantity: (id: string, delta: number) => void;
+  onAddSingle: (item: GroceryItem) => void;
+}
+
+const GroceryItemCard: React.FC<GroceryItemCardProps> = ({
+  item,
+  index,
+  isChecked,
+  isItemAdded,
+  onToggleCheck,
+  onUpdateQuantity,
+  onAddSingle,
+}) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
+
+  // Shimmer pulse animation for image loading skeleton
+  const shimmerAnim = useRef(new Animated.Value(0.35)).current;
+  useEffect(() => {
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(shimmerAnim, {
+          toValue: 0.85,
+          duration: 650,
+          useNativeDriver: true,
+        }),
+        Animated.timing(shimmerAnim, {
+          toValue: 0.35,
+          duration: 650,
+          useNativeDriver: true,
+        }),
+      ])
+    );
+    loop.start();
+    return () => loop.stop();
+  }, []);
+
+  // Staggered Entrance Animation matching main bot screen
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(16)).current;
+  const imageFadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 350,
+        delay: Math.min(index * 90, 450),
+        useNativeDriver: true,
+      }),
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 350,
+        delay: Math.min(index * 90, 450),
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [index]);
+
+  const fallbackImg =
+    'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80';
+
+  return (
+    <Animated.View
+      style={[
+        styles.itemCard,
+        !isChecked && styles.itemCardUnchecked,
+        {
+          opacity: fadeAnim,
+          transform: [{ translateY: slideAnim }],
+        },
+      ]}
+    >
+      {/* Photo with Shimmering Skeleton Loader */}
+      <View style={styles.imgWrapper}>
+        {!isLoaded && !imgError && (
+          <Animated.View style={[styles.skeletonBox, { opacity: shimmerAnim }]}>
+            <ActivityIndicator size="small" color="#059669" />
+            <Text style={styles.skeletonText}>Loading photo…</Text>
+          </Animated.View>
+        )}
+
+        <Animated.Image
+          source={{ uri: imgError ? fallbackImg : item.imageUrl || fallbackImg }}
+          style={[styles.itemImg, { opacity: imageFadeAnim }]}
+          resizeMode="cover"
+          onLoad={() => {
+            setIsLoaded(true);
+            Animated.timing(imageFadeAnim, {
+              toValue: 1,
+              duration: 280,
+              useNativeDriver: true,
+            }).start();
+          }}
+          onError={() => {
+            setImgError(true);
+            setIsLoaded(true);
+          }}
+        />
+
+        {/* Select Checkbox Badge */}
+        <TouchableOpacity
+          style={[styles.checkBadge, isChecked && styles.checkBadgeActive]}
+          onPress={() => onToggleCheck(item.id)}
+          activeOpacity={0.8}
+        >
+          {isChecked ? <Text style={styles.checkBadgeText}>✓</Text> : null}
+        </TouchableOpacity>
+
+        {/* Unit Pill */}
+        <View style={styles.unitPill}>
+          <Text style={styles.unitPillText} numberOfLines={1}>
+            {item.unit}
+          </Text>
+        </View>
+      </View>
+
+      {/* Card Info */}
+      <View style={styles.cardInfo}>
+        <Text
+          style={[styles.itemName, !isChecked && styles.itemNameMuted]}
+          numberOfLines={2}
+        >
+          {item.name}
+        </Text>
+
+        <View style={styles.priceRow}>
+          <Text style={styles.itemPrice}>
+            ${(item.price * item.quantity).toFixed(2)}
+          </Text>
+          {item.quantity > 1 ? (
+            <Text style={styles.itemUnitPrice}>
+              (${item.price.toFixed(2)} ea)
+            </Text>
+          ) : null}
+        </View>
+
+        {/* Quantity Stepper & Single Add Button */}
+        <View style={styles.actionRow}>
+          <View style={styles.stepper}>
+            <TouchableOpacity
+              style={styles.stepperBtn}
+              onPress={() => onUpdateQuantity(item.id, -1)}
+              disabled={!isChecked || item.quantity <= 1}
+            >
+              <Text style={styles.stepperBtnText}>-</Text>
+            </TouchableOpacity>
+            <Text style={styles.stepperNum}>{item.quantity}</Text>
+            <TouchableOpacity
+              style={styles.stepperBtn}
+              onPress={() => onUpdateQuantity(item.id, 1)}
+              disabled={!isChecked || item.quantity >= 10}
+            >
+              <Text style={styles.stepperBtnText}>+</Text>
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity
+            style={[
+              styles.addSingleBtn,
+              isItemAdded && styles.addSingleBtnAdded,
+              !isChecked && styles.addSingleBtnDisabled,
+            ]}
+            onPress={() => onAddSingle(item)}
+            disabled={!isChecked}
+            activeOpacity={0.7}
+          >
+            <Text
+              style={[
+                styles.addSingleText,
+                isItemAdded && styles.addSingleTextAdded,
+              ]}
+            >
+              {isItemAdded ? '✓ Added' : '+ Add'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Animated.View>
+  );
+};
 
 export const MobileInChatGroceryCard: React.FC<MobileInChatGroceryCardProps> = ({
   groceryList,
@@ -128,107 +317,27 @@ export const MobileInChatGroceryCard: React.FC<MobileInChatGroceryCardProps> = (
         </View>
       ) : null}
 
-      {/* Horizontal Carousel of Grocery Cards */}
+      {/* Horizontal Carousel of Grocery Cards with Stagger & Image Shimmer */}
       <View style={styles.carouselContainer}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.horizontalScrollContent}
         >
-          {items.map((item) => {
+          {items.map((item, index) => {
             const isChecked = item.checked !== false;
             const isItemAdded = !!addedItemIds[item.id];
             return (
-              <View
+              <GroceryItemCard
                 key={item.id}
-                style={[styles.itemCard, !isChecked && styles.itemCardUnchecked]}
-              >
-                {/* Photo & Overlay Badges */}
-                <View style={styles.imgWrapper}>
-                  <Image
-                    source={{ uri: item.imageUrl }}
-                    style={styles.itemImg}
-                    resizeMode="cover"
-                  />
-                  {/* Select Checkbox Badge */}
-                  <TouchableOpacity
-                    style={[styles.checkBadge, isChecked && styles.checkBadgeActive]}
-                    onPress={() => toggleCheck(item.id)}
-                    activeOpacity={0.8}
-                  >
-                    {isChecked ? <Text style={styles.checkBadgeText}>✓</Text> : null}
-                  </TouchableOpacity>
-
-                  {/* Unit Tag */}
-                  <View style={styles.unitPill}>
-                    <Text style={styles.unitPillText} numberOfLines={1}>
-                      {item.unit}
-                    </Text>
-                  </View>
-                </View>
-
-                {/* Card Info */}
-                <View style={styles.cardInfo}>
-                  <Text
-                    style={[styles.itemName, !isChecked && styles.itemNameMuted]}
-                    numberOfLines={2}
-                  >
-                    {item.name}
-                  </Text>
-
-                  <View style={styles.priceRow}>
-                    <Text style={styles.itemPrice}>
-                      ${(item.price * item.quantity).toFixed(2)}
-                    </Text>
-                    {item.quantity > 1 ? (
-                      <Text style={styles.itemUnitPrice}>
-                        (${item.price.toFixed(2)} ea)
-                      </Text>
-                    ) : null}
-                  </View>
-
-                  {/* Quantity Stepper & Single Add Button */}
-                  <View style={styles.actionRow}>
-                    <View style={styles.stepper}>
-                      <TouchableOpacity
-                        style={styles.stepperBtn}
-                        onPress={() => updateQuantity(item.id, -1)}
-                        disabled={!isChecked || item.quantity <= 1}
-                      >
-                        <Text style={styles.stepperBtnText}>-</Text>
-                      </TouchableOpacity>
-                      <Text style={styles.stepperNum}>{item.quantity}</Text>
-                      <TouchableOpacity
-                        style={styles.stepperBtn}
-                        onPress={() => updateQuantity(item.id, 1)}
-                        disabled={!isChecked || item.quantity >= 10}
-                      >
-                        <Text style={styles.stepperBtnText}>+</Text>
-                      </TouchableOpacity>
-                    </View>
-
-                    <TouchableOpacity
-                      style={[
-                        styles.addSingleBtn,
-                        isItemAdded && styles.addSingleBtnAdded,
-                        !isChecked && styles.addSingleBtnDisabled,
-                      ]}
-                      onPress={() => handleAddSingle(item)}
-                      disabled={!isChecked}
-                      activeOpacity={0.7}
-                    >
-                      <Text
-                        style={[
-                          styles.addSingleText,
-                          isItemAdded && styles.addSingleTextAdded,
-                        ]}
-                      >
-                        {isItemAdded ? '✓ Added' : '+ Add'}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </View>
+                item={item}
+                index={index}
+                isChecked={isChecked}
+                isItemAdded={isItemAdded}
+                onToggleCheck={toggleCheck}
+                onUpdateQuantity={updateQuantity}
+                onAddSingle={handleAddSingle}
+              />
             );
           })}
         </ScrollView>
@@ -387,6 +496,24 @@ const styles = StyleSheet.create({
     height: 96,
     backgroundColor: '#F3F4F6',
     position: 'relative',
+    overflow: 'hidden',
+  },
+  skeletonBox: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: '#E5E7EB',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1,
+  },
+  skeletonText: {
+    fontSize: 9,
+    color: '#065F46',
+    fontWeight: '600',
+    marginTop: 2,
   },
   itemImg: {
     width: '100%',
@@ -408,7 +535,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.15,
     shadowRadius: 2,
-    elevation: 2,
+    elevation: 3,
+    zIndex: 2,
   },
   checkBadgeActive: {
     backgroundColor: '#059669',
@@ -427,6 +555,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 6,
+    zIndex: 2,
   },
   unitPillText: {
     color: '#FFFFFF',
