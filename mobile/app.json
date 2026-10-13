@@ -20,7 +20,9 @@
       "permissions": [
         "android.permission.RECORD_AUDIO",
         "android.permission.INTERNET",
-        "android.permission.MODIFY_AUDIO_SETTINGS"
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
       ],
       "adaptiveIcon": {
         "backgroundColor": "#FFFFFF",
@@ -33,7 +35,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "a3343b25-b15f-455d-a0ff-511c248ad3c1"
+        "projectId": "4ee2b67e-4700-4a18-beee-cad8ad4a5369"
       }
     },
     "plugins": [
@@ -45,6 +47,7 @@
           "microphonePermission": "Allow Drop AI to access your microphone for voice ordering and speech input."
         }
       ]
-    ]
+    ],
+    "owner": "rohit51"
   }
 }
