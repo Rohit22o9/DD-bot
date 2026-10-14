@@ -231,7 +231,27 @@ export interface ChatMessage {
   };
 }
 
-export type GroceryCategory = 'dairy' | 'produce' | 'bakery' | 'pantry' | 'meat' | 'beverage' | 'snack';
+export type GroceryCategory =
+  | 'Rice & Grains'
+  | 'Atta & Flours'
+  | 'Dals & Pulses'
+  | 'Cooking Oils & Ghee'
+  | 'Spices & Masalas'
+  | 'Dairy & Refrigerated'
+  | 'Fresh Vegetables'
+  | 'Snacks & Biscuits'
+  | 'Tea, Coffee & Beverages'
+  | 'Dry Fruits & Nuts'
+  | 'Household Essentials'
+  | 'Ready-to-Eat & Instant Foods'
+  | 'dairy'
+  | 'produce'
+  | 'bakery'
+  | 'pantry'
+  | 'meat'
+  | 'beverage'
+  | 'snack'
+  | string;
 
 export interface GroceryItem {
   id: string;

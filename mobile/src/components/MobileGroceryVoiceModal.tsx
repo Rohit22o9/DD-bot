@@ -16,7 +16,6 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { GroceryItem, GroceryOrderList, ChatMessage } from '../types';
 import { parseGroceryVoiceTranscript } from '../groceryData';
-import { voiceAgent, formatMessageForSpeech } from '../voiceAgent';
 import { MobileInChatGroceryCard } from './MobileInChatGroceryCard';
 import { MobileThinkingBubble } from './MobileThinkingBubble';
 import { MobileVoiceListeningOverlay } from './MobileVoiceListeningOverlay';
@@ -43,38 +42,41 @@ interface GroceryPromptCard {
 
 const GROCERY_PROMPT_CARDS: GroceryPromptCard[] = [
   {
+    icon: '🍚',
+    title: 'Essential Staples',
+    subtitle: 'Basmati rice, whole wheat atta, toor dal & cow ghee',
+    prompt: 'I need to buy essential staples like basmati rice, whole wheat atta, toor dal and cow ghee',
+  },
+  {
+    icon: '🧅',
+    title: 'Fresh Vegetables',
+    subtitle: 'Onions, potatoes, tomatoes, okra & green chillies',
+    prompt: 'Order fresh vegetables like onions, potatoes, tomatoes and bhindi',
+  },
+  {
     icon: '🥛',
-    title: 'Weekly Essentials',
-    subtitle: 'Milk, eggs, sourdough bread & butter',
-    prompt: 'I need to buy some groceries like milk, eggs, sourdough bread and butter',
+    title: 'Dairy & Refrigerated',
+    subtitle: 'Full cream milk, fresh paneer, butter & dahi curd',
+    prompt: 'I need full cream milk, fresh paneer, butter and curd',
   },
   {
-    icon: '🥑',
-    title: 'Fresh Produce',
-    subtitle: 'Avocados, tomatoes, spinach & olive oil',
-    prompt: 'Buy avocados, roma tomatoes, baby spinach and olive oil',
-  },
-  {
-    icon: '🥣',
-    title: 'Healthy Breakfast',
-    subtitle: 'Greek yogurt, bananas, apples & honey',
-    prompt: 'Order bananas, crisp apples, Greek yogurt and wildflower honey',
-  },
-  {
-    icon: '🍝',
-    title: 'Pasta Night',
-    subtitle: 'Penne pasta, marinara sauce & garlic',
-    prompt: 'I need penne pasta, marinara sauce, garlic and cheddar cheese',
+    icon: '☕',
+    title: 'Chai & Snacks',
+    subtitle: 'Assam tea, Parle-G biscuits, aloo bhujia & chakli',
+    prompt: 'Order Assam tea, Parle-G biscuits, aloo bhujia and chakli',
   },
 ];
 
 const QUICK_GROCERY_PILLS = [
-  { label: '🥛 Milk & Eggs', prompt: 'Whole organic milk and brown eggs' },
-  { label: '🍞 Sourdough Bread', prompt: 'Artisan sourdough bread and butter' },
-  { label: '🥑 3 Hass Avocados', prompt: '3 ripe Hass avocados' },
-  { label: '🧀 Cheese & Dairy', prompt: 'Cheddar cheese block and Greek yogurt' },
-  { label: '🍎 Fresh Fruit Basket', prompt: 'Bananas and crisp apples' },
-  { label: '🛒 Restock Pantry', prompt: 'Olive oil, jasmine rice and pasta' },
+  { label: '🍚 Basmati Rice', prompt: 'Basmati rice and sona masoori rice' },
+  { label: '🌾 Whole Wheat Atta', prompt: 'Whole wheat atta and multigrain atta' },
+  { label: '🫘 Toor Dal & Rajma', prompt: 'Toor dal, moong dal and rajma' },
+  { label: '🧈 Pure Cow Ghee', prompt: 'Pure cow ghee and mustard oil' },
+  { label: '🥛 Milk & Paneer', prompt: 'Full cream milk and fresh paneer' },
+  { label: '🧅 Onions & Potatoes', prompt: 'Fresh onion, potato and tomato' },
+  { label: '☕ Assam Tea & Biscuits', prompt: 'Assam tea and Parle-G biscuits' },
+  { label: '🌶️ Spices & Masalas', prompt: 'Turmeric powder, red chilli powder and garam masala' },
+  { label: '🥜 Dry Fruits & Nuts', prompt: 'Almonds, cashews and raisins' },
 ];
 
 export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = ({
@@ -92,7 +94,6 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
   const [isLoading, setIsLoading] = useState(false);
   const [isVoiceOverlayOpen, setIsVoiceOverlayOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-  const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
 
   const scrollRef = useRef<ScrollView>(null);
   const toastTimeoutRef = useRef<any>(null);
@@ -109,37 +110,11 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
       setInput('');
       setIsLoading(false);
     }
-    if (!visible) {
-      voiceAgent.stopSpeaking();
-      setSpeakingMsgId(null);
-    }
-    return () => {
-      voiceAgent.stopSpeaking();
-    };
   }, [visible]);
-
-  const handleToggleSpeak = (msg: ChatMessage) => {
-    if (speakingMsgId === msg.id) {
-      voiceAgent.stopSpeaking();
-      setSpeakingMsgId(null);
-    } else {
-      voiceAgent.stopSpeaking();
-      setSpeakingMsgId(msg.id);
-      const textToSpeak = formatMessageForSpeech(msg);
-      voiceAgent.speak(
-        textToSpeak,
-        () => setSpeakingMsgId(null),
-        () => setSpeakingMsgId(null)
-      );
-    }
-  };
 
   const handleSend = async (textToSend?: string) => {
     const text = (textToSend || input).trim();
     if (!text || isLoading) return;
-
-    voiceAgent.stopSpeaking();
-    setSpeakingMsgId(null);
 
     // Unconditionally clear typing bar immediately
     setInput('');
@@ -244,12 +219,6 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
 
         setMessages((prev) => [...prev, userMsg, aiMsg]);
         setIsLoading(false);
-
-        voiceAgent.speak(
-          aiConfirmText,
-          () => setSpeakingMsgId(null),
-          () => setSpeakingMsgId(null)
-        );
 
         setTimeout(() => {
           scrollRef.current?.scrollToEnd({ animated: true });
@@ -377,9 +346,11 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
           `I found ${serverGroceryList.items.length} fresh grocery items matching your request. Here is your grocery list:`;
         const serverOptions = data?.quickOptions || [
           '🛒 Add All to Cart',
-          '🥛 More Dairy',
-          '🥑 Fresh Produce',
-          '🍞 Bakery Items',
+          '🌾 Atta & Rice',
+          '🫘 Dals & Pulses',
+          '🧈 Ghee & Dairy',
+          '🧅 Fresh Veggies',
+          '☕ Chai & Snacks',
           '🔄 Clear & Start Over',
         ];
 
@@ -403,9 +374,11 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
       groceryList: parsedGroceryList,
       quickOptions: [
         '🛒 Add All to Cart',
-        '🥛 More Dairy',
-        '🥑 Fresh Produce',
-        '🍞 Bakery Items',
+        '🌾 Atta & Rice',
+        '🫘 Dals & Pulses',
+        '🧈 Ghee & Dairy',
+        '🧅 Fresh Veggies',
+        '☕ Chai & Snacks',
         '🔄 Clear & Start Over',
       ],
     });
@@ -523,12 +496,12 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
                 {/* Hero Mascot with Floating Doodles */}
                 <View style={styles.heroSection}>
                   <View style={styles.mascotWrapper}>
-                    <Text style={[styles.floatingDoodle, styles.doodle1]}>🥛</Text>
-                    <Text style={[styles.floatingDoodle, styles.doodle2]}>🍞</Text>
-                    <Text style={[styles.floatingDoodle, styles.doodle3]}>🥑</Text>
-                    <Text style={[styles.floatingDoodle, styles.doodle4]}>🧀</Text>
-                    <Text style={[styles.floatingDoodle, styles.doodle5]}>🍎</Text>
-                    <Text style={[styles.floatingDoodle, styles.doodle6]}>🥚</Text>
+                    <Text style={[styles.floatingDoodle, styles.doodle1]}>🍚</Text>
+                    <Text style={[styles.floatingDoodle, styles.doodle2]}>🌾</Text>
+                    <Text style={[styles.floatingDoodle, styles.doodle3]}>🫘</Text>
+                    <Text style={[styles.floatingDoodle, styles.doodle4]}>🧈</Text>
+                    <Text style={[styles.floatingDoodle, styles.doodle5]}>🥛</Text>
+                    <Text style={[styles.floatingDoodle, styles.doodle6]}>🧅</Text>
 
                     <View style={styles.mascotBadge}>
                       <Text style={styles.mascotBadgeEmoji}>🛒</Text>
@@ -611,36 +584,6 @@ export const MobileGroceryVoiceModal: React.FC<MobileGroceryVoiceModalProps> = (
                           <Text style={[styles.bubbleText, isUser ? styles.bubbleTextUser : styles.bubbleTextAssistant]}>
                             {msg.text}
                           </Text>
-
-                          {/* Speaker Button to listen to voice response */}
-                          {!isUser && !msg.isStreaming && (
-                            <View style={styles.bubbleFooter}>
-                              <TouchableOpacity
-                                style={[
-                                  styles.speakerBtn,
-                                  speakingMsgId === msg.id && styles.speakerBtnActive,
-                                ]}
-                                onPress={() => handleToggleSpeak(msg)}
-                                activeOpacity={0.7}
-                                accessibilityRole="button"
-                                accessibilityLabel={
-                                  speakingMsgId === msg.id ? 'Stop audio' : 'Listen to response'
-                                }
-                              >
-                                <Text style={styles.speakerIcon}>
-                                  {speakingMsgId === msg.id ? '🔊' : '🔈'}
-                                </Text>
-                                <Text
-                                  style={[
-                                    styles.speakerBtnText,
-                                    speakingMsgId === msg.id && styles.speakerBtnTextActive,
-                                  ]}
-                                >
-                                  {speakingMsgId === msg.id ? 'Speaking…' : 'Listen'}
-                                </Text>
-                              </TouchableOpacity>
-                            </View>
-                          )}
                         </View>
                       ) : null}
 
@@ -1059,41 +1002,6 @@ const styles = StyleSheet.create({
   },
   bubbleTextAssistant: {
     color: '#1F2937',
-  },
-  bubbleFooter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 8,
-    paddingTop: 6,
-    borderTopWidth: 1,
-    borderTopColor: '#F3F4F6',
-  },
-  speakerBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-    backgroundColor: '#F3F4F6',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
-  },
-  speakerBtnActive: {
-    backgroundColor: '#DCFCE7',
-    borderColor: '#86EFAC',
-  },
-  speakerIcon: {
-    fontSize: 13,
-  },
-  speakerBtnText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#4B5563',
-  },
-  speakerBtnTextActive: {
-    color: '#15803D',
-    fontWeight: '700',
   },
   chipsWrap: {
     flexDirection: 'row',

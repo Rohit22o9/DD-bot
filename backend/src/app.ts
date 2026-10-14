@@ -9,6 +9,7 @@ import mealPlanRoutes from './routes/mealPlanRoutes';
 import mcpRoutes from './routes/mcpRoutes';
 import feedbackRoutes from './routes/feedbackRoutes';
 import voiceRoutes from './routes/voiceRoutes';
+import groceryRoutes from './routes/groceryRoutes';
 
 export const app = express();
 
@@ -35,6 +36,7 @@ app.use('/api', mealPlanRoutes);
 app.use('/api', mcpRoutes);
 app.use('/api', feedbackRoutes);
 app.use('/api', voiceRoutes);
+app.use('/api', groceryRoutes);
 
 // Global Error Handler Middleware
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {

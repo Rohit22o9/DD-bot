@@ -26,6 +26,7 @@ import {
   MOCK_USERS,
   MOCK_ORDER_HISTORIES
 } from './mockData';
+import { GROCERY_CATALOG, groceryItemToMeal } from '../../ai/groceryData';
 
 export class MockDailyDropAPI
   implements
@@ -131,11 +132,17 @@ export class MockDailyDropAPI
 
   async getMeal(id: string): Promise<Meal | null> {
     const meal = this.meals.find((m) => m.id === id);
-    return meal ? { ...meal } : null;
+    if (meal) return { ...meal };
+    const groc = GROCERY_CATALOG.find((g) => g.id === id);
+    if (groc) return groceryItemToMeal(groc);
+    return null;
   }
 
   async getMealsByIds(ids: string[]): Promise<Meal[]> {
-    return this.meals.filter((m) => ids.includes(m.id));
+    const regular = this.meals.filter((m) => ids.includes(m.id));
+    const missingIds = ids.filter((id) => !regular.some((m) => m.id === id));
+    const grocs = GROCERY_CATALOG.filter((g) => missingIds.includes(g.id)).map(groceryItemToMeal);
+    return [...regular, ...grocs];
   }
 
   // --- Restaurant API ---

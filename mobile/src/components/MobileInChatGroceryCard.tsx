@@ -9,7 +9,6 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { GroceryOrderList, GroceryItem } from '../types';
-import { voiceAgent } from '../voiceAgent';
 
 interface MobileInChatGroceryCardProps {
   groceryList: GroceryOrderList;
@@ -149,6 +148,12 @@ const GroceryItemCard: React.FC<GroceryItemCardProps> = ({
           {item.name}
         </Text>
 
+        {item.brand ? (
+          <Text style={styles.itemBrand} numberOfLines={1}>
+            {item.brand}
+          </Text>
+        ) : null}
+
         <View style={styles.priceRow}>
           <Text style={styles.itemPrice}>
             ${(item.price * item.quantity).toFixed(2)}
@@ -213,15 +218,6 @@ export const MobileInChatGroceryCard: React.FC<MobileInChatGroceryCardProps> = (
   const [items, setItems] = useState<GroceryItem[]>(groceryList.items);
   const [addedAll, setAddedAll] = useState(false);
   const [addedItemIds, setAddedItemIds] = useState<{ [id: string]: boolean }>({});
-  const [isSpeaking, setIsSpeaking] = useState(false);
-
-  useEffect(() => {
-    return () => {
-      if (isSpeaking) {
-        voiceAgent.stopSpeaking();
-      }
-    };
-  }, [isSpeaking]);
 
   const toggleCheck = (id: string) => {
     setItems((prev) =>
@@ -244,23 +240,6 @@ export const MobileInChatGroceryCard: React.FC<MobileInChatGroceryCardProps> = (
   const checkedItems = items.filter((i) => i.checked !== false);
   const total = Math.round(checkedItems.reduce((s, i) => s + i.price * i.quantity, 0) * 100) / 100;
 
-  const handleToggleSpeak = () => {
-    if (isSpeaking) {
-      voiceAgent.stopSpeaking();
-      setIsSpeaking(false);
-    } else {
-      voiceAgent.stopSpeaking();
-      setIsSpeaking(true);
-      const itemSummaries = checkedItems.map((i) => `${i.quantity} ${i.name}`).join(', ');
-      const speechText = `Grocery order items: ${itemSummaries}. Estimated total is ${total.toFixed(2)} dollars.`;
-      voiceAgent.speak(
-        speechText,
-        () => setIsSpeaking(false),
-        () => setIsSpeaking(false)
-      );
-    }
-  };
-
   const handleAddSingle = (item: GroceryItem) => {
     onAddToCart(item);
     setAddedItemIds((prev) => ({ ...prev, [item.id]: true }));
@@ -277,7 +256,7 @@ export const MobileInChatGroceryCard: React.FC<MobileInChatGroceryCardProps> = (
 
   return (
     <View style={styles.card}>
-      {/* Header with speaker button constrained properly */}
+      {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
           <View style={styles.iconBadge}>
@@ -292,19 +271,6 @@ export const MobileInChatGroceryCard: React.FC<MobileInChatGroceryCardProps> = (
             </Text>
           </View>
         </View>
-
-        <TouchableOpacity
-          style={[styles.speakBtn, isSpeaking && styles.speakBtnActive]}
-          onPress={handleToggleSpeak}
-          activeOpacity={0.7}
-          accessibilityRole="button"
-          accessibilityLabel={isSpeaking ? 'Stop audio' : 'Listen to grocery list'}
-        >
-          <Text style={styles.speakBtnIcon}>{isSpeaking ? '🔊' : '🔈'}</Text>
-          <Text style={[styles.speakBtnText, isSpeaking && styles.speakBtnTextActive]}>
-            {isSpeaking ? 'Speaking…' : 'Listen'}
-          </Text>
-        </TouchableOpacity>
       </View>
 
       {/* Voice Transcript Tag */}
@@ -421,33 +387,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: '#6B7280',
     marginTop: 1,
-  },
-  speakBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    backgroundColor: '#F3F4F6',
-    paddingHorizontal: 8,
-    paddingVertical: 5,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
-    flexShrink: 0,
-  },
-  speakBtnActive: {
-    backgroundColor: '#DEF7EC',
-    borderColor: '#86EFAC',
-  },
-  speakBtnIcon: {
-    fontSize: 12,
-  },
-  speakBtnText: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: '#4B5563',
-  },
-  speakBtnTextActive: {
-    color: '#03543F',
   },
   transcriptBox: {
     flexDirection: 'row',
@@ -575,6 +514,15 @@ const styles = StyleSheet.create({
   itemNameMuted: {
     textDecorationLine: 'line-through',
     color: '#9CA3AF',
+  },
+  itemBrand: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: '#059669',
+    marginTop: 1,
+    marginBottom: 2,
+    textTransform: 'uppercase',
+    letterSpacing: 0.3,
   },
   priceRow: {
     flexDirection: 'row',

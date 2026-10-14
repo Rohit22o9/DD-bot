@@ -34,7 +34,6 @@ import { MobileGamesModal } from './components/MobileGamesModal';
 import { MobileInChatGroceryCard } from './components/MobileInChatGroceryCard';
 import { MobileGroceryVoiceModal } from './components/MobileGroceryVoiceModal';
 import { MobileVoiceListeningOverlay } from './components/MobileVoiceListeningOverlay';
-import { voiceAgent, formatMessageForSpeech } from './voiceAgent';
 import { QuickSearchFilters, Cart, UserProfile, GamePayload, GroceryItem } from './types';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -173,33 +172,6 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
 
   const [selectedChips, setSelectedChips] = useState<string[]>([]);
   const scrollRef = useRef<ScrollView>(null);
-  const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
-
-  // Clean up any ongoing TTS speech when screen unmounts
-  useEffect(() => {
-    return () => {
-      voiceAgent.stopSpeaking();
-    };
-  }, []);
-
-  const handleToggleSpeak = useCallback(
-    (msg: any) => {
-      if (speakingMsgId === msg.id) {
-        voiceAgent.stopSpeaking();
-        setSpeakingMsgId(null);
-      } else {
-        voiceAgent.stopSpeaking();
-        setSpeakingMsgId(msg.id);
-        const textToSpeak = formatMessageForSpeech(msg);
-        voiceAgent.speak(
-          textToSpeak,
-          () => setSpeakingMsgId(null),
-          () => setSpeakingMsgId(null)
-        );
-      }
-    },
-    [speakingMsgId]
-  );
 
   const cartItemCount = cart?.items.reduce((s, i) => s + i.quantity, 0) || 0;
   const cartTotal = cart?.total || 0;
@@ -221,8 +193,6 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
     const text = (textToSend || input).trim();
     if (!text || isLoading) return;
 
-    voiceAgent.stopSpeaking();
-    setSpeakingMsgId(null);
     setInput('');
 
     const lower = text.toLowerCase().trim().replace(/[.,!]/g, '');
@@ -651,66 +621,6 @@ export const DropAIScreen: React.FC<DropAIScreenProps> = ({
                             <Text style={styles.cursorText}> ▮</Text>
                           ) : null}
                         </Text>
-
-                        {/* Speaker TTS button to hear AI response */}
-                        {!isUser && !msg.isStreaming && (
-                          <View style={styles.bubbleFooter}>
-                            <TouchableOpacity
-                              style={[
-                                styles.speakerBtn,
-                                speakingMsgId === msg.id && styles.speakerBtnActive,
-                              ]}
-                              onPress={() => handleToggleSpeak(msg)}
-                              activeOpacity={0.7}
-                              accessibilityRole="button"
-                              accessibilityLabel={
-                                speakingMsgId === msg.id ? 'Stop audio' : 'Listen to response'
-                              }
-                            >
-                              <Text style={styles.speakerIcon}>
-                                {speakingMsgId === msg.id ? '🔊' : '🔈'}
-                              </Text>
-                              <Text
-                                style={[
-                                  styles.speakerBtnText,
-                                  speakingMsgId === msg.id && styles.speakerBtnTextActive,
-                                ]}
-                              >
-                                {speakingMsgId === msg.id ? 'Speaking…' : 'Listen'}
-                              </Text>
-                            </TouchableOpacity>
-                          </View>
-                        )}
-                      </View>
-                    )}
-
-                    {/* Standalone Speaker button when text bubble is hidden but cards are present */}
-                    {!shouldShowBubble && !isUser && !msg.isStreaming && (
-                      <View style={styles.standaloneSpeakerRow}>
-                        <TouchableOpacity
-                          style={[
-                            styles.speakerBtn,
-                            speakingMsgId === msg.id && styles.speakerBtnActive,
-                          ]}
-                          onPress={() => handleToggleSpeak(msg)}
-                          activeOpacity={0.7}
-                          accessibilityRole="button"
-                          accessibilityLabel={
-                            speakingMsgId === msg.id ? 'Stop audio' : 'Listen to options'
-                          }
-                        >
-                          <Text style={styles.speakerIcon}>
-                            {speakingMsgId === msg.id ? '🔊' : '🔈'}
-                          </Text>
-                          <Text
-                            style={[
-                              styles.speakerBtnText,
-                              speakingMsgId === msg.id && styles.speakerBtnTextActive,
-                            ]}
-                          >
-                            {speakingMsgId === msg.id ? 'Speaking…' : 'Listen'}
-                          </Text>
-                        </TouchableOpacity>
                       </View>
                     )}
 
@@ -1465,46 +1375,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#6B7280',
     marginLeft: 6,
-  },
-  bubbleFooter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 8,
-    paddingTop: 6,
-    borderTopWidth: 1,
-    borderTopColor: '#F3F4F6',
-  },
-  standaloneSpeakerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  speakerBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-    backgroundColor: '#F3F4F6',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
-  },
-  speakerBtnActive: {
-    backgroundColor: '#DCFCE7',
-    borderColor: '#86EFAC',
-  },
-  speakerIcon: {
-    fontSize: 13,
-  },
-  speakerBtnText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#4B5563',
-  },
-  speakerBtnTextActive: {
-    color: '#15803D',
-    fontWeight: '700',
   },
   recsSection: {
     marginTop: 10,

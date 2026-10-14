@@ -236,7 +236,10 @@ const VALID_WORDS_WHITELIST = new Set([
   'some', 'more', 'less', 'mild', 'spicy', 'hot', 'cold', 'warm', 'fresh', 'healthy',
   'organic', 'pure', 'plain', 'sweet', 'sour', 'crispy', 'fried', 'baked', 'roasted',
   'grilled', 'steamed', 'boiled', 'vegan', 'vegetarian', 'halal', 'kosher', 'gluten',
-  'dairy', 'protein', 'calorie', 'calories', 'carb', 'carbs', 'fat', 'fats', 'fiber'
+  'dairy', 'protein', 'calorie', 'calories', 'carb', 'carbs', 'fat', 'fats', 'fiber',
+  'atta', 'besan', 'maida', 'dal', 'toor', 'moong', 'masoor', 'chana', 'rajma',
+  'ghee', 'poha', 'rava', 'paneer', 'dahi', 'bhindi', 'bhujia', 'chakli', 'badam',
+  'kaju', 'kishmish', 'jeera', 'haldi', 'basmati', 'pulses'
 ]);
 
 /**

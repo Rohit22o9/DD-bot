@@ -317,9 +317,14 @@ export class DropAIOrchestrator {
     // =========================================================================
     const groceryKeywords = [
       'grocer', 'grocery', 'supermarket', 'pantry', 'fresh produce', 'essentials',
-      'milk', 'eggs', 'bread', 'butter', 'yogurt', 'cheese', 'avocado', 'tomato',
-      'spinach', 'banana', 'apple', 'garlic', 'onion', 'olive oil', 'pasta', 'rice',
-      'oats', 'honey', 'chicken breast', 'salmon', 'coffee', 'juice', 'tofu',
+      'atta', 'flour', 'besan', 'maida', 'dal', 'pulses', 'toor dal', 'moong dal',
+      'masoor dal', 'chana dal', 'rajma', 'rice', 'basmati', 'sona masoori', 'poha',
+      'rava', 'semolina', 'oil', 'ghee', 'mustard oil', 'sunflower oil', 'groundnut oil',
+      'spices', 'masala', 'turmeric', 'haldi', 'chilli', 'mirch', 'coriander', 'jeera',
+      'cumin', 'garam masala', 'milk', 'curd', 'dahi', 'paneer', 'butter', 'onion',
+      'potato', 'tomato', 'bhindi', 'okra', 'biscuits', 'parle-g', 'chips', 'bhujia',
+      'chakli', 'tea', 'chai', 'coffee', 'badam', 'almonds', 'kaju', 'cashews', 'kishmish',
+      'raisins', 'soap', 'detergent', 'toothpaste', 'noodles', 'idli mix',
     ];
     const isGroceryAction =
       lower.includes('buy') ||
@@ -351,7 +356,14 @@ export class DropAIOrchestrator {
         message: dynamicMessage,
         job: 'FIND',
         groceryList,
-        quickOptions: ['🛒 Add All to Cart', '🥛 More Dairy', '🥑 Fresh Produce', '🍞 Bakery Items'],
+        quickOptions: [
+          '🛒 Add All to Cart',
+          '🌾 Atta & Rice',
+          '🫘 Dals & Pulses',
+          '🧈 Ghee & Dairy',
+          '🧅 Fresh Veggies',
+          '☕ Chai & Snacks',
+        ],
       };
     }
 

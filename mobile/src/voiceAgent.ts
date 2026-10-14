@@ -577,75 +577,16 @@ class VoiceAgentService {
   }
 
   public speak(
-    text: string,
+    _text?: string,
     onDone?: () => void,
-    onStopped?: () => void
+    _onStopped?: () => void
   ) {
-    this.stopSpeaking();
-    const cleanText = text?.trim();
-    if (!cleanText) {
-      onDone?.();
-      return;
-    }
-
-    if (Platform.OS === 'web' && typeof window !== 'undefined' && (window as any).speechSynthesis) {
-      try {
-        const synth = (window as any).speechSynthesis;
-        synth.cancel();
-        const utterance = new (window as any).SpeechSynthesisUtterance(cleanText);
-        utterance.lang = 'en-US';
-        utterance.rate = 1.0;
-        utterance.pitch = 1.0;
-        utterance.onend = () => onDone?.();
-        utterance.onerror = () => onDone?.();
-        synth.speak(utterance);
-        return;
-      } catch (e) {
-        console.warn('[VoiceAgent] Web speech synthesis error:', e);
-      }
-    }
-
-    const Speech = getSpeech();
-    if (Speech?.speak) {
-      try {
-        Speech.speak(cleanText, {
-          language: 'en-US',
-          pitch: 1.0,
-          rate: 0.95,
-          onDone: () => onDone?.(),
-          onStopped: () => onStopped?.(),
-          onError: () => onDone?.(),
-        });
-        return;
-      } catch (e) {
-        console.warn('[VoiceAgent] Speech.speak failed, trying web fallback:', e);
-      }
-    }
-
-    if (typeof window !== 'undefined' && (window as any).speechSynthesis) {
-      try {
-        (window as any).speechSynthesis.cancel();
-        const utterance = new (window as any).SpeechSynthesisUtterance(cleanText);
-        utterance.lang = 'en-US';
-        utterance.onend = () => onDone?.();
-        utterance.onerror = () => onDone?.();
-        (window as any).speechSynthesis.speak(utterance);
-      } catch {}
-    }
+    // Voice response hearing option has been removed
+    onDone?.();
   }
 
   public stopSpeaking() {
-    const Speech = getSpeech();
-    if (Speech?.stop) {
-      try {
-        Speech.stop();
-      } catch {}
-    }
-    if (typeof window !== 'undefined' && (window as any).speechSynthesis) {
-      try {
-        (window as any).speechSynthesis.cancel();
-      } catch {}
-    }
+    // Voice response hearing option has been removed
   }
 
   private startSoundWaveSimulation() {
